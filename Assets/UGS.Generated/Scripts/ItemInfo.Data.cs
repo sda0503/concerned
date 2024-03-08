@@ -34,7 +34,8 @@ namespace Hamster.ZG.Type
 
         public string Write(object value)
         {
-            throw new NotImplementedException();
+            bool b = (bool)value;
+            return $"{b}";
         }
     }
 }
