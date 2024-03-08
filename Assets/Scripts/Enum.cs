@@ -1,8 +1,11 @@
+using GoogleSheet.Core.Type;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 //enum ¸ðÀ½ script
+
+[UGS(typeof(ItemType))]
 public enum ItemType
 {
     Nomal, Event
