@@ -10,15 +10,33 @@ public class ItemDataList
     public List<ItemData> Data;
 }
 
-public class ItemDataManager : MonoBehaviour
+public class ItemDataManager
 {
+    private static ItemDataManager instance;
+    public static ItemDataManager Instance
+    {
+        get
+        {
+            if (instance == null)
+                instance = new ItemDataManager();
+
+            return instance;
+        }
+    }
+
+
+
+
+
+    //--------------------------------------------------------------------
+    //Json
     string path = $"{Application.persistentDataPath}";
 
     private ItemDataList defaultItemDataList = new ItemDataList();
 
-    public ItemDataList GetItemInfo()
+    public ItemData GetItemData(int id)
     {
-        return defaultItemDataList;
+        return defaultItemDataList.Data[id];
     }
 
     //json 파일 저장하기
@@ -34,25 +52,15 @@ public class ItemDataManager : MonoBehaviour
     //json 파일 불러오기. 시작할 때 불러오는 것
     public void LoadDefaultData()
     {
-        var defaultItemDataJson = Resources.Load("ItemInfo").ToString();
-        defaultItemDataList = JsonConvert.DeserializeObject<ItemDataList>(defaultItemDataJson);
-
-        //ItemData[] dogam = new ItemData[39];
-        //dogam[24] = defaultItemDataList.Data[24];
-        //Debug.Log(dogam[24].Name);
+        var data = Resources.Load("ItemInfo").ToString();
+        defaultItemDataList = JsonConvert.DeserializeObject<ItemDataList>(data);
     }
 
     //json 파일 불러오기. play 중에 저장된 것 불러오거나 play 끝나고 도감에서 불러오는 것.
     public void LoadSaveData()
     {
         var data = File.ReadAllText(path + "/Save");
-        if (data == null) data = File.ReadAllText(path + "/ItemInfo.json");
+        if (data == null) data = Resources.Load("ItemInfo").ToString();
         defaultItemDataList = JsonUtility.FromJson<ItemDataList>(data);
-    }
-
-    //아이템을 얻으면 true -> 도감으로 이동되어야한다.
-    public bool SetItemGetCheck()
-    {
-        return true;
     }
 }

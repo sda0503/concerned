@@ -1,0 +1,364 @@
+{
+  "Data": [
+    {
+      "ItemID": "0",
+      "Name": "피해자 지갑",
+      "Description": "피해자 차에 있던 지갑. 사용하면 누구인지 알 수 있을 것 같다.",
+      "Simple": "피해자의 지갑",
+      "itemEventType": "2",
+      "itemType": "1",
+      "event_description": null
+    },
+    {
+      "ItemID": "1",
+      "Name": "신분증",
+      "Description": "신분증에 양현서라고 적혀있다. 경찰서로 돌아가 신원을 확인봐야겠다.",
+      "Simple": "피해자 양현서의 신분증",
+      "itemEventType": "0",
+      "itemType": "1",
+      "event_description": null
+    },
+    {
+      "ItemID": "2",
+      "Name": "흥신소 명함",
+      "Description": "피해자 양현서 지갑에 있던 명함. 전화해서 물어보는 것이 좋을 것 같다.",
+      "Simple": "피해자 양현서 지갑에서 발견된 흥신소 명함",
+      "itemEventType": "1",
+      "itemType": "1",
+      "event_description": null
+    },
+    {
+      "ItemID": "3",
+      "Name": "쪽지1",
+      "Description": "피해자 양현서 지갑에 있는 쪽지. 비밀번호의 일부인 것 같다.",
+      "Simple": "피해자 양현서 지갑에 있는 쪽지",
+      "itemEventType": "1",
+      "itemType": "1",
+      "event_description": "피해자 양현서 집에 있는 금고 비밀번호에 사용된 쪽지."
+    },
+    {
+      "ItemID": "4",
+      "Name": "쪽지2",
+      "Description": "피해자 양현서 지갑에 있는 쪽지. 비밀번호의 일부인 것 같다.",
+      "Simple": "피해자 양현서 지갑에 있는 쪽지",
+      "itemEventType": "1",
+      "itemType": "1",
+      "event_description": "피해자 양현서 사무실에 있는 금고 비밀번호에 사용된 쪽지."
+    },
+    {
+      "ItemID": "5",
+      "Name": "살짝 뜯겨있는 택배",
+      "Description": "현관에 있던 택배. 받는 사람 강민우라고 적혀 있다.  팩키트 택배 회사에서 배송했다.",
+      "Simple": "강민우가 시킨 것 같은 택배",
+      "itemEventType": "2",
+      "itemType": "1",
+      "event_description": "//강민우의 핸드폰 포렌식이 끝나면 얻을 수 있음"
+    },
+    {
+      "ItemID": "6",
+      "Name": "사용된 번개탄",
+      "Description": "사용된 번개탄이다. 피해자의 차에서 본 번개탄과 유사하다. 근데 번개탄은 다 비슷하지 않나..?",
+      "Simple": "사용된 번개탄",
+      "itemEventType": "0",
+      "itemType": "1",
+      "event_description": null
+    },
+    {
+      "ItemID": "7",
+      "Name": "깨진 액자",
+      "Description": "//결혼을 한 한 쌍의 남녀가 환하게 웃고 있다. 액자의 유리가 깨져있다.",
+      "Simple": "//유리가 깨진 결혼사진",
+      "itemEventType": "3",
+      "itemType": "1",
+      "event_description": "도감에는 들어가지 않음"
+    },
+    {
+      "ItemID": "8",
+      "Name": "깨진 액자의 사진",
+      "Description": "액자의 깨진 부분을 사진으로 찍어 남겨두었다.",
+      "Simple": "깨진 부분의 사진",
+      "itemEventType": "1",
+      "itemType": "0",
+      "event_description": null
+    },
+    {
+      "ItemID": "9",
+      "Name": "쪽지",
+      "Description": "결혼사진 안에 있는 쪽지. 비밀번호의 일부인 것 같다.",
+      "Simple": "결혼사진에 끼워져 있는 쪽지",
+      "itemEventType": "1",
+      "itemType": "1",
+      "event_description": "피해자 양현서 집에 있는 금고 비밀번호에 사용된 쪽지."
+    },
+    {
+      "ItemID": "10",
+      "Name": "금고",
+      "Description": "//피해자 양현서 집에 있는 금고. 비밀번호가 걸려 있다.",
+      "Simple": "//비밀번호가 걸려있는 금고",
+      "itemEventType": "3",
+      "itemType": "1",
+      "event_description": "도감에는 들어가지 않음"
+    },
+    {
+      "ItemID": "11",
+      "Name": "보험서류",
+      "Description": "양현서 사망 시 보험금 10억을 받을 수 있는 보험 서류.",
+      "Simple": "피해자 양현서 사망 보험 서류",
+      "itemEventType": "1",
+      "itemType": "1",
+      "event_description": null
+    },
+    {
+      "ItemID": "12",
+      "Name": "서랍",
+      "Description": "//피해자 사무실에 있는 서랍. 바닥이 높아보인다.",
+      "Simple": "//피해자 사무실에 있는 서랍",
+      "itemEventType": "3",
+      "itemType": "1",
+      "event_description": "도감에는 들어가지 않음"
+    },
+    {
+      "ItemID": "13",
+      "Name": "서류",
+      "Description": "코인게이트로 인해 피해본 사람들의 금액이 적혀있는 서류",
+      "Simple": "피해금액이 적혀있는 서류",
+      "itemEventType": "0",
+      "itemType": "1",
+      "event_description": null
+    },
+    {
+      "ItemID": "14",
+      "Name": "쪽지",
+      "Description": "서랍에 숨겨져있던 쪽지. 비밀번호인 것 같다.",
+      "Simple": "서랍에 숨겨져있던 쪽지.",
+      "itemEventType": "1",
+      "itemType": "1",
+      "event_description": "피해자 양현서 사무실에 있는 업무용 핸드폰 비밀번호에 사용된 쪽지."
+    },
+    {
+      "ItemID": "15",
+      "Name": "양현서 핸드폰",
+      "Description": "업무용 핸드폰인 것 같다. 크게 눈에 띄는 것은 없지만, 메모에 비밀번호의 일부가 적혀있는 것 같다.",
+      "Simple": "피해자 양현서의 업무용 핸드폰",
+      "itemEventType": "1",
+      "itemType": "1",
+      "event_description": "피해자 양현서 사무실에 있는 금고 비밀번호가 적혀있는 업무용 핸드폰."
+    },
+    {
+      "ItemID": "16",
+      "Name": "금고",
+      "Description": "//피해자 양현서 사무실에 있는 금고. 비밀번호가 걸려있다.",
+      "Simple": "//비밀번호가 걸려있는 금고",
+      "itemEventType": "3",
+      "itemType": "1",
+      "event_description": "도감에는 들어가지 않음"
+    },
+    {
+      "ItemID": "17",
+      "Name": "사진",
+      "Description": "강민우와 다른 여자가 서로 앉고 있는 사진. 여자는 양현서 비서와 같아 보인다.",
+      "Simple": "강민우 불륜 증거 사진",
+      "itemEventType": "1",
+      "itemType": "1",
+      "event_description": null
+    },
+    {
+      "ItemID": "18",
+      "Name": "통장",
+      "Description": "피해자 양현서의 통장. 수백억 있었지만 현재는 돈이 없다.",
+      "Simple": null,
+      "itemEventType": "0",
+      "itemType": "1",
+      "event_description": null
+    },
+    {
+      "ItemID": "19",
+      "Name": "서류",
+      "Description": "코인 게이트에 관한 서류. 예상 피해금액과 추후 처리 방법 등이 적혀있다.",
+      "Simple": null,
+      "itemEventType": "0",
+      "itemType": "1",
+      "event_description": null
+    },
+    {
+      "ItemID": "20",
+      "Name": "비서 노트",
+      "Description": "피해자 양현서의 일정이 적혀있다. 일정 외의 비서의 사담도 적혀있는 것 같다.",
+      "Simple": null,
+      "itemEventType": "0",
+      "itemType": "1",
+      "event_description": null
+    },
+    {
+      "ItemID": "21",
+      "Name": "서랍",
+      "Description": "//김이사 사무실에 있는 서랍.",
+      "Simple": null,
+      "itemEventType": "3",
+      "itemType": "1",
+      "event_description": null
+    },
+    {
+      "ItemID": "22",
+      "Name": "서류",
+      "Description": "코인 게이트 피해자 구제에 관한 서류",
+      "Simple": "코인 게이트 피해자 구제 서류",
+      "itemEventType": "0",
+      "itemType": "1",
+      "event_description": null
+    },
+    {
+      "ItemID": "23",
+      "Name": "잠겨있는 서랍",
+      "Description": "//김이사 사무실에 있는 잠겨있는 서랍",
+      "Simple": null,
+      "itemEventType": "3",
+      "itemType": "1",
+      "event_description": null
+    },
+    {
+      "ItemID": "24",
+      "Name": "경찰 리스트 사진",
+      "Description": "왜 있는지 모를 경찰 리스트. 동료 형사인 윤재민의 이름에 동그라미가 그려져 있다. 사진을 찍어서 보관한다.",
+      "Simple": null,
+      "itemEventType": "1",
+      "itemType": "0",
+      "event_description": null
+    },
+    {
+      "ItemID": "25",
+      "Name": "뜯어져있는 편지봉투",
+      "Description": "누가 보냈는지 모르겠다. 내용물은 읽은건지 없어져있다.",
+      "Simple": null,
+      "itemEventType": "0",
+      "itemType": "1",
+      "event_description": null
+    },
+    {
+      "ItemID": "26",
+      "Name": "압류표목의 사진",
+      "Description": "집안 곳곳에 압류표목이 붙어있다. 건드릴 수 없으므로 사진을 찍어 남겨두었다.",
+      "Simple": null,
+      "itemEventType": "0",
+      "itemType": "0",
+      "event_description": null
+    },
+    {
+      "ItemID": "27",
+      "Name": "쌓여있는 담배꽁초",
+      "Description": "담배 꽁초들이 쌓여있다. 잿더미에 담배재가 아닌 것이 보인다.",
+      "Simple": null,
+      "itemEventType": "2",
+      "itemType": "1",
+      "event_description": null
+    },
+    {
+      "ItemID": "28",
+      "Name": "구겨진 이혼서류",
+      "Description": "한쪽에만 도장이 찍혀있다. 신현우는 도장을 찍지 않았다.",
+      "Simple": null,
+      "itemEventType": "0",
+      "itemType": "1",
+      "event_description": null
+    },
+    {
+      "ItemID": "29",
+      "Name": "독촉장",
+      "Description": null,
+      "Simple": null,
+      "itemEventType": "0",
+      "itemType": "1",
+      "event_description": null
+    },
+    {
+      "ItemID": "30",
+      "Name": "가족사진",
+      "Description": "한 쌍의 남녀와 아이가 환하게 웃고 있다.",
+      "Simple": null,
+      "itemEventType": "0",
+      "itemType": "1",
+      "event_description": null
+    },
+    {
+      "ItemID": "31",
+      "Name": "블랙박스",
+      "Description": "신현우 택배 자동차에 달려있는 블랙박스 데이터. 확인해보기 위해서는 경찰서로 가야할 것 같다.",
+      "Simple": null,
+      "itemEventType": "1",
+      "itemType": "1",
+      "event_description": "신현우 택배 자동차에 달려있는 블랙박스 데이터. 피해자 사망 추정 시간의 데이터가 없다."
+    },
+    {
+      "ItemID": "32",
+      "Name": "변호사 수첩",
+      "Description": "변호사 일정이 담긴 수첩. 양현서 사망 당일에 만나는 약속이 있었다.",
+      "Simple": null,
+      "itemEventType": "0",
+      "itemType": "1",
+      "event_description": null
+    },
+    {
+      "ItemID": "33",
+      "Name": "서류",
+      "Description": "피해자 양현서와 변호사의 상담 서류. 코인 게이트에 관한 내용이 주이지만 불륜에 관한 이야기도 나눈 듯하다.",
+      "Simple": null,
+      "itemEventType": "0",
+      "itemType": "1",
+      "event_description": null
+    },
+    {
+      "ItemID": "34",
+      "Name": "뜯지 않은 택배",
+      "Description": "변호사 앞으로 온 택배이다. 팩키트 택배 회사에서 배송했다.",
+      "Simple": null,
+      "itemEventType": "0",
+      "itemType": "1",
+      "event_description": null
+    },
+    {
+      "ItemID": "35",
+      "Name": "김태현 이사 명함",
+      "Description": "피해자 양현서가 대표로 있는 회사의 이사인 김태현의 명함",
+      "Simple": null,
+      "itemEventType": "1",
+      "itemType": "1",
+      "event_description": null
+    },
+    {
+      "ItemID": "36",
+      "Name": "윤재민 통장",
+      "Description": "최근에 큰 금액 입금된 것이 확인된다. 입금은 atm에서 한 것 같다.",
+      "Simple": null,
+      "itemEventType": "0",
+      "itemType": "1",
+      "event_description": null
+    },
+    {
+      "ItemID": "37",
+      "Name": "윤재민 핸드폰",
+      "Description": "익명의 사람과 대화한 내용이 있다. 내용이 수상하다.",
+      "Simple": null,
+      "itemEventType": "0",
+      "itemType": "1",
+      "event_description": null
+    },
+    {
+      "ItemID": "38",
+      "Name": "파쇄기",
+      "Description": "//경찰리스트, 컴퓨터 비밀번호 일부",
+      "Simple": null,
+      "itemEventType": "3",
+      "itemType": "1",
+      "event_description": null
+    },
+    {
+      "ItemID": "39",
+      "Name": "쓰다 만 편지",
+      "Description": "부인에게 보내는 것 같은 편지. 미안하다는 말과 함께 좋은 소식이 있다고 적혀있다.",
+      "Simple": null,
+      "itemEventType": "0",
+      "itemType": "1",
+      "event_description": null
+    }
+  ]
+}
