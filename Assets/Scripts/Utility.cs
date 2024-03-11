@@ -27,5 +27,7 @@ public class Utility
         obj.transform.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("image"); //index에 맞춰서 이미지 로드되도록 설정
 
         Object.Instantiate(obj);
+
+        ItemManager.Instance.GetItem(index);
     }
 }

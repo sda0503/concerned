@@ -15,11 +15,11 @@ public class InventoryUI : MonoBehaviour
 
     public void AddItemList(Item item) //탐색으로 아이템을 얻는 경우.
     {
-        SetItemSlot(item);
+        SetItemSlot(item.id);
         items.Add(item);
     }
 
-    public void SetItemSlot(Item item)
+    public void SetItemSlot(int index)
     {
         //아이템 이름이랑 설명 text 부분 연결하는 곳.
         if (items.Count % 3 == 0) 
