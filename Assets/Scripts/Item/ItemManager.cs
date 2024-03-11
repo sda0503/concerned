@@ -30,12 +30,26 @@ public class ItemManager : MonoBehaviour
     private void Awake()
     {
         getItems.Clear();
+        items = new Item[40];
     }
 
-    public void GetItem(Item item)
+    private void Start()
     {
-        getItems.Add(item);
-        AddItemInInventory?.Invoke(item);
+        for(int i = 0; i < items.Length; i++)
+        {
+            MakeItem(i);
+        }
+    }
+
+    public void MakeItem(int index)
+    {
+        items[index] = new Item(index);
+    }
+
+    public void GetItem(int item_id)
+    {
+        getItems.Add(items[item_id]);
+        AddItemInInventory?.Invoke(items[item_id]);
     }
 
     public void OnItemEvent()
