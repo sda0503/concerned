@@ -1,10 +1,8 @@
-using GoogleSheet.Core.Type;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 //enum 모음 script
-[UGS(typeof(ItemEventType))]
 public enum ItemEventType
 {
     Nomal, 
@@ -13,7 +11,6 @@ public enum ItemEventType
     Interaction //상호작용이 가능한 아이템. 인벤토리에 들어가지 않음.
 }
 
-[UGS(typeof(ItemType))]
 public enum ItemType
 {
     Photo, Object
