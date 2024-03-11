@@ -21,17 +21,11 @@ public class ItemManager : MonoBehaviour
         }
     }
 
-    public Item[] items; //도감에 들어있는 아이템
+    public Item[] items = new Item[40]; //도감에 들어있는 아이템
 
-    public List<Item> getItems; //얻은 Item..들
+    public List<Item> getItems = new List<Item>(); //얻은 Item..들
 
     public Action<Item> AddItemInInventory;
-
-    private void Awake()
-    {
-        getItems.Clear();
-        items = new Item[40];
-    }
 
     private void Start()
     {
