@@ -2,6 +2,7 @@ using Newtonsoft.Json;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Utility
@@ -19,7 +20,12 @@ public class Utility
         }
     }
 
-    //--------------------------------------------------------------------------
-    //Json
-    
+    public void OnClickToFindItem(int index)
+    {
+        var obj = Resources.Load("Item") as GameObject;
+        
+        obj.transform.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("image"); //index에 맞춰서 이미지 로드되도록 설정
+
+        Object.Instantiate(obj);
+    }
 }
