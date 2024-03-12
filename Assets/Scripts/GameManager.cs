@@ -6,7 +6,8 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     //test
-    public Button button;
+    public Button button1;
+    public Button button2;
 
     private void Awake()
     {
@@ -16,6 +17,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        button.onClick.AddListener(() => Utility.Instance.OnClickToFindItem(1));
+        button1.onClick.AddListener(() => Utility.Instance.OnClickToFindItem(1));
+        button2.onClick.AddListener(() => ItemDataManager.Instance.SaveData());
     }
 }

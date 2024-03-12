@@ -2,12 +2,13 @@ using Newtonsoft.Json;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using UnityEditorInternal.Profiling.Memory.Experimental;
 using UnityEngine;
 
 public class ItemDataList
 {
     //<정보를 받아올 class> 스프레드 시트에 있는 정보가 있는 시트명.
-    public List<ItemData> Data;
+    public List<ItemData> Data = new List<ItemData>();
 }
 
 public class ItemDataManager
@@ -29,6 +30,7 @@ public class ItemDataManager
     string path = $"{Application.persistentDataPath}";
 
     private ItemDataList defaultItemDataList = new ItemDataList();
+    private ItemDataList saveItemDataList = new ItemDataList();
 
     public ItemData GetItemData(int id)
     {
@@ -36,10 +38,14 @@ public class ItemDataManager
     }
 
     //json 파일 저장하기
-    public void SaveData(ItemDataList Data)
+    public void SaveData()
     {
-        defaultItemDataList = Data;
-        string data = JsonUtility.ToJson(defaultItemDataList);
+        for(int i = 0; i < ItemManager.Instance.getItems.Count; i++)
+        {
+            saveItemDataList.Data.Add(ItemManager.Instance.getItems[i].itemData);
+        }
+        Debug.Log(path);
+        var data = JsonConvert.SerializeObject(saveItemDataList);
 
         //저장파일 생성. 외부에 저장.
         File.WriteAllText(path + "/Save", data);
