@@ -30,25 +30,20 @@ public class ItemDataManager
     string path = $"{Application.persistentDataPath}";
 
     private ItemDataList defaultItemDataList = new ItemDataList();
-    private ItemDataList saveItemDataList = new ItemDataList();
 
-    public ItemData GetItemData(int id)
+    public ItemDataList GetItemDataList()
     {
-        return defaultItemDataList.Data[id];
+        return defaultItemDataList;
     }
 
     //json 파일 저장하기
-    public void SaveData()
+    public void SaveData(ItemDataList itemDataList, string str)
     {
-        for(int i = 0; i < ItemManager.Instance.getItems.Count; i++)
-        {
-            saveItemDataList.Data.Add(ItemManager.Instance.getItems[i].itemData);
-        }
         Debug.Log(path);
-        string data = JsonUtility.ToJson(saveItemDataList);
+        string data = JsonUtility.ToJson(itemDataList);
 
         //저장파일 생성. 외부에 저장.
-        File.WriteAllText(path + "/Save", data);
+        File.WriteAllText(path + "/" + str, data);
     }
 
     //json 파일 불러오기. 시작할 때 불러오는 것
@@ -59,10 +54,13 @@ public class ItemDataManager
     }
 
     //json 파일 불러오기. play 중에 저장된 것 불러오거나 play 끝나고 도감에서 불러오는 것.
-    public void LoadSaveData()
+    public void LoadSaveData(string str)
     {
-        var data = File.ReadAllText(path + "/Save");
-        if (data == null) data = Resources.Load("ItemInfo").ToString();
-        defaultItemDataList = JsonUtility.FromJson<ItemDataList>(data);
+        try
+        {
+            var data = File.ReadAllText(path + "/" + str);
+            defaultItemDataList = JsonUtility.FromJson<ItemDataList>(data);
+        }
+        catch { defaultItemDataList = null; }
     }
 }
