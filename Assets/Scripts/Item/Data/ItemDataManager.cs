@@ -45,7 +45,7 @@ public class ItemDataManager
             saveItemDataList.Data.Add(ItemManager.Instance.getItems[i].itemData);
         }
         Debug.Log(path);
-        var data = JsonConvert.SerializeObject(saveItemDataList);
+        string data = JsonUtility.ToJson(saveItemDataList);
 
         //历厘颇老 积己. 寇何俊 历厘.
         File.WriteAllText(path + "/Save", data);

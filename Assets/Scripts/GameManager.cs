@@ -17,7 +17,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        button1.onClick.AddListener(() => Utility.Instance.OnClickToFindItem(1));
+        button1.onClick.AddListener(() => Utility.Instance.OnClickToFindItem(2));
         button2.onClick.AddListener(() => ItemDataManager.Instance.SaveData());
     }
 }
