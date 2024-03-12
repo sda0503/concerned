@@ -31,6 +31,6 @@ public class GameManager : MonoBehaviour
         {
             saveGetItems.Data.Add(ItemManager.Instance.getItems[i].itemData);
         }
-        ItemDataManager.Instance.SaveData(saveGetItems, "Save");
+        Utility.Instance.SaveData(saveGetItems, "Save");
     }
 }

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,35 +7,48 @@ using UnityEngine.UI;
 
 public class DogamUI : MonoBehaviour
 {
-    private ItemDataList dogamItemDataList;
-    private ItemDataList saveItemDataList;
+    public GameObject itemSlot;
+    private GameObject[] itemSlots = new GameObject[50];
 
     public Button clueButton;
     public Button albumButton;
 
-    private void Awake()
+    public Text nameText;
+    public Text descriptionText;
+
+    private void OnEnable() //Start로 바뀔 예정.
     {
-        ItemDataManager.Instance.LoadSaveData("Save");
-        saveItemDataList = ItemDataManager.Instance.GetItemDataList();
-        ItemDataManager.Instance.LoadSaveData("Dogam");
-        dogamItemDataList = ItemDataManager.Instance.GetItemDataList();
+        ItemDataManager.Instance.SetDogamItemData();
+        MakeDogamItemSlot();
     }
 
-    private void OnEnable()
+    private void MakeDogamItemSlot()
     {
-        if(saveItemDataList == null)
+        for (int i = 0; i < 12; i++)
         {
-            //가지고 있는 것에 따라서 도감 아이템 생성해주기..
-            return;
+            itemSlots[i] = Resources.Load("Prefabs/DogamItemSlot") as GameObject;
+            Instantiate(itemSlots[i], itemSlot.transform);
+            int n = i;
+            itemSlots[i].GetComponent<Button>().onClick.AddListener(() => DogamSlotButton(n));
+            itemSlots[i].GetComponent<Button>().enabled = false;
+            OnDogamItem(i);
         }
-        else
+    }
+
+    public void DogamSlotButton(int index)
+    {
+        nameText.text = ItemDataManager.Instance.dogamItemData[index].item_name;
+        descriptionText.text = ItemDataManager.Instance.dogamItemData[index].default_description;
+    }
+
+    public void OnDogamItem(int key)
+    {
+        if (ItemDataManager.Instance.dogamItemData.ContainsKey(key))
         {
-            if(dogamItemDataList == null)
-            {
-                dogamItemDataList = saveItemDataList;
-                dogamItemDataList.Data = dogamItemDataList.Data.OrderBy(x => x.item_id).ToList();
-                ItemDataManager.Instance.SaveData(dogamItemDataList, "Dogam");
-            }
+            Debug.Log("On");
+            itemSlots[key].transform.Find("GetItem").gameObject.SetActive(true);
+            itemSlots[key].GetComponent<Button>().enabled = true;
         }
+        else itemSlots[key].transform.Find("GetItem").gameObject.SetActive(false);
     }
 }

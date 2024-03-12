@@ -2,6 +2,7 @@ using Newtonsoft.Json;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using UnityEditorInternal.Profiling.Memory.Experimental;
 using UnityEngine;
 
@@ -25,25 +26,69 @@ public class ItemDataManager
         }
     }
 
+
+
     //--------------------------------------------------------------------
-    //Json
-    string path = $"{Application.persistentDataPath}";
+    //Dogam, 도감에서 사용될 데이터 정리
+    private ItemDataList dogamItemDataList;
+    private ItemDataList saveItemDataList;
+    public Dictionary<int, ItemData> dogamItemData = new Dictionary<int, ItemData>();
 
-    private ItemDataList defaultItemDataList = new ItemDataList();
-
-    public ItemDataList GetItemDataList()
+    public void SetDogamItemData()
     {
-        return defaultItemDataList;
+        Utility.Instance.LoadSaveData("Save");
+        saveItemDataList = Utility.Instance.GetItemDataList();
+        Utility.Instance.LoadSaveData("Dogam");
+        dogamItemDataList = Utility.Instance.GetItemDataList();
+
+        if (saveItemDataList == null)
+        {
+            return;
+        }
+        else
+        {
+            if (dogamItemDataList == null)
+            {
+                dogamItemDataList = saveItemDataList;
+            }
+            else
+            {
+                saveItemDataList.Data = saveItemDataList.Data.OrderBy(x => x.item_id).ToList();
+                for (int i = 0; i < saveItemDataList.Data.Count; i++)
+                {
+                    for (int j = 0; j < dogamItemDataList.Data.Count; j++)
+                    {
+                        if (saveItemDataList.Data[i].item_id == dogamItemDataList.Data[j].item_id) break;
+                        if (j + 1 == dogamItemDataList.Data.Count)
+                        {
+                            dogamItemDataList.Data.Add(saveItemDataList.Data[i]);
+                        }
+                    }
+                }
+            }
+            dogamItemDataList.Data = dogamItemDataList.Data.OrderBy(x => x.item_id).ToList();
+            Utility.Instance.SaveData(dogamItemDataList, "Dogam");
+        }
+        DogamItemInDic();
     }
 
-    //json 파일 저장하기
-    public void SaveData(ItemDataList itemDataList, string str)
+    private void DogamItemInDic()
     {
-        Debug.Log(path);
-        string data = JsonUtility.ToJson(itemDataList);
+        for (int i = 0; i < dogamItemDataList.Data.Count; i++)
+        {
+            if (!dogamItemData.ContainsKey(dogamItemDataList.Data[i].item_id)) 
+                dogamItemData.Add(dogamItemDataList.Data[i].item_id, dogamItemDataList.Data[i]);
+        }
+    }
 
-        //저장파일 생성. 외부에 저장.
-        File.WriteAllText(path + "/" + str, data);
+
+    //--------------------------------------------------------------------
+    //Json, 모든 아이템 정보 가져오기.
+    private ItemDataList defaultItemDataList = new ItemDataList();
+
+    public ItemDataList GetDefaultItemDataList()
+    {
+        return defaultItemDataList;
     }
 
     //json 파일 불러오기. 시작할 때 불러오는 것
@@ -51,16 +96,5 @@ public class ItemDataManager
     {
         var data = Resources.Load("ItemInfo").ToString();
         defaultItemDataList = JsonConvert.DeserializeObject<ItemDataList>(data);
-    }
-
-    //json 파일 불러오기. play 중에 저장된 것 불러오거나 play 끝나고 도감에서 불러오는 것.
-    public void LoadSaveData(string str)
-    {
-        try
-        {
-            var data = File.ReadAllText(path + "/" + str);
-            defaultItemDataList = JsonUtility.FromJson<ItemDataList>(data);
-        }
-        catch { defaultItemDataList = null; }
     }
 }

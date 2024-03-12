@@ -17,7 +17,7 @@ public class Item : MonoBehaviour
 
     public Item(int id)
     {
-        itemData = ItemDataManager.Instance.GetItemDataList().Data[id];
+        itemData = ItemDataManager.Instance.GetDefaultItemDataList().Data[id];
         this.id = id;
         event_check = false;
     }
