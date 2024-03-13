@@ -8,7 +8,7 @@ using UnityEngine.UI;
 
 public class DogamUI : PopupUIBase
 {
-    public GameObject itemSlot;
+    public Transform itemSlot;
     private GameObject[] itemSlots = new GameObject[50];
 
     public Button clueButton;
@@ -27,7 +27,7 @@ public class DogamUI : PopupUIBase
     {
         for (int i = 0; i < 12; i++)
         {
-            itemSlots[i] = Instantiate(Resources.Load("Prefabs/DogamItemSlot") as GameObject, itemSlot.transform);
+            itemSlots[i] = Instantiate(Resources.Load("Prefabs/DogamItemSlot") as GameObject, itemSlot);
             OnDogamItem(i);
             int n = i;
             itemSlots[i].GetComponent<Button>().onClick.RemoveAllListeners();
@@ -45,6 +45,7 @@ public class DogamUI : PopupUIBase
     {
         if (ItemDataManager.Instance.dogamItemData.ContainsKey(key))
         {
+            //이미지 변경되는 부분이 필요함.
             itemSlots[key].transform.Find("GetItem").gameObject.SetActive(true);
             itemSlots[key].GetComponent<Button>().enabled = true;
         }

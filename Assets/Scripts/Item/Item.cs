@@ -25,7 +25,6 @@ public class Item : MonoBehaviour
 
     public void OnClick(InputAction.CallbackContext value)
     {
-        Debug.Log(trigger_animation);
         animator.SetTrigger(trigger_animation);
     }
 
