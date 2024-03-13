@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -26,12 +27,11 @@ public class DogamUI : MonoBehaviour
     {
         for (int i = 0; i < 12; i++)
         {
-            itemSlots[i] = Resources.Load("Prefabs/DogamItemSlot") as GameObject;
-            Instantiate(itemSlots[i], itemSlot.transform);
-            int n = i;
-            itemSlots[i].GetComponent<Button>().onClick.AddListener(() => DogamSlotButton(n));
-            itemSlots[i].GetComponent<Button>().enabled = false;
+            itemSlots[i] = Instantiate(Resources.Load("Prefabs/DogamItemSlot") as GameObject, itemSlot.transform);
             OnDogamItem(i);
+            int n = i;
+            itemSlots[i].GetComponent<Button>().onClick.RemoveAllListeners();
+            itemSlots[i].GetComponent<Button>().onClick.AddListener(() => DogamSlotButton(n));
         }
     }
 
@@ -45,10 +45,13 @@ public class DogamUI : MonoBehaviour
     {
         if (ItemDataManager.Instance.dogamItemData.ContainsKey(key))
         {
-            Debug.Log("On");
             itemSlots[key].transform.Find("GetItem").gameObject.SetActive(true);
             itemSlots[key].GetComponent<Button>().enabled = true;
         }
-        else itemSlots[key].transform.Find("GetItem").gameObject.SetActive(false);
+        else
+        {
+            itemSlots[key].transform.Find("GetItem").gameObject.SetActive(false);
+            itemSlots[key].GetComponent<Button>().enabled = false;
+        }
     }
 }
