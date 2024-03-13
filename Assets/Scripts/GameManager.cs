@@ -9,6 +9,8 @@ public class GameManager : MonoBehaviour
     public Button button1;
     public Button button2;
     public Button button3;
+    public Button button4;
+    public Button button5;
 
     ItemDataList saveGetItems = new ItemDataList();
 
@@ -22,6 +24,8 @@ public class GameManager : MonoBehaviour
     {
         button1.onClick.AddListener(() => Utility.Instance.OnClickToFindItem(10));
         button3.onClick.AddListener(() => Utility.Instance.OnClickToFindItem(1));
+        button4.onClick.AddListener(() => Utility.Instance.OnClickToFindItem(5));
+        button5.onClick.AddListener(() => Utility.Instance.OnClickToFindItem(2));
         button2.onClick.AddListener(() => OffGame());
     }
 
