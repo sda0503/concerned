@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using static UnityEditor.Progress;
 
 public class InventoryUI : PopupUIBase
 {
@@ -13,10 +14,10 @@ public class InventoryUI : PopupUIBase
     public Text nameText;
     public Text descriptionText;
 
-    private void Start()
+    private void OnEnable()
     {
-        ItemManager.Instance.AddItemInInventory += AddItemList;
-        MakeInventorySlot(3);
+        if (items.Count == 0) MakeInventorySlot(3);
+        AddItemList();
     }
 
     private void MakeInventorySlot(int count)
@@ -27,11 +28,14 @@ public class InventoryUI : PopupUIBase
         }
     }
 
-    public void AddItemList(Item item) //탐색으로 아이템을 얻는 경우.
+    public void AddItemList() //탐색으로 아이템을 얻는 경우.
     {
-        
-        SetItemSlot(item.id);
-        items.Add(item.id, item);
+        for(int i = 0; i < ItemManager.Instance.getItemsNumber.Count;i++)
+        {
+            SetItemSlot(ItemManager.Instance.getItems[ItemManager.Instance.getItemsNumber[i]].id);
+            items.Add(ItemManager.Instance.getItems[ItemManager.Instance.getItemsNumber[i]].id, ItemManager.Instance.getItems[ItemManager.Instance.getItemsNumber[i]]);
+        }
+        ItemManager.Instance.getItemsNumber.Clear();
     }
 
     public void SetItemSlot(int id)

@@ -23,7 +23,8 @@ public class ItemManager : MonoBehaviour
 
     public Item[] items = new Item[40]; //도감에 들어있는 아이템
 
-    public Dictionary<int, Item> getItems = new Dictionary<int, Item>(); //얻은 Item..들
+    public Dictionary<int, Item> getItems = new Dictionary<int, Item>(); //얻은 Item들
+    public List<int> getItemsNumber = new List<int>(); //먹은 Item들 순서
 
     public Action<Item> AddItemInInventory;
 
@@ -43,7 +44,7 @@ public class ItemManager : MonoBehaviour
     public void GetItem(int item_id)
     {
         getItems.Add(item_id, items[item_id]);
-        AddItemInInventory?.Invoke(items[item_id]);
+        getItemsNumber.Add(item_id);
     }
 
     public void OnItemEvent()
