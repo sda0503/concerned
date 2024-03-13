@@ -1,0 +1,113 @@
+{
+  "Dialouge_Log_Data": [
+    {
+      "Dialogue_idx": "10001010",
+      "Name": "강민우",
+      "Log": "누구세요",
+      "Log_Type": "0",
+      "Next_Log": "10001020"
+    },
+    {
+      "Dialogue_idx": "10001020",
+      "Name": "Player",
+      "Log": "안녕하세요",
+      "Log_Type": "0",
+      "Next_Log": "10001030"
+    },
+    {
+      "Dialogue_idx": "10001030",
+      "Name": "강민우",
+      "Log": "그러게요",
+      "Log_Type": "0",
+      "Next_Log": "10001040"
+    },
+    {
+      "Dialogue_idx": "10001040",
+      "Name": "Player",
+      "Log": "여기서 분기",
+      "Log_Type": "1",
+      "Event_Log_1": "욕한다",
+      "Event_Log_2": "때린다",
+      "Event_1_name": "10001050",
+      "Event_2_name": "10001051"
+    },
+    {
+      "Dialogue_idx": "10001050",
+      "Name": "강민우",
+      "Log": "욕먹음",
+      "Log_Type": "0"
+    },
+    {
+      "Dialogue_idx": "10001051",
+      "Name": "강민우",
+      "Log": "맞음",
+      "Log_Type": "0"
+    },   
+    {
+      "Dialogue_idx": "20001010",
+      "Name": "강민우",
+      "Log": "왜그러세요",
+      "Log_Type": "0",
+      "Next_Log": "20001020"
+    },
+    {
+      "Dialogue_idx": "20001020",
+      "Name": "Player",
+      "Log": "그러게요",
+      "Log_Type": "0"
+    }
+    ,{
+      "Dialogue_idx": "30001010",
+      "Name": "강민우",
+      "Log": "더 이상 할 얘기가 없습니다.",
+      "Log_Type": "0"
+    },
+    {
+      "Dialogue_idx": "40001010",
+      "Name": "B",
+      "Log": "bbbbbbbbbbbbbb.",
+      "Log_Type": "0"    
+    },
+    {
+      "Dialogue_idx": "50001010",
+      "Name": "에러",
+      "Log": "선행 퀘스트 완료가 필요합니다.",
+      "Log_Type": "0"
+    }
+  ],
+  "Dialogue_Quest_Data": [
+    {
+      "QuestTargetName": "강민우",
+      "QuestIdx": "1",
+      "QuestStartPost": "10001010",
+      "QuestType": "0",
+      "QuestState": "false",
+      "NeedQuest": ""
+    },
+    {
+      "QuestTargetName": "강민우",
+      "QuestIdx": "2",
+      "QuestStartPost": "20001010",
+      "QuestType": "0",
+      "QuestState": "false",
+      "NeedQuest": ["강민우","0"]
+    },
+    {
+      "QuestTargetName": "강민우",
+      "QuestIdx": "3",
+      "QuestStartPost": "30001010",
+      "QuestType": "1",
+      "QuestState": "false",
+      "NeedQuest": ["강민우","1"]
+    },
+    {
+      "QuestTargetName": "B",
+      "QuestIdx": "1",
+      "QuestStartPost": "40001010",
+      "QuestType": "1",
+      "QuestState": "false",
+      "NeedQuest": ["강민우","1"],
+      "NeedItem": "0"
+    }
+  ]
+}
