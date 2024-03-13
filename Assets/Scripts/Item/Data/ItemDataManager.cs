@@ -95,6 +95,6 @@ public class ItemDataManager
     public void LoadDefaultData()
     {
         var data = Resources.Load("ItemInfo").ToString();
-        defaultItemDataList = JsonConvert.DeserializeObject<ItemDataList>(data);
+        defaultItemDataList = JsonUtility.FromJson<ItemDataList>(data);
     }
 }
