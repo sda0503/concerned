@@ -26,8 +26,6 @@ public class ItemManager : MonoBehaviour
     public Dictionary<int, Item> getItems = new Dictionary<int, Item>(); //얻은 Item들
     public List<int> getItemsNumber = new List<int>(); //먹은 Item들 순서
 
-    public Action<Item> AddItemInInventory;
-
     private void Start()
     {
         for(int i = 0; i < items.Length; i++)
