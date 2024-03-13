@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InventoryUI : MonoBehaviour
+public class InventoryUI : PopupUIBase
 {
     public List<Item> items = new List<Item>(); //인벤토리에 들어가는 아이템들
     public List<GameObject> inventorySlot = new List<GameObject>(); //빈 슬롯, 처음에는 9개(임시)로 만들고 얻은 아이템 갯수가 9개가 넘어가면 3개씩 증가

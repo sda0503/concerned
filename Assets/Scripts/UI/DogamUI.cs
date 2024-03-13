@@ -6,7 +6,7 @@ using System.Reflection;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class DogamUI : MonoBehaviour
+public class DogamUI : PopupUIBase
 {
     public GameObject itemSlot;
     private GameObject[] itemSlots = new GameObject[50];
