@@ -7,14 +7,18 @@ using KoreanTyper;
 
 public class Dialogue : MonoBehaviour
 {
-    [SerializeField] private Button btn1; //선택지1
-    [SerializeField] private Button btn2; //선택지2
-    [SerializeField] private Button btn3; //npc a
-    [SerializeField] private Button btn4; //npc b
-    [SerializeField] private Button btn5; //Save Btn
-    [SerializeField] private Button btn6; //giveitem Btn
-    [SerializeField] private Button confirmbtn;
-    [SerializeField] private TextMeshProUGUI _textMeshProUGUI;
+    [SerializeField] private Button choice1; //선택지1
+    [SerializeField] private Button choice2; //선택지2
+    [SerializeField] private Button npc1; //npc a
+    //[SerializeField] private Button btn4; //npc b
+    //[SerializeField] private Button btn5; //Save Btn
+    //[SerializeField] private Button btn6; //giveitem Btn
+    [SerializeField] private Button _confirmbtn;
+    [SerializeField] private TextMeshProUGUI _chatTxt;
+    [SerializeField] private TextMeshProUGUI _nameTxt;
+    [SerializeField] private GameObject _chatWindow;
+    [SerializeField] private Image _characterImage;
+    
 
     private WaitForSeconds typerWaitTime = new WaitForSeconds(0.05f);
     
@@ -24,13 +28,13 @@ public class Dialogue : MonoBehaviour
    
    void Start()
     {
-        btn1.onClick.AddListener(btn1click);
-        btn2.onClick.AddListener(btn2click);
-        btn3.onClick.AddListener(()=> StartDialogue(btn3.GetComponentInChildren<TextMeshProUGUI>().text));
-        btn4.onClick.AddListener(()=> StartDialogue(btn4.GetComponentInChildren<TextMeshProUGUI>().text));
-        btn5.onClick.AddListener(DataManager.instance.SaveData);
-        btn6.onClick.AddListener(GiveItem);
-        confirmbtn.onClick.AddListener(ConfirmbtnClick);
+         choice1.onClick.AddListener(btn1click);
+         choice2.onClick.AddListener(btn2click);
+        npc1.onClick.AddListener(()=> StartDialogue(npc1.GetComponentInChildren<TextMeshProUGUI>().text));
+        //btn4.onClick.AddListener(()=> StartDialogue(btn4.GetComponentInChildren<TextMeshProUGUI>().text));
+        //btn5.onClick.AddListener(DataManager.instance.SaveData);
+        //btn6.onClick.AddListener(GiveItem);
+        _confirmbtn.onClick.AddListener(ConfirmbtnClick);
     }
 
     void GiveItem()
@@ -46,7 +50,7 @@ public class Dialogue : MonoBehaviour
         {
             if (dialogueQuestDatas[i].QuestState == false) //이런 부분들 찢어서 메서드로 만들어야될수도
             {
-                if (dialogueQuestDatas[i].NeedQuest.Length == 0 || DataManager.instance._questDic.DialogueQuestDic[dialogueQuestDatas[i].NeedQuest[0]]
+                if (dialogueQuestDatas[i].NeedQuest == null || DataManager.instance._questDic.DialogueQuestDic[dialogueQuestDatas[i].NeedQuest[0]]
                         [int.Parse(dialogueQuestDatas[i].NeedQuest[1])].QuestState)//필요한 선행 퀘스트가 완료되었는지
                 {
                     if (dialogueQuestDatas[i].NeedItem == null || DataManager.instance._inventory.inventory.ContainsKey(int.Parse(dialogueQuestDatas[i].NeedItem)))
@@ -78,14 +82,18 @@ public class Dialogue : MonoBehaviour
     void StartDialogue(string targetname)
     {
         contextcount = CheckQuest(targetname);
+        
         if (contextcount == 0)
         {
             Debug.Log("대화가 없습니다.");
         }
         else //대화 가능
         {
-            confirmbtn.gameObject.SetActive(true);
-            btn3.gameObject.SetActive(false);
+            //_confirmbtn.gameObject.SetActive(true);
+            _chatWindow.SetActive(true);
+            //btn3.gameObject.SetActive(false);
+            npc1.gameObject.SetActive(false);
+            _characterImage.gameObject.SetActive(true);
             NormalLog();    
         }
     }
@@ -103,9 +111,9 @@ public class Dialogue : MonoBehaviour
         else
         {
             
-            confirmbtn.gameObject.SetActive(false);
-            btn3.gameObject.SetActive(true);
-            _textMeshProUGUI.text = "";
+            //_confirmbtn.gameObject.SetActive(false);
+            //btn3.gameObject.SetActive(true);
+            _chatTxt.text = "";
             if (Targetname != "")
             {
                 Dialogue_Quest_Data questData=DataManager.instance._questDic.DialogueQuestDic[Targetname][questcount];
@@ -120,6 +128,9 @@ public class Dialogue : MonoBehaviour
                 //     part++;
                 // } //파트별로 퀘스트 나누기.
             }
+            _chatWindow.SetActive(false);
+            npc1.gameObject.SetActive(true);
+            _characterImage.gameObject.SetActive(false);
         
             //대화가 모두 종료되면 반복되는 대화 지문으로 넘겨야할듯. 이야기가 진행되면 거기서도 빠져나올 수 있어야함.
             //조건을 하나 붙이는게 좋을거같음. 만약 어떤 아이템이 있으면 다음 퀘스트로, 아니면 반복지문으로 가는데 어떤 아이템을 먹으면 시작 주소를 바꿔준다던지
@@ -133,20 +144,20 @@ public class Dialogue : MonoBehaviour
 
     void chooseLog(Dialogue_Data data)
     {
-        confirmbtn.enabled = false;
-        btn1.gameObject.SetActive(true);
-        btn2.gameObject.SetActive(true);
-        btn1.GetComponentInChildren<TextMeshProUGUI>().text = data.Event_Log_1;
-        btn2.GetComponentInChildren<TextMeshProUGUI>().text = data.Event_Log_2;
+        _confirmbtn.enabled = false;
+        choice1.gameObject.SetActive(true);
+        choice2.gameObject.SetActive(true);
+        choice1.GetComponentInChildren<TextMeshProUGUI>().text = data.Event_Log_1;
+        choice2.GetComponentInChildren<TextMeshProUGUI>().text = data.Event_Log_2;
     }
 
     void btn1click()
     {
         contextcount = int.Parse(DataManager.instance.dic.DialogueDic[contextcount].Event_1_name);
         NormalLog();
-        confirmbtn.enabled = true;
-        btn1.gameObject.SetActive(false);
-        btn2.gameObject.SetActive(false);
+        _confirmbtn.enabled = true;
+        choice1.gameObject.SetActive(false);
+        choice2.gameObject.SetActive(false);
     }
 
     void btn2click()
@@ -154,31 +165,32 @@ public class Dialogue : MonoBehaviour
         contextcount = int.Parse(DataManager.instance.dic.DialogueDic[contextcount].Event_2_name);
         NormalLog();
 
-        confirmbtn.enabled = true;
-        btn1.gameObject.SetActive(false);
-        btn2.gameObject.SetActive(false);
+        _confirmbtn.enabled = true;
+        choice1.gameObject.SetActive(false);
+        choice2.gameObject.SetActive(false);
     }
 
     IEnumerator LogTyper()
     {
-        _textMeshProUGUI.text = "";
-        btn1.enabled = false;
-        btn2.enabled = false;
-        confirmbtn.enabled = false;
+        _chatTxt.text = "";
+        choice1.enabled = false;
+        choice2.enabled = false;
+        _confirmbtn.enabled = false;
         Dialogue_Data dialogueData = DataManager.instance.dic.DialogueDic[contextcount];
+        _nameTxt.text = dialogueData.Name;
 
         int strTypingLength = dialogueData.Log.GetTypingLength();
         for (int i = 0; i <= strTypingLength; i++)
         {
-            _textMeshProUGUI.text = dialogueData.Log.Typing(i);
+            _chatTxt.text = dialogueData.Log.Typing(i);
             yield return typerWaitTime;
         }
 
         contextcount = dialogueData.Next_Log;
        
-        btn1.enabled = true;
-        btn2.enabled = true;
-        confirmbtn.enabled = true;
+        choice1.enabled = true;
+        choice2.enabled = true;
+        _confirmbtn.enabled = true;
         
         //json 역직렬화할때 int는 값이 비어있으면 오류가난다. string 받아서 tryparse 
         //대화를 시도할 때 파트를 구분해서 대화 하나하나를 클래스화(SO) 해서, 대화에 타입을 주고 선택지가 끝나면 팝업을 띄움.
