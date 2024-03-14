@@ -26,7 +26,7 @@ namespace DataStorage
         public string Name;
         public string Log;
         public Log_Type Log_Type;
-        public string Next_Log;
+        public int Next_Log;
         public string Event_Log_1;
         public string Event_Log_2;
         public string Event_1_name;

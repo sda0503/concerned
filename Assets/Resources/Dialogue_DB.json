@@ -35,13 +35,15 @@
       "Dialogue_idx": "10001050",
       "Name": "강민우",
       "Log": "욕먹음",
-      "Log_Type": "0"
+      "Log_Type": "0",
+      "Next_Log": "0"
     },
     {
       "Dialogue_idx": "10001051",
       "Name": "강민우",
       "Log": "맞음",
-      "Log_Type": "0"
+      "Log_Type": "0",
+      "Next_Log": "0"
     },   
     {
       "Dialogue_idx": "20001010",
@@ -54,25 +56,29 @@
       "Dialogue_idx": "20001020",
       "Name": "Player",
       "Log": "그러게요",
-      "Log_Type": "0"
+      "Log_Type": "0",
+      "Next_Log": "0"
     }
     ,{
       "Dialogue_idx": "30001010",
       "Name": "강민우",
       "Log": "더 이상 할 얘기가 없습니다.",
-      "Log_Type": "0"
+      "Log_Type": "0",
+      "Next_Log": "0"
     },
     {
       "Dialogue_idx": "40001010",
       "Name": "B",
       "Log": "bbbbbbbbbbbbbb.",
-      "Log_Type": "0"    
+      "Log_Type": "0",
+      "Next_Log": "0"
     },
     {
       "Dialogue_idx": "50001010",
       "Name": "에러",
       "Log": "선행 퀘스트 완료가 필요합니다.",
-      "Log_Type": "0"
+      "Log_Type": "0",
+      "Next_Log": "0"
     }
   ],
   "Dialogue_Quest_Data": [

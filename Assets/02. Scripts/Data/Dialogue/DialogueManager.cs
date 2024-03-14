@@ -115,6 +115,10 @@ public class Dialogue : MonoBehaviour
                     Targetname = "";
                     questcount = 0;
                 }    
+                // else if (questData.QuestType == QuestType.Main)
+                // {
+                //     part++;
+                // } //파트별로 퀘스트 나누기.
             }
         
             //대화가 모두 종료되면 반복되는 대화 지문으로 넘겨야할듯. 이야기가 진행되면 거기서도 빠져나올 수 있어야함.
@@ -170,7 +174,7 @@ public class Dialogue : MonoBehaviour
             yield return typerWaitTime;
         }
 
-        bool check = int.TryParse(dialogueData.Next_Log, out contextcount);
+        contextcount = dialogueData.Next_Log;
        
         btn1.enabled = true;
         btn2.enabled = true;

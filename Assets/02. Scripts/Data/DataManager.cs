@@ -6,6 +6,7 @@ using UnityEngine;
 
 //로딩이 얼마 안걸릴거같아도 확장성을 생각하면 코루틴이 좋고
 // 설계를 할 때 큰 그림을 그리고 설계를 하면 기술적 고민을 많이 해볼 수 있음.(취준생입장)
+
 public class DataManager : MonoBehaviour//유니티 기능을 상속 받는거 /코루틴이나 유니티 이벤트를 연동하려면 필요함.
 {
     public Dialogue_Dic dic = new Dialogue_Dic();
