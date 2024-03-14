@@ -1,5 +1,9 @@
 fileFormatVersion: 2
-guid: 63f5bb93ed198134f8033b0beb149f11
+<<<<<<<< HEAD:Assets/ScriptableObject/Scripts.meta
+guid: 1ab6762a00d758f49b58b372839096a1
+========
+guid: 9ff0f814d6088454890e796a6619e8ec
+>>>>>>>> DataManagement_BGO:Assets/02. Scripts.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}

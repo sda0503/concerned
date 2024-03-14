@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Scripts/Item/Data/ItemData.cs.meta
+guid: cebe07d2a6c320b43987b599c0c21969
+========
+guid: 5fb53fff22640c34980e4e4cc87f48cd
+>>>>>>>> DataManagement_BGO:Assets/02. Scripts/Data/Dialogue/DialogueManager.cs.meta
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
