@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class Utility
 {
@@ -31,9 +32,14 @@ public class Utility
 
     public void OnClickToFindTriggerItem(int index)
     {
-        var obj = Resources.Load("Prefabs/TriggerItem") as GameObject;
-        obj.transform.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Look"); //index에 맞춰서 이미지 로드되도록 설정
-        Object.Instantiate(obj);
+        if (!ItemDataManager.Instance.triggerItemData.ContainsKey(index))
+        {
+            var obj = Resources.Load("Prefabs/TriggerItem") as GameObject;
+            obj.transform.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Look"); //index에 맞춰서 이미지 로드되도록 설정
+            GameObject o = Object.Instantiate(obj);
+            ItemDataManager.Instance.triggerItemData.Add(index, o);
+        }
+        else ItemDataManager.Instance.triggerItemData[index].SetActive(true);
     }
 
     //-----------------------------------------------------------------------------------------

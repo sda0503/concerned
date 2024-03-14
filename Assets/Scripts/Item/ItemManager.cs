@@ -51,9 +51,4 @@ public class ItemManager : MonoBehaviour
         getItemsNumber.Add(item_id);
         GameManager.Instance.saveGetItems.Data.Add(items[item_id].itemData);
     }
-
-    public void OnItemEvent()
-    {
-
-    }
 }

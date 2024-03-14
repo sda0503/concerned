@@ -12,7 +12,7 @@ public class TriggerItem : MonoBehaviour
     public TriggerItem(int id)
     {
         itemData = ItemDataManager.Instance.GetDefaultItemDataList().Trigger[id];
-        this.id = id + 100;
+        this.id = id;
         event_check = false;
     }
 
@@ -24,7 +24,7 @@ public class TriggerItem : MonoBehaviour
         {
             Utility.Instance.OnClickToFindItem(10);
             event_check = true;
-            gameObject.SetActive(false);
-        }
+        } 
+        gameObject.SetActive(false);
     }
 }

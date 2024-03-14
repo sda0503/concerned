@@ -301,7 +301,7 @@
 
   "Trigger": [
     {
-      "item_id": "100",
+      "item_id": "0",
       "item_name": "금고",
       "default_description": "//피해자 양현서 집에 있는 금고. 비밀번호가 걸려 있다.",
       "simple_description": "//비밀번호가 걸려있는 금고",
@@ -310,7 +310,7 @@
       "event_description": "도감에는 들어가지 않음"
     },
     {
-      "item_id": "101",
+      "item_id": "1",
       "item_name": "서랍",
       "default_description": "//피해자 사무실에 있는 서랍. 바닥이 높아보인다.",
       "simple_description": "//피해자 사무실에 있는 서랍",
@@ -319,7 +319,7 @@
       "event_description": "도감에는 들어가지 않음"
     },
     {
-      "item_id": "102",
+      "item_id": "2",
       "item_name": "깨진 액자",
       "default_description": "//결혼을 한 한 쌍의 남녀가 환하게 웃고 있다. 액자의 유리가 깨져있다.",
       "simple_description": "//유리가 깨진 결혼사진",
@@ -328,7 +328,7 @@
       "event_description": "도감에는 들어가지 않음"
     },
     {
-      "item_id": "103",
+      "item_id": "3",
       "item_name": "금고",
       "default_description": "//피해자 양현서 사무실에 있는 금고. 비밀번호가 걸려있다.",
       "simple_description": "//비밀번호가 걸려있는 금고",
@@ -337,7 +337,7 @@
       "event_description": "도감에는 들어가지 않음"
     },
     {
-      "item_id": "104",
+      "item_id": "4",
       "item_name": "서랍",
       "default_description": "//김이사 사무실에 있는 서랍.",
       "simple_description": null,
@@ -346,7 +346,7 @@
       "event_description": null
     },
     {
-      "item_id": "105",
+      "item_id": "5",
       "item_name": "잠겨있는 서랍",
       "default_description": "//김이사 사무실에 있는 잠겨있는 서랍",
       "simple_description": null,
@@ -355,7 +355,7 @@
       "event_description": null
     },
     {
-      "item_id": "106",
+      "item_id": "6",
       "item_name": "파쇄기",
       "default_description": "//경찰리스트, 컴퓨터 비밀번호 일부",
       "simple_description": null,

@@ -36,7 +36,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        button1.onClick.AddListener(() => Utility.Instance.OnClickToFindTriggerItem(101));
+        button1.onClick.AddListener(() => Utility.Instance.OnClickToFindTriggerItem(1));
         button3.onClick.AddListener(() => Utility.Instance.OnClickToFindItem(1));
         button4.onClick.AddListener(() => Utility.Instance.OnClickToFindItem(5));
         button5.onClick.AddListener(() => Utility.Instance.OnClickToFindItem(2));
