@@ -18,7 +18,6 @@ public class TriggerItem : MonoBehaviour
 
     public void OnClick(InputAction.CallbackContext value)
     {
-        Debug.Log("Click");
         //이미 찾은 곳이면 아이템이 생성되지 않도록 설정. id에 따라 나오는 아이템 종류가 다름.
         if (!event_check)
         {
