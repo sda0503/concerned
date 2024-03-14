@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Scripts/GameManager.cs.meta
+guid: 3f165294a8b7ac545aae09fc5edba808
+========
+guid: 5b6f931a69db9e14482e413adfcc16d5
+>>>>>>>> DataManagement_BGO:Assets/02. Scripts/Data/Datas.cs.meta
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

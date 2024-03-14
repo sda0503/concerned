@@ -1,5 +1,9 @@
 fileFormatVersion: 2
-guid: 8b66422e99e5ce0428a2b31a6c963aea
+<<<<<<<< HEAD:Assets/Resources/ItemInfo.json.meta
+guid: 7b8e77755e2e95e41b141b409419a3f5
+========
+guid: 25559c0d3402b4541a5e9fd0b77bb29a
+>>>>>>>> DataManagement_BGO:Assets/KoreanTyper/readme.html.meta
 TextScriptImporter:
   externalObjects: {}
   userData: 

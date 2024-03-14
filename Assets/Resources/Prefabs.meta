@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Resources/Prefabs.meta
 guid: 6256dd31e636332409b60cc8a50f7d6f
+========
+guid: f54d1bd14bd3ca042bd867b519fee8cc
+>>>>>>>> DataManagement_BGO:Assets/TextMesh Pro.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}
