@@ -1,9 +1,5 @@
 fileFormatVersion: 2
-<<<<<<<< HEAD:Assets/Scripts/Enum.cs.meta
-guid: 8f2a61c1ece851343a3d5eb1acf428a0
-========
-guid: 9df6a8ab07ff3dd42b29a8c61ea07fca
->>>>>>>> DataManagement_BGO:Assets/02. Scripts/Data/DataManager.cs.meta
+guid: 732e0c97d0ea63448bc59ef672e9c43d
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
