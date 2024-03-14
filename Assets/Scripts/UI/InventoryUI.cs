@@ -16,7 +16,7 @@ public class InventoryUI : PopupUIBase
 
     private void OnEnable()
     {
-        if (items.Count == 0) MakeInventorySlot(3);
+        if (inventorySlot.Count == 0) MakeInventorySlot(3);
         AddItemList();
     }
 
@@ -41,7 +41,7 @@ public class InventoryUI : PopupUIBase
     public void SetItemSlot(int id)
     {
         //아이템 이름이랑 설명 text 부분 연결하는 곳.
-        if (items.Count > 0 && items.Count % 3 == 0) 
+        if (items.Count >= 3 && items.Count % 3 == 0) 
         {
             MakeInventorySlot(3);
         }
