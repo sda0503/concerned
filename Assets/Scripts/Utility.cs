@@ -45,7 +45,7 @@ public class Utility
     public void SaveData(ItemDataList itemDataList, string str)
     {
         Debug.Log(path);
-        string data = JsonUtility.ToJson(itemDataList);
+        string data = JsonConvert.SerializeObject(itemDataList);
 
         //历厘颇老 积己. 寇何俊 历厘.
         File.WriteAllText(path + "/" + str, data);
@@ -57,7 +57,7 @@ public class Utility
         try
         {
             var data = File.ReadAllText(path + "/" + str);
-            itemDataList = JsonUtility.FromJson<ItemDataList>(data);
+            itemDataList = JsonConvert.DeserializeObject<ItemDataList>(data);
         }
         catch { itemDataList = null; }
     }

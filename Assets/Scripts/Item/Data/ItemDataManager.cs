@@ -10,6 +10,7 @@ public class ItemDataList
 {
     //<정보를 받아올 class> 스프레드 시트에 있는 정보가 있는 시트명.
     public List<ItemData> Data = new List<ItemData>();
+    public List<ItemData> Trigger = new List<ItemData>();
 }
 
 public class ItemDataManager
@@ -95,6 +96,6 @@ public class ItemDataManager
     public void LoadDefaultData()
     {
         var data = Resources.Load("ItemInfo").ToString();
-        defaultItemDataList = JsonUtility.FromJson<ItemDataList>(data);
+        defaultItemDataList = JsonConvert.DeserializeObject<ItemDataList>(data);
     }
 }
