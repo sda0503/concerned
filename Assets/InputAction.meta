@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/InputAction.meta
 guid: 5448be5cbb34c1e45ad468683461e57f
+========
+guid: 8e7e8f5a82a3a134e91c54efd2274ea9
+>>>>>>>> DataManagement_BGO:Assets/TextMesh Pro/Documentation.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}

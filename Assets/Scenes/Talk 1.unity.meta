@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Scenes/Talk 1.unity.meta
 guid: f4a3e4736e273f0489c831d44285c235
+========
+guid: 1b8d251f9af63b746bf2f7ffe00ebb9b
+>>>>>>>> DataManagement_BGO:Assets/TextMesh Pro/Documentation/TextMesh Pro User Guide 2016.pdf.meta
 DefaultImporter:
   externalObjects: {}
   userData: 
