@@ -5,6 +5,19 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
+    private static GameManager instance;
+    public static GameManager Instance
+    {
+        get
+        {
+            if (instance == null)
+            {
+                instance = FindObjectOfType<GameManager>();
+            }
+            return instance;
+        }
+    }
+
     //test
     public Button button1;
     public Button button2;
@@ -12,7 +25,7 @@ public class GameManager : MonoBehaviour
     public Button button4;
     public Button button5;
 
-    ItemDataList saveGetItems = new ItemDataList();
+    public ItemDataList saveGetItems = new ItemDataList();
 
     private void Awake()
     {
@@ -31,10 +44,6 @@ public class GameManager : MonoBehaviour
 
     private void OffGame()
     {
-        for (int i = 0; i < ItemManager.Instance.getItems.Count; i++)
-        {
-            saveGetItems.Data.Add(ItemManager.Instance.getItems[i].itemData);
-        }
         Utility.Instance.SaveData(saveGetItems, "Save");
     }
 }

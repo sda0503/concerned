@@ -21,7 +21,7 @@ public class ItemManager : MonoBehaviour
         }
     }
 
-    public Item[] items = new Item[40]; //도감에 들어있는 아이템
+    public Item[] items = new Item[33]; //도감에 들어있는 아이템
 
     public Dictionary<int, Item> getItems = new Dictionary<int, Item>(); //얻은 Item들
     public List<int> getItemsNumber = new List<int>(); //먹은 Item들 순서
@@ -43,6 +43,7 @@ public class ItemManager : MonoBehaviour
     {
         getItems.Add(item_id, items[item_id]);
         getItemsNumber.Add(item_id);
+        GameManager.Instance.saveGetItems.Data.Add(items[item_id].itemData);
     }
 
     public void OnItemEvent()
