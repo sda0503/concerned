@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -35,7 +36,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        button1.onClick.AddListener(() => Utility.Instance.OnClickToFindItem(10));
+        button1.onClick.AddListener(() => Utility.Instance.OnClickToFindTriggerItem(101));
         button3.onClick.AddListener(() => Utility.Instance.OnClickToFindItem(1));
         button4.onClick.AddListener(() => Utility.Instance.OnClickToFindItem(5));
         button5.onClick.AddListener(() => Utility.Instance.OnClickToFindItem(2));

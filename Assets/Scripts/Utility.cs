@@ -23,12 +23,17 @@ public class Utility
     public void OnClickToFindItem(int index)
     {
         var obj = Resources.Load("Prefabs/Item") as GameObject;
-        
         obj.transform.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("image"); //index에 맞춰서 이미지 로드되도록 설정
-
         Object.Instantiate(obj);
 
         ItemManager.Instance.GetItem(index);
+    }
+
+    public void OnClickToFindTriggerItem(int index)
+    {
+        var obj = Resources.Load("Prefabs/TriggerItem") as GameObject;
+        obj.transform.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Look"); //index에 맞춰서 이미지 로드되도록 설정
+        Object.Instantiate(obj);
     }
 
     //-----------------------------------------------------------------------------------------
