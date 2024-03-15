@@ -21,6 +21,20 @@ public class Utility
         }
     }
 
+    public GameObject GameObjectLoad(string str)
+    {
+        var obj = Resources.Load(str) as GameObject;
+        if (obj == null)
+        {
+            Debug.Log("Fail Load");
+            return null;
+        }
+        return obj;
+    }
+
+
+    //-----------------------------------------------------------------------------------------
+    //Item Å¬¸¯
     public void OnClickToFindItem(int index, Transform canvas)
     {
         var obj = Resources.Load("Prefabs/Item") as GameObject;
