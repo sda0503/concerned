@@ -19,6 +19,8 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public Transform itemCanvas; 
+
     //test
     public Button button1;
     public Button button2;
@@ -36,10 +38,10 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        button1.onClick.AddListener(() => Utility.Instance.OnClickToFindTriggerItem(1));
-        button3.onClick.AddListener(() => Utility.Instance.OnClickToFindItem(1));
-        button4.onClick.AddListener(() => Utility.Instance.OnClickToFindItem(5));
-        button5.onClick.AddListener(() => Utility.Instance.OnClickToFindItem(2));
+        button1.onClick.AddListener(() => Utility.Instance.OnClickToFindTriggerItem(1, itemCanvas));
+        button3.onClick.AddListener(() => Utility.Instance.OnClickToFindItem(1, itemCanvas));
+        button4.onClick.AddListener(() => Utility.Instance.OnClickToFindItem(5, itemCanvas));
+        button5.onClick.AddListener(() => Utility.Instance.OnClickToFindItem(2, itemCanvas));
         button2.onClick.AddListener(() => OffGame());
     }
 

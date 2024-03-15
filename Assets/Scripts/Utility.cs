@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.UIElements;
+using UnityEngine.UI;
 
 public class Utility
 {
@@ -21,23 +21,25 @@ public class Utility
         }
     }
 
-    public void OnClickToFindItem(int index)
+    public void OnClickToFindItem(int index, Transform canvas)
     {
         var obj = Resources.Load("Prefabs/Item") as GameObject;
-        obj.transform.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("image"); //index에 맞춰서 이미지 로드되도록 설정
-        Object.Instantiate(obj);
+        obj.transform.GetComponent<Image>().sprite = Resources.Load<Sprite>("image"); //index에 맞춰서 이미지 로드되도록 설정
+        Object.Instantiate(obj, canvas);
 
         ItemManager.Instance.GetItem(index);
     }
 
-    public void OnClickToFindTriggerItem(int index)
+    public void OnClickToFindTriggerItem(int index, Transform canvas)
     {
         if (!ItemDataManager.Instance.triggerItemData.ContainsKey(index))
         {
-            var obj = Resources.Load("Prefabs/TriggerItem") as GameObject;
-            obj.transform.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Look"); //index에 맞춰서 이미지 로드되도록 설정
-            GameObject o = Object.Instantiate(obj);
-            ItemDataManager.Instance.triggerItemData.Add(index, o);
+            var obj = Object.Instantiate(Resources.Load("Prefabs/TriggerItem") as GameObject, canvas);
+            Sprite sprite = Resources.Load<Sprite>("Look");
+            //sprite가 없으면 Debug찍힐 수 있도록 설정해주는 것이 좋음. 27줄처럼 한번에 작성은 ㄴㄴ함.
+
+            obj.transform.GetComponent<Image>().sprite = sprite; //index에 맞춰서 이미지 로드되도록 설정
+            ItemDataManager.Instance.triggerItemData.Add(index, obj);
         }
         else ItemDataManager.Instance.triggerItemData[index].SetActive(true);
     }
