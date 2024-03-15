@@ -27,10 +27,8 @@ namespace DataStorage
         public string Log;
         public Log_Type Log_Type;
         public int Next_Log;
-        public string Event_Log_1;
-        public string Event_Log_2;
-        public string Event_1_name;
-        public string Event_2_name;
+        public string[] Event_Log;
+        public string[] Event_Next_Log;
     }
 
     public enum Log_Type

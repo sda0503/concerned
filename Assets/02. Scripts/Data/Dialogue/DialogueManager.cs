@@ -7,17 +7,15 @@ using KoreanTyper;
 
 public class Dialogue : MonoBehaviour
 {
-    [SerializeField] private Button choice1; //선택지1
-    [SerializeField] private Button choice2; //선택지2
-    [SerializeField] private Button npc1; //npc a
-    //[SerializeField] private Button btn4; //npc b
-    //[SerializeField] private Button btn5; //Save Btn
-    //[SerializeField] private Button btn6; //giveitem Btn
+    [SerializeField] private Button[] choice_btn; //선택지1
+    [SerializeField] private Button[] npc; //npc a
     [SerializeField] private Button _confirmbtn;
+    [SerializeField] private Button _skipbtn;
     [SerializeField] private TextMeshProUGUI _chatTxt;
     [SerializeField] private TextMeshProUGUI _nameTxt;
     [SerializeField] private GameObject _chatWindow;
     [SerializeField] private Image _characterImage;
+    [SerializeField] private Image _choiceWindow;
     
 
     private WaitForSeconds typerWaitTime = new WaitForSeconds(0.05f);
@@ -28,14 +26,21 @@ public class Dialogue : MonoBehaviour
    
    void Start()
     {
-         choice1.onClick.AddListener(btn1click);
-         choice2.onClick.AddListener(btn2click);
-        npc1.onClick.AddListener(()=> StartDialogue(npc1.GetComponentInChildren<TextMeshProUGUI>().text));
-        //btn4.onClick.AddListener(()=> StartDialogue(btn4.GetComponentInChildren<TextMeshProUGUI>().text));
-        //btn5.onClick.AddListener(DataManager.instance.SaveData);
-        //btn6.onClick.AddListener(GiveItem);
+        for (int i = 0; i < choice_btn.Length; i++)
+        {
+            int index = i;
+            choice_btn[i].onClick.AddListener(() => btnclick(index));
+        }
+
+        foreach (Button npcs in npc)
+        {
+            npcs.onClick.AddListener(()=> StartDialogue(npcs.GetComponentInChildren<TextMeshProUGUI>().text));    
+        }
+
+        _skipbtn.onClick.AddListener(PloatingAllText);
         _confirmbtn.onClick.AddListener(ConfirmbtnClick);
     }
+ 
 
     void GiveItem()
     {
@@ -92,7 +97,14 @@ public class Dialogue : MonoBehaviour
             //_confirmbtn.gameObject.SetActive(true);
             _chatWindow.SetActive(true);
             //btn3.gameObject.SetActive(false);
-            npc1.gameObject.SetActive(false);
+            foreach (Button npcs in npc)
+            {
+                if (npcs.isActiveAndEnabled)
+                {
+                    npcs.gameObject.SetActive(false);
+                }    
+            }
+            
             _characterImage.gameObject.SetActive(true);
             NormalLog();    
         }
@@ -129,7 +141,14 @@ public class Dialogue : MonoBehaviour
                 // } //파트별로 퀘스트 나누기.
             }
             _chatWindow.SetActive(false);
-            npc1.gameObject.SetActive(true);
+            foreach (Button npcs in npc)
+            {
+                if (!npcs.isActiveAndEnabled)
+                {
+                    npcs.gameObject.SetActive(true);
+                }    
+            }
+
             _characterImage.gameObject.SetActive(false);
         
             //대화가 모두 종료되면 반복되는 대화 지문으로 넘겨야할듯. 이야기가 진행되면 거기서도 빠져나올 수 있어야함.
@@ -145,37 +164,35 @@ public class Dialogue : MonoBehaviour
     void chooseLog(Dialogue_Data data)
     {
         _confirmbtn.enabled = false;
-        choice1.gameObject.SetActive(true);
-        choice2.gameObject.SetActive(true);
-        choice1.GetComponentInChildren<TextMeshProUGUI>().text = data.Event_Log_1;
-        choice2.GetComponentInChildren<TextMeshProUGUI>().text = data.Event_Log_2;
+        _choiceWindow.gameObject.SetActive(true);
+        for (int i=0; i < data.Event_Log.Length;i++)
+        {
+            choice_btn[i].gameObject.SetActive(true);
+            choice_btn[i].GetComponentInChildren<TextMeshProUGUI>().text = data.Event_Log[i];
+        }
     }
 
-    void btn1click()
+    void btnclick(int index)
     {
-        contextcount = int.Parse(DataManager.instance.dic.DialogueDic[contextcount].Event_1_name);
+        contextcount = int.Parse(DataManager.instance.dic.DialogueDic[contextcount].Event_Next_Log[index]);
         NormalLog();
         _confirmbtn.enabled = true;
-        choice1.gameObject.SetActive(false);
-        choice2.gameObject.SetActive(false);
-    }
-
-    void btn2click()
-    {
-        contextcount = int.Parse(DataManager.instance.dic.DialogueDic[contextcount].Event_2_name);
-        NormalLog();
-
-        _confirmbtn.enabled = true;
-        choice1.gameObject.SetActive(false);
-        choice2.gameObject.SetActive(false);
+        foreach (Button btns in choice_btn)
+        {
+            if (btns.isActiveAndEnabled)
+            {
+                btns.gameObject.SetActive(false);
+            }
+            //btns.gameObject.activeInHierarchy //게임 오브젝트에서만 하이어라키로 체크 가능.
+        }
+        _choiceWindow.gameObject.SetActive(false);
     }
 
     IEnumerator LogTyper()
     {
         _chatTxt.text = "";
-        choice1.enabled = false;
-        choice2.enabled = false;
-        _confirmbtn.enabled = false;
+        _confirmbtn.gameObject.SetActive(false);// = false;
+        _skipbtn.gameObject.SetActive(true);
         Dialogue_Data dialogueData = DataManager.instance.dic.DialogueDic[contextcount];
         _nameTxt.text = dialogueData.Name;
 
@@ -186,11 +203,10 @@ public class Dialogue : MonoBehaviour
             yield return typerWaitTime;
         }
 
-        contextcount = dialogueData.Next_Log;
-       
-        choice1.enabled = true;
-        choice2.enabled = true;
-        _confirmbtn.enabled = true;
+        FindNextLog();
+        _confirmbtn.gameObject.SetActive(true);// = false;
+        _skipbtn.gameObject.SetActive(false);
+        //_confirmbtn.enabled = true;
         
         //json 역직렬화할때 int는 값이 비어있으면 오류가난다. string 받아서 tryparse 
         //대화를 시도할 때 파트를 구분해서 대화 하나하나를 클래스화(SO) 해서, 대화에 타입을 주고 선택지가 끝나면 팝업을 띄움.
@@ -198,5 +214,20 @@ public class Dialogue : MonoBehaviour
         //대화를 넘어갈때는 무조건 Queue에 넣음. 분기가 갈라지는 것에 그래프. 선택지가 많으면 큐는 비추천
         //분기 갈라지는 것에 대해선 선택지에 따라 다음 대화로 연결시키는 로직을 짜면 좋을 것 같음
         //갈라지는척만하고 결과는 귀결되는 선택지도 존재 가능.
+    }
+    
+    private void PloatingAllText()
+    {
+        StopAllCoroutines();
+        _skipbtn.gameObject.SetActive(false);
+        Dialogue_Data dialogueData = DataManager.instance.dic.DialogueDic[contextcount];
+        _chatTxt.text = dialogueData.Log;
+        FindNextLog();
+        _confirmbtn.gameObject.SetActive(true);// = false;
+    }
+
+    private void FindNextLog()
+    {
+        contextcount = DataManager.instance.dic.DialogueDic[contextcount].Next_Log;
     }
 }

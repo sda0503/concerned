@@ -5,80 +5,279 @@
       "Name": "강민우",
       "Log": "누구세요",
       "Log_Type": "0",
-      "Next_Log": "10001020"
+      "Next_Log": "10001020",
+      "Event_Log": null,
+      "Event_Next_Log": null
     },
     {
       "Dialogue_idx": "10001020",
       "Name": "Player",
       "Log": "안녕하세요",
       "Log_Type": "0",
-      "Next_Log": "10001030"
+      "Next_Log": "10001030",
+      "Event_Log": null,
+      "Event_Next_Log": null
     },
     {
       "Dialogue_idx": "10001030",
       "Name": "강민우",
       "Log": "그러게요",
       "Log_Type": "0",
-      "Next_Log": "10001040"
+      "Next_Log": "10001040",
+      "Event_Log": null,
+      "Event_Next_Log": null
     },
     {
       "Dialogue_idx": "10001040",
       "Name": "Player",
-      "Log": "여기서 분기",
+      "Log": null,
       "Log_Type": "1",
-      "Event_Log_1": "욕한다",
-      "Event_Log_2": "때린다",
-      "Event_1_name": "10001050",
-      "Event_2_name": "10001051"
+      "Next_Log": "0",
+      "Event_Log": [
+        "욕한다",
+        "때린다"
+      ],
+      "Event_Next_Log": [
+        "10001050",
+        "10001051",
+        "0"
+      ]
     },
     {
       "Dialogue_idx": "10001050",
       "Name": "강민우",
       "Log": "욕먹음",
       "Log_Type": "0",
-      "Next_Log": "0"
+      "Next_Log": "0",
+      "Event_Log": null,
+      "Event_Next_Log": null
     },
     {
       "Dialogue_idx": "10001051",
       "Name": "강민우",
       "Log": "맞음",
       "Log_Type": "0",
-      "Next_Log": "0"
-    },   
+      "Next_Log": "0",
+      "Event_Log": null,
+      "Event_Next_Log": null
+    },
     {
       "Dialogue_idx": "20001010",
       "Name": "강민우",
       "Log": "왜그러세요",
       "Log_Type": "0",
-      "Next_Log": "20001020"
+      "Next_Log": "20001020",
+      "Event_Log": null,
+      "Event_Next_Log": null
     },
     {
       "Dialogue_idx": "20001020",
       "Name": "Player",
       "Log": "그러게요",
       "Log_Type": "0",
-      "Next_Log": "0"
-    }
-    ,{
+      "Next_Log": "0",
+      "Event_Log": null,
+      "Event_Next_Log": null
+    },
+    {
       "Dialogue_idx": "30001010",
       "Name": "강민우",
-      "Log": "더 이상 할 얘기가 없습니다.",
+      "Log": "더 이상 할 얘기가 없습니다",
       "Log_Type": "0",
-      "Next_Log": "0"
+      "Next_Log": "0",
+      "Event_Log": null,
+      "Event_Next_Log": null
     },
     {
       "Dialogue_idx": "40001010",
       "Name": "B",
-      "Log": "bbbbbbbbbbbbbb.",
+      "Log": "bbbbbbbb",
       "Log_Type": "0",
-      "Next_Log": "0"
+      "Next_Log": "0",
+      "Event_Log": null,
+      "Event_Next_Log": null
     },
     {
       "Dialogue_idx": "50001010",
       "Name": "에러",
       "Log": "선행 퀘스트 완료가 필요합니다.",
       "Log_Type": "0",
-      "Next_Log": "0"
+      "Next_Log": "0",
+      "Event_Log": null,
+      "Event_Next_Log": null
+    },
+    {
+      "Dialogue_idx": "10011010",
+      "Name": "경비원",
+      "Log": "어떻게 오셨습니까?",
+      "Log_Type": "0",
+      "Next_Log": "10011011",
+      "Event_Log": null,
+      "Event_Next_Log": null
+    },
+    {
+      "Dialogue_idx": "10011011",
+      "Name": "경비원",
+      "Log": null,
+      "Log_Type": "1",
+      "Next_Log": "0",
+      "Event_Log": [
+        "사건에 대해서",
+        "출입 기록",
+        "더 이상 할 얘기가 없습니다."
+      ],
+      "Event_Next_Log": [
+        "100111020",
+        "10011021",
+        "10011031"
+      ]
+    },
+    {
+      "Dialogue_idx": "10011020",
+      "Name": "경비원",
+      "Log": "한 일주일 전인가 밤사이에 부부가 크게 다퉜다는 민원이 들어온 것이 있어, 뭐 때문인지는 모르지만 매일 같이 밤에 싸운다는 말이 있었지, 무엇 때문인지는 몰라도 부부사이가 안좋은거는 확실하네",
+      "Log_Type": "0",
+      "Next_Log": "10011010",
+      "Event_Log": null,
+      "Event_Next_Log": null
+    },
+    {
+      "Dialogue_idx": "10011021",
+      "Name": "경비원",
+      "Log": "CCTV는 외각만 있어서 출입만 확인이 가능한데 요청하는 차량이 있으시면 해당기록 데이터를 확인해 보실수 있습니다.",
+      "Log_Type": "0",
+      "Next_Log": "10011010",
+      "Event_Log": null,
+      "Event_Next_Log": null
+    },
+    {
+      "Dialogue_idx": "10011031",
+      "Name": "경비원",
+      "Log": "필요한 게 있다면 또 오십시오.",
+      "Log_Type": "0",
+      "Next_Log": "0",
+      "Event_Log": null,
+      "Event_Next_Log": null
+    },
+    {
+      "Dialogue_idx": "60001010",
+      "Name": "흥신소 탐정",
+      "Log": "안녕하세요 형사님",
+      "Log_Type": "0",
+      "Next_Log": "60001012",
+      "Event_Log": null,
+      "Event_Next_Log": null
+    },
+    {
+      "Dialogue_idx": "60001011",
+      "Name": "흥신소 탐정",
+      "Log": "다른 일은 있으십니까",
+      "Log_Type": "0",
+      "Next_Log": "60001012",
+      "Event_Log": null,
+      "Event_Next_Log": null
+    },
+    {
+      "Dialogue_idx": "60001012",
+      "Name": "흥신소 탐정",
+      "Log": null,
+      "Log_Type": "1",
+      "Next_Log": "0",
+      "Event_Log": [
+        "양현서에 대해",
+        "양현서의 의뢰에 대한 전반적인 내용",
+        "양현서의 의뢰의 형태",
+        "양현서의 의뢰 대상",
+        "나가기"
+      ],
+      "Event_Next_Log": [
+        "60001020",
+        "60001022",
+        "60001024",
+        "60001026",
+        "60001028"
+      ]
+    },
+    {
+      "Dialogue_idx": "60001020",
+      "Name": "형사",
+      "Log": "양현서님의 회사인 빗테크의 오피스텔에서 탐정님의 명함이 나왔습니다. 양현서씨에 대해서 이야기를 나눌 수 있을까요?",
+      "Log_Type": "0",
+      "Next_Log": "60001021",
+      "Event_Log": null,
+      "Event_Next_Log": null
+    },
+    {
+      "Dialogue_idx": "60001021",
+      "Name": "흥신소 탐정",
+      "Log": "개인정보보호법에 의해서 말씀드리기 어렵다는점 양해 바랍니다. 혹시 어떤 부분 어느건에 대해서인지 알려주신다면 판단후에 정보를 드릴수 있을것 같습니다.",
+      "Log_Type": "0",
+      "Next_Log": "60001011",
+      "Event_Log": null,
+      "Event_Next_Log": null
+    },
+    {
+      "Dialogue_idx": "60001022",
+      "Name": "형사",
+      "Log": "양현서님의 생전 의뢰 내용이 궁금합니다.",
+      "Log_Type": "0",
+      "Next_Log": "60001023",
+      "Event_Log": null,
+      "Event_Next_Log": null
+    },
+    {
+      "Dialogue_idx": "60001023",
+      "Name": "흥신소 탐정",
+      "Log": "의뢰내용은 양현서님의 명예를 위해서라도 알려드릴수가 없습니다. 죄송합니다.",
+      "Log_Type": "0",
+      "Next_Log": "60001011",
+      "Event_Log": null,
+      "Event_Next_Log": null
+    },
+    {
+      "Dialogue_idx": "60001024",
+      "Name": "형사",
+      "Log": "양현서님이 어떤 의뢰를 맡겼는지 궁금합니다.",
+      "Log_Type": "0",
+      "Next_Log": "60001025",
+      "Event_Log": null,
+      "Event_Next_Log": null
+    },
+    {
+      "Dialogue_idx": "60001025",
+      "Name": "흥신소 탐정",
+      "Log": "의뢰 내용은 말씀드릴수 없지만 누군가를 조사해 달라는 내용이라는것 까지만 말씀드리겠습니다.",
+      "Log_Type": "0",
+      "Next_Log": "60001011",
+      "Event_Log": null,
+      "Event_Next_Log": null
+    },
+    {
+      "Dialogue_idx": "60001026",
+      "Name": "형사",
+      "Log": "양현서님이 누구를 대상으로 의뢰를 하였는지 궁금합니다.",
+      "Log_Type": "0",
+      "Next_Log": "60001027",
+      "Event_Log": null,
+      "Event_Next_Log": null
+    },
+    {
+      "Dialogue_idx": "60001027",
+      "Name": "흥신소 탐정",
+      "Log": "양현서님과 가까운 누군가를 조사해달라는 것까지만 말씀드리겠습니다. 그 이상의 세부 내용은 말씀드리기 어려운점 양해 바랍니다.",
+      "Log_Type": "0",
+      "Next_Log": "60001011",
+      "Event_Log": null,
+      "Event_Next_Log": null
+    },
+    {
+      "Dialogue_idx": "60001028",
+      "Name": "흥신소 탐정",
+      "Log": "저희는 의뢰의 결과보고를 파일 제공과 동시에 고객의 자료를 폐기합니다. 따라서 남아있는 자료는 양현서님에게 제공한 파일 밖에 없습니다. 저희 입으로 직접 말씀드리기는 어렵지만 저희가 양현서님에게 제공한 파일이 있습니다. 그 파일의 행방을 찾아보시면 좋을것 같습니다.",
+      "Log_Type": "0",
+      "Next_Log": "0",
+      "Event_Log": null,
+      "Event_Next_Log": null
     }
   ],
   "Dialogue_Quest_Data": [
@@ -88,7 +287,8 @@
       "QuestStartPost": "10001010",
       "QuestType": "0",
       "QuestState": "false",
-      "NeedQuest": ""
+      "NeedQuest": null,
+      "NeedItem": null
     },
     {
       "QuestTargetName": "강민우",
@@ -96,7 +296,11 @@
       "QuestStartPost": "20001010",
       "QuestType": "0",
       "QuestState": "false",
-      "NeedQuest": ["강민우","0"]
+      "NeedQuest": [
+        "강민우",
+        "0"
+      ],
+      "NeedItem": null
     },
     {
       "QuestTargetName": "강민우",
@@ -104,16 +308,29 @@
       "QuestStartPost": "30001010",
       "QuestType": "1",
       "QuestState": "false",
-      "NeedQuest": ["강민우","1"]
+      "NeedQuest": [
+        "강민우",
+        "1"
+      ],
+      "NeedItem": null
     },
     {
-      "QuestTargetName": "B",
+      "QuestTargetName": "경비원",
       "QuestIdx": "1",
-      "QuestStartPost": "40001010",
+      "QuestStartPost": "10011010",
       "QuestType": "1",
       "QuestState": "false",
-      "NeedQuest": ["강민우","1"],
-      "NeedItem": "0"
+      "NeedQuest": null,
+      "NeedItem": null
+    },
+    {
+      "QuestTargetName": "흥신소 탐정",
+      "QuestIdx": "1",
+      "QuestStartPost": "60001010",
+      "QuestType": "0",
+      "QuestState": "false",
+      "NeedQuest": null,
+      "NeedItem": null
     }
   ]
 }

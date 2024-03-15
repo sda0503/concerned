@@ -1,8 +1,4 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Reflection;
-using UnityEditorInternal.Profiling.Memory.Experimental;
 using UnityEngine;
 
 public class ItemManager : MonoBehaviour
@@ -22,11 +18,11 @@ public class ItemManager : MonoBehaviour
         }
     }
 
-    public Item[] items = new Item[33]; //µµ°¨¿¡ µé¾îÀÖ´Â ¾ÆÀÌÅÛ
+    public Item[] items = new Item[33]; //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ö´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     public TriggerItem[] triggerItems = new TriggerItem[7];
 
-    public Dictionary<int, Item> getItems = new Dictionary<int, Item>(); //¾òÀº Itemµé
-    public List<int> getItemsNumber = new List<int>(); //¸ÔÀº Itemµé ¼ø¼­
+    public Dictionary<int, Item> getItems = new Dictionary<int, Item>(); //ï¿½ï¿½ï¿½ï¿½ Itemï¿½ï¿½
+    public List<int> getItemsNumber = new List<int>(); //ï¿½ï¿½ï¿½ï¿½ Itemï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 
     private void Start()
     {
