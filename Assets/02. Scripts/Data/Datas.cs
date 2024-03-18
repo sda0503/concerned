@@ -29,12 +29,14 @@ namespace DataStorage
         public int Next_Log;
         public string[] Event_Log;
         public string[] Event_Next_Log;
+        public bool[] Event_Log_State;
     }
 
     public enum Log_Type
     {
         normal,
         choose,
+        Loop
     }
 
     public enum QuestType
@@ -82,6 +84,27 @@ namespace DataStorage
     public class Inventory
     {
         public Dictionary<int, Iteminfo> inventory = new Dictionary<int, Iteminfo>();
+    }
+
+    #endregion
+
+    #region ChatLogSave
+
+    public class AllChatLog //전체 대화 로그
+    { 
+        //Dictionary<int, chatlogData> => int = Quest 순서, ChatlogData = 퀘스트 안의 대화 내역
+        public Dictionary<string,chatlogdic> allChatlog = new
+            Dictionary<string, chatlogdic>();
+    }
+    public class chatlogData //대화 하나 저장
+    {
+        public string Name;
+        public string Log;
+    }
+    
+    public class chatlogdic //한 대화의 전부
+    {
+        public Dictionary<int,List<chatlogData>> saveOneLog = new Dictionary<int, List<chatlogData>>();
     }
 
     #endregion
