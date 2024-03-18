@@ -27,7 +27,7 @@ public class DogamUI : PopupUIBase
     {
         for (int i = 0; i < 12; i++)
         {
-            itemSlots[i] = Instantiate(Resources.Load("Prefabs/DogamItemSlot") as GameObject, itemSlot);
+            itemSlots[i] = Instantiate(Utility.Instance.GameObjectLoad("Prefabs/DogamItemSlot"), itemSlot);
             OnDogamItem(i);
             int n = i;
             itemSlots[i].GetComponent<Button>().onClick.RemoveAllListeners();
