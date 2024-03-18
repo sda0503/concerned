@@ -88,7 +88,7 @@ public class Utility
         string data = JsonConvert.SerializeObject(itemDataList);
 
         //저장파일 생성. 외부에 저장.
-        File.WriteAllText(path + "/" + str, data + ".json");
+        File.WriteAllText(path + "/" + str + ".json", data);
     }
 
     //json 파일 불러오기. play 중에 저장된 것 불러오거나 play 끝나고 도감에서 불러오는 것.
@@ -99,6 +99,10 @@ public class Utility
             var data = File.ReadAllText(path + "/" + str + ".json");
             itemDataList = JsonConvert.DeserializeObject<ItemDataList>(data);
         }
-        catch { itemDataList = null; }
+        catch (FileNotFoundException)
+        { 
+            Debug.Log("catch"); 
+            itemDataList = null; 
+        }
     }
 }
