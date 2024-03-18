@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class StartSceneUI : MonoBehaviour
@@ -13,7 +14,13 @@ public class StartSceneUI : MonoBehaviour
 
     private void Start()
     {
+        startButton.onClick.AddListener(OnStartGame);
         bookButton.onClick.AddListener(OnOpenBook);
+    }
+
+    private void OnStartGame()
+    {
+        SceneManager.LoadScene("MainScene");
     }
 
     private void OnOpenBook()
