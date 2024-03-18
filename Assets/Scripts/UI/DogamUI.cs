@@ -13,6 +13,7 @@ public class DogamUI : PopupUIBase
 
     public Button clueButton;
     public Button albumButton;
+    public Button closeButton;
 
     public Text nameText;
     public Text descriptionText;
@@ -21,6 +22,7 @@ public class DogamUI : PopupUIBase
     {
         ItemDataManager.Instance.SetDogamItemData();
         MakeDogamItemSlot();
+        closeButton.onClick.AddListener(CloseDogam);
     }
 
     private void MakeDogamItemSlot()
@@ -54,5 +56,10 @@ public class DogamUI : PopupUIBase
             itemSlots[key].transform.Find("GetItem").gameObject.SetActive(false);
             itemSlots[key].GetComponent<Button>().enabled = false;
         }
+    }
+
+    public void CloseDogam()
+    {
+        gameObject.SetActive(false);
     }
 }
