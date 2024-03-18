@@ -17,7 +17,7 @@ public class DogamUI : PopupUIBase
     public Text nameText;
     public Text descriptionText;
 
-    private void OnEnable() //Start·Î ¹Ù²ð ¿¹Á¤.
+    private void Start()
     {
         ItemDataManager.Instance.SetDogamItemData();
         MakeDogamItemSlot();

@@ -31,7 +31,7 @@ public class PopupUIManager
     public PopupUIBase OpenPopupUI(string name)
     {
         var obj = Resources.Load("PopupUI/" + name, typeof(GameObject)) as GameObject;
-        if (obj == null) { return null; }
+        if (obj == null) { Debug.Log("UI Load ½ÇÆÐ"); return null; }
         return MakePopupUI(obj);
     }
 
