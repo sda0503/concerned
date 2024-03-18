@@ -33,9 +33,9 @@ public class ImageController : MonoBehaviour
 
     void LoadNextScene()
     {
-        if (SceneManager.GetActiveScene().buildIndex < SceneManager.sceneCountInBuildSettings - 1)
+        if (SceneManager.GetActiveScene().buildIndex <= SceneManager.sceneCountInBuildSettings - 1)
         {
-            SceneManager.LoadScene("MainScene");
+            SceneManager.LoadScene("StartScene");
         }
     }
 

@@ -12,6 +12,6 @@ EditorBuildSettings:
     path: Assets/Scenes/LES_UI.unity
     guid: 9089be364c3f948428e2cdb7db0b27fb
   - enabled: 1
-    path: Assets/Scenes/MainScene.unity
+    path: Assets/Scenes/StartScene.unity
     guid: 2424d56f187798e4b893152231dac34c
   m_configObjects: {}
