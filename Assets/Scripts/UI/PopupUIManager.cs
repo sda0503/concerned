@@ -39,10 +39,11 @@ public class PopupUIManager
     {
         if (!popupUI.ContainsKey(prefab.name))
         {
-            popupUI.Add(prefab.name, prefab);
+            var obj = Object.Instantiate(prefab); //MonoBehaviour없더라도 생성가능하도록
+            popupUI.Add(prefab.name, obj);
         }
-        var obj = Object.Instantiate(prefab); //MonoBehaviour없더라도 생성가능하도록
-        return GetComponentPopupUI(obj);
+        popupUI[prefab.name].SetActive(true);
+        return GetComponentPopupUI(popupUI[prefab.name]);
     }
 
     public PopupUIBase GetComponentPopupUI(GameObject clone)
