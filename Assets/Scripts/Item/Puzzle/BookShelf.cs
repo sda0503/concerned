@@ -2,6 +2,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -39,7 +41,11 @@ public class BookShelf : MonoBehaviour
             Debug.Log("fail"); 
             return;
         }
-        if (click_button[3]) Debug.Log("clear");
+        if (click_button[3])
+        {
+            Debug.Log("clear");
+            Utility.Instance.OnClickToFindTriggerItem(2, GameManager.Instance.itemCanvas);
+        }
     }
 
     private void SetTriggerButton()
