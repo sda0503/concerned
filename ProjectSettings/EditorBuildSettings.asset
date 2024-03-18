@@ -6,12 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/BGO.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
-  - enabled: 1
-    path: Assets/Scenes/LES_UI.unity
-    guid: 9089be364c3f948428e2cdb7db0b27fb
+    path: Assets/Scenes/IntroScene.unity
+    guid: bff969ee069f732488dac7dbf1564e1e
   - enabled: 1
     path: Assets/Scenes/StartScene.unity
     guid: 2424d56f187798e4b893152231dac34c
+  - enabled: 1
+    path: Assets/Scenes/MainScene.unity
+    guid: 77274488337b08341bc6ee17d7b6099c
   m_configObjects: {}
