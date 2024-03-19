@@ -26,11 +26,14 @@ public class Utility
     //Item 클릭
     public void OnClickToFindItem(int index, Transform canvas)
     {
-        var obj = GameObjectLoad("Prefabs/Item");
-        obj.transform.GetComponent<Image>().sprite = SpriteLoad("image"); //index에 맞춰서 이미지 로드되도록 설정
-        Object.Instantiate(obj, canvas);
+        if (!ItemManager.Instance.getItems.ContainsKey(index))
+        {
+            var obj = GameObjectLoad("Prefabs/Item");
+            obj.transform.GetComponent<Image>().sprite = SpriteLoad("image"); //index에 맞춰서 이미지 로드되도록 설정
+            Object.Instantiate(obj, canvas);
 
-        ItemManager.Instance.GetItem(index);
+            ItemManager.Instance.GetItem(index);
+        }
     }
 
     public void OnClickToFindTriggerItem(int index, Transform canvas)
