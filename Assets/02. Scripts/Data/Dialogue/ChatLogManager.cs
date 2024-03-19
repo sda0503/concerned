@@ -10,13 +10,18 @@ using TMPro;
 
 public class ChatLogManager : MonoBehaviour
 {
-    [SerializeField] private GameObject _chatLogPosition;
-    [SerializeField] private GameObject _chatLogPrefab;
+    [SerializeField] public GameObject _chatLogPosition;
+    [SerializeField] public GameObject _chatLogPrefab;
     [SerializeField] private Button _chatLogBtn;
     [SerializeField] private Button _closeBtn;
-    [SerializeField] private GameObject _chatlogwindow;
+    [SerializeField] public GameObject _chatlogwindow;
+    [SerializeField] public GameObject _chatlogwindow2;
+    [SerializeField] public GameObject _chatLogPosition2;
 
-    [SerializeField] private TextMeshProUGUI testTxt;
+    [SerializeField] public GameObject allchatlogpannel;
+    [SerializeField] public GameObject singlechatlogpannel;
+    [SerializeField] public GameObject chatpannelPrefab;
+    [SerializeField] public GameObject chatpannelPrefab2;
     [SerializeField] private Button testBtn;
 
     private StringBuilder sb = new StringBuilder();
@@ -39,20 +44,23 @@ public class ChatLogManager : MonoBehaviour
     {
         _chatLogBtn.onClick.AddListener(ChatLogBtnClick);
         _closeBtn.onClick.AddListener(ChatlogCloseBtnClick);
-        //testBtn.onClick.AddListener(test);
+        testBtn.onClick.AddListener(test);
     }
 
-    // void test()
-    // {
-    //     StringBuilder sb = new StringBuilder();
-    //     foreach (var VARIABLE in allChatLog.allChatlog.Keys.ToArray())
-    //     {
-    //         sb.Append(VARIABLE);
-    //         sb.Append(", ");
-    //     }
-    //
-    //     testTxt.text = sb.ToString();
-    // }
+    void test()
+    {
+        allchatlogpannel.SetActive(true);
+        List<string> keys = allChatLog.allChatlog.Keys.ToList();
+        keys.Sort();
+        foreach (string key in keys)
+        {
+            var obj = Instantiate(chatpannelPrefab, allchatlogpannel.transform);
+            if (obj.TryGetComponent(out AllChatLogSet allChatLogSet))
+            {
+                allChatLogSet.Setting(key);
+            }
+        }
+    }
    
     void ChatLogBtnClick()
     {
