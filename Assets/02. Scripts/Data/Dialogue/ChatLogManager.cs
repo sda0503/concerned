@@ -18,6 +18,8 @@ public class ChatLogManager : MonoBehaviour
 
     [SerializeField] private TextMeshProUGUI testTxt;
     [SerializeField] private Button testBtn;
+
+    private StringBuilder sb = new StringBuilder();
     
     
     //가장 큰 형태로 하나로 모든 데이터 저장.
@@ -37,20 +39,20 @@ public class ChatLogManager : MonoBehaviour
     {
         _chatLogBtn.onClick.AddListener(ChatLogBtnClick);
         _closeBtn.onClick.AddListener(ChatlogCloseBtnClick);
-        testBtn.onClick.AddListener(test);
+        //testBtn.onClick.AddListener(test);
     }
 
-    void test()
-    {
-        StringBuilder sb = new StringBuilder();
-        foreach (var VARIABLE in allChatLog.allChatlog.Keys.ToArray())
-        {
-            sb.Append(VARIABLE);
-            sb.Append(", ");
-        }
-
-        testTxt.text = sb.ToString();
-    }
+    // void test()
+    // {
+    //     StringBuilder sb = new StringBuilder();
+    //     foreach (var VARIABLE in allChatLog.allChatlog.Keys.ToArray())
+    //     {
+    //         sb.Append(VARIABLE);
+    //         sb.Append(", ");
+    //     }
+    //
+    //     testTxt.text = sb.ToString();
+    // }
    
     void ChatLogBtnClick()
     {
@@ -61,9 +63,12 @@ public class ChatLogManager : MonoBehaviour
             var obj = Instantiate(_chatLogPrefab, _chatLogPosition.transform);
             if (obj.TryGetComponent(out ChatLogSet chatLogSet))
             {
-                chatLogSet.LogSetting(chat);
+                sb.Append(chat.Name);
+                sb.Append(" : ");
+                chatLogSet.LogSetting(sb.ToString(),chat.Log);
                 _PrefabList.Add(obj);
             }
+            sb.Clear();
         }
     }
     

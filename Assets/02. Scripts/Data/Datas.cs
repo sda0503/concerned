@@ -8,11 +8,11 @@ namespace DataStorage
     [System.Serializable]
     public class Player
     {
-    }
-
-    [System.Serializable]
-    public class Dialogue_Save
-    {
+        public AllChatLog AllChatLog; //대화 기록
+        public Dialogue_Dic DialogueDic; //대화 dic
+        public Dialogue_Quest_Dic DialogueQuestDic; //대화 Quest dic
+        public Inventory Inventory; //인벤토리
+        //public 도감
     }
 
     #endregion
