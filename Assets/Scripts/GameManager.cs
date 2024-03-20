@@ -83,7 +83,7 @@ public class GameManager : MonoBehaviour
         //TODO : DayTime 기준으로 저녁이면 집밖에 못가거나 강제로 보내거나 결정해야함.
 
         int daytime = (int)Playerinformation.dayTime + 1;
-        if (daytime ==4)
+        if (daytime == 3)
             DateChange();
         Playerinformation.dayTime = (Information.DayTimeenum)(daytime % 3);
         //나머지연산자로 하면 if없이 순환시킬 수 있다.
