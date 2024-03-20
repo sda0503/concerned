@@ -47,6 +47,6 @@ public class GameManager : MonoBehaviour
 
     private void OffGame()
     {
-        Utility.Instance.SaveData(saveGetItems, "Save");
+        Utility.Instance.SaveData(saveGetItems, "SaveItem");
     }
 }
