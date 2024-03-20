@@ -80,7 +80,7 @@ public class DialogueManager : MonoBehaviour
                 {
                     if (dialogueQuestDatas[i].NeedItem == null ||
                         DataManager.instance._inventory.inventory.ContainsKey(
-                            int.Parse(dialogueQuestDatas[i].NeedItem)))
+                            int.Parse(dialogueQuestDatas[i].NeedItem))) //Inventory가 Dic라서 containsKey로 찾으면 됨.
                     {
                         //if(_questDic.DialogueQuestDic[targetname][i].QuestType == QuestType.Normal)
                         //_questDic.DialogueQuestDic[targetname][i].QuestState = true; //
