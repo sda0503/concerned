@@ -216,8 +216,6 @@ public class DialogueManager : MonoBehaviour
         
         //chatlogdic도 만들고 list도 만들고 
        
-        
-        //TODO : 저장되면 변경이 안되야 되는데 계속 바뀜.
         // ChatLogManager.instance.chatlogData.Name = "";
         // ChatLogManager.instance.chatlogData.Log = "";
     }

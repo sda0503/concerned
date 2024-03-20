@@ -940,7 +940,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1609265932
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1198,3 +1198,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _marker: {fileID: 8779685690670249916, guid: 7d4158b0e818bda4ab2b052a238819e6, type: 3}
+  _popup: {fileID: 0}
