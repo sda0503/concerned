@@ -8,11 +8,11 @@ namespace DataStorage
     [System.Serializable]
     public class Player
     {
-    }
-
-    [System.Serializable]
-    public class Dialogue_Save
-    {
+        public AllChatLog AllChatLog; //대화 기록
+        public Dialogue_Dic DialogueDic; //대화 dic
+        public Dialogue_Quest_Dic DialogueQuestDic; //대화 Quest dic
+        public Inventory Inventory; //인벤토리
+        //public 도감
     }
 
     #endregion
@@ -27,16 +27,16 @@ namespace DataStorage
         public string Log;
         public Log_Type Log_Type;
         public int Next_Log;
-        public string Event_Log_1;
-        public string Event_Log_2;
-        public string Event_1_name;
-        public string Event_2_name;
+        public string[] Event_Log;
+        public string[] Event_Next_Log;
+        public bool[] Event_Log_State;
     }
 
     public enum Log_Type
     {
         normal,
         choose,
+        Loop
     }
 
     public enum QuestType
@@ -84,6 +84,27 @@ namespace DataStorage
     public class Inventory
     {
         public Dictionary<int, Iteminfo> inventory = new Dictionary<int, Iteminfo>();
+    }
+
+    #endregion
+
+    #region ChatLogSave
+
+    public class AllChatLog //전체 대화 로그
+    { 
+        //Dictionary<int, chatlogData> => int = Quest 순서, ChatlogData = 퀘스트 안의 대화 내역
+        public Dictionary<string,chatlogdic> allChatlog = new
+            Dictionary<string, chatlogdic>();
+    }
+    public class chatlogData //대화 하나 저장
+    {
+        public string Name;
+        public string Log;
+    }
+    
+    public class chatlogdic //한 대화의 전부
+    {
+        public Dictionary<int,List<chatlogData>> saveOneLog = new Dictionary<int, List<chatlogData>>();
     }
 
     #endregion

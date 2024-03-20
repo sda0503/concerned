@@ -69,6 +69,8 @@ public class DataManager : MonoBehaviour//유니티 기능을 상속 받는거 /
                 }
             }
         }
+        DialogueManager.instance._questdic = _questDic.DialogueQuestDic;
+        DialogueManager.instance. _dialogdic = dic.DialogueDic;
     }
  
 }

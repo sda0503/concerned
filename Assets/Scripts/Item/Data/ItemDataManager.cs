@@ -1,14 +1,11 @@
 using Newtonsoft.Json;
-using System.Collections;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using UnityEditorInternal.Profiling.Memory.Experimental;
 using UnityEngine;
 
 public class ItemDataList
 {
-    //<Á¤º¸¸¦ ¹Þ¾Æ¿Ã class> ½ºÇÁ·¹µå ½ÃÆ®¿¡ ÀÖ´Â Á¤º¸°¡ ÀÖ´Â ½ÃÆ®¸í.
+    //<ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Þ¾Æ¿ï¿½ class> ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½Ö´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ö´ï¿½ ï¿½ï¿½Æ®ï¿½ï¿½.
     public List<ItemData> Data = new List<ItemData>();
     public List<ItemData> Trigger = new List<ItemData>();
 }
@@ -31,7 +28,7 @@ public class ItemDataManager
 
 
     //--------------------------------------------------------------------
-    //Dogam, µµ°¨¿¡¼­ »ç¿ëµÉ µ¥ÀÌÅÍ Á¤¸®
+    //Dogam, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     private ItemDataList dogamItemDataList;
     private ItemDataList saveItemDataList;
     public Dictionary<int, ItemData> dogamItemData = new Dictionary<int, ItemData>();
@@ -85,7 +82,7 @@ public class ItemDataManager
 
 
     //--------------------------------------------------------------------
-    //Json, ¸ðµç ¾ÆÀÌÅÛ Á¤º¸ °¡Á®¿À±â.
+    //Json, ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½.
     private ItemDataList defaultItemDataList = new ItemDataList();
 
     public ItemDataList GetDefaultItemDataList()
@@ -93,7 +90,7 @@ public class ItemDataManager
         return defaultItemDataList;
     }
 
-    //json ÆÄÀÏ ºÒ·¯¿À±â. ½ÃÀÛÇÒ ¶§ ºÒ·¯¿À´Â °Í
+    //json ï¿½ï¿½ï¿½ï¿½ ï¿½Ò·ï¿½ï¿½ï¿½ï¿½ï¿½. ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Ò·ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
     public void LoadDefaultData()
     {
         var data = Resources.Load("ItemInfo").ToString();
