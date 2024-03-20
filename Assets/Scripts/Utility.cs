@@ -21,6 +21,37 @@ public class Utility
         }
     }
 
+
+    //-----------------------------------------------------------------------------------------
+    //Item 클릭
+    public void OnClickToFindItem(int index, Transform canvas)
+    {
+        if (!ItemManager.Instance.getItems.ContainsKey(index))
+        {
+            var obj = GameObjectLoad("Prefabs/Item");
+            obj.transform.GetComponent<Image>().sprite = SpriteLoad("image"); //index에 맞춰서 이미지 로드되도록 설정
+            Object.Instantiate(obj, canvas);
+
+            ItemManager.Instance.GetItem(index);
+        }
+    }
+
+    public void OnClickToFindTriggerItem(int index, Transform canvas)
+    {
+        if (!ItemDataManager.Instance.triggerItemData.ContainsKey(index))
+        {
+            var obj = Object.Instantiate(GameObjectLoad("Prefabs/TriggerItem"), canvas);
+            Sprite sprite = SpriteLoad("Look");
+            //sprite가 없으면 Debug찍힐 수 있도록 설정해주는 것이 좋음. 27줄처럼 한번에 작성은 ㄴㄴ함.
+
+            obj.transform.GetComponent<Image>().sprite = sprite; //index에 맞춰서 이미지 로드되도록 설정
+            ItemDataManager.Instance.triggerItemData.Add(index, obj);
+        }
+        else ItemDataManager.Instance.triggerItemData[index].SetActive(true);
+    }
+
+    //-----------------------------------------------------------------------------------------
+    //Resources.Load
     public GameObject GameObjectLoad(string str)
     {
         var obj = Resources.Load(str) as GameObject;
@@ -32,30 +63,15 @@ public class Utility
         return obj;
     }
 
-
-    //-----------------------------------------------------------------------------------------
-    //Item 클릭
-    public void OnClickToFindItem(int index, Transform canvas)
+    public Sprite SpriteLoad(string str)
     {
-        var obj = Resources.Load("Prefabs/Item") as GameObject;
-        obj.transform.GetComponent<Image>().sprite = Resources.Load<Sprite>("image"); //index에 맞춰서 이미지 로드되도록 설정
-        Object.Instantiate(obj, canvas);
-
-        ItemManager.Instance.GetItem(index);
-    }
-
-    public void OnClickToFindTriggerItem(int index, Transform canvas)
-    {
-        if (!ItemDataManager.Instance.triggerItemData.ContainsKey(index))
+        var obj = Resources.Load<Sprite>(str);
+        if (obj == null)
         {
-            var obj = Object.Instantiate(Resources.Load("Prefabs/TriggerItem") as GameObject, canvas);
-            Sprite sprite = Resources.Load<Sprite>("Look");
-            //sprite가 없으면 Debug찍힐 수 있도록 설정해주는 것이 좋음. 27줄처럼 한번에 작성은 ㄴㄴ함.
-
-            obj.transform.GetComponent<Image>().sprite = sprite; //index에 맞춰서 이미지 로드되도록 설정
-            ItemDataManager.Instance.triggerItemData.Add(index, obj);
+            Debug.Log("Fail Load");
+            return null;
         }
-        else ItemDataManager.Instance.triggerItemData[index].SetActive(true);
+        return obj;
     }
 
     //-----------------------------------------------------------------------------------------
@@ -75,7 +91,7 @@ public class Utility
         string data = JsonConvert.SerializeObject(itemDataList);
 
         //저장파일 생성. 외부에 저장.
-        File.WriteAllText(path + "/" + str, data);
+        File.WriteAllText(path + "/" + str + ".json", data);
     }
 
     //json 파일 불러오기. play 중에 저장된 것 불러오거나 play 끝나고 도감에서 불러오는 것.
@@ -83,9 +99,13 @@ public class Utility
     {
         try
         {
-            var data = File.ReadAllText(path + "/" + str);
+            var data = File.ReadAllText(path + "/" + str + ".json");
             itemDataList = JsonConvert.DeserializeObject<ItemDataList>(data);
         }
-        catch { itemDataList = null; }
+        catch (FileNotFoundException)
+        { 
+            Debug.Log("catch"); 
+            itemDataList = null; 
+        }
     }
 }
