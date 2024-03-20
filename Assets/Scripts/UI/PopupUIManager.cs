@@ -31,7 +31,7 @@ public class PopupUIManager
     public PopupUIBase OpenPopupUI(string name)
     {
         var obj = Resources.Load("PopupUI/" + name, typeof(GameObject)) as GameObject;
-        if (obj == null) { return null; }
+        if (obj == null) { Debug.Log("UI Load 실패"); return null; }
         return MakePopupUI(obj);
     }
 
@@ -39,10 +39,11 @@ public class PopupUIManager
     {
         if (!popupUI.ContainsKey(prefab.name))
         {
-            popupUI.Add(prefab.name, prefab);
+            var obj = Object.Instantiate(prefab); //MonoBehaviour없더라도 생성가능하도록
+            popupUI.Add(prefab.name, obj);
         }
-        var obj = Object.Instantiate(prefab); //MonoBehaviour없더라도 생성가능하도록
-        return GetComponentPopupUI(obj);
+        popupUI[prefab.name].SetActive(true);
+        return GetComponentPopupUI(popupUI[prefab.name]);
     }
 
     public PopupUIBase GetComponentPopupUI(GameObject clone)

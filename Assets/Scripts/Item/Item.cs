@@ -27,16 +27,4 @@ public class Item : MonoBehaviour
     {
         animator.SetTrigger(trigger_animation);
     }
-
-    //public void OnEvent()
-    //{
-    //    event_check = true;
-    //    if (itemData.itemEventType == ItemEventType.Event)
-    //    {
-
-    //    }
-    //}
-    //ItemData[] dogam = new ItemData[39];
-    //dogam[24] = defaultItemDataList.Data[24];
-    //Debug.Log(dogam[24].item_name);
 }

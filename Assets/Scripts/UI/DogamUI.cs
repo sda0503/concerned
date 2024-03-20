@@ -13,21 +13,23 @@ public class DogamUI : PopupUIBase
 
     public Button clueButton;
     public Button albumButton;
+    public Button closeButton;
 
     public Text nameText;
     public Text descriptionText;
 
-    private void OnEnable() //Start·Î ¹Ù²ð ¿¹Á¤.
+    private void Start()
     {
         ItemDataManager.Instance.SetDogamItemData();
         MakeDogamItemSlot();
+        closeButton.onClick.AddListener(CloseDogam);
     }
 
     private void MakeDogamItemSlot()
     {
         for (int i = 0; i < 12; i++)
         {
-            itemSlots[i] = Instantiate(Resources.Load("Prefabs/DogamItemSlot") as GameObject, itemSlot);
+            itemSlots[i] = Instantiate(Utility.Instance.GameObjectLoad("Prefabs/DogamItemSlot"), itemSlot);
             OnDogamItem(i);
             int n = i;
             itemSlots[i].GetComponent<Button>().onClick.RemoveAllListeners();
@@ -54,5 +56,10 @@ public class DogamUI : PopupUIBase
             itemSlots[key].transform.Find("GetItem").gameObject.SetActive(false);
             itemSlots[key].GetComponent<Button>().enabled = false;
         }
+    }
+
+    public void CloseDogam()
+    {
+        gameObject.SetActive(false);
     }
 }

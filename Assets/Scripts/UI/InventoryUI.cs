@@ -1,13 +1,11 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using static UnityEditor.Progress;
 
 public class InventoryUI : PopupUIBase
 {
-    public Dictionary<int,Item> items = new Dictionary<int, Item>(); //ÀÎº¥Åä¸®¿¡ µé¾î°¡´Â ¾ÆÀÌÅÛµé
-    public List<GameObject> inventorySlot = new List<GameObject>(); //ºó ½½·Ô, Ã³À½¿¡´Â 9°³(ÀÓ½Ã)·Î ¸¸µé°í ¾òÀº ¾ÆÀÌÅÛ °¹¼ö°¡ 9°³°¡ ³Ñ¾î°¡¸é 3°³¾¿ Áõ°¡
+    public Dictionary<int,Item> items = new Dictionary<int, Item>(); //ï¿½Îºï¿½ï¿½ä¸®ï¿½ï¿½ ï¿½ï¿½î°¡ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ûµï¿½
+    public List<GameObject> inventorySlot = new List<GameObject>(); //ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½, Ã³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 9ï¿½ï¿½(ï¿½Ó½ï¿½)ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 9ï¿½ï¿½ï¿½ï¿½ ï¿½Ñ¾î°¡ï¿½ï¿½ 3ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 
     public Transform itemSlot;
 
@@ -16,7 +14,7 @@ public class InventoryUI : PopupUIBase
 
     private void OnEnable()
     {
-        if (items.Count == 0) MakeInventorySlot(3);
+        if (inventorySlot.Count == 0) MakeInventorySlot(3);
         AddItemList();
     }
 
@@ -24,11 +22,11 @@ public class InventoryUI : PopupUIBase
     {
         for(int i = 0; i < count; i++)
         {
-            inventorySlot.Add(Instantiate(Resources.Load("Prefabs/InventoryItemSlot") as GameObject, itemSlot));
+            inventorySlot.Add(Instantiate(Utility.Instance.GameObjectLoad("Prefabs/InventoryItemSlot"), itemSlot));
         }
     }
 
-    public void AddItemList() //Å½»öÀ¸·Î ¾ÆÀÌÅÛÀ» ¾ò´Â °æ¿ì.
+    public void AddItemList() //Å½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½.
     {
         for(int i = 0; i < ItemManager.Instance.getItemsNumber.Count;i++)
         {
@@ -40,20 +38,21 @@ public class InventoryUI : PopupUIBase
 
     public void SetItemSlot(int id)
     {
-        //¾ÆÀÌÅÛ ÀÌ¸§ÀÌ¶û ¼³¸í text ºÎºÐ ¿¬°áÇÏ´Â °÷.
-        if (items.Count > 0 && items.Count % 3 == 0) 
+        //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¸ï¿½ï¿½Ì¶ï¿½ ï¿½ï¿½ï¿½ï¿½ text ï¿½Îºï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½.
+        if (items.Count >= 3 && items.Count % 3 == 0) 
+
         {
             MakeInventorySlot(3);
         }
-        //items¿¡ Á¤º¸°¡ µé¾î°¡±â ÀüÀÌ¹Ç·Î Count´Â µé¾î¿Â ¾ÆÀÌÅÛ °¹¼ö -1 °ú µ¿ÀÏ.
-        //inventorySlot[items.Count].transform.GetComponent<SpriteRenderer>().sprite = item.Image; ÀÌ¹ÌÁö º¯°æ.
+        //itemsï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½î°¡ï¿½ï¿½ ï¿½ï¿½ï¿½Ì¹Ç·ï¿½ Countï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ -1 ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½.
+        //inventorySlot[items.Count].transform.GetComponent<SpriteRenderer>().sprite = item.Image; ï¿½Ì¹ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½.
         inventorySlot[items.Count].transform.Find("GetItem").gameObject.SetActive(true);
         inventorySlot[items.Count].GetComponent<Button>().onClick.AddListener(() => InventorySlotButton(id));
     }
 
     public void InventorySlotButton(int id)
     {
-        //ÀÌ¹ÌÁö º¯°æ.
+        //ï¿½Ì¹ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½.
         nameText.text = items[id].itemData.item_name;
         descriptionText.text = items[id].itemData.default_description;
     }

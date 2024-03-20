@@ -1,15 +1,8 @@
 fileFormatVersion: 2
-<<<<<<<< HEAD:Assets/Animation/Find.anim.meta
 guid: 66d684e2bc703784cbebb67e8544625a
 NativeFormatImporter:
   externalObjects: {}
   mainObjectFileID: 7400000
-========
-guid: 1c031e1a214668a45a815ac6f85c5219
-NativeFormatImporter:
-  externalObjects: {}
-  mainObjectFileID: 11400000
->>>>>>>> DataManagement_BGO:Assets/Maplestory Light SDF.asset.meta
   userData: 
   assetBundleName: 
   assetBundleVariant: 
