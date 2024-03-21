@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using JetBrains.Annotations;
+using UnityEngine;
 
 namespace DataStorage
 {
@@ -159,5 +160,20 @@ namespace DataStorage
         public Dictionary<int,List<chatlogData>> saveOneLog = new Dictionary<int, List<chatlogData>>();
     }
 
+    #endregion
+
+    #region canvas 오브젝트 배치 저장용
+
+    public class CanvasContorller
+    {
+        public int CanvasID;
+        public List<bool> objectState;
+    }
+
+    public class CanvasDic
+    {
+        public Dictionary<int, List<bool>> CanvasContorllers = new Dictionary<int, List<bool>>();
+    }
+    
     #endregion
 }
