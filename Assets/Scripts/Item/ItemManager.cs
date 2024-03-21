@@ -18,8 +18,8 @@ public class ItemManager : MonoBehaviour
         }
     }
 
-    public Item[] items = new Item[34]; //������ ����ִ� ������
-    public TriggerItem[] triggerItems = new TriggerItem[7];
+    public Item[] items = new Item[ItemDataManager.Instance.GetDefaultItemDataList().Data.Count]; //������ ����ִ� ������
+    public TriggerItem[] triggerItems = new TriggerItem[ItemDataManager.Instance.GetDefaultItemDataList().Trigger.Count];
 
     public Dictionary<int, Item> getItems = new Dictionary<int, Item>(); //���� Item��
     public List<int> getItemsNumber = new List<int>(); //���� Item�� ����
