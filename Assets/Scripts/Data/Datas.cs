@@ -12,10 +12,62 @@ namespace DataStorage
         public Dialogue_Dic DialogueDic; //대화 dic
         public Dialogue_Quest_Dic DialogueQuestDic; //대화 Quest dic
         public Inventory Inventory; //인벤토리
-        //public 도감
+        public Information Information; //캐릭터 진행 데이터
     }
 
     #endregion
+
+    #region 캐릭터 info 데이터
+
+    public class Information
+    {
+        public enum DayTimeenum
+        {
+            Evening,
+            Afternoon,
+            Night
+        }
+
+        private DayTimeenum DayTime;
+
+        public DayTimeenum dayTime
+        {
+            get { return DayTime; }
+            set { DayTime = value; }
+        }
+
+        private int Date;
+
+        public int date
+        {
+            get { return Date; }
+            set { Date = value; }
+        }
+
+        private int Position;
+
+        public int position
+        {
+            get { return Position; }
+            set { Position = value; }
+        }
+        //position은 주소로 하고 DB 만들기
+
+        public Information()
+        {
+            DayTime = DayTimeenum.Evening;
+            Date = 0;
+            //Position = "집 주소"; DB상 주소를 얘기함. 집주소 아니면 사건현장?
+        }
+
+        public void OnLoadSetting() //로드할 때에 맞춰서 세팅
+        {
+            //dayTime =  DataManager.Instance.~~~.Player.Information.dayTime;
+            //date =  DataManager.Instance.~~~.Player.Information.Date; 이런 느낌.
+        }
+    } //TODO : 최초 세팅 때 설정해주고, 이어하기 할 때는 로드하기.
+
+        #endregion
 
     #region Dialogue 역직렬화
 

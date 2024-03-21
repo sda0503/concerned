@@ -80,7 +80,7 @@ public class DialogueManager : MonoBehaviour
                 {
                     if (dialogueQuestDatas[i].NeedItem == null ||
                         DataManager.instance._inventory.inventory.ContainsKey(
-                            int.Parse(dialogueQuestDatas[i].NeedItem)))
+                            int.Parse(dialogueQuestDatas[i].NeedItem))) //Inventory가 Dic라서 containsKey로 찾으면 됨.
                     {
                         //if(_questDic.DialogueQuestDic[targetname][i].QuestType == QuestType.Normal)
                         //_questDic.DialogueQuestDic[targetname][i].QuestState = true; //
@@ -216,8 +216,6 @@ public class DialogueManager : MonoBehaviour
         
         //chatlogdic도 만들고 list도 만들고 
        
-        
-        //TODO : 저장되면 변경이 안되야 되는데 계속 바뀜.
         // ChatLogManager.instance.chatlogData.Name = "";
         // ChatLogManager.instance.chatlogData.Log = "";
     }
