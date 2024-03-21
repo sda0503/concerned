@@ -4626,6 +4626,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: map5
       objectReference: {fileID: 0}
+    - target: {fileID: 1786104506189994259, guid: be86b432678232946abc15020f898646, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8235499070913125914, guid: be86b432678232946abc15020f898646, type: 3}
       propertyPath: m_Pivot.x
       value: 0

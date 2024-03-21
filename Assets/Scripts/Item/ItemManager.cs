@@ -18,7 +18,7 @@ public class ItemManager : MonoBehaviour
         }
     }
 
-    public Item[] items = new Item[33]; //������ ����ִ� ������
+    public Item[] items = new Item[34]; //������ ����ִ� ������
     public TriggerItem[] triggerItems = new TriggerItem[7];
 
     public Dictionary<int, Item> getItems = new Dictionary<int, Item>(); //���� Item��
