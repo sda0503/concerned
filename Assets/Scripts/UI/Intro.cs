@@ -3,7 +3,7 @@ using UnityEngine.UI;
 using UnityEngine.Video;
 using UnityEngine.SceneManagement;
 
-public class ImageController : MonoBehaviour
+public class VideoController : MonoBehaviour
 {
     public RawImage videoScreen;
     public VideoClip videoClip;
@@ -17,6 +17,7 @@ public class ImageController : MonoBehaviour
         videoPlayer.targetTexture = new RenderTexture(Screen.width, Screen.height, 24);
         videoScreen.texture = videoPlayer.targetTexture;
         PlayVideo();
+        videoPlayer.loopPointReached += OnVideoEnd;
     }
 
     void Update()
@@ -31,5 +32,19 @@ public class ImageController : MonoBehaviour
     {
         videoPlayer.clip = videoClip;
         videoPlayer.Play();
+    }
+
+    void OnVideoEnd(VideoPlayer vp)
+    {
+        SceneManager.LoadScene("StartScene");
+    }
+
+    void LoadNextScene()
+    {
+        int nextSceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
+        if (nextSceneIndex < SceneManager.sceneCountInBuildSettings)
+        {
+            SceneManager.LoadScene("StartScene");
+        }
     }
 }
