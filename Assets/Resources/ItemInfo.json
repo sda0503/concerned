@@ -296,6 +296,15 @@
       "itemEventType": "0",
       "itemType": "1",
       "event_description": null
+    },
+    {
+      "item_id": "33",
+      "item_name": "열쇠",
+      "default_description": "김이사의 잠겨있는 서랍에 사용되면 좋을 것 같은 열쇠.",
+      "simple_description": null,
+      "itemEventType": "0",
+      "itemType": "1",
+      "event_description": null
     }
   ],
 
