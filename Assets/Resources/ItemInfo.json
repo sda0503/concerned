@@ -371,6 +371,15 @@
       "itemEventType": "3",
       "itemType": "1",
       "event_description": null
+    },
+    {
+      "item_id": "7",
+      "item_name": "피해자 지갑",
+      "default_description": "피해자 차에 있던 지갑. 사용하면 누구인지 알 수 있을 것 같다.",
+      "simple_description": "피해자의 지갑",
+      "itemEventType": "2",
+      "itemType": "1",
+      "event_description": null
     }
   ]
 }
