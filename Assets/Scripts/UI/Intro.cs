@@ -1,49 +1,35 @@
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Video;
 using UnityEngine.SceneManagement;
 
 public class ImageController : MonoBehaviour
 {
-    public Image image1;
-    public Image[] images;
-    private int currentIndex = 0;
+    public RawImage videoScreen;
+    public VideoClip videoClip;
+    private VideoPlayer videoPlayer;
 
     void Start()
     {
-        DisableAllImages();
-        image1.enabled = true;
+        videoPlayer = gameObject.AddComponent<VideoPlayer>();
+        videoPlayer.playOnAwake = false;
+        videoPlayer.renderMode = VideoRenderMode.RenderTexture;
+        videoPlayer.targetTexture = new RenderTexture(Screen.width, Screen.height, 24);
+        videoScreen.texture = videoPlayer.targetTexture;
+        PlayVideo();
     }
 
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            image1.enabled = false;
-            images[currentIndex].enabled = false;
-            currentIndex++;
-
-            if (currentIndex >= images.Length)
-            {
-                LoadNextScene();
-                return;
-            }
-            images[currentIndex].enabled = true;
-        }
-    }
-
-    void LoadNextScene()
-    {
-        if (SceneManager.GetActiveScene().buildIndex <= SceneManager.sceneCountInBuildSettings - 1)
-        {
             SceneManager.LoadScene("StartScene");
         }
     }
 
-    void DisableAllImages()
+    void PlayVideo()
     {
-        foreach (Image image in images)
-        {
-            image.enabled = false;
-        }
+        videoPlayer.clip = videoClip;
+        videoPlayer.Play();
     }
 }
