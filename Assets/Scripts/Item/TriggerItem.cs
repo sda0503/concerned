@@ -27,6 +27,7 @@ public class TriggerItem : MonoBehaviour
                 case 1:
                     break;
                 case 2:
+                    Utility.Instance.OnClickToFindItem(8, GameManager.Instance.itemCanvas);
                     break;
                 case 3:
                     break;

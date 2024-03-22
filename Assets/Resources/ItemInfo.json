@@ -2,12 +2,12 @@
   "Data": [
     {
       "item_id": "0",
-      "item_name": "피해자 지갑",
-      "default_description": "피해자 차에 있던 지갑. 사용하면 누구인지 알 수 있을 것 같다.",
-      "simple_description": "피해자의 지갑",
-      "itemEventType": "2",
+      "item_name": "쪽지",
+      "default_description": "피해자 양현서 집에 있는 쪽지. 비밀번호의 일부인 것 같다.",
+      "simple_description": "피해자 양현서 집에 있는 쪽지",
+      "itemEventType": "1",
       "itemType": "1",
-      "event_description": null
+      "event_description": "피해자 양현서 집에 있는 금고 비밀번호에 사용된 쪽지."
     },
     {
       "item_id": "1",
@@ -29,18 +29,18 @@
     },
     {
       "item_id": "3",
-      "item_name": "쪽지1",
-      "default_description": "피해자 양현서 지갑에 있는 쪽지. 비밀번호의 일부인 것 같다.",
-      "simple_description": "피해자 양현서 지갑에 있는 쪽지",
+      "item_name": "쪽지",
+      "default_description": "피해자 양현서 차에 있는 쪽지. 비밀번호의 일부인 것 같다.",
+      "simple_description": "피해자 양현서 차에 있는 쪽지",
       "itemEventType": "1",
       "itemType": "1",
       "event_description": "피해자 양현서 집에 있는 금고 비밀번호에 사용된 쪽지."
     },
     {
       "item_id": "4",
-      "item_name": "쪽지2",
-      "default_description": "피해자 양현서 지갑에 있는 쪽지. 비밀번호의 일부인 것 같다.",
-      "simple_description": "피해자 양현서 지갑에 있는 쪽지",
+      "item_name": "쪽지",
+      "default_description": "피해자 양현서 차에 있는 쪽지. 비밀번호의 일부인 것 같다.",
+      "simple_description": "피해자 양현서 차에 있는 쪽지",
       "itemEventType": "1",
       "itemType": "1",
       "event_description": "피해자 양현서 사무실에 있는 금고 비밀번호에 사용된 쪽지."
@@ -305,6 +305,15 @@
       "itemEventType": "0",
       "itemType": "1",
       "event_description": null
+    },
+    {
+      "item_id": "34",
+      "item_name": "쪽지",
+      "default_description": "피해자 양현서 집에 있는 쪽지. 비밀번호의 일부인 것 같다.",
+      "simple_description": "피해자 양현서 집에 있는 쪽지",
+      "itemEventType": "1",
+      "itemType": "1",
+      "event_description": "피해자 양현서 집에 있는 금고 비밀번호에 사용된 쪽지."
     }
   ],
 
