@@ -9,7 +9,7 @@ using UnityEngine.UI;
 public class Utility
 {
     private static Utility instance;
-    //ÇÁ·ÎÆÛÆ¼¸¦ ÀÌ¿ëÇÑ ½Ì±ÛÅÏ -> AddComponentÇØÁÖÁö ¾Ê¾Æµµ »ç¿ëÀÌ °¡´ÉÇÔ.
+    //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ¼ï¿½ï¿½ ï¿½Ì¿ï¿½ï¿½ï¿½ ï¿½Ì±ï¿½ï¿½ï¿½ -> AddComponentï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê¾Æµï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½.
     public static Utility Instance
     {
         get
@@ -23,13 +23,13 @@ public class Utility
 
 
     //-----------------------------------------------------------------------------------------
-    //Item Å¬¸¯
-    public void OnClickToFindItem(int index, Transform canvas)
+    //Item Å¬ï¿½ï¿½
+    public void OnClickToFindItem(int index, Transform canvas) //ì—¬ê¸°ê°€ ì•„ì´í…œ í´ë¦­í–ˆì„ ë•Œ ì‹¤í–‰ë˜ëŠ” êµ¬ê°„.
     {
         if (!ItemManager.Instance.getItems.ContainsKey(index))
         {
             var obj = GameObjectLoad("Prefabs/Item");
-            obj.transform.GetComponent<Image>().sprite = SpriteLoad("image"); //index¿¡ ¸ÂÃç¼­ ÀÌ¹ÌÁö ·ÎµåµÇµµ·Ï ¼³Á¤
+            obj.transform.GetComponent<Image>().sprite = SpriteLoad("image"); //indexï¿½ï¿½ ï¿½ï¿½ï¿½ç¼­ ï¿½Ì¹ï¿½ï¿½ï¿½ ï¿½Îµï¿½Çµï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
             Object.Instantiate(obj, canvas);
 
             ItemManager.Instance.GetItem(index);
@@ -42,9 +42,9 @@ public class Utility
         {
             var obj = Object.Instantiate(GameObjectLoad("Prefabs/TriggerItem"), canvas);
             Sprite sprite = SpriteLoad("Look");
-            //sprite°¡ ¾øÀ¸¸é DebugÂïÈú ¼ö ÀÖµµ·Ï ¼³Á¤ÇØÁÖ´Â °ÍÀÌ ÁÁÀ½. 27ÁÙÃ³·³ ÇÑ¹ø¿¡ ÀÛ¼ºÀº ¤¤¤¤ÇÔ.
+            //spriteï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Debugï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Öµï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö´ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½. 27ï¿½ï¿½Ã³ï¿½ï¿½ ï¿½Ñ¹ï¿½ï¿½ï¿½ ï¿½Û¼ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½.
 
-            obj.transform.GetComponent<Image>().sprite = sprite; //index¿¡ ¸ÂÃç¼­ ÀÌ¹ÌÁö ·ÎµåµÇµµ·Ï ¼³Á¤
+            obj.transform.GetComponent<Image>().sprite = sprite; //indexï¿½ï¿½ ï¿½ï¿½ï¿½ç¼­ ï¿½Ì¹ï¿½ï¿½ï¿½ ï¿½Îµï¿½Çµï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
             ItemDataManager.Instance.triggerItemData.Add(index, obj);
         }
         else ItemDataManager.Instance.triggerItemData[index].SetActive(true);
@@ -84,17 +84,17 @@ public class Utility
         return itemDataList;
     }
 
-    //json ÆÄÀÏ ÀúÀåÇÏ±â
+    //json ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï±ï¿½
     public void SaveData(ItemDataList itemDataList, string str)
     {
         Debug.Log(path);
         string data = JsonConvert.SerializeObject(itemDataList);
 
-        //ÀúÀåÆÄÀÏ »ı¼º. ¿ÜºÎ¿¡ ÀúÀå.
+        //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½. ï¿½ÜºÎ¿ï¿½ ï¿½ï¿½ï¿½ï¿½.
         File.WriteAllText(path + "/" + str + ".json", data);
     }
 
-    //json ÆÄÀÏ ºÒ·¯¿À±â. play Áß¿¡ ÀúÀåµÈ °Í ºÒ·¯¿À°Å³ª play ³¡³ª°í µµ°¨¿¡¼­ ºÒ·¯¿À´Â °Í.
+    //json ï¿½ï¿½ï¿½ï¿½ ï¿½Ò·ï¿½ï¿½ï¿½ï¿½ï¿½. play ï¿½ß¿ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Ò·ï¿½ï¿½ï¿½ï¿½Å³ï¿½ play ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ò·ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½.
     public void LoadSaveData(string str)
     {
         try

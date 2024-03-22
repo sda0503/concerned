@@ -18,28 +18,28 @@ public class map5 : MonoBehaviour
         {
             buttons[i].onClick.RemoveAllListeners();
             int n = i;
-            buttons[i].onClick.AddListener(() => OnButtonClick(n));
+            //buttons[i].onClick.AddListener(() => OnButtonClick(n));
         }
     }
 
 
-    private void OnButtonClick(int index)
-    {
-        switch (index)
-        {
-            case 1:
-                if (ItemManager.Instance.getItems.ContainsKey(33))
-                {
-                    Utility.Instance.OnClickToFindItem(15, GameManager.Instance.itemCanvas);
-                }
-                else Debug.Log("Àá°ÜÀÖ´Ù.");
-                break;
-            case 2:
-                Utility.Instance.OnClickToFindItem(17, GameManager.Instance.itemCanvas);
-                break;
-            case 3:
-                Utility.Instance.OnClickToFindItem(33, GameManager.Instance.itemCanvas);
-                break;
-        }
-    }
+    // private void OnButtonClick(int index)
+    // {
+    //     switch (index)
+    //     {
+    //         case 1:
+    //             if (ItemManager.Instance.getItems.ContainsKey(33))
+    //             {
+    //                 Utility.Instance.OnClickToFindItem(15, GameManager.Instance.itemCanvas);
+    //             }
+    //             else Debug.Log("ï¿½ï¿½ï¿½ï¿½Ö´ï¿½.");
+    //             break;
+    //         case 2:
+    //             Utility.Instance.OnClickToFindItem(17, GameManager.Instance.itemCanvas);
+    //             break;
+    //         case 3:
+    //             Utility.Instance.OnClickToFindItem(33, GameManager.Instance.itemCanvas);
+    //             break;
+    //     }
+    // }
 }

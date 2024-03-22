@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
 {
     private static GameManager instance;
 
-    private Information Playerinformation; //TODO : 일단은 New
+    private Information Playerinformation = new Information(); //TODO : 일단은 New
 
     #region 뭔지 몰라도 조건이 많을것같아서 만듬
 
@@ -23,9 +23,14 @@ public class GameManager : MonoBehaviour
     private Dictionary<int, GameObject> CanvasGroup = new Dictionary<int, GameObject>(); //ID값으로 캔버스 저장.
     private CanvasDic _canvasDic = new CanvasDic();
 
+    [SerializeField] private GameObject canvasparents;
+    [SerializeField] private GameObject origin;
+
     #endregion
 
     //TODO : Save 관련된 기능들도 event로 묶어서 관리
+
+    [SerializeField] private Canvas _canvas;
 
     public static GameManager Instance
     {
@@ -40,37 +45,13 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public Transform itemCanvas;
+    
 
-    //test
-    public Button button1;
-    public Button button2;
-    public Button button3;
-    public Button button4;
-    public Button button5;
-
-    public ItemDataList saveGetItems = new ItemDataList();
-
-    private void Awake()
-    {
-        ItemDataManager.Instance.LoadDefaultData();
-        ItemManager.Instance.getItems.Clear();
-    }
-
+    
     private void Start()
     {
-        button1.onClick.AddListener(() => Utility.Instance.OnClickToFindTriggerItem(1, itemCanvas));
-        button3.onClick.AddListener(() => Utility.Instance.OnClickToFindItem(1, itemCanvas));
-        button4.onClick.AddListener(() => Utility.Instance.OnClickToFindItem(5, itemCanvas));
-        button5.onClick.AddListener(() => Utility.Instance.OnClickToFindItem(2, itemCanvas));
-        button2.onClick.AddListener(() => OffGame());
-
-        //TODO : 여기서 로드할지 말지 결정. 새로하기 버튼이나 그런걸로 하면 될듯
-    }
-
-    private void OffGame()
-    {
-        Utility.Instance.SaveData(saveGetItems, "SaveItem");
+        CanvasOnLoad canvasOnLoad = _canvas.GetComponent<CanvasOnLoad>();
+        canvasOnLoad.ObjectSet(new List<bool>{false,false,false});   
     }
 
     public void DateChange()
@@ -100,7 +81,8 @@ public class GameManager : MonoBehaviour
     public void PositionChange(int PosID) 
         //엑셀로 관리 : 기획자나 다른사람이 관리하기에 편함 협업에 유리 . 코드로 관리 : 개발자가 전체 관리하면 해도됨 근데 컴파일 되는거신경써야됨.
     {
-        CanvasGroup[Playerinformation.position].SetActive(false);
+        origin.gameObject.SetActive(false);
+        //CanvasGroup[Playerinformation.position].SetActive(false);
         Playerinformation.position = PosID;
         CanvasChange();
         //OnPositionChange?.Invoke(); //UIUpdate 아마 BG 바꾸는 용도로 사용될 듯.
@@ -121,22 +103,23 @@ public class GameManager : MonoBehaviour
         if (!CanvasGroup.ContainsKey(Playerinformation.position)) 
             //캔버스 그룹이라는 실제 오브젝트가 존재하는 dic에 ID값을 가진 캔버스가 없으면, TODO : 로직에 맞게 수정 필요
         {
-            //var obj = Resources.Load<Canvas>(DB뒤져서 ID값 찾아오기);
-            //var canvasinstance = Instantiate(obj, 부모 오브젝트 위치);
-            // if (canvasinstance.gameObject.TryGetComponent(out CanvasOnLoad canvasOnLoad))
-            // {
-            //     CanvasGroup.Add(Playerinformation.position, canvasinstance);
-            //     _canvasDic.CanvasContorllers.Add(Playerinformation.position, canvasOnLoad.StateSet());
-            //     canvasOnLoad.ObjectSet(_canvasDic.CanvasContorllers[Playerinformation.position]);
-            // }
+            var obj = Resources.Load<GameObject>("Prefabs/Home");
+            var canvasinstance = Instantiate(obj, canvasparents.transform);
+            canvasinstance.SetActive(true);
+             if (canvasinstance.gameObject.TryGetComponent(out CanvasOnLoad canvasOnLoad))
+             {
+                 Debug.Log(canvasOnLoad.states.Count);
+                 CanvasGroup.Add(Playerinformation.position, canvasinstance);
+                 _canvasDic.CanvasContorllers.Add(Playerinformation.position, canvasOnLoad.states);
+                 canvasOnLoad.ObjectSet(_canvasDic.CanvasContorllers[Playerinformation.position]);
+             }
         }
         else
         {
             CanvasGroup[Playerinformation.position].SetActive(true);
             //TODO : Load하는 경우 그에 맞게 데이터로 세팅해주는 것도 필요함.
             //예시 : CanvasGroup의 ID에 맞는 오브젝트의 컴포넌트에 접근해서 ObjectSet이라는 메서드를 실행
-            CanvasGroup[Playerinformation.position].GetComponent<CanvasOnLoad>()
-                .ObjectSet(_canvasDic.CanvasContorllers[Playerinformation.position]);
+            CanvasGroup[Playerinformation.position].GetComponent<CanvasOnLoad>().ObjectSet(_canvasDic.CanvasContorllers[Playerinformation.position]);
             //아예 다 하이어라키에 올려놓는 것도 방법이겠지만, 가능하면 위 방법으로 진행하자.
             ;
             

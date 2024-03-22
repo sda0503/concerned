@@ -176,4 +176,20 @@ namespace DataStorage
     }
     
     #endregion
+
+    #region PlaceDB
+
+    public class PlaceDB
+    {
+        private int Place_ID; //Index
+        private string Place_Name; // 이름
+        private string Place_Path; // Resources.Load에 사용할 주소값
+    }
+
+    public class PlaceDBDatas
+    {
+        public List<PlaceDB> PlaceDB = new List<PlaceDB>();
+    }
+
+    #endregion
 }

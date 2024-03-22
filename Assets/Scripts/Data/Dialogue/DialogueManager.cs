@@ -9,8 +9,8 @@ using KoreanTyper;
 
 public class DialogueManager : MonoBehaviour
 {
-    [SerializeField] private Button[] choice_btn; //선택지1
-    [SerializeField] private Button[] npc; //npc a
+    [SerializeField] private Button[] choice_btn; 
+    [SerializeField] private Button[] npcs; 
     [SerializeField] private Button _confirmbtn;
     [SerializeField] private Button _skipbtn;
     [SerializeField] private TextMeshProUGUI _chatTxt;
@@ -51,9 +51,9 @@ public class DialogueManager : MonoBehaviour
             choice_btn[i].onClick.AddListener(() => btnclick(index));
         }
 
-        foreach (Button npcs in npc)
+        foreach (Button npc in npcs)
         {
-            npcs.onClick.AddListener(() => StartDialogue(npcs.GetComponentInChildren<TextMeshProUGUI>().text));
+            npc.onClick.AddListener(() => StartDialogue(npc.GetComponentInChildren<TextMeshProUGUI>().text));
         }
 
         _skipbtn.onClick.AddListener(PloatingAllText);
@@ -106,7 +106,7 @@ public class DialogueManager : MonoBehaviour
         return startpost;
     }
 
-    void StartDialogue(string targetname)
+    public void StartDialogue(string targetname)
     {
         contextcount = CheckQuest(targetname);
 
@@ -119,11 +119,11 @@ public class DialogueManager : MonoBehaviour
             //_confirmbtn.gameObject.SetActive(true);
             _chatWindow.SetActive(true);
             //btn3.gameObject.SetActive(false);
-            foreach (Button npcs in npc)
+            foreach (Button npc in npcs)
             {
-                if (npcs.isActiveAndEnabled)
+                if (npc.isActiveAndEnabled)
                 {
-                    npcs.gameObject.SetActive(false);
+                    npc.gameObject.SetActive(false);
                 }
             }
 
@@ -178,11 +178,11 @@ public class DialogueManager : MonoBehaviour
             }
 
             _chatWindow.SetActive(false);
-            foreach (Button npcs in npc)
+            foreach (Button npc in npcs)
             {
-                if (!npcs.isActiveAndEnabled)
+                if (!npc.isActiveAndEnabled)
                 {
-                    npcs.gameObject.SetActive(true);
+                    npc.gameObject.SetActive(true);
                 }
             }
 

@@ -22,7 +22,7 @@ public class ChatLogManager : MonoBehaviour
     [SerializeField] public GameObject singlechatlogpannel;
     [SerializeField] public GameObject chatpannelPrefab;
     [SerializeField] public GameObject chatpannelPrefab2;
-    [SerializeField] private Button testBtn;
+    
 
     private StringBuilder sb = new StringBuilder();
     
@@ -44,7 +44,6 @@ public class ChatLogManager : MonoBehaviour
     {
         _chatLogBtn.onClick.AddListener(ChatLogBtnClick);
         _closeBtn.onClick.AddListener(ChatlogCloseBtnClick);
-        testBtn.onClick.AddListener(test);
     }
 
     void test()

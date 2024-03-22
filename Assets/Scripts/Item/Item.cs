@@ -1,3 +1,4 @@
+using System;
 using Newtonsoft.Json;
 using System.Collections;
 using System.Collections.Generic;
@@ -5,26 +6,21 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
-public class Item : MonoBehaviour
+public class Item
 {
-    //½ÇÁ¦ À¯Àú°¡ »ç¿ëÇÏ´Â ¾ÆÀÌÅÛ
-    //id¸¸ °¡Áö°í ÀÖ°í id¸¦ ÅëÇØ¼­ ¾ÆÀÌÅÛÀÇ Á¤º¸¸¦ ºÒ·¯¿È.
-    public Animator animator;
-    private static readonly int trigger_animation = Animator.StringToHash("OnIn");
+    //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    //idï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ö°ï¿½ idï¿½ï¿½ ï¿½ï¿½ï¿½Ø¼ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ò·ï¿½ï¿½ï¿½.
+  
 
-    [HideInInspector] public ItemData itemData;
-    [HideInInspector] public int id;
-    public bool event_check;
+    public int id;
+    public ItemData itemData;
+    
+    public bool event_check =false;
 
     public Item(int id)
     {
         itemData = ItemDataManager.Instance.GetDefaultItemDataList().Data[id];
         this.id = id;
         event_check = false;
-    }
-
-    public void OnClick(InputAction.CallbackContext value)
-    {
-        animator.SetTrigger(trigger_animation);
     }
 }

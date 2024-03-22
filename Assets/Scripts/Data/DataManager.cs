@@ -15,6 +15,10 @@ public class DataManager : MonoBehaviour//유니티 기능을 상속 받는거 /
     private string Path;
 
     public static DataManager instance;
+    
+    public ItemDataList saveGetItems = new ItemDataList();
+    
+    public Transform itemCanvas;
 
     private void Awake()
     {
@@ -22,6 +26,9 @@ public class DataManager : MonoBehaviour//유니티 기능을 상속 받는거 /
             instance = this;
         else 
             Destroy(gameObject);
+        
+        ItemDataManager.Instance.LoadDefaultData();
+        ItemManager.Instance.getItems.Clear();
     }
 
     void Start()
@@ -36,6 +43,9 @@ public class DataManager : MonoBehaviour//유니티 기능을 상속 받는거 /
         File.WriteAllText(Path+"/save.json",save);
     }
 
+    /// <summary>
+    /// 대화 DB 세팅
+    /// </summary>
     void SetDatas()
     {
         string loadData = Resources.Load("Dialogue_DB").ToString();
@@ -71,6 +81,14 @@ public class DataManager : MonoBehaviour//유니티 기능을 상속 받는거 /
         }
         DialogueManager.instance._questdic = _questDic.DialogueQuestDic;
         DialogueManager.instance. _dialogdic = dic.DialogueDic;
+    }
+
+    /// <summary>
+    /// 아이템 저장용 TODO : 나중에 저장하는 기능 다 묶을거임.
+    /// </summary>
+    private void OffGame()
+    {
+        Utility.Instance.SaveData(saveGetItems, "SaveItem");
     }
  
 }

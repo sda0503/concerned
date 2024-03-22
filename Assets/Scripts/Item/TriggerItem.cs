@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class TriggerItem : MonoBehaviour
+public class TriggerItem //ë„ê° ì ìš©ì•ˆë˜ëŠ” ì•„ì´í…œ.
 {
     [HideInInspector] public ItemData itemData;
     [HideInInspector] public int id;
@@ -16,14 +16,14 @@ public class TriggerItem : MonoBehaviour
         event_check = false;
     }
 
-    public void OnClick(InputAction.CallbackContext value)
-    {
-        //ÀÌ¹Ì Ã£Àº °÷ÀÌ¸é ¾ÆÀÌÅÛÀÌ »ı¼ºµÇÁö ¾Êµµ·Ï ¼³Á¤. id¿¡ µû¶ó ³ª¿À´Â ¾ÆÀÌÅÛ Á¾·ù°¡ ´Ù¸§.
-        if (!event_check)
-        {
-            Utility.Instance.OnClickToFindItem(10, GameManager.Instance.itemCanvas);
-            event_check = true;
-        } 
-        gameObject.SetActive(false);
-    }
+    // public void OnClick(InputAction.CallbackContext value)
+    // {
+    //     //ï¿½Ì¹ï¿½ Ã£ï¿½ï¿½ ï¿½ï¿½ï¿½Ì¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Êµï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½. idï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ù¸ï¿½.
+    //     if (!event_check)
+    //     {
+    //         Utility.Instance.OnClickToFindItem(10, DataManager.instance.itemCanvas);
+    //         event_check = true;
+    //     } 
+    //     gameObject.SetActive(false);
+    // }
 }

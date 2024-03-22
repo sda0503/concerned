@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
@@ -14,6 +15,9 @@ public class UIManager : MonoBehaviour
     //TODO : 간단하거나 수가 적은건 callback으로 해결하면 되고 나머지는 인터페이스를 상속해 선조치 후통보 (값 바꿔놓고 그 후에 해당하는 객체들을 돌면서 필요한 동작 실행시키기)
     /// </summary>
     public static UIManager instance;
+
+    [SerializeField] private Button btn;
+    [SerializeField] private GameObject Map; 
 
     private void Awake()
     {
@@ -32,6 +36,12 @@ public class UIManager : MonoBehaviour
         //각 장소가 그 주소의 BG에 해당하는 ID값을 가지고 있어야함.
         //TODO : PosBtn.OnClick.AddListener(() => MovePosition(PosBtn.주소 관련된 스크립트나 컴포넌트.PosID));
         //ID를 받으면 DB를 뒤져서 그에 맞는 파일 Path를 가지고 BG를 갈아끼운다? 그부분은 MovePosition에 있어야될듯.
+        btn.onClick.AddListener(OpenMap);
+    }
+
+    private void OpenMap()
+    {
+        Map.SetActive(true);
     }
 
     void DayTimeChange()

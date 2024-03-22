@@ -1,5 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using DataStorage;
+using Newtonsoft.Json;
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -13,6 +15,8 @@ public class MapManager : MonoBehaviour
 
     private GameObject _obj;
 
+    private PlaceDBDatas _placeDB;
+
     public GameObject _marker;
     public GameObject _popup;
     public List<(Vector2,string)> _mapDate = new List<(Vector2,string)>();
@@ -23,6 +27,10 @@ public class MapManager : MonoBehaviour
         _ped = new PointerEventData(null);
         _rrList = new List<RaycastResult>();
 
+         // var obj = Resources.Load(모시깽 DB 파일 이름);
+         // _placeDB = JsonConvert.DeserializeObject<PlaceDB>(obj);
+        
+        //TODO : Value를 바꿔야될수도? _placeDB의 Name값 가져와서 세팅 
         _mapDate.Add((new Vector2(396, 1080 + -539), "경찰서"));
         _mapDate.Add((new Vector2(1684, 1080 + -363), "인적 드문 숲"));
         _mapDate.Add((new Vector2(1245, 1080 + -446), "택배회사"));
@@ -35,6 +43,7 @@ public class MapManager : MonoBehaviour
         _mapDate.Add((new Vector2(548, 1080 + -171), "탐정사무소"));
 
 
+        //자기 있는 곳에 또 다시 방문할 수도 있음.
         for (int i = 0; i < _mapDate.Count; i++)
         {
             var _newMark = Instantiate(_marker, _mapDate[i].Item1, Quaternion.identity, gameObject.transform);
@@ -46,14 +55,7 @@ public class MapManager : MonoBehaviour
         var _pp = Instantiate(_popup, new Vector3(960,540,0), Quaternion.identity, gameObject.transform);
         _pp.SetActive(false);
     }
-
-    private void Start()
-    {
-        
-    }
-
-
-    // Update is called once per frame
+    
     void Update()
     {
         _ped.position = Input.mousePosition;
@@ -99,10 +101,16 @@ public class MapManager : MonoBehaviour
         }
     }
 
-    public void ClickMarker()
+    public void ClickMarker() //여기가 PopUp띄우는부분.
     {
-        transform.GetChild(12).gameObject.SetActive(true);
+        var popupUI = transform.GetChild(12).gameObject;
+        popupUI.SetActive(true);
+        if (popupUI.TryGetComponent(out PopupBtn popupBtn))
+        {
+            //popupBtn.num = _obj.transform.GetChild(1).GetComponent<Text>().text;
+            popupBtn.Move();
+        }
         string _popupText = _obj.transform.GetChild(1).gameObject.GetComponent<Text>().text;
-        transform.GetChild(12).gameObject.transform.GetChild(1).GetComponent<Text>().text = _popupText;
+        popupUI.transform.GetChild(1).GetComponent<Text>().text = _popupText;
     }
 }
