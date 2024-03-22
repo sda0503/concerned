@@ -11,5 +11,4 @@ public class Map2 : MonoBehaviour
     {
         //어떤 NPC를 눌러도 같은 채팅이 나오도록
     }
-    
 }
