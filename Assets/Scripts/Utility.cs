@@ -38,16 +38,17 @@ public class Utility
 
     public void OnClickToFindTriggerItem(int index, Transform canvas)
     {
-        if (!ItemDataManager.Instance.triggerItemData.ContainsKey(index))
+        if (!ItemManager.Instance.triggerItems.ContainsKey(index))
         {
-            var obj = Object.Instantiate(GameObjectLoad("Prefabs/TriggerItem"), canvas);
+            var obj = GameObjectLoad("Prefabs/TriggerItem");
             Sprite sprite = SpriteLoad("Look");
             //sprite가 없으면 Debug찍힐 수 있도록 설정해주는 것이 좋음. 27줄처럼 한번에 작성은 ㄴㄴ함.
-
             obj.transform.GetComponent<Image>().sprite = sprite; //index에 맞춰서 이미지 로드되도록 설정
-            ItemDataManager.Instance.triggerItemData.Add(index, obj);
+            obj.transform.GetComponent<TriggerItem>().id = index;
+            obj = Object.Instantiate(obj, canvas);
+            ItemManager.Instance.GetTriggerItem(index, obj);
         }
-        else ItemDataManager.Instance.triggerItemData[index].SetActive(true);
+        else ItemManager.Instance.triggerItems[index].SetActive(true);
     }
 
     //-----------------------------------------------------------------------------------------
