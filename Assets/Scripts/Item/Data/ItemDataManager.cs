@@ -24,8 +24,6 @@ public class ItemDataManager
         }
     }
 
-    public Dictionary<int, GameObject> triggerItemData = new Dictionary<int, GameObject>();
-
 
     //--------------------------------------------------------------------
     //Dogam, �������� ���� ������ ����

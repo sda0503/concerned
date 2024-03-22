@@ -18,10 +18,11 @@ public class ItemManager : MonoBehaviour
         }
     }
 
-    public Item[] items = new Item[ItemDataManager.Instance.GetDefaultItemDataList().Data.Count]; //������ ����ִ� ������
-    public TriggerItem[] triggerItems = new TriggerItem[ItemDataManager.Instance.GetDefaultItemDataList().Trigger.Count];
+    public Item[] itemsData = new Item[ItemDataManager.Instance.GetDefaultItemDataList().Data.Count]; //������ ����ִ� ������
+    public TriggerItem[] triggerItemsData = new TriggerItem[ItemDataManager.Instance.GetDefaultItemDataList().Trigger.Count];
 
     public Dictionary<int, Item> getItems = new Dictionary<int, Item>(); //���� Item��
+    public Dictionary<int, GameObject> triggerItems = new Dictionary<int, GameObject>();
     public List<int> getItemsNumber = new List<int>(); //���� Item�� ����
 
     private void Start()
@@ -31,20 +32,25 @@ public class ItemManager : MonoBehaviour
 
     public void SetItemData()
     {
-        for (int i = 0; i < items.Length; i++)
+        for (int i = 0; i < itemsData.Length; i++)
         {
-            items[i] = new Item(i);
+            itemsData[i] = new Item(i);
         }
-        for (int i = 0; i < triggerItems.Length; i++)
+        for (int i = 0; i < triggerItemsData.Length; i++)
         {
-            triggerItems[i] = new TriggerItem(i);
+            triggerItemsData[i] = new TriggerItem(i);
         }
     }
 
     public void GetItem(int item_id)
     {
-        getItems.Add(item_id, items[item_id]);
+        getItems.Add(item_id, itemsData[item_id]);
         getItemsNumber.Add(item_id);
-        GameManager.Instance.saveGetItems.Data.Add(items[item_id].itemData);
+        GameManager.Instance.saveGetItems.Data.Add(itemsData[item_id].itemData);
+    }
+
+    public void GetTriggerItem(int item_id, GameObject obj)
+    {
+        triggerItems.Add(item_id, obj);
     }
 }
