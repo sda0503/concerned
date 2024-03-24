@@ -24,6 +24,8 @@ public class GameManager : MonoBehaviour
     private CanvasDic _canvasDic = new CanvasDic();
 
     [SerializeField] private GameObject canvasparents;
+    [SerializeField] private Canvas bgCanvas;
+    private Image bgImage => bgCanvas.GetComponentInChildren<Image>();
     [SerializeField] private GameObject origin;
 
     #endregion
@@ -44,8 +46,6 @@ public class GameManager : MonoBehaviour
             return instance;
         }
     }
-
-    
 
     
     private void Start()
@@ -121,9 +121,9 @@ public class GameManager : MonoBehaviour
             //예시 : CanvasGroup의 ID에 맞는 오브젝트의 컴포넌트에 접근해서 ObjectSet이라는 메서드를 실행
             CanvasGroup[Playerinformation.position].GetComponent<CanvasOnLoad>().ObjectSet(_canvasDic.CanvasContorllers[Playerinformation.position]);
             //아예 다 하이어라키에 올려놓는 것도 방법이겠지만, 가능하면 위 방법으로 진행하자.
-            ;
-            
         }
+
+        bgImage.sprite = Resources.Load<Sprite>("Image/map/map0"); //맵 배경 바뀌는 부분은 조건에 상관없이 동작.
     }
 
     //전체 갈수있는 방을 List로 넣어놓고 ex)왼쪽으로 -1, 오른쪽+1

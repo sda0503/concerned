@@ -39,10 +39,11 @@ public class CanvasOnLoad : MonoBehaviour
                     //interactList[i].GetComponent<Button>().onClick.AddListener(() => 사용할 메서드(매개변수 : out에 있는 데이터를 가지고 있는 스크립트에서 꺼내쓸 것));
                     if (interactList[i].gameObject.TryGetComponent(out interactableNPC interactableNpc))
                     {
-                        interactableNpc.gameObject.GetComponent<Button>().onClick.AddListener(()=> DialogueManager.instance.StartDialogue(interactableNpc.TargetName));
+                        //interactableNpc.gameObject.GetComponent<Button>().onClick.AddListener(()=> DialogueManager.instance.StartDialogue(interactableNpc.TargetName));
                     }
                     else if (interactList[i].gameObject.TryGetComponent(out interactableItem interactableItem))
                     {
+                        //아이템 넣는거 한번만 실행되려면 얘는 동적으로 해주는게 맞음.
                         interactableItem.gameObject.GetComponent<Button>().onClick.AddListener(()=>Utility.Instance.OnClickToFindItem(interactableItem.ItemId,DataManager.instance.itemCanvas));
                     }
                     

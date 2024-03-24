@@ -2571,6 +2571,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TargetName: "\uAC15\uBBFC\uC6B0"
+  btn: {fileID: 1096333947}
 --- !u!1 &1136412045
 GameObject:
   m_ObjectHideFlags: 0
@@ -3810,6 +3811,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvasparents: {fileID: 1396980237}
+  bgCanvas: {fileID: 1828603856}
   origin: {fileID: 828680649}
   _canvas: {fileID: 828680652}
 --- !u!1 &1425652926
@@ -4074,6 +4076,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TargetName: "\uD765\uC2E0\uC18C \uD0D0\uC815"
+  btn: {fileID: 1096333947}
 --- !u!1 &1451461538
 GameObject:
   m_ObjectHideFlags: 0
