@@ -109,7 +109,7 @@ public class DialogueManager : MonoBehaviour
 
     public void StartDialogue(string targetname)
     {
-        _forechatObject.SetActive(false);
+        
         contextcount = CheckQuest(targetname);
 
         if (contextcount == 0)
@@ -118,6 +118,7 @@ public class DialogueManager : MonoBehaviour
         }
         else //대화 가능
         {
+            _forechatObject.SetActive(false);
             //_confirmbtn.gameObject.SetActive(true);
             _chatWindow.SetActive(true);
             //btn3.gameObject.SetActive(false);
