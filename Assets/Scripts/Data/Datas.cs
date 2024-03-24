@@ -181,9 +181,9 @@ namespace DataStorage
 
     public class PlaceDB
     {
-        private int Place_ID; //Index
-        private string Place_Name; // 이름
-        private string Place_Path; // Resources.Load에 사용할 주소값
+       public int Place_ID; //Index
+       public string Place_Name; // 이름
+       public string Place_Path; // Resources.Load에 사용할 주소값
     }
 
     public class PlaceDBDatas

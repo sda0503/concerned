@@ -7,10 +7,10 @@ using UnityEngine.UI;
 public class interactableNPC : interactableObject
 {
     public string TargetName;
-    [SerializeField] private Button btn;
 
-    private void Start()
+    protected override void Start()
     {
+        base.Start();
         btn.onClick.AddListener(()=>DialogueManager.instance.StartDialogue(TargetName));
     }
 }

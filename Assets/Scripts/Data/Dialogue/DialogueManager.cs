@@ -19,6 +19,7 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] private Image _characterImage;
     [SerializeField] private Image _choiceWindow;
     [SerializeField] private Button _ChatlogBtn;
+    [SerializeField] private GameObject _forechatObject;
 
     public static DialogueManager instance;
 
@@ -108,6 +109,7 @@ public class DialogueManager : MonoBehaviour
 
     public void StartDialogue(string targetname)
     {
+        _forechatObject.SetActive(false);
         contextcount = CheckQuest(targetname);
 
         if (contextcount == 0)
@@ -189,6 +191,7 @@ public class DialogueManager : MonoBehaviour
             questcount = 0;
             _characterImage.sprite = null;
             _characterImage.gameObject.SetActive(false);
+            _forechatObject.SetActive(true);
 
             //대화가 모두 종료되면 반복되는 대화 지문으로 넘겨야할듯. 이야기가 진행되면 거기서도 빠져나올 수 있어야함.
             //조건을 하나 붙이는게 좋을거같음. 만약 어떤 아이템이 있으면 다음 퀘스트로, 아니면 반복지문으로 가는데 어떤 아이템을 먹으면 시작 주소를 바꿔준다던지

@@ -19,7 +19,7 @@ public class MapManager : MonoBehaviour
 
     public GameObject _marker;
     public GameObject _popup;
-    public List<(Vector2,string)> _mapDate = new List<(Vector2,string)>();
+    public List<(Vector2,string,int)> _mapDate = new List<(Vector2,string,int)>();
 
     public void Awake()
     {
@@ -31,16 +31,16 @@ public class MapManager : MonoBehaviour
          // _placeDB = JsonConvert.DeserializeObject<PlaceDB>(obj);
         
         //TODO : Value를 바꿔야될수도? _placeDB의 Name값 가져와서 세팅 
-        _mapDate.Add((new Vector2(396, 1080 + -539), "경찰서"));
-        _mapDate.Add((new Vector2(1684, 1080 + -363), "인적 드문 숲"));
-        _mapDate.Add((new Vector2(1245, 1080 + -446), "택배회사"));
-        _mapDate.Add((new Vector2(594, 1080 + -756), "빗테크 오피스"));
-        _mapDate.Add((new Vector2(646, 1080 + -270), "빗테크 오피스텔"));
-        _mapDate.Add((new Vector2(692, 1080 + -885), "병원 & 장례식장"));
-        _mapDate.Add((new Vector2(331, 1080 + -950), "양현서의 집"));
-        _mapDate.Add((new Vector2(505, 1080 + -322), "변호사 사무실"));
-        _mapDate.Add((new Vector2(1731, 1080 + -578), "신현우의 집"));
-        _mapDate.Add((new Vector2(548, 1080 + -171), "탐정사무소"));
+        _mapDate.Add((new Vector2(396, 1080 + -539), "경찰서",0));
+        _mapDate.Add((new Vector2(1684, 1080 + -363), "인적 드문 숲",1));
+        _mapDate.Add((new Vector2(1245, 1080 + -446), "택배회사",2));
+        _mapDate.Add((new Vector2(594, 1080 + -756), "빗테크 오피스",3));
+        _mapDate.Add((new Vector2(646, 1080 + -270), "빗테크 오피스텔",4));
+        _mapDate.Add((new Vector2(692, 1080 + -885), "병원 & 장례식장",5));
+        _mapDate.Add((new Vector2(331, 1080 + -950), "양현서의 집",6));
+        _mapDate.Add((new Vector2(505, 1080 + -322), "변호사 사무실",7));
+        _mapDate.Add((new Vector2(1731, 1080 + -578), "신현우의 집",8));
+        _mapDate.Add((new Vector2(548, 1080 + -171), "탐정사무소",9));
 
 
         //자기 있는 곳에 또 다시 방문할 수도 있음.
@@ -50,7 +50,9 @@ public class MapManager : MonoBehaviour
             _newMark.GetComponent<Button>().onClick.AddListener(ClickMarker);
             _newMark.transform.GetChild(0).gameObject.SetActive(false);
             _newMark.transform.GetChild(1).gameObject.SetActive(false);
+            _newMark.transform.GetChild(2).gameObject.SetActive(false);
             _newMark.transform.GetChild(1).GetComponent<Text>().text = _mapDate[i].Item2;
+            _newMark.transform.GetChild(2).GetComponent<Text>().text = _mapDate[i].Item3.ToString();
         }
         var _pp = Instantiate(_popup, new Vector3(960,540,0), Quaternion.identity, gameObject.transform);
         _pp.SetActive(false);
@@ -85,6 +87,7 @@ public class MapManager : MonoBehaviour
             { 
                 _obj.transform.GetChild(0).gameObject.SetActive(true);
                 _obj.transform.GetChild(1).gameObject.SetActive(true);
+                _obj.transform.GetChild(2).gameObject.SetActive(true);
                 _isMouseOver = true;
             }
         }
@@ -97,6 +100,7 @@ public class MapManager : MonoBehaviour
             if (GetClickedUIObject() != null) return;
             _obj.transform.GetChild(0).gameObject.SetActive(false);
             _obj.transform.GetChild(1).gameObject.SetActive(false);
+            _obj.transform.GetChild(2).gameObject.SetActive(false);
             _isMouseOver = false;
         }
     }
@@ -107,8 +111,9 @@ public class MapManager : MonoBehaviour
         popupUI.SetActive(true);
         if (popupUI.TryGetComponent(out PopupBtn popupBtn))
         {
-            //popupBtn.num = _obj.transform.GetChild(1).GetComponent<Text>().text;
-            popupBtn.Move();
+            popupBtn.posID = int.Parse(_obj.transform.GetChild(2).GetComponent<Text>().text);
+            Debug.Log($"{popupBtn.posID} | {_obj.transform.GetChild(1).GetComponent<Text>().text}");
+            //popupBtn.Move();
         }
         string _popupText = _obj.transform.GetChild(1).gameObject.GetComponent<Text>().text;
         popupUI.transform.GetChild(1).GetComponent<Text>().text = _popupText;

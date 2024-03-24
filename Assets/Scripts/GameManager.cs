@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Text;
 using DataStorage;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -27,6 +28,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Canvas bgCanvas;
     private Image bgImage => bgCanvas.GetComponentInChildren<Image>();
     [SerializeField] private GameObject origin;
+    [SerializeField] private Text _Datetext;
+    
 
     #endregion
 
@@ -51,17 +54,28 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         CanvasOnLoad canvasOnLoad = _canvas.GetComponent<CanvasOnLoad>();
-        canvasOnLoad.ObjectSet(new List<bool>{false,false,false});   
+        canvasOnLoad.ObjectSet(new List<bool>{false,false,false});
+        DateUpdate();
     }
 
     public void DateChange()
     {
         Playerinformation.date++;
         OnDateChange?.Invoke(); //UIUpdate (날짜표시)
+        DateUpdate();
         if (Playerinformation.date == 30)
         {
             //TODO : 선택하는 씬으로 넘어가야됨
         }
+    }
+
+    void DateUpdate() //TODO : UI변경에 관한 부분은 모두 UIManager로 넘길 것
+    {
+        StringBuilder sb = new StringBuilder();
+        sb.Append(Playerinformation.date.ToString());
+        sb.Append("일차 ");
+        sb.Append(Playerinformation.dayTime.ToString());
+        _Datetext.text = sb.ToString();
     }
 
     public void DayTimeChange()
@@ -73,6 +87,7 @@ public class GameManager : MonoBehaviour
         if (daytime == 3)
             DateChange();
         Playerinformation.dayTime = (Information.DayTimeenum)(daytime % 3);
+        DateUpdate();
         //나머지연산자로 하면 if없이 순환시킬 수 있다.
 
         OnDayTimeChange?.Invoke(); //UIUpdate //시간대 (조명, 휴대폰이나 다른 UI)
@@ -87,6 +102,7 @@ public class GameManager : MonoBehaviour
         CanvasChange();
         //OnPositionChange?.Invoke(); //UIUpdate 아마 BG 바꾸는 용도로 사용될 듯.
         //TODO : 위치 바뀌면 시간대 바뀌는걸로 추가.
+        DayTimeChange();
     }
 
     /// <summary>

@@ -17,6 +17,8 @@ public class DataManager : MonoBehaviour//유니티 기능을 상속 받는거 /
     public static DataManager instance;
     
     public ItemDataList saveGetItems = new ItemDataList();
+
+    public PlaceDBDatas PlaceDBDatas;
     
     public Transform itemCanvas;
 
@@ -50,6 +52,13 @@ public class DataManager : MonoBehaviour//유니티 기능을 상속 받는거 /
     {
         string loadData = Resources.Load("Dialogue_DB").ToString();
         Dialogue_List dialogueList = JsonConvert.DeserializeObject<Dialogue_List>(loadData);
+
+        string placeDB = Resources.Load("PlaceDB").ToString();
+        PlaceDBDatas = JsonConvert.DeserializeObject<PlaceDBDatas>(placeDB);
+        // foreach (var VARIABLE in PlaceDBDatas.PlaceDB) //확인용
+        // {
+        //     Debug.Log(VARIABLE.Place_Name);
+        // }
         dic.DialogueDic.Clear(); //public 일 때는 클리어 한번 해주는게 좋음.
         
         for (int i = 0; i < dialogueList.Dialouge_Log_Data.Count; i++)

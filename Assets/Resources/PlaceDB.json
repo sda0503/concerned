@@ -1,0 +1,54 @@
+{
+  "PlaceDB": [
+    {
+      "Place_ID": "0",
+      "Place_Name": "경찰서",
+      "Place_Path": null
+    },
+    {
+      "Place_ID": "1",
+      "Place_Name": "인적 드문 숲",
+      "Place_Path": null
+    },
+    {
+      "Place_ID": "2",
+      "Place_Name": "택배회사",
+      "Place_Path": null
+    },
+    {
+      "Place_ID": "3",
+      "Place_Name": "빗테크 오피스",
+      "Place_Path": null
+    },
+    {
+      "Place_ID": "4",
+      "Place_Name": "빗테크 오피스텔",
+      "Place_Path": null
+    },
+    {
+      "Place_ID": "5",
+      "Place_Name": "병원 & 장례식장",
+      "Place_Path": null
+    },
+    {
+      "Place_ID": "6",
+      "Place_Name": "양현서의 집",
+      "Place_Path": null
+    },
+    {
+      "Place_ID": "7",
+      "Place_Name": "변호사 사무실",
+      "Place_Path": null
+    },
+    {
+      "Place_ID": "8",
+      "Place_Name": "신현우의 집",
+      "Place_Path": null
+    },
+    {
+      "Place_ID": "9",
+      "Place_Name": "탐정사무소",
+      "Place_Path": null
+    }
+  ]
+}
