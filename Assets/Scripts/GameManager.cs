@@ -56,6 +56,9 @@ public class GameManager : MonoBehaviour
         CanvasOnLoad canvasOnLoad = _canvas.GetComponent<CanvasOnLoad>();
         canvasOnLoad.ObjectSet(new List<bool>{false,false,false});
         DateUpdate();
+        //test        
+        CanvasGroup.Add(-1,origin);
+        Playerinformation.position = -1;
     }
 
     public void DateChange()
@@ -97,7 +100,7 @@ public class GameManager : MonoBehaviour
         //엑셀로 관리 : 기획자나 다른사람이 관리하기에 편함 협업에 유리 . 코드로 관리 : 개발자가 전체 관리하면 해도됨 근데 컴파일 되는거신경써야됨.
     {
         origin.gameObject.SetActive(false);
-        //CanvasGroup[Playerinformation.position].SetActive(false);
+        CanvasGroup[Playerinformation.position].SetActive(false);
         Playerinformation.position = PosID;
         CanvasChange();
         //OnPositionChange?.Invoke(); //UIUpdate 아마 BG 바꾸는 용도로 사용될 듯.
@@ -139,7 +142,8 @@ public class GameManager : MonoBehaviour
             //아예 다 하이어라키에 올려놓는 것도 방법이겠지만, 가능하면 위 방법으로 진행하자.
         }
 
-        bgImage.sprite = Resources.Load<Sprite>("Image/map/map0"); //맵 배경 바뀌는 부분은 조건에 상관없이 동작.
+        bgImage.sprite = Resources.Load<Sprite>(DataManager.instance.PlaceDBDatas.PlaceDB[Playerinformation.position].Place_Path); //맵 배경 바뀌는 부분은 조건에 상관없이 동작.
+            //bgImage.sprite = Resources.Load<Sprite>("Image/map/map3"); //맵 배경 바뀌는 부분은 조건에 상관없이 동작.
     }
 
     //전체 갈수있는 방을 List로 넣어놓고 ex)왼쪽으로 -1, 오른쪽+1
