@@ -109,7 +109,6 @@ public class DialogueManager : MonoBehaviour
 
     public void StartDialogue(string targetname)
     {
-       
         contextcount = CheckQuest(targetname);
 
         if (contextcount == 0)
