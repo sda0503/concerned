@@ -12,6 +12,8 @@ public class interactableItem : interactableObject
     private Image _image;
     //private Sprite _image;
     public int ItemId;
+
+    public ItemType ItemType => ItemDataManager.Instance.GetDefaultItemDataList().Data[ItemId].itemType;
     //Type으로 trigger랑 분류해도 될 듯?
 
     protected override void Start()

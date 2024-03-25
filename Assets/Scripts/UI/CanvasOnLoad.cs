@@ -44,7 +44,14 @@ public class CanvasOnLoad : MonoBehaviour
                     else if (interactList[i].gameObject.TryGetComponent(out interactableItem interactableItem))
                     {
                         //아이템 넣는거 한번만 실행되려면 얘는 동적으로 해주는게 맞음.
-                        interactableItem.gameObject.GetComponent<Button>().onClick.AddListener(()=>Utility.Instance.OnClickToFindItem(interactableItem.ItemId,DataManager.instance.itemCanvas));
+                        if (interactableItem.ItemType == ItemType.Normal)
+                        {
+                            interactableItem.gameObject.GetComponent<Button>().onClick.AddListener(()=>Utility.Instance.OnClickToFindItem(interactableItem.ItemId,DataManager.instance.itemCanvas));    
+                        }
+                        else if (interactableItem.ItemType == ItemType.Trigger)
+                        {
+                            interactableItem.gameObject.GetComponent<Button>().onClick.AddListener(()=>Utility.Instance.OnClickToFindTriggerItem(interactableItem.ItemId,DataManager.instance.itemCanvas));   
+                        }
                     }
                     
                     //TODO : 대화가 필요하면 DialogueManager의 StartDialogue와 연결, Utility의 OnClickToFindItem이랑 연결, 트리거 아이템은 또 다르게 연결해야함. 분별점 찾을 것.

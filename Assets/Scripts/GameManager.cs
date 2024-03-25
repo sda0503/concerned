@@ -29,6 +29,8 @@ public class GameManager : MonoBehaviour
     private Image bgImage => bgCanvas.GetComponentInChildren<Image>();
     [SerializeField] private GameObject origin;
     [SerializeField] private Text _Datetext;
+
+    private string BGFilePath = "Image/map";
     
 
     #endregion
@@ -76,8 +78,7 @@ public class GameManager : MonoBehaviour
     {
         StringBuilder sb = new StringBuilder();
         sb.Append(Playerinformation.date.ToString());
-        sb.Append("일차 ");
-        sb.Append(Playerinformation.dayTime.ToString());
+        sb.Append($"일차 {GetDayTime()}");
         _Datetext.text = sb.ToString();
     }
 
@@ -94,6 +95,20 @@ public class GameManager : MonoBehaviour
         //나머지연산자로 하면 if없이 순환시킬 수 있다.
 
         OnDayTimeChange?.Invoke(); //UIUpdate //시간대 (조명, 휴대폰이나 다른 UI)
+    }
+    
+    private string GetDayTime() //정서에 맞게 변환
+    {
+        switch (Playerinformation.dayTime)
+        {
+            case Information.DayTimeenum.Evening:
+                return "오전";
+            case Information.DayTimeenum.Afternoon:
+                return "오후";
+            case Information.DayTimeenum.Night:
+                return "저녁";
+        }
+        return "";
     }
 
     public void PositionChange(int PosID) 
@@ -141,14 +156,21 @@ public class GameManager : MonoBehaviour
             CanvasGroup[Playerinformation.position].GetComponent<CanvasOnLoad>().ObjectSet(_canvasDic.CanvasContorllers[Playerinformation.position]);
             //아예 다 하이어라키에 올려놓는 것도 방법이겠지만, 가능하면 위 방법으로 진행하자.
         }
+       
+       
 
-        bgImage.sprite = Resources.Load<Sprite>(DataManager.instance.PlaceDBDatas.PlaceDB[Playerinformation.position].Place_Path); //맵 배경 바뀌는 부분은 조건에 상관없이 동작.
-            //bgImage.sprite = Resources.Load<Sprite>("Image/map/map3"); //맵 배경 바뀌는 부분은 조건에 상관없이 동작.
+        bgImage.sprite = Resources.Load<Sprite>($"{BGFilePath}/{Playerinformation.dayTime.ToString()}/{DataManager.instance.PlaceDBDatas.PlaceDB[Playerinformation.position].Place_Path}");
+        //TODO : 순서대로 배경폴더/시간대폴더/배경이름
+        //TODO : 맵 배경 바뀌는 부분은 조건에 상관없이 동작. + 시간대 따져야됨
+        //bgImage.sprite = Resources.Load<Sprite>("Image/map/map3"); //맵 배경 바뀌는 부분은 조건에 상관없이 동작.
     }
+
+  
 
     //전체 갈수있는 방을 List로 넣어놓고 ex)왼쪽으로 -1, 오른쪽+1
     //TODO : 캔버스 불러오는거 작성, 캔버스에 들어갈 스크립트도 짜야되고, 각 버튼들 스크립트도 생각해야됨. 캔버스에 직렬화해서 버튼들 달아주고 enabled랑 disabled일때
     //TODO : 방 이동하는 건 버튼에 스크립트에 public으로 int달아줘서 맵 주소 달아주기.
+    //TODO : 제일 최근생각 : 어차피 버튼에 동적으로 달건 달고, 아닌건 안함 => 장소끼리 이동하는 경우는 0번 위치로만 가고 내부 이동은 버튼에 미리 path 다 달아서 사용하자.
     //Path : 아파트/아파트입구[0] // 낮/점심/저녁
     //Resources.Load<Sprite>($"{Playerinformation.dayTime.ToString()}/{PositionDB[Playerinformation.position]}/0"); //이런 느낌으로 Path 지정
     
