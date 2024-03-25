@@ -122,6 +122,8 @@ public class GameManager : MonoBehaviour
         //TODO : 위치 바뀌면 시간대 바뀌는걸로 추가.
         DayTimeChange();
     }
+    //TODO : 이걸 맵 내부에서 이동하는거에 재사용 하려면? 1. Map 켜서 이동하는 PopupBtn에 DayTimeChange 달아주어서 분리하면 되긴 함.
+    // 2. 1번이 제일 나은 듯. 굳이 이게 어디서 왔는지 따져서 갈라줄 필요는 없다고 생각함.
 
     /// <summary>
     /// 캔버스 변경할 때 사용하는 메서드
@@ -142,7 +144,6 @@ public class GameManager : MonoBehaviour
             canvasinstance.SetActive(true);
              if (canvasinstance.gameObject.TryGetComponent(out CanvasOnLoad canvasOnLoad))
              {
-                 Debug.Log(canvasOnLoad.states.Count);
                  CanvasGroup.Add(Playerinformation.position, canvasinstance);
                  _canvasDic.CanvasContorllers.Add(Playerinformation.position, canvasOnLoad.states);
                  canvasOnLoad.ObjectSet(_canvasDic.CanvasContorllers[Playerinformation.position]);

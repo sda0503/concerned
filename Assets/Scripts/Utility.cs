@@ -40,12 +40,13 @@ public class Utility
     {
         if (!ItemDataManager.Instance.triggerItemData.ContainsKey(index))
         {
-            var obj = Object.Instantiate(GameObjectLoad("Prefabs/TriggerItem"), canvas);
-            Sprite sprite = SpriteLoad("Look");
+            var obj = GameObjectLoad("Prefabs/TriggerItem");
+            //Sprite sprite = SpriteLoad("Look");
             //sprite�� ������ Debug���� �� �ֵ��� �������ִ� ���� ����. 27��ó�� �ѹ��� �ۼ��� ������.
-
-            obj.transform.GetComponent<Image>().sprite = sprite; //index�� ���缭 �̹��� �ε�ǵ��� ����
-            ItemDataManager.Instance.triggerItemData.Add(index, obj);
+            //obj.transform.GetComponent<Image>().sprite = sprite; //index�� ���缭 �̹��� �ε�ǵ��� ����
+           // obj.transform.GetComponent<TriggerItem>().id = index;
+            obj = Object.Instantiate(obj, canvas);
+            //ItemManager.Instance.GetTriggerItem(index, obj);
         }
         else ItemDataManager.Instance.triggerItemData[index].SetActive(true);
     }

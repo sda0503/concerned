@@ -27,7 +27,14 @@ public class CanvasOnLoad : MonoBehaviour
     /// 오브젝트의 ON/Off 여부를 담당하는 메서드
     /// </summary>
     /// <param name="objectsState"></param>
-    public void ObjectSet(List<bool> objectsState) 
+    public void ObjectSet(List<bool> objectsState)  
+    /* TODO : 세팅할 때 Bool을 어떻게 정의, 관리해야하는가.     
+     * NPC : On/Off 조건은 이 사람이 계속 있을 수도 있고, 아니면 시간대에 따라 바뀔 수도 있음. 그 조건 설정을 어떻게 연계시킬까
+     * Item : 클릭해서 확인하거나, 인벤토리에 들어가거나 하면 꺼지는걸로?      
+     * NPC 세팅 자체를 더 세분화 해야될 것 같음. 따로 오더가 없어도 조건을 걸어서 알아서 On/Off 될 수 있도록 설정.
+     * 아이템의 경우는 사용하면 true값으로 바꿔주면 될 것 같음.
+     * 그러면 List를 분리해서 받아야되나?
+     */
     {
         for (int i = 0; i < interactList.Length; i++)
         {
@@ -44,13 +51,16 @@ public class CanvasOnLoad : MonoBehaviour
                     else if (interactList[i].gameObject.TryGetComponent(out interactableItem interactableItem))
                     {
                         //아이템 넣는거 한번만 실행되려면 얘는 동적으로 해주는게 맞음.
-                        if (interactableItem.ItemType == ItemType.Normal)
+                        if (interactableItem.ItemType == ItemType.Normal) //일반 아이템은 회수하면 더 이상 등장하지 않음.
                         {
-                            interactableItem.gameObject.GetComponent<Button>().onClick.AddListener(()=>Utility.Instance.OnClickToFindItem(interactableItem.ItemId,DataManager.instance.itemCanvas));    
+                            interactableItem.gameObject.GetComponent<Button>().onClick.AddListener(()=>Utility.Instance.OnClickToFindItem(interactableItem.ItemId,DataManager.instance.itemCanvas));
+                            
                         }
-                        else if (interactableItem.ItemType == ItemType.Trigger)
+                        else if (interactableItem.ItemType == ItemType.Trigger) //트리거 아이템은 다시 등장함.
                         {
-                            interactableItem.gameObject.GetComponent<Button>().onClick.AddListener(()=>Utility.Instance.OnClickToFindTriggerItem(interactableItem.ItemId,DataManager.instance.itemCanvas));   
+                            interactableItem.gameObject.GetComponent<Button>().onClick.AddListener(()=>Utility.Instance.OnClickToFindTriggerItem(interactableItem.ItemId,DataManager.instance.itemCanvas));
+                            int a = i;
+                            interactableItem.gameObject.GetComponent<Button>().onClick.AddListener(()=> StateChange(a));
                         }
                     }
                     
@@ -65,6 +75,11 @@ public class CanvasOnLoad : MonoBehaviour
             }
         }
         //TODO : 리스트에 오브젝트들 추가. 
+    }
+
+    private void StateChange(int i)
+    {
+        states[i] = true;
     }
 
     public List<bool> StateSet()

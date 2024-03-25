@@ -109,12 +109,12 @@ public class MapManager : MonoBehaviour
     {
         var popupUI = transform.GetChild(12).gameObject;
         popupUI.SetActive(true);
-        if (popupUI.TryGetComponent(out PopupBtn popupBtn))
+        if (!popupUI.TryGetComponent(out PopupBtn popupBtn))
         {
-            popupBtn.posID = int.Parse(_obj.transform.GetChild(2).GetComponent<Text>().text);
-            Debug.Log($"{popupBtn.posID} | {_obj.transform.GetChild(1).GetComponent<Text>().text}");
-            //popupBtn.Move();
+            Debug.Log("에러 발생 : 컴포넌트가 없음.");
+            return;
         }
+        popupBtn.posID = int.Parse(_obj.transform.GetChild(2).GetComponent<Text>().text);
         string _popupText = _obj.transform.GetChild(1).gameObject.GetComponent<Text>().text;
         popupUI.transform.GetChild(1).GetComponent<Text>().text = _popupText;
     }
