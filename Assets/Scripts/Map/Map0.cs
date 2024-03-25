@@ -29,11 +29,14 @@ public class Map0 : MonoBehaviour
         {
             case 0:
             case 1:
+
                 break;
             case 2:
+
                 break;
             case 3:
             case 4:
+
                 break;
             case 5:
                 break;
