@@ -109,7 +109,6 @@ public class DialogueManager : MonoBehaviour
 
     public void StartDialogue(string targetname)
     {
-        
         contextcount = CheckQuest(targetname);
 
         if (contextcount == 0)
@@ -135,7 +134,7 @@ public class DialogueManager : MonoBehaviour
                 allchatlog.Add(targetname,new chatlogdic());
             }
 
-            _characterImage.gameObject.SetActive(true);
+            //_characterImage.gameObject.SetActive(true);
 
             if (_questdic[Targetname][questcount - 1].QuestType == QuestType.Normal)
             {
@@ -215,6 +214,8 @@ public class DialogueManager : MonoBehaviour
         //     _characterImage.sprite = Resources.Load<Sprite>("Image/1x/돋보기");
         // }
 
+        //_characterImage.sprite = Resources.Load<Sprite>($"characters/{_dialogdic[contextcount].Name}");
+        
         StartCoroutine(LogTyper());
         Savelog();
         

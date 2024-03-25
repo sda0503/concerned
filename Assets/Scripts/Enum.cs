@@ -1,22 +1,21 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-//enum ¸ðÀ½ script
-public enum ItemType //ÀÌ°É·Î trigger¶û ¾Æ´Ñ°Å¶û ±¸ºÐ
+//enum ëª¨ìŒ script
+public enum ItemEventType
 {
-    Photo, Object
+    Nomal, 
+    Event, 
+    Usable, //usableì€ ì‚¬ìš©ì„ ëˆ„ë¥´ê±°ë‚˜ í´ë¦­ì„ í•œë²ˆ ë” í•˜ë©´ ì‚¬ë¼ì§€ë©´ì„œ ì•ˆì— ìˆ¨ê²¨ì§„ ì•„ì´í…œì´ ë‚˜ì˜¤ë„ë¡ ì„¤ì •
+    Interaction //ìƒí˜¸ìž‘ìš©ì´ ê°€ëŠ¥í•œ ì•„ì´í…œ. ì¸ë²¤í† ë¦¬ì— ë“¤ì–´ê°€ì§€ ì•ŠìŒ.
+} //TODO : ì‚­ì œ ëŒ€ê¸° ì¤‘
+
+public enum ItemType
+{
+    Normal, 
+    Trigger
 }
 
-public enum LocationEvent //¾ÆÀÌÅÛÀ» °¡Áö°í Æ¯Á¤ Àå¼Ò¿¡¼­ Å½»öÇÏ¸é ÀÌº¥Æ® ¹ßµ¿µÇµµ·Ï
+public enum LocationEvent //ì•„ì´í…œì„ ê°€ì§€ê³  íŠ¹ì • ìž¥ì†Œì—ì„œ íƒìƒ‰í•˜ë©´ ì´ë²¤íŠ¸ ë°œë™ë˜ë„ë¡
 {
-    House, Police, Office
-}
-
-public enum ItemEventType // ->
-{
-    Nomal,
-    Event,
-    Usable, //usableÀº »ç¿ëÀ» ´©¸£°Å³ª Å¬¸¯À» ÇÑ¹ø ´õ ÇÏ¸é »ç¶óÁö¸é¼­ ¾È¿¡ ¼û°ÜÁø ¾ÆÀÌÅÛÀÌ ³ª¿Àµµ·Ï ¼³Á¤
-    Interaction //»óÈ£ÀÛ¿ëÀÌ °¡´ÉÇÑ ¾ÆÀÌÅÛ. ÀÎº¥Åä¸®¿¡ µé¾î°¡Áö ¾ÊÀ½.
+    House,
+    Police,
+    Office //TODO : ì•„ì´í…œ ê°€ì§€ê³  í•´ë‹¹ ìœ„ì¹˜ë¡œ ê°€ë©´ NPC ë“±ìž¥ ë“± ì´ë²¤íŠ¸ ë°œìƒ
 }
