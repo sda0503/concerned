@@ -38,16 +38,17 @@ public class Utility
 
     public void OnClickToFindTriggerItem(int index, Transform canvas)
     {
-        if (!ItemDataManager.Instance.triggerItemData.ContainsKey(index))
+        if (!ItemManager.Instance.triggerItems.ContainsKey(index))
         {
-            var obj = Object.Instantiate(GameObjectLoad("Prefabs/TriggerItem"), canvas);
+            var obj = GameObjectLoad("Prefabs/TriggerItem");
             Sprite sprite = SpriteLoad("Look");
             //sprite�� ������ Debug���� �� �ֵ��� �������ִ� ���� ����. 27��ó�� �ѹ��� �ۼ��� ������.
-
             obj.transform.GetComponent<Image>().sprite = sprite; //index�� ���缭 �̹��� �ε�ǵ��� ����
-            ItemDataManager.Instance.triggerItemData.Add(index, obj);
+            obj.transform.GetComponent<TriggerItem>().id = index;
+            obj = Object.Instantiate(obj, canvas);
+            ItemManager.Instance.GetTriggerItem(index, obj);
         }
-        else ItemDataManager.Instance.triggerItemData[index].SetActive(true);
+        else ItemManager.Instance.triggerItems[index].SetActive(true);
     }
 
     //-----------------------------------------------------------------------------------------
