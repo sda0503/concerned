@@ -4,6 +4,6 @@ using UnityEngine;
 
 public class PopupUIBase : MonoBehaviour
 {
-    //UI¿¡ ´ëÇÑ °øÅëÀûÀÎ ºÎºĞµé Àû¿ë.
+    //UIì— ëŒ€í•œ ê³µí†µì ì¸ ë¶€ë¶„ë“¤ ì ìš©.
 
 }

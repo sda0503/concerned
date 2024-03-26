@@ -9,8 +9,7 @@ using KoreanTyper;
 
 public class DialogueManager : MonoBehaviour
 {
-    [SerializeField] private Button[] choice_btn; 
-    [SerializeField] private Button[] npcs; 
+    [SerializeField] private Button[] choice_btn;
     [SerializeField] private Button _confirmbtn;
     [SerializeField] private Button _skipbtn;
     [SerializeField] private TextMeshProUGUI _chatTxt;
@@ -20,6 +19,7 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] private Image _choiceWindow;
     [SerializeField] private Button _ChatlogBtn;
     [SerializeField] private GameObject _forechatObject;
+    [SerializeField] private Button chatwindowBtn;
 
     public static DialogueManager instance;
 
@@ -52,13 +52,9 @@ public class DialogueManager : MonoBehaviour
             choice_btn[i].onClick.AddListener(() => btnclick(index));
         }
 
-        foreach (Button npc in npcs)
-        {
-            npc.onClick.AddListener(() => StartDialogue(npc.GetComponentInChildren<TextMeshProUGUI>().text));
-        }
-
-        _skipbtn.onClick.AddListener(PloatingAllText);
-        _confirmbtn.onClick.AddListener(ConfirmbtnClick);
+        //_skipbtn.onClick.AddListener(PloatingAllText);
+        chatwindowBtn.onClick.AddListener(ConfirmbtnClick);
+        //_confirmbtn.onClick.AddListener(ConfirmbtnClick);
         allchatlog = ChatLogManager.instance.allChatLog.allChatlog;
     }
 
@@ -121,13 +117,6 @@ public class DialogueManager : MonoBehaviour
             //_confirmbtn.gameObject.SetActive(true);
             _chatWindow.SetActive(true);
             //btn3.gameObject.SetActive(false);
-            foreach (Button npc in npcs)
-            {
-                if (npc.isActiveAndEnabled)
-                {
-                    npc.gameObject.SetActive(false);
-                }
-            }
 
             if (!allchatlog.ContainsKey(targetname))
             {
@@ -180,13 +169,6 @@ public class DialogueManager : MonoBehaviour
             }
 
             _chatWindow.SetActive(false);
-            foreach (Button npc in npcs)
-            {
-                if (!npc.isActiveAndEnabled)
-                {
-                    npc.gameObject.SetActive(true);
-                }
-            }
 
             questcount = 0;
             _characterImage.sprite = null;
@@ -200,29 +182,11 @@ public class DialogueManager : MonoBehaviour
     // 재사용 x 있는거 가져다 쓰기. List<chatlogData> a = new List<chatlogData>();
     void NormalLog()
     {
-        //일반 대화가 출력될 때 캐릭터 sprite를 변경해준다. 더 다듬어서 쓸 것(파일 이름, 타겟 이름 등)
-        // if (DataManager.instance.dic.DialogueDic[contextcount].Name == "경비원")
-        // {
-        //     _characterImage.sprite = Resources.Load<Sprite>("Image/1x/열쇠획득");    
-        // }
-        // else if(DataManager.instance.dic.DialogueDic[contextcount].Name == "형사")
-        // {
-        //     _characterImage.sprite = Resources.Load<Sprite>("Image/1x/캐릭터ex");
-        // }
-        // else if (DataManager.instance.dic.DialogueDic[contextcount].Name == "흥신소 탐정")
-        // {
-        //     _characterImage.sprite = Resources.Load<Sprite>("Image/1x/돋보기");
-        // }
-
-        //_characterImage.sprite = Resources.Load<Sprite>($"characters/{_dialogdic[contextcount].Name}");
-        
+        // TODO : _characterImage.sprite = Resources.Load<Sprite>($"characters/{_dialogdic[contextcount].Name}");
+        chatwindowBtn.onClick.RemoveListener(ConfirmbtnClick);
+        chatwindowBtn.onClick.AddListener(PloatingAllText);
         StartCoroutine(LogTyper());
         Savelog();
-        
-        //chatlogdic도 만들고 list도 만들고 
-       
-        // ChatLogManager.instance.chatlogData.Name = "";
-        // ChatLogManager.instance.chatlogData.Log = "";
     }
 
     void Savelog()
@@ -311,6 +275,8 @@ public class DialogueManager : MonoBehaviour
         FindNextLog();
         _confirmbtn.gameObject.SetActive(true); // = false;
         _skipbtn.gameObject.SetActive(false);
+        chatwindowBtn.onClick.RemoveAllListeners();
+        chatwindowBtn.onClick.AddListener(ConfirmbtnClick);
         //_confirmbtn.enabled = true;
 
         //json 역직렬화할때 int는 값이 비어있으면 오류가난다. string 받아서 tryparse 
@@ -329,6 +295,8 @@ public class DialogueManager : MonoBehaviour
         _chatTxt.text = dialogueData.Log;
         FindNextLog();
         _confirmbtn.gameObject.SetActive(true); // = false;
+        chatwindowBtn.onClick.RemoveAllListeners();
+        chatwindowBtn.onClick.AddListener(ConfirmbtnClick);
     }
 
     private void FindNextLog()
