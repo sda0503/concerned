@@ -35,6 +35,7 @@ public class Map7 : MonoBehaviour
                 break;
             case 3:
                 Utility.Instance.OnClickToFindTriggerItem(2, DataManager.instance.itemCanvas);
+
                 ItemManager.Instance.GetItem(7);
                 break;
         }
