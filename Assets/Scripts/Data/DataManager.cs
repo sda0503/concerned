@@ -19,8 +19,11 @@ public class DataManager : MonoBehaviour//유니티 기능을 상속 받는거 /
     public ItemDataList saveGetItems = new ItemDataList();
 
     public PlaceDBDatas PlaceDBDatas;
-    
+
+    [SerializeField]public Transform asdf;
+
     public Transform itemCanvas;
+    
 
     private void Awake()
     {
@@ -36,7 +39,14 @@ public class DataManager : MonoBehaviour//유니티 기능을 상속 받는거 /
     void Start()
     {
         Path = Application.persistentDataPath;
+        itemCanvas = asdf;
+        GameManager.Instance.OnPositionChange += itemCanvaschange;
         SetDatas();
+    }
+
+    void itemCanvaschange()
+    {
+        itemCanvas = GameManager.Instance.CanvasGroup[GameManager.Instance.Playerinformation.position].transform;
     }
     
     public void SaveData()

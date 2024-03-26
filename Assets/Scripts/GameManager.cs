@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour
 {
     private static GameManager instance;
 
-    private Information Playerinformation = new Information(); //TODO : 일단은 New
+    public Information Playerinformation = new Information(); //TODO : 일단은 New
 
     #region 뭔지 몰라도 조건이 많을것같아서 만듬
 
@@ -20,20 +20,19 @@ public class GameManager : MonoBehaviour
     public event Action OnDateChange; //날짜 변경 
     public event Action OnDayTimeChange; //시간 변경
     public event Action OnPositionChange; //장소 변경
-
-    private Dictionary<int, GameObject> CanvasGroup = new Dictionary<int, GameObject>(); //ID값으로 캔버스 저장.
+    
+    #endregion
+    public Dictionary<int, GameObject> CanvasGroup = new Dictionary<int, GameObject>(); //ID값으로 캔버스 저장.
     private CanvasDic _canvasDic = new CanvasDic();
 
     [SerializeField] private GameObject canvasparents;
     [SerializeField] private Canvas bgCanvas;
-    private Image bgImage => bgCanvas.GetComponentInChildren<Image>();
+    private Image bgImage; 
+    
     [SerializeField] private GameObject origin;
     [SerializeField] private Text _Datetext;
 
     private string BGFilePath = "Image/map";
-    
-
-    #endregion
 
     //TODO : Save 관련된 기능들도 event로 묶어서 관리
 
@@ -57,6 +56,7 @@ public class GameManager : MonoBehaviour
     {
         CanvasOnLoad canvasOnLoad = _canvas.GetComponent<CanvasOnLoad>();
         canvasOnLoad.ObjectSet(new List<bool>{false,false,false});
+        bgImage = bgCanvas.GetComponent<Image>();
         DateUpdate();
         //test        
         CanvasGroup.Add(-1,origin);
@@ -70,7 +70,7 @@ public class GameManager : MonoBehaviour
         DateUpdate();
         if (Playerinformation.date == 30)
         {
-            //TODO : 선택하는 씬으로 넘어가야됨
+            //TODO : 선택하는 씬(엔딩)으로 넘어가야됨
         }
     }
 
@@ -120,7 +120,6 @@ public class GameManager : MonoBehaviour
         CanvasChange();
         //OnPositionChange?.Invoke(); //UIUpdate 아마 BG 바꾸는 용도로 사용될 듯.
         //TODO : 위치 바뀌면 시간대 바뀌는걸로 추가.
-        DayTimeChange();
     }
     //TODO : 이걸 맵 내부에서 이동하는거에 재사용 하려면? 1. Map 켜서 이동하는 PopupBtn에 DayTimeChange 달아주어서 분리하면 되긴 함.
     // 2. 1번이 제일 나은 듯. 굳이 이게 어디서 왔는지 따져서 갈라줄 필요는 없다고 생각함.

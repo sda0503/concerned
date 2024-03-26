@@ -2668,6 +2668,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TargetName: "\uAC15\uBBFC\uC6B0"
+  check: 000000
 --- !u!1 &1136412045
 GameObject:
   m_ObjectHideFlags: 0
@@ -4173,6 +4174,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TargetName: "\uD765\uC2E0\uC18C \uD0D0\uC815"
+  check: 000000
 --- !u!1 &1451461538
 GameObject:
   m_ObjectHideFlags: 0
@@ -4495,7 +4497,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e4fefc085f58e84086419fabe3c80fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemCanvas: {fileID: 690883956}
+  asdf: {fileID: 828680653}
 --- !u!1 &1531598047
 GameObject:
   m_ObjectHideFlags: 0

@@ -59,7 +59,8 @@ public class CanvasOnLoad : MonoBehaviour
                         else if (interactableItem.ItemType == ItemType.Trigger) //트리거 아이템은 다시 등장함.
                         {
                             interactableItem.gameObject.GetComponent<Button>().onClick.AddListener(()=>Utility.Instance.OnClickToFindTriggerItem(interactableItem.ItemId,DataManager.instance.itemCanvas));
-                            int a = i;
+                            
+                            int a = i; //TODO : 임시 테스트용 나중에 변경할 것.
                             interactableItem.gameObject.GetComponent<Button>().onClick.AddListener(()=> StateChange(a));
                         }
                     }
