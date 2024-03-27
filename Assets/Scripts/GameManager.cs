@@ -135,10 +135,11 @@ public class GameManager : MonoBehaviour
     {
         //TODO : 캔버스를 세팅하는 부분에 오브젝트에 관한 Bool값을 가지는 데이터를 사용해보자.
         //TODO : 해당하는 캔버스가 없으면 Instanciate, 있으면 꺼져있을테니 다시 키는걸로. => 현재 있는거랑 동일한건지 체크해줘야됨.
+        string path = DataManager.instance.PlaceDBDatas.PlaceDB[Playerinformation.position].Place_Path; //방끼리 이동.
         if (!CanvasGroup.ContainsKey(Playerinformation.position)) 
             //캔버스 그룹이라는 실제 오브젝트가 존재하는 dic에 ID값을 가진 캔버스가 없으면, TODO : 로직에 맞게 수정 필요
         {
-            var obj = Resources.Load<GameObject>("Prefabs/Home");
+            var obj = Resources.Load<GameObject>($"Prefabs/{path}");
             var canvasinstance = Instantiate(obj, canvasparents.transform);
             canvasinstance.SetActive(true);
              if (canvasinstance.gameObject.TryGetComponent(out CanvasOnLoad canvasOnLoad))
@@ -156,13 +157,12 @@ public class GameManager : MonoBehaviour
             CanvasGroup[Playerinformation.position].GetComponent<CanvasOnLoad>().ObjectSet(_canvasDic.CanvasContorllers[Playerinformation.position]);
             //아예 다 하이어라키에 올려놓는 것도 방법이겠지만, 가능하면 위 방법으로 진행하자.
         }
-       
-       
 
-        bgImage.sprite = Resources.Load<Sprite>($"{BGFilePath}/{Playerinformation.dayTime.ToString()}/{DataManager.instance.PlaceDBDatas.PlaceDB[Playerinformation.position].Place_Path}");
+        bgImage.sprite = Resources.Load<Sprite>($"{BGFilePath}/{Playerinformation.dayTime.ToString()}/{path}");
         //TODO : 순서대로 배경폴더/시간대폴더/배경이름
         //TODO : 맵 배경 바뀌는 부분은 조건에 상관없이 동작. + 시간대 따져야됨
         //bgImage.sprite = Resources.Load<Sprite>("Image/map/map3"); //맵 배경 바뀌는 부분은 조건에 상관없이 동작.
+        //TODO : 리소스는 계속 읽는게 아니라 한 번로드 해놓고 재사용하는 것.
     }
 
   

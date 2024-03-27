@@ -2539,7 +2539,6 @@ MonoBehaviour:
   - {fileID: 1661962629}
   - {fileID: 463242195}
   - {fileID: 2060368092}
-  npcs: []
   _confirmbtn: {fileID: 243413570}
   _skipbtn: {fileID: 1222424264}
   _chatTxt: {fileID: 825089269}
@@ -2549,6 +2548,7 @@ MonoBehaviour:
   _choiceWindow: {fileID: 322752093}
   _ChatlogBtn: {fileID: 1494260970}
   _forechatObject: {fileID: 811208752}
+  chatwindowBtn: {fileID: 1985888524}
 --- !u!1 &1096333945
 GameObject:
   m_ObjectHideFlags: 0
@@ -4513,7 +4513,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e4fefc085f58e84086419fabe3c80fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  asdf: {fileID: 0}
+  asdf: {fileID: 828680653}
   itemCanvas: {fileID: 0}
 --- !u!1 &1531598047
 GameObject:
@@ -6052,6 +6052,7 @@ GameObject:
   - component: {fileID: 1985888521}
   - component: {fileID: 1985888523}
   - component: {fileID: 1985888522}
+  - component: {fileID: 1985888524}
   m_Layer: 5
   m_Name: Chat window
   m_TagString: Untagged
@@ -6122,6 +6123,50 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1985888520}
   m_CullTransparentMesh: 1
+--- !u!114 &1985888524
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1985888520}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 1985888522}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &2000633643
 GameObject:
   m_ObjectHideFlags: 0
