@@ -30,9 +30,9 @@ public class DialogueManager : MonoBehaviour
     public static int questcount = 0;
     public static string Targetname = "";
 
-    [HideInInspector] public Dictionary<string, List<Dialogue_Quest_Data>> _questdic;
+    [HideInInspector] public Dictionary<string, List<Dialogue_Quest_Data>> _questdic; 
     [HideInInspector] public Dictionary<int, Dialogue_Data> _dialogdic;
-    private Dictionary<string,chatlogdic> allchatlog; 
+    [HideInInspector] public Dictionary<string,chatlogdic> allchatlog;
 
     private void Awake()
     {

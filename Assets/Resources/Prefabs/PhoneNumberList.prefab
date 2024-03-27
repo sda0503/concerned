@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2104940037873170013}
   - component: {fileID: 3584151308456806480}
+  - component: {fileID: 8707192483046196475}
   m_Layer: 5
   m_Name: PhoneNumberList
   m_TagString: Untagged
@@ -83,6 +84,20 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &8707192483046196475
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1431477190899590436}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fa8c9efc2c0d7542a0f25c176e2b945, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TargetName: 
+  check: 000000
 --- !u!1 &7395681882118754689
 GameObject:
   m_ObjectHideFlags: 0
@@ -95,7 +110,7 @@ GameObject:
   - component: {fileID: 7573513760745713092}
   - component: {fileID: 5092814623901197626}
   m_Layer: 5
-  m_Name: Text (Legacy)
+  m_Name: Name
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -104,8 +104,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 740172222207505504}
+  m_Children: []
   m_Father: {fileID: 3511043497869106017}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -152,13 +151,14 @@ GameObject:
   - component: {fileID: 5053796187829056}
   - component: {fileID: 8432465528652368297}
   - component: {fileID: 5372888744608231395}
+  - component: {fileID: -3062077448377111260}
   m_Layer: 5
   m_Name: PhoneNumberUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &3511043497869106017
 RectTransform:
   m_ObjectHideFlags: 0
@@ -174,7 +174,7 @@ RectTransform:
   - {fileID: 3338885828558181531}
   - {fileID: 4553166470422735613}
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -244,109 +244,17 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!1001 &1689871827190891069
-PrefabInstance:
+--- !u!114 &-3062077448377111260
+MonoBehaviour:
   m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 4553166470422735613}
-    m_Modifications:
-    - target: {fileID: 1431477190899590436, guid: 635142610b5142d46a81d5af3ca725f8, type: 3}
-      propertyPath: m_Name
-      value: PhoneNumberList
-      objectReference: {fileID: 0}
-    - target: {fileID: 2104940037873170013, guid: 635142610b5142d46a81d5af3ca725f8, type: 3}
-      propertyPath: m_Pivot.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2104940037873170013, guid: 635142610b5142d46a81d5af3ca725f8, type: 3}
-      propertyPath: m_Pivot.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2104940037873170013, guid: 635142610b5142d46a81d5af3ca725f8, type: 3}
-      propertyPath: m_RootOrder
-      value: -1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2104940037873170013, guid: 635142610b5142d46a81d5af3ca725f8, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2104940037873170013, guid: 635142610b5142d46a81d5af3ca725f8, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2104940037873170013, guid: 635142610b5142d46a81d5af3ca725f8, type: 3}
-      propertyPath: m_AnchorMin.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2104940037873170013, guid: 635142610b5142d46a81d5af3ca725f8, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2104940037873170013, guid: 635142610b5142d46a81d5af3ca725f8, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 80
-      objectReference: {fileID: 0}
-    - target: {fileID: 2104940037873170013, guid: 635142610b5142d46a81d5af3ca725f8, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 80
-      objectReference: {fileID: 0}
-    - target: {fileID: 2104940037873170013, guid: 635142610b5142d46a81d5af3ca725f8, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2104940037873170013, guid: 635142610b5142d46a81d5af3ca725f8, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2104940037873170013, guid: 635142610b5142d46a81d5af3ca725f8, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2104940037873170013, guid: 635142610b5142d46a81d5af3ca725f8, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2104940037873170013, guid: 635142610b5142d46a81d5af3ca725f8, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2104940037873170013, guid: 635142610b5142d46a81d5af3ca725f8, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2104940037873170013, guid: 635142610b5142d46a81d5af3ca725f8, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2104940037873170013, guid: 635142610b5142d46a81d5af3ca725f8, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 45
-      objectReference: {fileID: 0}
-    - target: {fileID: 2104940037873170013, guid: 635142610b5142d46a81d5af3ca725f8, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -50
-      objectReference: {fileID: 0}
-    - target: {fileID: 2104940037873170013, guid: 635142610b5142d46a81d5af3ca725f8, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2104940037873170013, guid: 635142610b5142d46a81d5af3ca725f8, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2104940037873170013, guid: 635142610b5142d46a81d5af3ca725f8, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 635142610b5142d46a81d5af3ca725f8, type: 3}
---- !u!224 &740172222207505504 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 2104940037873170013, guid: 635142610b5142d46a81d5af3ca725f8, type: 3}
-  m_PrefabInstance: {fileID: 1689871827190891069}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8596202166264346650}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bdc5065cfc40f5e49ba6124ae19b9fe3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  phoneNumberListPosition: {fileID: 4553166470422735613}
+  phoneNumberList: []
