@@ -162,6 +162,7 @@ public class GameManager : MonoBehaviour
         //TODO : 순서대로 배경폴더/시간대폴더/배경이름
         //TODO : 맵 배경 바뀌는 부분은 조건에 상관없이 동작. + 시간대 따져야됨
         //bgImage.sprite = Resources.Load<Sprite>("Image/map/map3"); //맵 배경 바뀌는 부분은 조건에 상관없이 동작.
+        //TODO : 리소스는 계속 읽는게 아니라 한 번로드 해놓고 재사용하는 것.
     }
 
   
