@@ -46,7 +46,7 @@ public class ItemManager : MonoBehaviour
     {
         getItems.Add(item_id, itemsData[item_id]);
         getItemsNumber.Add(item_id);
-        DataManager.instance.saveGetItems.Data.Add(itemsData[item_id].itemData);
+        //DataManager.instance.saveGetItems.Data.Add(items[item_id].itemData);
     }
 
     public void GetTriggerItem(int item_id, GameObject obj)
