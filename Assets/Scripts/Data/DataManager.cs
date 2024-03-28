@@ -1,7 +1,9 @@
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using DataStorage;
 using Newtonsoft.Json;
+using Unity.VisualScripting;
 using UnityEngine;
 
 //로딩이 얼마 안걸릴거같아도 확장성을 생각하면 코루틴이 좋고
@@ -19,6 +21,8 @@ public class DataManager : MonoBehaviour//유니티 기능을 상속 받는거 /
     public ItemDataList saveGetItems = new ItemDataList();
 
     public PlaceDBDatas PlaceDBDatas;
+
+    public PlaceDBLoad PlaceDBLoad = new PlaceDBLoad();
 
     [SerializeField]public Transform asdf;
 
@@ -41,7 +45,7 @@ public class DataManager : MonoBehaviour//유니티 기능을 상속 받는거 /
         Path = Application.persistentDataPath;
         itemCanvas = asdf;
         GameManager.Instance.OnPositionChange += itemCanvaschange;
-        SetDatas();
+        StartCoroutine(SetDatas());
     }
 
     void itemCanvaschange()
@@ -58,17 +62,36 @@ public class DataManager : MonoBehaviour//유니티 기능을 상속 받는거 /
     /// <summary>
     /// 대화 DB 세팅
     /// </summary>
-    void SetDatas()
+    IEnumerator SetDatas()
     {
-        string loadData = Resources.Load("Dialogue_DB").ToString();
-        Dialogue_List dialogueList = JsonConvert.DeserializeObject<Dialogue_List>(loadData);
-
+        //전체적으로 다 코루틴으로 꾸려주어야함.
+        yield return StartCoroutine(dialogueDBSet()); //이렇게 하면 끝날때까지 기다림.
+        Debug.Log("다이얼로그 세팅 완료");
         string placeDB = Resources.Load("PlaceDB").ToString();
         PlaceDBDatas = JsonConvert.DeserializeObject<PlaceDBDatas>(placeDB);
+        
+        for (int i = 0; i < PlaceDBDatas.PlaceDB.Count; i++)
+        {
+            //TODO : 수정 예정
+            var objtoload = Resources.Load<GameObject>($"{PlaceDBDatas.PlaceDB[i].Place_Path}");  // 프리팹 가져오기
+            //var obj = Instantiate(objtoload, 캔버시즈 오브젝트 트랜스폼); // 프리팹 복제
+            //GameManager.Instance.CanvasGroup.Add(PlaceDBDatas.PlaceDB[i].Place_ID,obj); //프리팹 Dic에 추가하기.
+        }
         // foreach (var VARIABLE in PlaceDBDatas.PlaceDB) //확인용
         // {
         //     Debug.Log(VARIABLE.Place_Name);
         // }
+       
+    }
+    
+    //TODO : DataSet에 관한 개별 메서드 만들기
+    IEnumerator dialogueDBSet()
+    {
+        yield return new WaitForSeconds(1f);
+        string loadData = Resources.Load("Dialogue_DB").ToString();
+        
+        Dialogue_List dialogueList = JsonConvert.DeserializeObject<Dialogue_List>(loadData);
+        
         dic.DialogueDic.Clear(); //public 일 때는 클리어 한번 해주는게 좋음.
         
         for (int i = 0; i < dialogueList.Dialouge_Log_Data.Count; i++)
@@ -101,6 +124,7 @@ public class DataManager : MonoBehaviour//유니티 기능을 상속 받는거 /
         DialogueManager.instance._questdic = _questDic.DialogueQuestDic;
         DialogueManager.instance. _dialogdic = dic.DialogueDic;
     }
+    
 
     /// <summary>
     /// 아이템 저장용 TODO : 나중에 저장하는 기능 다 묶을거임.

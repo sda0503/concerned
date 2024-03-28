@@ -192,4 +192,14 @@ namespace DataStorage
     }
 
     #endregion
+
+    #region 데이터 세팅용
+
+    public class PlaceDBLoad
+    {
+        public Dictionary<int, GameObject> placeDic = new Dictionary<int, GameObject>();
+        public Dictionary<int, Sprite> BGDic = new Dictionary<int, Sprite>();
+    }
+
+    #endregion
 }
