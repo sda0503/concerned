@@ -1321,6 +1321,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   resolutionDropdown: {fileID: 752022637}
   fullscreenBtn: {fileID: 0}
+  mainCamera: {fileID: 0}
 --- !u!1 &841188041
 GameObject:
   m_ObjectHideFlags: 0
@@ -2655,6 +2656,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   resolutionDropdown: {fileID: 752022637}
   fullscreenBtn: {fileID: 1874938354}
+  mainCamera: {fileID: 1776566894}
 --- !u!4 &1469797586
 Transform:
   m_ObjectHideFlags: 0
