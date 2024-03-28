@@ -7,7 +7,6 @@ public class TriggerItem//도감 적용안되는 아이템.
 {
     [HideInInspector] public ItemData itemData;
     public int id;
-    
     public bool event_check;
 
     public TriggerItem(int id)
