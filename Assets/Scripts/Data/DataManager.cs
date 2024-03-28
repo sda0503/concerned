@@ -38,7 +38,7 @@ public class DataManager : MonoBehaviour//유니티 기능을 상속 받는거 /
 
     [SerializeField]public Transform asdf;
 
-    public Transform itemCanvas;
+    
 #endif
     
     private StringBuilder sb = new StringBuilder();
@@ -57,9 +57,7 @@ public class DataManager : MonoBehaviour//유니티 기능을 상속 받는거 /
 
     void Start()
     {
-        itemCanvas = asdf;
         path = Application.persistentDataPath;
-        GameManager.Instance.OnPositionChange += itemCanvaschange;
         StartCoroutine(SetDatas());
     }
    
@@ -138,6 +136,7 @@ public class DataManager : MonoBehaviour//유니티 기능을 상속 받는거 /
             //TODO : 수정 예정
             var objtoload = Resources.Load<GameObject>($"{PlaceDBDatas.PlaceDB[i].Place_Path}");  // 프리팹 가져오기
             //var obj = Instantiate(objtoload, 캔버시즈 오브젝트 트랜스폼); // 프리팹 복제
+            //obj.SetActive(false);
             //GameManager.Instance.CanvasGroup.Add(PlaceDBDatas.PlaceDB[i].Place_ID,obj); //프리팹 Dic에 추가하기.
         }
         // foreach (var VARIABLE in PlaceDBDatas.PlaceDB) //확인용
@@ -159,12 +158,6 @@ public class DataManager : MonoBehaviour//유니티 기능을 상속 받는거 /
         return itemDataList;
     }
     
-    
-    void itemCanvaschange()
-    {
-        itemCanvas = GameManager.Instance.CanvasGroup[Playerinformation.position].transform;
-    }
-
     IEnumerator SetItemData()
     {
         yield return new WaitForSeconds(1); //TODO : 가능하면 캐싱해서 사용 현재 3번 사용됨. 아니면 변경할 것.
@@ -275,7 +268,9 @@ public class DataManager : MonoBehaviour//유니티 기능을 상속 받는거 /
                 Debug.Log("아이템 데이터 리스트가 없습니다.(DataManger : 284");
                 itemDataList = null;
             }
-            
+
+            sb.Clear();
+
     }
     
     public void SaveData()

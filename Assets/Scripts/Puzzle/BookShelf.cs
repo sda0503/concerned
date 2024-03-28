@@ -44,7 +44,7 @@ public class BookShelf : MonoBehaviour
         if (click_button[3])
         {
             Debug.Log("clear");
-            ItemManager.Instance.OnClickToFindTriggerItem(2, DataManager.instance.itemCanvas);
+            ItemManager.Instance.OnClickToFindTriggerItem(2, UIManager.instance.itemCanvas);
         }
     }
 
