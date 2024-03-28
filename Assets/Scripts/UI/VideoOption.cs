@@ -10,6 +10,10 @@ public class VideoOption : MonoBehaviour
     public Toggle fullscreenBtn;
     List<Resolution> resolutions = new List<Resolution>();
     int resolutionNum;
+    public Camera mainCamera;
+    const string ResolutionKey = "SavedResolution";
+    const string FullscreenKey = "SavedFullscreen";
+
     void Start()
     {
         InitUI();
@@ -17,6 +21,8 @@ public class VideoOption : MonoBehaviour
 
     void InitUI()
     {
+        LoadSavedSettings();
+
         for (int i = 0; i < Screen.resolutions.Length; i++)
         {
             if (Screen.resolutions[i].refreshRate == 60)
@@ -37,13 +43,12 @@ public class VideoOption : MonoBehaviour
         }
         resolutionDropdown.RefreshShownValue();
 
-        fullscreenBtn.isOn = Screen.fullScreenMode.Equals(FullScreenMode.FullScreenWindow) ? true:false;
+        fullscreenBtn.isOn = PlayerPrefs.GetInt(FullscreenKey, 0) == 1;
     }
 
     public void DropboxOptionChange(int x)
     {
         resolutionNum = x;
-
     }
 
     public void FullScreenBtn(bool isFull)
@@ -53,9 +58,29 @@ public class VideoOption : MonoBehaviour
 
     public void OkBtnClick()
     {
+        SaveSettings(); 
         Screen.SetResolution(resolutions[resolutionNum].width,
             resolutions[resolutionNum].height,
             screenMode);
+
+        UpdateCameraAspectRatio(resolutions[resolutionNum]);
     }
 
+    void SaveSettings()
+    {
+        PlayerPrefs.SetInt(ResolutionKey, resolutionNum);
+        PlayerPrefs.SetInt(FullscreenKey, screenMode == FullScreenMode.FullScreenWindow ? 1 : 0);
+        PlayerPrefs.Save();
+    }
+
+    void LoadSavedSettings()
+    {
+        resolutionNum = PlayerPrefs.GetInt(ResolutionKey, 0); 
+    }
+
+    void UpdateCameraAspectRatio(Resolution resolution)
+    {
+        float targetAspect = (float)resolution.width / resolution.height;
+        mainCamera.aspect = targetAspect;
+    }
 }
