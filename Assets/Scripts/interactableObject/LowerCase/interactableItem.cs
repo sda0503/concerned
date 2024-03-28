@@ -13,12 +13,12 @@ public class interactableItem : interactableObject
     //private Sprite _image;
     public int ItemId;
 
-    public ItemType ItemType => ItemDataManager.Instance.GetDefaultItemDataList().Data[ItemId].itemType;
+    public ItemType ItemType => DataManager.instance.GetDefaultItemDataList().Data[ItemId].itemType;
     //Type으로 trigger랑 분류해도 될 듯?
 
     protected override void Start()
     {
-        Debug.Log($"{ItemDataManager.Instance.GetDefaultItemDataList().Data[ItemId].item_name} | {ItemType}");
+        Debug.Log($"{DataManager.instance.GetDefaultItemDataList().Data[ItemId].item_name} | {ItemType}");
         base.Start();
         animator = gameObject.GetComponent<Animator>();
         _image = gameObject.GetComponent<Image>();

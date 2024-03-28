@@ -44,7 +44,7 @@ public class BookShelf : MonoBehaviour
         if (click_button[3])
         {
             Debug.Log("clear");
-            Utility.Instance.OnClickToFindTriggerItem(2, DataManager.instance.itemCanvas);
+            ItemManager.Instance.OnClickToFindTriggerItem(2, DataManager.instance.itemCanvas);
         }
     }
 
@@ -65,7 +65,7 @@ public class BookShelf : MonoBehaviour
 
     private void MakeBook()
     {
-        var obj = Utility.Instance.GameObjectLoad("Prefabs/book");
+        var obj = DataManager.instance.GameObjectLoad("Prefabs/book");
         for (int i = 0; i < 32; i++)
         {
             GameObject newBook = Instantiate(obj, books);

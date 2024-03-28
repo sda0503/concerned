@@ -202,4 +202,28 @@ namespace DataStorage
     }
 
     #endregion
+
+    #region 아이템 데이터
+
+    [System.Serializable]
+    public class ItemData
+    {
+        public int item_id;
+        public string item_name;
+        public string default_description;
+        public string simple_description;
+        public ItemEventType itemEventType;
+        public ItemType itemType;
+        public string event_description;
+    }
+    
+    public class ItemDataList
+    {
+        //<������ �޾ƿ� class> �������� ��Ʈ�� �ִ� ������ �ִ� ��Ʈ��.
+        public List<ItemData> Data = new List<ItemData>();
+        public List<ItemData> Trigger = new List<ItemData>();
+    }
+
+
+    #endregion
 }

@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour
 {
     private static GameManager instance;
 
-    public Information Playerinformation = new Information(); //TODO : 일단은 New
+    
 
     #region 뭔지 몰라도 조건이 많을것같아서 만듬
 
@@ -37,6 +37,8 @@ public class GameManager : MonoBehaviour
     //TODO : Save 관련된 기능들도 event로 묶어서 관리
 
     [SerializeField] private Canvas _canvas;
+
+    public Information Playerinformation;
 
     public static GameManager Instance
     {
