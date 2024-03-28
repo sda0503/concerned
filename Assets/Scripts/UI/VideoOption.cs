@@ -50,6 +50,7 @@ public class VideoOption : MonoBehaviour
     {
         screenMode = isFull ? FullScreenMode.FullScreenWindow : FullScreenMode.Windowed;
     }
+ 
 
     public void OkBtnClick()
     {
