@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class PopupUIManager
 {
-    //Á¦³×¸¯À¸·Î ¹Þ¾Æ¼­ popupUI »ý¼º¸¸ UI ¹öÆ° ³»¿ëÀº UI¸¶´Ù script³Ö¾îÁÖ±â
+    //ï¿½ï¿½ï¿½×¸ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Þ¾Æ¼ï¿½ popupUI ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ UI ï¿½ï¿½Æ° ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ UIï¿½ï¿½ï¿½ï¿½ scriptï¿½Ö¾ï¿½ï¿½Ö±ï¿½
 
-    //UI ÇÁ¸®ÆÕÀ» ·Îµå -> Á¦³×¸¯À¸·Î ¹Ù²ã¼­ °ø¿ëÀ¸·Î »ç¿ëÇÒ ¼ö ÀÖµµ·Ï ¼öÁ¤
-    //µñ¼Å³Ê¸® key °ª ÀÌ¿ëÇØ¼­ ¾øÀ¸¸é »ý¼ºÇÏ°í ÀÖÀ¸¸é »õ·Î ¸¸µé¾î¼­ µñ¼Å³Ê¸®¿¡ ÀúÀå
+    //UI ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Îµï¿½ -> ï¿½ï¿½ï¿½×¸ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ù²ã¼­ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Öµï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+    //ï¿½ï¿½Å³Ê¸ï¿½ key ï¿½ï¿½ ï¿½Ì¿ï¿½ï¿½Ø¼ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½î¼­ ï¿½ï¿½Å³Ê¸ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     public Dictionary<string, GameObject> popupUI = new Dictionary<string, GameObject>();
 
     private static PopupUIManager instance;
@@ -25,13 +25,13 @@ public class PopupUIManager
 
     public T OpenPopupUI<T>() where T : PopupUIBase
     {
-        return OpenPopupUI(typeof(T).Name) as T; //scriptÀÌ¸§ == resourcesÀÌ¸§
+        return OpenPopupUI(typeof(T).Name) as T; //scriptï¿½Ì¸ï¿½ == resourcesï¿½Ì¸ï¿½
     }
 
     public PopupUIBase OpenPopupUI(string name)
     {
         var obj = Resources.Load("PopupUI/" + name, typeof(GameObject)) as GameObject;
-        if (obj == null) { Debug.Log("UI Load ½ÇÆÐ"); return null; }
+        if (obj == null) { Debug.Log("UI Load fail"); return null; }
         return MakePopupUI(obj);
     }
 
@@ -39,7 +39,7 @@ public class PopupUIManager
     {
         if (!popupUI.ContainsKey(prefab.name))
         {
-            var obj = Object.Instantiate(prefab); //MonoBehaviour¾ø´õ¶óµµ »ý¼º°¡´ÉÇÏµµ·Ï
+            var obj = Object.Instantiate(prefab); //MonoBehaviourï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ïµï¿½ï¿½ï¿½
             popupUI.Add(prefab.name, obj);
         }
         popupUI[prefab.name].SetActive(true);

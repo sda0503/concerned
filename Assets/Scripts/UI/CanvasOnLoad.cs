@@ -93,19 +93,19 @@ public class CanvasOnLoad : MonoBehaviour
     
     
     
-    public void OnDisable()
-    {
-        //TODO : 버튼 리스너 해제
-        foreach (var VARIABLE in interactList)
-        {
-            if (VARIABLE.gameObject.TryGetComponent(out interactableNPC interactableNpc))
-            {
-                interactableNpc.gameObject.GetComponent<Button>().onClick.RemoveListener(()=> DialogueManager.instance.StartDialogue(interactableNpc.TargetName));
-            }
-            else if (VARIABLE.gameObject.TryGetComponent(out interactableItem interactableItem))
-            {
-                interactableItem.gameObject.GetComponent<Button>().onClick.RemoveListener(()=>Utility.Instance.OnClickToFindItem(interactableItem.ItemId,DataManager.instance.itemCanvas));
-            }
-        }
-    }
+    // public void OnDisable()
+    // {
+    //     //TODO : 버튼 리스너 해제
+    //     foreach (var VARIABLE in interactList)
+    //     {
+    //         if (VARIABLE.gameObject.TryGetComponent(out interactableNPC interactableNpc))
+    //         {
+    //             interactableNpc.gameObject.GetComponent<Button>().onClick.RemoveListener(()=> DialogueManager.instance.StartDialogue(interactableNpc.TargetName));
+    //         }
+    //         else if (VARIABLE.gameObject.TryGetComponent(out interactableItem interactableItem))
+    //         {
+    //             interactableItem.gameObject.GetComponent<Button>().onClick.RemoveListener(()=>Utility.Instance.OnClickToFindItem(interactableItem.ItemId,DataManager.instance.itemCanvas));
+    //         }
+    //     }
+    // }
 }
