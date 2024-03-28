@@ -9,10 +9,10 @@ using UnityEngine;
 
 //로딩이 얼마 안걸릴거같아도 확장성을 생각하면 코루틴이 좋고
 // 설계를 할 때 큰 그림을 그리고 설계를 하면 기술적 고민을 많이 해볼 수 있음.(취준생입장)
+//TODO : SingletonBase를 하나 만들어서 Init하는 방식으로 기동 순서를 정해주어야함.
 
 public class DataManager : MonoBehaviour//유니티 기능을 상속 받는거 /코루틴이나 유니티 이벤트를 연동하려면 필요함.
 {
-
     #region 게임에서 사용할 데이터
 
     public Information Playerinformation = new Information(); //TODO : 일단은 New
@@ -32,17 +32,17 @@ public class DataManager : MonoBehaviour//유니티 기능을 상속 받는거 /
     public PlaceDBLoad PlaceDBLoad = new PlaceDBLoad();
 
     #endregion
-    
+
+#if UNITY_EDITOR
     string path;
 
     [SerializeField]public Transform asdf;
 
     public Transform itemCanvas;
+#endif
     
-    public static DataManager instance;
-
     private StringBuilder sb = new StringBuilder();
-    
+    public static DataManager instance;
 
     private void Awake()
     {
@@ -62,12 +62,6 @@ public class DataManager : MonoBehaviour//유니티 기능을 상속 받는거 /
         GameManager.Instance.OnPositionChange += itemCanvaschange;
         StartCoroutine(SetDatas());
     }
-    
-    public void SaveData()
-    {//overwrite : 이미 존재하는 객체에 덮어씌우기 가능
-        var save = JsonConvert.SerializeObject(_questDic); //여기체크
-        File.WriteAllText(path+"/save.json",save);
-    }
    
     /// <summary>
     /// 전체 데이터 세팅
@@ -75,6 +69,7 @@ public class DataManager : MonoBehaviour//유니티 기능을 상속 받는거 /
     /// <returns></returns>
     IEnumerator SetDatas()
     {
+        //TODO : DataSet에 관한 개별 메서드 만들기 + 불러오기 했을 때 세팅되는 부분까지 작성하기.
         //전체적으로 다 코루틴으로 꾸려주어야함.
         yield return StartCoroutine(dialogueDBSet()); //이렇게 하면 끝날때까지 기다림.
         Debug.Log("다이얼로그 세팅 완료");
@@ -85,8 +80,9 @@ public class DataManager : MonoBehaviour//유니티 기능을 상속 받는거 /
         yield return StartCoroutine(SetItemData());
         GameManager.Instance.Playerinformation = Playerinformation; //TODO : 나중에 로드 구현하고 변경
     }
-    
-    //TODO : DataSet에 관한 개별 메서드 만들기 + 불러오기 했을 때 세팅되는 부분까지 작성하기.
+
+    #region dialogueData
+   
     IEnumerator dialogueDBSet() //TODO : 로드에 관한 부분도 넣어서 작성해야됨 => 엎을 예정
     {
         yield return new WaitForSeconds(1f);
@@ -126,8 +122,10 @@ public class DataManager : MonoBehaviour//유니티 기능을 상속 받는거 /
         DialogueManager.instance._questdic = _questDic.DialogueQuestDic;
         DialogueManager.instance. _dialogdic = dic.DialogueDic;
     }
+    
+    #endregion
 
-
+    #region PlaceData
     IEnumerator PlaceDBSet()
     {
         yield return new WaitForSeconds(1);
@@ -146,21 +144,20 @@ public class DataManager : MonoBehaviour//유니티 기능을 상속 받는거 /
         // {
         //     Debug.Log(VARIABLE.Place_Name);
         // }
-    }
+    }    
+        #endregion
 
-    /// <summary>
-    /// 아이템 저장용 TODO : 나중에 저장하는 기능 다 묶을거임.
-    /// </summary>
-    private void OffGame()
+    #region itemData
+   
+    public ItemDataList GetDefaultItemDataList()
     {
-        SaveData(saveGetItems, "SaveItem");
+        return defaultItemDataList;
     }
     
-    
-    //도감용 리스트와 인벤토리 아이템 리스트 분리.
-   
-    
-    //도감에 직접 사용할 사전형 데이터
+    public ItemDataList GetItemDataList()
+    {
+        return itemDataList;
+    }
     
     
     void itemCanvaschange()
@@ -215,16 +212,10 @@ public class DataManager : MonoBehaviour//유니티 기능을 상속 받는거 /
                 dogamItemData.Add(dogamItemDataList.Data[i].item_id, dogamItemDataList.Data[i]);
         }
     }
-
-
-    //--------------------------------------------------------------------
-    //Json, ��� ������ ���� ��������.
     
+    #endregion
 
-    public ItemDataList GetDefaultItemDataList()
-    {
-        return defaultItemDataList;
-    }
+    #region Resources.Load
 
     //json ���� �ҷ�����. ������ �� �ҷ����� ��
     public void LoadDefaultData()
@@ -255,12 +246,9 @@ public class DataManager : MonoBehaviour//유니티 기능을 상속 받는거 /
         return obj;
     }
     
-    
+    #endregion
 
-    public ItemDataList GetItemDataList()
-    {
-        return itemDataList;
-    }
+    #region Save & Load
 
     //json ���� �����ϱ�
     public void SaveData(ItemDataList itemDataList, string str)
@@ -274,18 +262,32 @@ public class DataManager : MonoBehaviour//유니티 기능을 상속 받는거 /
     
     public void LoadSaveData(string str)
     {
-        try
-        {
+       
             sb.Append(path);
             sb.Append($"/{str}.json");
-            var data = File.ReadAllText(sb.ToString());
-            itemDataList = JsonConvert.DeserializeObject<ItemDataList>(data);
-        }
-        catch (FileNotFoundException)
-        { 
-            Debug.Log("아이템 데이터 리스트가 없습니다.(DataManger : 284"); 
-            itemDataList = null; 
-        }
+            if (File.Exists(sb.ToString()))
+            {
+                var data = File.ReadAllText(sb.ToString());
+                itemDataList = JsonConvert.DeserializeObject<ItemDataList>(data);
+            }
+            else
+            {
+                Debug.Log("아이템 데이터 리스트가 없습니다.(DataManger : 284");
+                itemDataList = null;
+            }
+            
     }
- 
+    
+    public void SaveData()
+    {//overwrite : 이미 존재하는 객체에 덮어씌우기 가능
+        var save = JsonConvert.SerializeObject(_questDic); //여기체크
+        File.WriteAllText(path+"/save.json",save);
+    }
+    
+    private void OffGame()
+    {
+        SaveData(saveGetItems, "SaveItem");
+    }
+    
+    #endregion
 }

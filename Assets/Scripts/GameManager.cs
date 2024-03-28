@@ -38,7 +38,7 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private Canvas _canvas;
 
-    public Information Playerinformation;
+    public Information Playerinformation = new Information();
 
     public static GameManager Instance
     {
