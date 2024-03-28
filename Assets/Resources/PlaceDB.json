@@ -1,53 +1,158 @@
 {
   "PlaceDB": [
     {
-      "Place_ID": "0",
-      "Place_Name": "경찰서",
-      "Place_Path": "Image/map/map3"
+      "Place_ID": "100",
+      "Place_Name": "아파트 입구",
+      "Place_Path": null
     },
     {
-      "Place_ID": "1",
+      "Place_ID": "110",
+      "Place_Name": "양현서 집",
+      "Place_Path": null
+    },
+    {
+      "Place_ID": "111",
+      "Place_Name": "양현서 집 거실",
+      "Place_Path": null
+    },
+    {
+      "Place_ID": "112",
+      "Place_Name": "양현서 집 부엌",
+      "Place_Path": null
+    },
+    {
+      "Place_ID": "113",
+      "Place_Name": "양현서 집 침실",
+      "Place_Path": null
+    },
+    {
+      "Place_ID": "114",
+      "Place_Name": "양현서 집 서재",
+      "Place_Path": null
+    },
+    {
+      "Place_ID": "120",
+      "Place_Name": "아파트 다목적실",
+      "Place_Path": null
+    },
+    {
+      "Place_ID": "130",
+      "Place_Name": "아파트 경비 사무소",
+      "Place_Path": null
+    },
+    {
+      "Place_ID": "200",
+      "Place_Name": "사무실",
+      "Place_Path": null
+    },
+    {
+      "Place_ID": "210",
+      "Place_Name": "비서실",
+      "Place_Path": null
+    },
+    {
+      "Place_ID": "211",
+      "Place_Name": "대표이사실(양현서 방)",
+      "Place_Path": null
+    },
+    {
+      "Place_ID": "220",
+      "Place_Name": "회의실",
+      "Place_Path": null
+    },
+    {
+      "Place_ID": "230",
+      "Place_Name": "김이사방",
+      "Place_Path": null
+    },
+    {
+      "Place_ID": "300",
       "Place_Name": "인적 드문 숲",
       "Place_Path": null
     },
     {
-      "Place_ID": "2",
-      "Place_Name": "택배회사",
+      "Place_ID": "310",
+      "Place_Name": "차량",
       "Place_Path": null
     },
     {
-      "Place_ID": "3",
-      "Place_Name": "빗테크 오피스",
+      "Place_ID": "400",
+      "Place_Name": "흥신소 사무실",
       "Place_Path": null
     },
     {
-      "Place_ID": "4",
-      "Place_Name": "빗테크 오피스텔",
-      "Place_Path": null
-    },
-    {
-      "Place_ID": "5",
-      "Place_Name": "병원 & 장례식장",
-      "Place_Path": null
-    },
-    {
-      "Place_ID": "6",
-      "Place_Name": "양현서의 집",
-      "Place_Path": null
-    },
-    {
-      "Place_ID": "7",
+      "Place_ID": "500",
       "Place_Name": "변호사 사무실",
       "Place_Path": null
     },
     {
-      "Place_ID": "8",
-      "Place_Name": "신현우의 집",
+      "Place_ID": "600",
+      "Place_Name": "병원 전경",
       "Place_Path": null
     },
     {
-      "Place_ID": "9",
-      "Place_Name": "탐정사무소",
+      "Place_ID": "610",
+      "Place_Name": "병원 내부",
+      "Place_Path": null
+    },
+    {
+      "Place_ID": "620",
+      "Place_Name": "장례식장",
+      "Place_Path": null
+    },
+    {
+      "Place_ID": "700",
+      "Place_Name": "경찰서 전경",
+      "Place_Path": null
+    },
+    {
+      "Place_ID": "710",
+      "Place_Name": "경찰서 복도",
+      "Place_Path": null
+    },
+    {
+      "Place_ID": "711",
+      "Place_Name": "내 자리",
+      "Place_Path": null
+    },
+    {
+      "Place_ID": "712",
+      "Place_Name": "증거 보관실",
+      "Place_Path": null
+    },
+    {
+      "Place_ID": "713",
+      "Place_Name": "전자기록 열람실",
+      "Place_Path": null
+    },
+    {
+      "Place_ID": "714",
+      "Place_Name": "취조실",
+      "Place_Path": null
+    },
+    {
+      "Place_ID": "800",
+      "Place_Name": "신현우 집 앞",
+      "Place_Path": null
+    },
+    {
+      "Place_ID": "810",
+      "Place_Name": "신현우 집 안",
+      "Place_Path": null
+    },
+    {
+      "Place_ID": "900",
+      "Place_Name": "택배회사 전경",
+      "Place_Path": null
+    },
+    {
+      "Place_ID": "910",
+      "Place_Name": "택배회사 내부",
+      "Place_Path": null
+    },
+    {
+      "Place_ID": "920",
+      "Place_Name": "택배 차량",
       "Place_Path": null
     }
   ]
