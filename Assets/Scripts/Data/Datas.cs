@@ -89,13 +89,15 @@ namespace DataStorage
     {
         normal,
         choose,
-        Loop
+        Loop,
+        Phone
     }
 
     public enum QuestType
     {
         Normal,
         Loop,
+        Phone
     }
 
     public class Dialogue_List

@@ -21,11 +21,11 @@ public class PhoneNumberUI : PopupUIBase
     {
         foreach (string key in DialogueManager.instance.allchatlog.Keys)
         {
-            if(!phoneNumberDictionary.ContainsKey(key))
+            if(!phoneNumberDictionary.ContainsKey(key) && DialogueManager.instance._questdic[key][0].QuestType == 0)
             {
                 GameObject obj = Instantiate(Utility.Instance.GameObjectLoad("Prefabs/PhoneNumberList"), phoneNumberListPosition);
                 obj.GetComponentInChildren<Text>().text = key;
-                obj.GetComponent<interactableNPC>().TargetName = key + "핸드폰";
+                obj.GetComponent<interactableNPC>().TargetName = key + " 핸드폰";
                 phoneNumberDictionary.Add(key, obj);
             }
         }

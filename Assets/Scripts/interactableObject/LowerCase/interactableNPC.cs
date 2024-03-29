@@ -29,6 +29,4 @@ public class interactableNPC : interactableObject
             gameObject.SetActive(false);
         }
     }
-    
-    
 }

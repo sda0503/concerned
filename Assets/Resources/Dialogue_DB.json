@@ -285,6 +285,24 @@
       "Next_Log": "0",
       "Event_Log": null,
       "Event_Next_Log": null
+    },
+    {
+      "Dialogue_idx": "60002010",
+      "Name": "흥신소 탐정",
+      "Log": "약속 전화",
+      "Log_Type": "3",
+      "Next_Log": "60002011",
+      "Event_Log": null,
+      "Event_Next_Log": null
+    },
+    {
+      "Dialogue_idx": "60002011",
+      "Name": "흥신소 탐정",
+      "Log": "약속 잡기",
+      "Log_Type": "3",
+      "Next_Log": "0",
+      "Event_Log": null,
+      "Event_Next_Log": null
     }
   ],
   "Dialogue_Quest_Data": [
@@ -335,6 +353,15 @@
       "QuestIdx": "1",
       "QuestStartPost": "60001010",
       "QuestType": "0",
+      "QuestState": "false",
+      "NeedQuest": null,
+      "NeedItem": null
+    },
+    {
+      "QuestTargetName": "흥신소 탐정 핸드폰",
+      "QuestIdx": "1",
+      "QuestStartPost": "60002010",
+      "QuestType": "2",
       "QuestState": "false",
       "NeedQuest": null,
       "NeedItem": null
