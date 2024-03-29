@@ -43,42 +43,34 @@ public class CalendarUI : PopupUIBase
     //채팅으로 열리는거(onbutton == true)랑 핸드폰 클릭으로 열리는거(onbutton == false)랑 구분을 지어야할 필요가 있음
     private void OffButton() 
     {
-        date = GameManager.Instance.Playerinformation.date; //이벤트로 되어있기 때문에 구독을 하는 것도 나쁘지 않다고 생각됨.
+        date = 10;//GameManager.Instance.Playerinformation.date; //이벤트로 되어있기 때문에 구독을 하는 것도 나쁘지 않다고 생각됨.
+        if (date == 0)
+        {
+            date = date + 1;
+        }
+        for (int i = predate; i < date; i++)
+        {
+            click_calendarDates[i] = false;
+            calendarDates[i].GetComponent<Button>().enabled = false;
+            calendarDates[i].transform.Find("pass").gameObject.SetActive(true); //지났다는 의미에서 x표시 하는 이미지 띄우도록 하는 것도 좋을 것 같음. 
+        }
         if (onbutton)
         {
-            //이미 누르지 못하게 만든 것은 패스하고 새롭게 하는게 좋을 것 같음
-            for (int i = predate; i < date; i++)
+            for (int i = date ; i < calendarDates.Length; i++)
             {
-                click_calendarDates[i] = false;
-                calendarDates[i].GetComponent<Button>().enabled = false;
-                //지났다는 의미에서 x표시 하는 이미지 띄우도록 하는 것도 좋을 것 같음. 
-            }
-            if (date == 0)
-            {
-                for (int i = date; i < calendarDates.Length; i++)
-                {
-                    calendarDates[i].GetComponent<Button>().enabled = click_calendarDates[i];
-                }
-            }
-            else if (date > 0) 
-            { 
-                for (int i = date - 1; i < calendarDates.Length; i++)
-                {
-                    calendarDates[i].GetComponent<Button>().enabled = click_calendarDates[i];
-                }
+                calendarDates[i].GetComponent<Button>().enabled = click_calendarDates[i];
             }
         }
         else
         {
-            for (int i = predate; i < calendarDates.Length; i++)
+            for (int i = date; i < calendarDates.Length; i++)
             {
                 calendarDates[i].GetComponent<Button>().enabled = false;
-                //지났다는 의미에서 x표시 하는 이미지 띄우도록 하는 것도 좋을 것 같음.
             }
         }
-        if (predate > 0)
+        if (date > 0)
         {
-            predate = date - 1;
+            predate = date - 2; //추후 변경 가능성 잇음
         }
     }
 
