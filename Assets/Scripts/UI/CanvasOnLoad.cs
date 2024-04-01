@@ -13,28 +13,20 @@ public class CanvasOnLoad : MonoBehaviour
 
     private void OnEnable()
     {
-           interactList = gameObject.GetComponentsInChildren<interactableObject>();
-           states = new List<bool>(interactList.Length);
-           for (int i=0;i<states.Capacity;i++)
-           {
-               states.Add(false);
-           }
-           //하위에 있는것만 찾으려면 GetComponentInChildern
+        if (states == null)
+        {
+            interactList = gameObject.GetComponentsInChildren<interactableObject>();
+            states = new List<bool>(interactList.Length);
+            for (int i=0;i<states.Capacity;i++)
+            {
+                states.Add(false);
+            }
+            //하위에 있는것만 찾으려면 GetComponentInChildern    
+        }
     }
-
-    /// <summary>
-    /// TODO : bool 리스트 순서대로 오브젝트가 있고, 해당하는 오브젝트가 동작할 때 bool리스트의 값을 변경해줘야됨
-    /// 오브젝트의 ON/Off 여부를 담당하는 메서드
-    /// </summary>
-    /// <param name="objectsState"></param>
+    
     public void ObjectSet(List<bool> objectsState)  
-    /* TODO : 세팅할 때 Bool을 어떻게 정의, 관리해야하는가.     
-     * NPC : On/Off 조건은 이 사람이 계속 있을 수도 있고, 아니면 시간대에 따라 바뀔 수도 있음. 그 조건 설정을 어떻게 연계시킬까
-     * Item : 클릭해서 확인하거나, 인벤토리에 들어가거나 하면 꺼지는걸로?      
-     * NPC 세팅 자체를 더 세분화 해야될 것 같음. 따로 오더가 없어도 조건을 걸어서 알아서 On/Off 될 수 있도록 설정.
-     * 아이템의 경우는 사용하면 true값으로 바꿔주면 될 것 같음.
-     * 그러면 List를 분리해서 받아야되나?
-     */
+    
     {
         for (int i = 0; i < interactList.Length; i++)
         {

@@ -48,12 +48,12 @@ public class DogamUI : PopupUIBase
         if (DataManager.instance.dogamItemData.ContainsKey(key))
         {
             //�̹��� ����Ǵ� �κ��� �ʿ���.
-            itemSlots[key].transform.Find("GetItem").gameObject.SetActive(true);
+            itemSlots[key].transform.GetChild(1).gameObject.SetActive(true);
             itemSlots[key].GetComponent<Button>().enabled = true;
         }
         else
         {
-            itemSlots[key].transform.Find("GetItem").gameObject.SetActive(false);
+            itemSlots[key].transform.GetChild(1).gameObject.SetActive(false);
             itemSlots[key].GetComponent<Button>().enabled = false;
         }
     }

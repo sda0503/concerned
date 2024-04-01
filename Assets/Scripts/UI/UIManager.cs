@@ -23,7 +23,8 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Button btn;
     [SerializeField] private GameObject Map; 
     
-    public Dictionary<int, GameObject> CanvasGroup = new Dictionary<int, GameObject>(); //ID값으로 캔버스 저장.
+    public Dictionary<int, GameObject> CanvasGroup = new Dictionary<int, GameObject>(); 
+    //ID값으로 캔버스 저장. TODO : 프리팹기준으로 빈공간이라도 생성하는거 필요함. 세팅할 때 
     private CanvasDic _canvasDic = new CanvasDic();
 
     [SerializeField] private GameObject canvasparents;
@@ -95,12 +96,11 @@ public class UIManager : MonoBehaviour
     /// </summary>
     public void CanvasChange() //결국 방 이동하는 것도 캔버스 체인지인가?
     {
-        CanvasGroup[playerinformation.position].SetActive(false);
+        CanvasGroup[playerinformation.position].SetActive(false); //현재 캔버스 끄기.
         //TODO : 캔버스를 세팅하는 부분에 오브젝트에 관한 Bool값을 가지는 데이터를 사용해보자.
         //TODO : 해당하는 캔버스가 없으면 Instanciate, 있으면 꺼져있을테니 다시 키는걸로. => 현재 있는거랑 동일한건지 체크해줘야됨.
         string path = DataManager.instance.PlaceDBDatas.PlaceDB[playerinformation.position].Place_Path; //방끼리 이동.
-        if (!CanvasGroup.ContainsKey(playerinformation.position)) 
-            //캔버스 그룹이라는 실제 오브젝트가 존재하는 dic에 ID값을 가진 캔버스가 없으면, TODO : 로직에 맞게 수정 필요
+        if (!CanvasGroup.ContainsKey(playerinformation.position))
         {
             var obj = Resources.Load<GameObject>($"Prefabs/{path}");
             var canvasinstance = Instantiate(obj, canvasparents.transform);

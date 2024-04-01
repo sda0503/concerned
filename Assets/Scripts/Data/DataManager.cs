@@ -13,6 +13,8 @@ using UnityEngine;
 
 public class DataManager : MonoBehaviour//유니티 기능을 상속 받는거 /코루틴이나 유니티 이벤트를 연동하려면 필요함.
 {
+    private Player _playerToSave = new Player();//Save & Load 대기용
+    
     #region 게임에서 사용할 데이터
 
     public Information Playerinformation = new Information(); //TODO : 일단은 New
@@ -25,6 +27,7 @@ public class DataManager : MonoBehaviour//유니티 기능을 상속 받는거 /
     private ItemDataList itemDataList = new ItemDataList();
     private ItemDataList dogamItemDataList = new ItemDataList();
     public ItemDataList saveGetItems = new ItemDataList();
+    
     private ItemDataList saveItemDataList= new ItemDataList();
     public Dictionary<int, ItemData> dogamItemData = new Dictionary<int, ItemData>();
 
@@ -58,6 +61,8 @@ public class DataManager : MonoBehaviour//유니티 기능을 상속 받는거 /
     void Start()
     {
         path = Application.persistentDataPath;
+        path = sb.Append("/concerned.json").ToString();
+        sb.Clear();
         StartCoroutine(SetDatas());
     }
    
@@ -72,11 +77,12 @@ public class DataManager : MonoBehaviour//유니티 기능을 상속 받는거 /
         yield return StartCoroutine(dialogueDBSet()); //이렇게 하면 끝날때까지 기다림.
         Debug.Log("다이얼로그 세팅 완료");
 
-        yield return StartCoroutine(PlaceDBSet());
+        yield return StartCoroutine(PlaceDBSet());        
         Debug.Log("장소 세팅 완료");
         
         yield return StartCoroutine(SetItemData());
-        GameManager.Instance.Playerinformation = Playerinformation; //TODO : 나중에 로드 구현하고 변경
+        GameManager.Instance.Playerinformation = Playerinformation; 
+        //TODO : 로드하고 난 이후 적용되어야 할 부분들 수정
     }
 
     #region dialogueData
@@ -134,10 +140,13 @@ public class DataManager : MonoBehaviour//유니티 기능을 상속 받는거 /
         for (int i = 0; i < PlaceDBDatas.PlaceDB.Count; i++)
         {
             //TODO : 수정 예정
-            var objtoload = Resources.Load<GameObject>($"{PlaceDBDatas.PlaceDB[i].Place_Path}");  // 프리팹 가져오기
-            //var obj = Instantiate(objtoload, 캔버시즈 오브젝트 트랜스폼); // 프리팹 복제
-            //obj.SetActive(false);
-            //GameManager.Instance.CanvasGroup.Add(PlaceDBDatas.PlaceDB[i].Place_ID,obj); //프리팹 Dic에 추가하기.
+            // var objtoload = Resources.Load<GameObject>($"{PlaceDBDatas.PlaceDB[i].Place_Path}");  // 프리팹 가져오기
+            // var obj = Instantiate(objtoload, 캔버시즈 오브젝트 트랜스폼); // 프리팹 복제
+            // obj.SetActive(false);
+            // obj.GetComponent<CanvasOnLoad>().states =
+            //     _playerToSave.Information.canvasSettingData[PlaceDBDatas.PlaceDB[i].Place_ID];
+            // UIManager.instance.CanvasGroup.Add(PlaceDBDatas.PlaceDB[i].Place_ID,obj); //프리팹 Dic에 추가하기.
+            
         }
         // foreach (var VARIABLE in PlaceDBDatas.PlaceDB) //확인용
         // {
@@ -161,9 +170,20 @@ public class DataManager : MonoBehaviour//유니티 기능을 상속 받는거 /
     IEnumerator SetItemData()
     {
         yield return new WaitForSeconds(1); //TODO : 가능하면 캐싱해서 사용 현재 3번 사용됨. 아니면 변경할 것.
-        LoadSaveData("Save");
+        //TODO : 아이템 데이터 불러오는 부분은 뭔가 변경이 필요해 보임.
+        LoadSaveData("Save"); //SaveItem이라고 이름 바뀌어야 함. => Inventory랑 
         saveItemDataList = GetItemDataList();
-        LoadSaveData("Dogam");
+    }
+    
+    /// <summary>
+    /// 다회차 플레이의 경우 얻은 아이템들의 기록 => 남겨놓기 + 기존 아이템 저장이랑 분리해서 관리.(Load하는 시점이 달라야됨.)
+    /// </summary>
+    /// <returns></returns>
+    IEnumerator SetDogamData()
+    {
+        //TODO : 게임 끝날 때 저장해서 따로 Json으로 저장해두기. + 삭제되는건 없고 계속 쌓여야됨.
+        yield return new WaitForSeconds(1); 
+        LoadSaveData("Dogam"); 
         dogamItemDataList = GetItemDataList();
 
         if (saveItemDataList == null)
@@ -242,8 +262,39 @@ public class DataManager : MonoBehaviour//유니티 기능을 상속 받는거 /
     #endregion
 
     #region Save & Load
+    
+    //저장 1번 : 대화 퀘스트 딕셔너리 / 2번 인벤토리 / 3번 진행 데이터 
+    //Save & Load 여부에 관계없이 읽어오는 파일들은 이미 구현 되어있음. TODO : 아이템 관련해서 잠깐 볼 것.
+    public void Save()
+    {
+        _playerToSave.Information = GameManager.Instance.Playerinformation;
+        foreach (var VARIABLE in UIManager.instance.CanvasGroup)
+        {
+            _playerToSave.Information.canvasSettingData.Add(VARIABLE.Key,VARIABLE.Value.GetComponent<CanvasOnLoad>().states);    
+        }
+        _playerToSave.DialogueQuestDic = _questDic;
+        
+        foreach (var items in ItemManager.Instance.getItems.Values)
+        {
+            _playerToSave.Inventory.Add(items.id);
+        }
+        
+        //TODO : 도감도 저장.
+        string data = JsonConvert.SerializeObject(_playerToSave);
+        File.WriteAllText(path,data);
+    }
 
-    //json ���� �����ϱ�
+    public void Load()
+    {
+        var readData = File.ReadAllText(path);
+        var converData = JsonConvert.DeserializeObject<Player>(readData);
+        _playerToSave.DialogueQuestDic = converData.DialogueQuestDic;
+        _playerToSave.Inventory = converData.Inventory;
+        _playerToSave.Information = converData.Information;
+        //TODO : 인벤토리 세팅해주는 과정 추가해야함.   
+        //TODO : 도감도 불러오기(세팅은 도감버튼 눌렀을 때 하고 데이터만 가져오기)
+    }
+    
     public void SaveData(ItemDataList itemDataList, string str)
     {
         string data = JsonConvert.SerializeObject(itemDataList);
@@ -271,12 +322,6 @@ public class DataManager : MonoBehaviour//유니티 기능을 상속 받는거 /
 
             sb.Clear();
 
-    }
-    
-    public void SaveData()
-    {//overwrite : 이미 존재하는 객체에 덮어씌우기 가능
-        var save = JsonConvert.SerializeObject(_questDic); //여기체크
-        File.WriteAllText(path+"/save.json",save);
     }
     
     private void OffGame()
