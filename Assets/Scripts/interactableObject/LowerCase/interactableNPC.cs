@@ -20,7 +20,7 @@ public class interactableNPC : interactableObject
 
     void onoff()
     {
-        if (check[(int)GameManager.Instance.Playerinformation.dayTime])
+        if (check[(int)DataManager.instance.Playerinformation.dayTime])
         {
             gameObject.SetActive(true);
         }

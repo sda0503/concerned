@@ -1,8 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
-
+using DataStorage;
 public class TriggerItem//도감 적용안되는 아이템.
 {
     [HideInInspector] public ItemData itemData;
@@ -11,7 +8,7 @@ public class TriggerItem//도감 적용안되는 아이템.
 
     public TriggerItem(int id)
     {
-        itemData = ItemDataManager.Instance.GetDefaultItemDataList().Trigger[id];
+        itemData = DataManager.instance.GetDefaultItemDataList().Trigger[id];
         this.id = id;
         event_check = false;
     }

@@ -1,20 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SoundManager : MonoBehaviour
 {
-    public AudioSource bgm;
     public GameObject soundOn;
     public GameObject soundOff;
     private bool muted = false;
 
+    private static SoundManager instance;
+
     private void Awake()
     {
-        var soundManagers = FindObjectsOfType<SoundManager>();
-        if (soundManagers.Length == 1)
+        if (instance == null)
         {
-            DontDestroyOnLoad(gameObject);
+            instance = this;
         }
         else
         {
@@ -24,58 +25,61 @@ public class SoundManager : MonoBehaviour
 
     void Start()
     {
-        if (!PlayerPrefs.HasKey("muted"))
-        {
-            PlayerPrefs.SetInt("muted", 0);
-            Load();
-        }
-        else
-        {
-            Load();
-        }
-
+        Load();
         UpdateBtning();
         AudioListener.pause = muted;
-        bgm.Play();
+        PlaySceneMusic(SceneManager.GetActiveScene().name);
     }
 
     public void SoundBtnClick()
     {
-        if (muted == false)
-        {
-            muted = true;
-            AudioListener.pause = true;
-        }
-        else
-        {
-            muted = false;
-            AudioListener.pause = false;
-        }
+        muted = !muted;
+        AudioListener.pause = muted;
         Save();
         UpdateBtning();
     }
 
     private void UpdateBtning()
     {
-        if (muted == false)
-        {
-            soundOn.SetActive(true);
-            soundOff.SetActive(false);
-        }
-        else
-        {
-            soundOn.SetActive(false);
-            soundOff.SetActive(true);
-        }
+        soundOn.SetActive(!muted);
+        soundOff.SetActive(muted);
     }
 
     private void Load()
     {
-        muted = PlayerPrefs.GetInt("muted") == 1;
+        muted = PlayerPrefs.GetInt("muted", 0) == 1;
     }
 
     private void Save()
     {
         PlayerPrefs.SetInt("muted", muted ? 1 : 0);
+    }
+
+    private void PlaySceneMusic(string sceneName)
+    {
+        GameObject sceneMusic = GameObject.Find(sceneName + "Music");
+        if (sceneMusic != null)
+        {
+            AudioSource audioSource = sceneMusic.GetComponent<AudioSource>();
+            if (audioSource != null)
+            {
+                audioSource.Play();
+            }
+        }
+    }
+
+    void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        PlaySceneMusic(scene.name);
     }
 }
