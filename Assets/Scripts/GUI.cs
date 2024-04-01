@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class GUI : MonoBehaviour
 {
-    //GameManager·Î ³»¿ëÀÌ µé¾î°¥ ¿¹Á¤
+    //GameManagerï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½î°¥ ï¿½ï¿½ï¿½ï¿½
     public Button inventoryButton;
     public Button phoneButton;
     public Button mapButton;
@@ -17,7 +17,7 @@ public class GUI : MonoBehaviour
     public TMP_Text nameText;
 
     public Transform phoneNumberListPosition;
-    public List<GameObject> phoneNumberList; //µñ¼Å³Ê¸®·Î °ü¸®
+    public List<GameObject> phoneNumberList; //ï¿½ï¿½Å³Ê¸ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 
     private void Start()
     {
@@ -26,11 +26,11 @@ public class GUI : MonoBehaviour
         human2Button.onClick.AddListener(() => TalkHuman("1234"));
     }
 
-    private void TalkHuman(string name) //ÀÓÀÇ·Î ¹ÞÀº name. ³ªÁß¿¡ dialogue¶û ¿¬°áÇØ¼­ ¹Ù²Ü ¿¹Á¤
+    private void TalkHuman(string name) //ï¿½ï¿½ï¿½Ç·ï¿½ ï¿½ï¿½ï¿½ï¿½ name. ï¿½ï¿½ï¿½ß¿ï¿½ dialogueï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ø¼ï¿½ ï¿½Ù²ï¿½ ï¿½ï¿½ï¿½ï¿½
     {
-        //GameManager·Î °¥°Å±â ¶§¹®¿¡ ÀÌÈÄ PhoneNumberUI·Î ÀÌµ¿ ¿¹Á¤.
+        //GameManagerï¿½ï¿½ ï¿½ï¿½ï¿½Å±ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ PhoneNumberUIï¿½ï¿½ ï¿½Ìµï¿½ ï¿½ï¿½ï¿½ï¿½.
         nameText.text = name;
-        phoneNumberList.Add(Utility.Instance.GameObjectLoad("Prefabs/PhoneNumberList"));
+        phoneNumberList.Add(DataManager.instance.GameObjectLoad("Prefabs/PhoneNumberList"));
         phoneNumberList[phoneNumberList.Count - 1].GetComponentInChildren<Text>().text = name;
         Instantiate(phoneNumberList[phoneNumberList.Count - 1], phoneNumberListPosition);
     }

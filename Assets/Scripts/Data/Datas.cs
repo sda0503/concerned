@@ -9,11 +9,12 @@ namespace DataStorage
     [System.Serializable]
     public class Player
     {
-        public AllChatLog AllChatLog; //대화 기록
-        public Dialogue_Dic DialogueDic; //대화 dic
+        //public AllChatLog AllChatLog; //대화 기록
+        //public Dialogue_Dic DialogueDic; //대화 dic
         public Dialogue_Quest_Dic DialogueQuestDic; //대화 Quest dic
-        public Inventory Inventory; //인벤토리
+        public List<int> Inventory; //인벤토리
         public Information Information; //캐릭터 진행 데이터
+        
     }
 
     #endregion
@@ -53,6 +54,9 @@ namespace DataStorage
             set { Position = value; }
         }
         //position은 주소로 하고 DB 만들기
+
+        public Dictionary<int, List<bool>> canvasSettingData = new Dictionary<int, List<bool>>(); //캔버스 오브젝트 배치에 관한 데이터.
+        
 
         public Information()
         {
@@ -142,7 +146,7 @@ namespace DataStorage
     #endregion
 
     #region ChatLogSave
-
+    //굳이 Save&Load를 해야하는가?
     public class AllChatLog //전체 대화 로그
     { 
         //Dictionary<int, chatlogData> => int = Quest 순서, ChatlogData = 퀘스트 안의 대화 내역
@@ -164,12 +168,6 @@ namespace DataStorage
 
     #region canvas 오브젝트 배치 저장용
 
-    public class CanvasContorller
-    {
-        public int CanvasID;
-        public List<bool> objectState;
-    }
-
     public class CanvasDic
     {
         public Dictionary<int, List<bool>> CanvasContorllers = new Dictionary<int, List<bool>>();
@@ -190,6 +188,40 @@ namespace DataStorage
     {
         public List<PlaceDB> PlaceDB = new List<PlaceDB>();
     }
+
+    #endregion
+
+    #region 데이터 세팅용
+
+    public class PlaceDBLoad
+    {
+        public Dictionary<int, GameObject> placeDic = new Dictionary<int, GameObject>();
+        public Dictionary<int, Sprite> BGDic = new Dictionary<int, Sprite>();
+    }
+
+    #endregion
+
+    #region 아이템 데이터
+
+    [System.Serializable]
+    public class ItemData
+    {
+        public int item_id;
+        public string item_name;
+        public string default_description;
+        public string simple_description;
+        public ItemEventType itemEventType;
+        public ItemType itemType;
+        public string event_description;
+    }
+    
+    public class ItemDataList
+    {
+        //<������ �޾ƿ� class> �������� ��Ʈ�� �ִ� ������ �ִ� ��Ʈ��.
+        public List<ItemData> Data = new List<ItemData>();
+        public List<ItemData> Trigger = new List<ItemData>();
+    }
+
 
     #endregion
 }
