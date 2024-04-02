@@ -23,12 +23,12 @@ public class AllChatLogSet : MonoBehaviour
 
     void Click()
     {
-        ChatLogManager.instance.allchatlogpannel.SetActive(false);
-        ChatLogManager.instance.singlechatlogpannel.SetActive(true);
-        foreach (var idx in ChatLogManager.instance.allChatLog.allChatlog[text.text].saveOneLog.Keys.ToArray())
+        ChatLogManager.Instance.allchatlogpannel.SetActive(false);
+        ChatLogManager.Instance.singlechatlogpannel.SetActive(true);
+        foreach (var idx in ChatLogManager.Instance.allChatLog.allChatlog[text.text].saveOneLog.Keys.ToArray())
         {
-            var obj = Instantiate(ChatLogManager.instance.chatpannelPrefab2,
-                ChatLogManager.instance.singlechatlogpannel.transform);
+            var obj = Instantiate(ChatLogManager.Instance.chatpannelPrefab2,
+                ChatLogManager.Instance.singlechatlogpannel.transform);
             if (obj.TryGetComponent(out SingleChatLogSet singleChatLogSet))
             {
                 singleChatLogSet.set(idx,text.text);
