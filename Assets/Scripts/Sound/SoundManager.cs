@@ -3,25 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class SoundManager : MonoBehaviour
+public class SoundManager : SingletonBase<SoundManager>
 {
     public GameObject soundOn;
     public GameObject soundOff;
     private bool muted = false;
-
-    private static SoundManager instance;
-
-    private void Awake()
-    {
-        if (instance == null)
-        {
-            instance = this;
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
-    }
 
     void Start()
     {

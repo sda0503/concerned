@@ -1,13 +1,10 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Text;
 using DataStorage;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UIManager : MonoBehaviour
+public class UIManager : SingletonBase<UIManager>
 {
     //TODO : 다채로운 버튼,UI들의 향연 
      
@@ -35,7 +32,7 @@ public class UIManager : MonoBehaviour
     
     public Transform itemCanvas;
 
-    private Information playerinformation = DataManager.instance.Playerinformation;
+    private Information playerinformation = DataManager.Instance.Playerinformation;
     
    
 
@@ -99,7 +96,7 @@ public class UIManager : MonoBehaviour
         CanvasGroup[playerinformation.position].SetActive(false); //현재 캔버스 끄기.
         //TODO : 캔버스를 세팅하는 부분에 오브젝트에 관한 Bool값을 가지는 데이터를 사용해보자.
         //TODO : 해당하는 캔버스가 없으면 Instanciate, 있으면 꺼져있을테니 다시 키는걸로. => 현재 있는거랑 동일한건지 체크해줘야됨.
-        string path = DataManager.instance.PlaceDBDatas.PlaceDB[playerinformation.position].Place_Path; //방끼리 이동.
+        string path = DataManager.Instance.PlaceDBDatas.PlaceDB[playerinformation.position].Place_Path; //방끼리 이동.
         if (!CanvasGroup.ContainsKey(playerinformation.position))
         {
             var obj = Resources.Load<GameObject>($"Prefabs/{path}");

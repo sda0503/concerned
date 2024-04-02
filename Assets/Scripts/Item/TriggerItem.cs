@@ -8,7 +8,7 @@ public class TriggerItem//도감 적용안되는 아이템.
 
     public TriggerItem(int id)
     {
-        itemData = DataManager.instance.GetDefaultItemDataList().Trigger[id];
+        itemData = DataManager.Instance.GetDefaultItemDataList().Trigger[id];
         this.id = id;
         event_check = false;
     }

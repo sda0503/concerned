@@ -29,7 +29,7 @@ public class DogamUI : PopupUIBase
     {
         for (int i = 0; i < 12; i++)
         {
-            itemSlots[i] = Instantiate(DataManager.instance.GameObjectLoad("Prefabs/DogamItemSlot"), itemSlot);
+            itemSlots[i] = Instantiate(DataManager.Instance.GameObjectLoad("Prefabs/DogamItemSlot"), itemSlot);
             OnDogamItem(i);
             int n = i;
             itemSlots[i].GetComponent<Button>().onClick.RemoveAllListeners();
@@ -39,13 +39,13 @@ public class DogamUI : PopupUIBase
 
     public void DogamSlotButton(int index)
     {
-        nameText.text = DataManager.instance.dogamItemData[index].item_name;
-        descriptionText.text = DataManager.instance.dogamItemData[index].default_description;
+        nameText.text = DataManager.Instance.dogamItemData[index].item_name;
+        descriptionText.text = DataManager.Instance.dogamItemData[index].default_description;
     }
 
     public void OnDogamItem(int key)
     {
-        if (DataManager.instance.dogamItemData.ContainsKey(key))
+        if (DataManager.Instance.dogamItemData.ContainsKey(key))
         {
             //�̹��� ����Ǵ� �κ��� �ʿ���.
             itemSlots[key].transform.GetChild(1).gameObject.SetActive(true);

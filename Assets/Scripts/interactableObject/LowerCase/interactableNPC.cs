@@ -14,13 +14,13 @@ public class interactableNPC : interactableObject
     protected override void Start()
     {
         base.Start();
-        btn.onClick.AddListener(()=>DialogueManager.instance.StartDialogue(TargetName));
+        btn.onClick.AddListener(()=>DialogueManager.Instance.StartDialogue(TargetName));
         GameManager.Instance.OnDayTimeChange += onoff;
     }
 
     void onoff()
     {
-        if (check[(int)DataManager.instance.Playerinformation.dayTime])
+        if (check[(int)DataManager.Instance.Playerinformation.dayTime])
         {
             gameObject.SetActive(true);
         }

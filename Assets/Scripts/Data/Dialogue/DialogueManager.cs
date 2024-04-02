@@ -7,7 +7,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using KoreanTyper;
 
-public class DialogueManager : MonoBehaviour
+public class DialogueManager : SingletonBase<DialogueManager>
 {
     [SerializeField] private Button[] choice_btn;
     [SerializeField] private Button _confirmbtn;
@@ -21,9 +21,6 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] private GameObject _forechatObject;
     [SerializeField] private Button chatwindowBtn;
 
-    public static DialogueManager instance;
-
-
     private WaitForSeconds typerWaitTime = new WaitForSeconds(0.05f);
 
     private int contextcount = 0;
@@ -32,18 +29,8 @@ public class DialogueManager : MonoBehaviour
 
     [HideInInspector] public Dictionary<string, List<Dialogue_Quest_Data>> _questdic; 
     [HideInInspector] public Dictionary<int, Dialogue_Data> _dialogdic;
-    [HideInInspector] public Dictionary<string,chatlogdic> allchatlog;
-
-    private void Awake()
-    {
-        if (instance == null)
-        {
-            instance = this;
-        }
-        else
-            Destroy(gameObject);
-    }
-
+    private Dictionary<string,chatlogdic> allchatlog; 
+    
     void Start()
     {
         for (int i = 0; i < choice_btn.Length; i++)
@@ -55,13 +42,13 @@ public class DialogueManager : MonoBehaviour
         //_skipbtn.onClick.AddListener(PloatingAllText);
         chatwindowBtn.onClick.AddListener(ConfirmbtnClick);
         //_confirmbtn.onClick.AddListener(ConfirmbtnClick);
-        allchatlog = ChatLogManager.instance.allChatLog.allChatlog;
+        allchatlog = ChatLogManager.Instance.allChatLog.allChatlog;
     }
 
 
     void GiveItem()
     {
-        DataManager.instance._inventory.inventory.Add(0, new Iteminfo());
+        DataManager.Instance._inventory.inventory.Add(0, new Iteminfo());
     }
 
     int CheckQuest(string targetname)
@@ -76,7 +63,7 @@ public class DialogueManager : MonoBehaviour
                         [int.Parse(dialogueQuestDatas[i].NeedQuest[1])].QuestState) //필요한 선행 퀘스트가 완료되었는지
                 {
                     if (dialogueQuestDatas[i].NeedItem == null ||
-                        DataManager.instance._inventory.inventory.ContainsKey(
+                        DataManager.Instance._inventory.inventory.ContainsKey(
                             int.Parse(dialogueQuestDatas[i].NeedItem))) //Inventory가 Dic라서 containsKey로 찾으면 됨.
                     {
                         //if(_questDic.DialogueQuestDic[targetname][i].QuestType == QuestType.Normal)

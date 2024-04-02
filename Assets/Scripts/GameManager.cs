@@ -8,10 +8,8 @@ using UnityEngine;
 using UnityEngine.UI;
 
 
-public class GameManager : MonoBehaviour
+public class GameManager : SingletonBase<GameManager>
 {
-    private static GameManager instance;
-
     #region 뭔지 몰라도 조건이 많을것같아서 만듬
 
     //TODO :관련된 UI들 값 변경할수있도록 연결할 것
@@ -34,20 +32,6 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Canvas _canvas;
 
     public Information Playerinformation = new Information();
-
-    public static GameManager Instance
-    {
-        get
-        {
-            if (instance == null)
-            {
-                instance = FindObjectOfType<GameManager>();
-            }
-
-            return instance;
-        }
-    }
-
     
     private void Start()
     {
