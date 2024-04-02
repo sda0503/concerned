@@ -2,25 +2,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ItemManager : MonoBehaviour
+public class ItemManager : SingletonBase<ItemManager>
 {
-    private static ItemManager instance;
-    public static ItemManager Instance
-    {
-        get
-        {
-            if (instance == null)
-            {
-                GameObject obj = new GameObject();
-                obj.name = typeof(ItemManager).Name;
-                instance = obj.AddComponent<ItemManager>();
-            }
-            return instance;
-        }
-    }
-
-    public Item[] itemsData = new Item[DataManager.instance.GetDefaultItemDataList().Data.Count]; //������ ����ִ� ������
-    public TriggerItem[] triggerItemsData = new TriggerItem[DataManager.instance.GetDefaultItemDataList().Trigger.Count];
+    public Item[] itemsData = new Item[DataManager.Instance.GetDefaultItemDataList().Data.Count]; //������ ����ִ� ������
+    public TriggerItem[] triggerItemsData = new TriggerItem[DataManager.Instance.GetDefaultItemDataList().Trigger.Count];
 
     public Dictionary<int, Item> getItems = new Dictionary<int, Item>(); //���� Item��
     public Dictionary<int, GameObject> triggerItems = new Dictionary<int, GameObject>();
@@ -59,8 +44,8 @@ public class ItemManager : MonoBehaviour
     {
         if (!ItemManager.Instance.getItems.ContainsKey(index))
         {
-            var obj = DataManager.instance.GameObjectLoad("Prefabs/Item");
-            obj.transform.GetComponent<Image>().sprite = DataManager.instance.SpriteLoad("image"); //index�� ���缭 �̹��� �ε�ǵ��� ����
+            var obj = DataManager.Instance.GameObjectLoad("Prefabs/Item");
+            obj.transform.GetComponent<Image>().sprite = DataManager.Instance.SpriteLoad("image"); //index�� ���缭 �̹��� �ε�ǵ��� ����
             Object.Instantiate(obj, canvas);
 
             ItemManager.Instance.GetItem(index);
@@ -71,7 +56,7 @@ public class ItemManager : MonoBehaviour
     {
         if (!ItemManager.Instance.triggerItems.ContainsKey(index))
         {
-            var obj =  DataManager.instance.GameObjectLoad("Prefabs/TriggerItem");
+            var obj =  DataManager.Instance.GameObjectLoad("Prefabs/TriggerItem");
 
             //Sprite sprite = SpriteLoad("Look");
             //sprite�� ������ Debug���� �� �ֵ��� �������ִ� ���� ����. 27��ó�� �ѹ��� �ۼ��� ������.

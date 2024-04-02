@@ -22,7 +22,7 @@ public class InventoryUI : PopupUIBase
     {
         for(int i = 0; i < count; i++)
         {
-            inventorySlot.Add(Instantiate(DataManager.instance.GameObjectLoad("Prefabs/InventoryItemSlot"), itemSlot));
+            inventorySlot.Add(Instantiate(DataManager.Instance.GameObjectLoad("Prefabs/InventoryItemSlot"), itemSlot));
         }
     }
 

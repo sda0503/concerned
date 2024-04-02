@@ -13,7 +13,7 @@ public class Item
 
     public Item(int id)
     {
-        itemData = DataManager.instance.GetDefaultItemDataList().Data[id];
+        itemData = DataManager.Instance.GetDefaultItemDataList().Data[id];
         this.id = id;
         event_check = false;
     }

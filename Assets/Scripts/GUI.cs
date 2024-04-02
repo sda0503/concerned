@@ -30,7 +30,7 @@ public class GUI : MonoBehaviour
     {
         //GameManager�� ���ű� ������ ���� PhoneNumberUI�� �̵� ����.
         nameText.text = name;
-        phoneNumberList.Add(DataManager.instance.GameObjectLoad("Prefabs/PhoneNumberList"));
+        phoneNumberList.Add(DataManager.Instance.GameObjectLoad("Prefabs/PhoneNumberList"));
         phoneNumberList[phoneNumberList.Count - 1].GetComponentInChildren<Text>().text = name;
         Instantiate(phoneNumberList[phoneNumberList.Count - 1], phoneNumberListPosition);
     }
