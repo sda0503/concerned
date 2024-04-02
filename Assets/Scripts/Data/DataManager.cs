@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
@@ -14,6 +15,8 @@ using UnityEngine;
 public class DataManager : SingletonBase<DataManager> //유니티 기능을 상속 받는거 /코루틴이나 유니티 이벤트를 연동하려면 필요함.
 {
     private Player _playerToSave; //Save & Load 대기용
+
+    public event Action LoadingChange;
 
     public Player player
     {
@@ -74,6 +77,7 @@ public class DataManager : SingletonBase<DataManager> //유니티 기능을 상�
     {
         //전체적으로 다 코루틴으로 꾸려주어야함.
         yield return StartCoroutine(dialogueDBSet()); 
+        //TODO : 로딩 종료될때마다 콜백줘서 진행도 표시하기
         Debug.Log("다이얼로그 세팅 완료");
 
         yield return StartCoroutine(PlaceDBSet());
@@ -88,6 +92,7 @@ public class DataManager : SingletonBase<DataManager> //유니티 기능을 상�
         
         GameManager.Instance.Playerinformation = Playerinformation; //TODO : 이건뭐지
     }
+    //스트리밍에셋폴더에다가 에셋번들 집어넣어놓고 로딩하는 방법. 이 방법이 따로 서버 세팅안하고 준비할수있는 제일 좋은방법일 듯.
 
     public void LoadData() //TODO : 이어하기 선택 시 불러올 데이터 내용 작성 + 버튼에 들어갈 내용
     {
@@ -99,8 +104,8 @@ public class DataManager : SingletonBase<DataManager> //유니티 기능을 상�
 
     IEnumerator dialogueDBSet() //TODO : 로드에 관한 부분도 넣어서 작성해야됨 => 엎을 예정
     {
-        yield return loadingwait;
-        string loadData = Resources.Load("Dialogue_DB").ToString();
+        yield return loadingwait; //TODO : 이걸 쓰거나 마지막에 yield break / yield return null을 넣어줘도 사용 가능.
+        string loadData = Resources.LoadAsync("Dialogue_DB").ToString(); //LoadAsync로 바꾸는 것 찾아보기.
 
         Dialogue_List dialogueList = JsonConvert.DeserializeObject<Dialogue_List>(loadData);
 
@@ -254,7 +259,7 @@ public class DataManager : SingletonBase<DataManager> //유니티 기능을 상�
     public void Save()
     {
         _playerToSave.Information = GameManager.Instance.Playerinformation;
-        foreach (var VARIABLE in UIManager.instance.CanvasGroup)
+        foreach (var VARIABLE in UIManager.Instance.CanvasGroup)
         {
             _playerToSave.Information.canvasSettingData.Add(VARIABLE.Key,
                 VARIABLE.Value.GetComponent<CanvasOnLoad>().states);

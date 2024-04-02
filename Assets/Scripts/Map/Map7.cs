@@ -28,13 +28,13 @@ public class Map7 : MonoBehaviour
         switch (index)
         {
             case 0:
-                ItemManager.Instance.OnClickToFindItem(0, UIManager.instance.itemCanvas);
+                ItemManager.Instance.OnClickToFindItem(0, UIManager.Instance.itemCanvas);
                 break;
             case 2:
-                ItemManager.Instance.OnClickToFindItem(34, UIManager.instance.itemCanvas);
+                ItemManager.Instance.OnClickToFindItem(34, UIManager.Instance.itemCanvas);
                 break;
             case 3:
-                ItemManager.Instance.OnClickToFindTriggerItem(2, UIManager.instance.itemCanvas);
+                ItemManager.Instance.OnClickToFindTriggerItem(2, UIManager.Instance.itemCanvas);
 
                 ItemManager.Instance.GetItem(7);
                 break;
