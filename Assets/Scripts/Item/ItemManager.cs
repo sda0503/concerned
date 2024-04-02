@@ -4,12 +4,12 @@ using UnityEngine.UI;
 
 public class ItemManager : SingletonBase<ItemManager>
 {
-    public Item[] itemsData = new Item[DataManager.Instance.GetDefaultItemDataList().Data.Count]; //������ ����ִ� ������
-    public TriggerItem[] triggerItemsData = new TriggerItem[DataManager.Instance.GetDefaultItemDataList().Trigger.Count];
+    public Item[] itemsData;
+    public Item[] triggerItemsData;
 
-    public Dictionary<int, Item> getItems = new Dictionary<int, Item>(); //���� Item��
+    public Dictionary<int, Item> getItems = new Dictionary<int, Item>();
     public Dictionary<int, GameObject> triggerItems = new Dictionary<int, GameObject>();
-    public List<int> getItemsNumber = new List<int>(); //���� Item�� ����
+    public List<int> getItemsNumber = new List<int>();
 
     private void Start()
     {
@@ -18,13 +18,30 @@ public class ItemManager : SingletonBase<ItemManager>
 
     public void SetItemData()
     {
-        for (int i = 0; i < itemsData.Length; i++)
+        int itemCount = 0;
+        int triggerItemCount = 0;
+        for (int i = 0; i < DataManager.Instance.GetDefaultItemDataList().Data.Count; i++)
         {
-            itemsData[i] = new Item(i);
+            if (DataManager.Instance.GetDefaultItemDataList().Data[i].itemType == ItemType.Normal) itemCount++;
+            else if (DataManager.Instance.GetDefaultItemDataList().Data[i].itemType == ItemType.Trigger) triggerItemCount++;
         }
-        for (int i = 0; i < triggerItemsData.Length; i++)
+        itemsData = new Item[itemCount];
+        triggerItemsData = new Item[triggerItemCount];
+
+        itemCount = 0;
+        triggerItemCount = 0;
+        for (int i = 0; i < DataManager.Instance.GetDefaultItemDataList().Data.Count; i++)
         {
-            triggerItemsData[i] = new TriggerItem(i);
+            if (DataManager.Instance.GetDefaultItemDataList().Data[i].itemType == ItemType.Normal)
+            {
+                itemsData[itemCount] = new Item(i);
+                itemCount++;
+            }
+            else if (DataManager.Instance.GetDefaultItemDataList().Data[i].itemType == ItemType.Trigger)
+            {
+                triggerItemsData[itemCount] = new Item(i);
+                triggerItemCount++;
+            }
         }
     }
 
@@ -32,7 +49,7 @@ public class ItemManager : SingletonBase<ItemManager>
     {
         getItems.Add(item_id, itemsData[item_id]);
         getItemsNumber.Add(item_id);
-        DataManager.instance.saveGetItems.Data.Add(itemsData[item_id].itemData);
+        DataManager.Instance.saveGetItems.Data.Add(itemsData[item_id].itemData);
     }
 
     public void GetTriggerItem(int item_id, GameObject obj)
@@ -40,32 +57,31 @@ public class ItemManager : SingletonBase<ItemManager>
         triggerItems.Add(item_id, obj);
     }
     
-    public void OnClickToFindItem(int index, Transform canvas) //여기가 아이템 클릭했을 때 실행되는 구간.
+    public void OnClickToFindItem(int index) //여기가 아이템 클릭했을 때 실행되는 구간.
     {
-        if (!ItemManager.Instance.getItems.ContainsKey(index))
+        if (!getItems.ContainsKey(index))
         {
             var obj = DataManager.Instance.GameObjectLoad("Prefabs/Item");
-            obj.transform.GetComponent<Image>().sprite = DataManager.Instance.SpriteLoad("image"); //index�� ���缭 �̹��� �ε�ǵ��� ����
-            Object.Instantiate(obj, canvas);
+            obj.transform.GetComponent<Image>().sprite = DataManager.Instance.SpriteLoad("image");
+            Instantiate(obj, UIManager.instance.itemCanvas);
 
-            ItemManager.Instance.GetItem(index);
+            GetItem(index);
         }
     }
 
-    public void OnClickToFindTriggerItem(int index, Transform canvas)
+    public void OnClickToFindTriggerItem(int index)
     {
-        if (!ItemManager.Instance.triggerItems.ContainsKey(index))
+        if (!triggerItems.ContainsKey(index))
         {
             var obj =  DataManager.Instance.GameObjectLoad("Prefabs/TriggerItem");
 
             //Sprite sprite = SpriteLoad("Look");
-            //sprite�� ������ Debug���� �� �ֵ��� �������ִ� ���� ����. 27��ó�� �ѹ��� �ۼ��� ������.
-            //obj.transform.GetComponent<Image>().sprite = sprite; //index�� ���缭 �̹��� �ε�ǵ��� ����
-            // obj.transform.GetComponent<TriggerItem>().id = index;
-            obj = Object.Instantiate(obj, canvas);
-            //ItemManager.Instance.GetTriggerItem(index, obj);
+            //obj.transform.GetComponent<Image>().sprite = sprite;
+            //obj.transform.GetComponent<TriggerItem>().id = index;
+            obj = Instantiate(obj, UIManager.instance.itemCanvas);
+            GetTriggerItem(index, obj);
         }
-        else ItemManager.Instance.triggerItems[index].SetActive(true);
+        else triggerItems[index].SetActive(true);
     }
 
 }

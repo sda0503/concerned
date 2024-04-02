@@ -2,10 +2,6 @@ using DataStorage;
 
 public class Item
 {
-    //���� ������ ����ϴ� ������
-    //id�� ������ �ְ� id�� ���ؼ� �������� ������ �ҷ���.
-  
-
     public int id;
     public ItemData itemData;
     

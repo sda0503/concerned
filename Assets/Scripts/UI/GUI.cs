@@ -13,11 +13,17 @@ public class GUI : MonoBehaviour
 
     private void Start()
     {
+        inventoryButton.onClick.AddListener(OnInventory);
         phoneButton.onClick.AddListener(OnPhone);
     }
 
     private void OnPhone()
     {
         PopupUIManager.Instance.OpenPopupUI<PhoneUI>();
+    }
+
+    private void OnInventory()
+    {
+        PopupUIManager.Instance.OpenPopupUI<InventoryUI>();
     }
 }

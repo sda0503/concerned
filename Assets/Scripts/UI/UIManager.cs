@@ -32,18 +32,13 @@ public class UIManager : SingletonBase<UIManager>
     
     public Transform itemCanvas;
 
-    private Information playerinformation = DataManager.Instance.Playerinformation;
+    private Information playerinformation;
     
    
 
     private void Awake()
     {
-        if (instance == null)
-            instance = this;
-        else
-        {
-            Destroy(gameObject);
-        }
+        playerinformation = DataManager.Instance.Playerinformation;
     }
     
 

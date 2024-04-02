@@ -136,7 +136,7 @@ GameObject:
   - component: {fileID: 4128902}
   - component: {fileID: 4128901}
   m_Layer: 5
-  m_Name: Button (Legacy) (4)
+  m_Name: PhoneButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -425,7 +425,7 @@ GameObject:
   - component: {fileID: 633432723}
   - component: {fileID: 633432722}
   m_Layer: 5
-  m_Name: Button (Legacy)
+  m_Name: MapButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -911,6 +911,7 @@ GameObject:
   - component: {fileID: 1006227123}
   - component: {fileID: 1006227122}
   - component: {fileID: 1006227121}
+  - component: {fileID: 1006227124}
   m_Layer: 5
   m_Name: Button (Legacy) (3)
   m_TagString: Untagged
@@ -1020,6 +1021,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1006227119}
   m_CullTransparentMesh: 1
+--- !u!114 &1006227124
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1006227119}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fa8c9efc2c0d7542a0f25c176e2b945, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TargetName: 
 --- !u!1001 &1288902728
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1174,6 +1188,7 @@ GameObject:
   - component: {fileID: 1331231848}
   - component: {fileID: 1331231847}
   - component: {fileID: 1331231846}
+  - component: {fileID: 1331231849}
   m_Layer: 5
   m_Name: Button (Legacy) (2)
   m_TagString: Untagged
@@ -1283,6 +1298,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1331231844}
   m_CullTransparentMesh: 1
+--- !u!114 &1331231849
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1331231844}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fa8c9efc2c0d7542a0f25c176e2b945, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TargetName: 
 --- !u!1 &1547266647
 GameObject:
   m_ObjectHideFlags: 0
@@ -1363,6 +1391,7 @@ GameObject:
   - component: {fileID: 1620764544}
   - component: {fileID: 1620764543}
   - component: {fileID: 1620764542}
+  - component: {fileID: 1620764546}
   m_Layer: 5
   m_Name: GUI
   m_TagString: Untagged
@@ -1458,6 +1487,27 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1620764546
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1620764541}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0861a2012cbcce43900555c745c2626, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inventoryButton: {fileID: 1973326907}
+  phoneButton: {fileID: 4128901}
+  mapButton: {fileID: 633432722}
+  human1Button: {fileID: 0}
+  human2Button: {fileID: 0}
+  TextCanvas: {fileID: 0}
+  nameText: {fileID: 0}
+  phoneNumberListPosition: {fileID: 0}
+  phoneNumberList: []
 --- !u!1 &1973326905
 GameObject:
   m_ObjectHideFlags: 0
@@ -1471,7 +1521,7 @@ GameObject:
   - component: {fileID: 1973326908}
   - component: {fileID: 1973326907}
   m_Layer: 5
-  m_Name: Button (Legacy) (1)
+  m_Name: InventoryButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

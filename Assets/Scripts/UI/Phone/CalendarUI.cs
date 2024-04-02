@@ -23,7 +23,7 @@ public class CalendarUI : PopupUIBase
 
     private void MakeSlots()
     {
-        GameObject obj = Utility.Instance.GameObjectLoad("Prefabs/Date");
+        GameObject obj = DataManager.Instance.GameObjectLoad("Prefabs/Date");
         for (int i = 0; i < calendarDates.Length; i++)
         {
             calendarDates[i] = Instantiate(obj, dataTransform);
@@ -39,7 +39,7 @@ public class CalendarUI : PopupUIBase
         {
             Debug.Log(GameManager.Instance.Playerinformation.date);
             Debug.Log("D - day");
-            DialogueManager.instance.StartDialogue(click_calendarDates[GameManager.Instance.Playerinformation.date]); //È¥Àã¸» ¹öÀü
+            DialogueManager.Instance.StartDialogue(click_calendarDates[GameManager.Instance.Playerinformation.date]); //È¥Àã¸» ¹öÀü
             //gameObject.SetActive(true); //³¯Â¥ ¹Ù²î¸é UIº¸¿©ÁÜ.
         }
     }

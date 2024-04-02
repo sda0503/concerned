@@ -12,6 +12,13 @@ public class InventoryUI : PopupUIBase
     public Text nameText;
     public Text descriptionText;
 
+    public Button closeButton;
+
+    private void Start()
+    {
+        closeButton.onClick.AddListener(CloseUI);
+    }
+
     private void OnEnable()
     {
         if (inventorySlot.Count == 0) MakeInventorySlot(3);
@@ -26,7 +33,7 @@ public class InventoryUI : PopupUIBase
         }
     }
 
-    public void AddItemList() //Ž������ �������� ��� ���.
+    private void AddItemList()
     {
         for(int i = 0; i < ItemManager.Instance.getItemsNumber.Count;i++)
         {
@@ -38,13 +45,10 @@ public class InventoryUI : PopupUIBase
 
     public void SetItemSlot(int id)
     {
-        //������ �̸��̶� ���� text �κ� �����ϴ� ��.
         if (items.Count >= 3 && items.Count % 3 == 0) 
-
         {
             MakeInventorySlot(3);
         }
-        //items�� ������ ���� ���̹Ƿ� Count�� ���� ������ ���� -1 �� ����.
         //inventorySlot[items.Count].transform.GetComponent<SpriteRenderer>().sprite = item.Image; �̹��� ����.
         inventorySlot[items.Count].transform.Find("GetItem").gameObject.SetActive(true);
         inventorySlot[items.Count].GetComponent<Button>().onClick.AddListener(() => InventorySlotButton(id));
@@ -52,7 +56,6 @@ public class InventoryUI : PopupUIBase
 
     public void InventorySlotButton(int id)
     {
-        //�̹��� ����.
         nameText.text = items[id].itemData.item_name;
         descriptionText.text = items[id].itemData.default_description;
     }

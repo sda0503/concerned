@@ -29,7 +29,7 @@ public class GameManager : SingletonBase<GameManager>
    
     //TODO : Save 관련된 기능들도 event로 묶어서 관리
 
-    [SerializeField] private Canvas _canvas;
+    public Canvas _canvas;
 
     public Information Playerinformation = new Information();
     

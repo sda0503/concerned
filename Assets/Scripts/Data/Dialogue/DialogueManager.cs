@@ -29,7 +29,7 @@ public class DialogueManager : SingletonBase<DialogueManager>
 
     [HideInInspector] public Dictionary<string, List<Dialogue_Quest_Data>> _questdic; 
     [HideInInspector] public Dictionary<int, Dialogue_Data> _dialogdic;
-    private Dictionary<string,chatlogdic> allchatlog; 
+    public Dictionary<string,chatlogdic> allchatlog; 
     
     void Start()
     {

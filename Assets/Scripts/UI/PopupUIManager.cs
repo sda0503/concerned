@@ -4,10 +4,6 @@ using UnityEngine;
 
 public class PopupUIManager
 {
-    //���׸����� �޾Ƽ� popupUI ������ UI ��ư ������ UI���� script�־��ֱ�
-
-    //UI �������� �ε� -> ���׸����� �ٲ㼭 �������� ����� �� �ֵ��� ����
-    //��ųʸ� key �� �̿��ؼ� ������ �����ϰ� ������ ���� ���� ��ųʸ��� ����
     public Dictionary<string, GameObject> popupUI = new Dictionary<string, GameObject>();
 
     private static PopupUIManager instance;

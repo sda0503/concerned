@@ -30,15 +30,15 @@ public class map5 : MonoBehaviour
             case 1:
                 if (ItemManager.Instance.getItems.ContainsKey(33))
                 {
-                    Utility.Instance.OnClickToFindItem(15, DataManager.instance.itemCanvas);
+                    ItemManager.Instance.OnClickToFindItem(15);
                 }
                 else Debug.Log("nnnn.");
                 break;
             case 2:
-                Utility.Instance.OnClickToFindItem(17, DataManager.instance.itemCanvas);
+                ItemManager.Instance.OnClickToFindItem(17);
                 break;
             case 3:
-                Utility.Instance.OnClickToFindItem(33, DataManager.instance.itemCanvas);
+                ItemManager.Instance.OnClickToFindItem(33);
                 break;
         }
     }
