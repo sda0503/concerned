@@ -6,6 +6,7 @@ TagManager:
   tags:
   - collider
   - same
+  - Popup
   layers:
   - Default
   - TransparentFX
