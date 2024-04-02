@@ -13,8 +13,6 @@ public class UIManager : SingletonBase<UIManager>
     //TODO : 그리고 event로 콜백 처리하는는 부분들이 UI 같은 경우에는 간단할 수도 있는데, 대화 들어갈 때 뒤에 클릭할 수 있는 애들 꺼지는 부분도 관리 해줘야되는 부분이기때문에
     //TODO : 간단하거나 수가 적은건 callback으로 해결하면 되고 나머지는 인터페이스를 상속해 선조치 후통보 (값 바꿔놓고 그 후에 해당하는 객체들을 돌면서 필요한 동작 실행시키기)
     /// </summary>
-    public static UIManager instance;
-
     private StringBuilder sb = new StringBuilder();
 
     [SerializeField] private Button btn;
@@ -32,21 +30,8 @@ public class UIManager : SingletonBase<UIManager>
     
     public Transform itemCanvas;
 
-    private Information playerinformation = DataManager.Instance.Playerinformation;
-    
+    private Information playerinformation;
    
-
-    private void Awake()
-    {
-        if (instance == null)
-            instance = this;
-        else
-        {
-            Destroy(gameObject);
-        }
-    }
-    
-
     void Start()
     {
         //TODO : 버튼에 애드리스너해서 메서드 달아주기
@@ -59,6 +44,7 @@ public class UIManager : SingletonBase<UIManager>
         GameManager.Instance.OnDayTimeChange += DateUpdate;
         GameManager.Instance.OnPositionChange += CanvasChange;
         GameManager.Instance.OnPositionChange += itemCanvaschange;
+        playerinformation = DataManager.Instance.Playerinformation;
     }
     
     void DateUpdate() //TODO : UI변경에 관한 부분은 모두 UIManager로 넘길 것
