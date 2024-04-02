@@ -30,7 +30,7 @@ public class UIManager : SingletonBase<UIManager>
     
     public Transform itemCanvas;
 
-    private Information playerinformation = DataManager.Instance.Playerinformation;
+    private Information playerinformation;
    
     void Start()
     {
@@ -44,6 +44,7 @@ public class UIManager : SingletonBase<UIManager>
         GameManager.Instance.OnDayTimeChange += DateUpdate;
         GameManager.Instance.OnPositionChange += CanvasChange;
         GameManager.Instance.OnPositionChange += itemCanvaschange;
+        playerinformation = DataManager.Instance.Playerinformation;
     }
     
     void DateUpdate() //TODO : UI변경에 관한 부분은 모두 UIManager로 넘길 것
