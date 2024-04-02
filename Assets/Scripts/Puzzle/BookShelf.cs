@@ -65,7 +65,7 @@ public class BookShelf : MonoBehaviour
 
     private void MakeBook()
     {
-        var obj = DataManager.instance.GameObjectLoad("Prefabs/book");
+        var obj = DataManager.Instance.GameObjectLoad("Prefabs/book");
         for (int i = 0; i < 32; i++)
         {
             GameObject newBook = Instantiate(obj, books);

@@ -67,9 +67,9 @@ namespace DataStorage
 
         public void OnLoadSetting() //로드할 때에 맞춰서 세팅
         {
-            dayTime = DataManager.instance.player.Information.dayTime;
-            date = DataManager.instance.player.Information.date;
-            position = DataManager.instance.player.Information.position;
+            dayTime = DataManager.Instance.player.Information.dayTime;
+            date = DataManager.Instance.player.Information.date;
+            position = DataManager.Instance.player.Information.position;
         }
     } //TODO : 최초 세팅 때 설정해주고, 이어하기 할 때는 로드하기.
 
