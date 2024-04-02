@@ -58,7 +58,7 @@ namespace DataStorage
         public Dictionary<int, List<bool>> canvasSettingData = new Dictionary<int, List<bool>>(); //캔버스 오브젝트 배치에 관한 데이터.
         
 
-        public Information()
+        public Information() //첫 시작 때 사용
         {
             DayTime = DayTimeenum.Evening;
             Date = 0;
@@ -67,8 +67,9 @@ namespace DataStorage
 
         public void OnLoadSetting() //로드할 때에 맞춰서 세팅
         {
-            //dayTime =  DataManager.Instance.~~~.Player.Information.dayTime;
-            //date =  DataManager.Instance.~~~.Player.Information.Date; 이런 느낌.
+            dayTime = DataManager.instance.player.Information.dayTime;
+            date = DataManager.instance.player.Information.date;
+            position = DataManager.instance.player.Information.position;
         }
     } //TODO : 최초 세팅 때 설정해주고, 이어하기 할 때는 로드하기.
 
