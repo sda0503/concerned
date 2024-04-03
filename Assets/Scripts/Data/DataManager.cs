@@ -15,7 +15,6 @@ using UnityEngine;
 public class DataManager : SingletonBase<DataManager> //유니티 기능을 상속 받는거 /코루틴이나 유니티 이벤트를 연동하려면 필요함.
 {
     private Player _playerToSave; //Save & Load 대기용
-
     public event Action LoadingChange;
 
     public Player player
@@ -84,7 +83,7 @@ public class DataManager : SingletonBase<DataManager> //유니티 기능을 상�
 
         yield return StartCoroutine(PlaceDBSet());
         LoadingChange?.Invoke();
-        Debug.Log("장소 세팅 완료");
+        //Debug.Log("장소 세팅 완료");
 
         yield return StartCoroutine(LoadDefaultData());
         LoadingChange?.Invoke();
@@ -135,7 +134,7 @@ public class DataManager : SingletonBase<DataManager> //유니티 기능을 상�
             dic.DialogueDic.Add(dialogueList.Dialouge_Log_Data[i].Dialogue_idx, dialogueList.Dialouge_Log_Data[i]);
         }
 
-        
+        yield return StartCoroutine(QuestSet()); //TODO : 게임 시작할 때로 옮겨주기
         //DialogueManager.Instance._dialogdic = dic.DialogueDic;
     }
 
@@ -187,7 +186,7 @@ public class DataManager : SingletonBase<DataManager> //유니티 기능을 상�
                 }
             }
         }
-        DialogueManager.Instance._questdic = _questDic.DialogueQuestDic;
+        //DialogueManager.Instance._questdic = _questDic.DialogueQuestDic;
     }
 
     #endregion
@@ -209,7 +208,7 @@ public class DataManager : SingletonBase<DataManager> //유니티 기능을 상�
         PlaceDBDatas = JsonConvert.DeserializeObject<PlaceDBDatas>(placeData);
 
 
-        for (int i = 0; i < PlaceDBDatas.PlaceDB.Count; i++)
+        for (int i = 0; i < PlaceDBDatas.PlaceDB.Count; i++) //TODO : 오브젝트 미리 깔아놓는건데 이것도 위치 옮겨야됨
         {
             //TODO : 수정 예정 + 캔버스 오브젝트의 트랜스폼을 받아오는 메서드를 하나 사용해야 할 듯.
             // var objtoload = Resources.Load<GameObject>($"{PlaceDBDatas.PlaceDB[i].Place_Path}");  // 프리팹 가져오기
@@ -219,6 +218,9 @@ public class DataManager : SingletonBase<DataManager> //유니티 기능을 상�
             //     _playerToSave.Information.canvasSettingData[PlaceDBDatas.PlaceDB[i].Place_ID];
             // UIManager.instance.CanvasGroup.Add(PlaceDBDatas.PlaceDB[i].Place_ID,obj); //프리팹 Dic에 추가하기.
         }
+        
+        //1. 동기로 작업을 한다 => 오브젝트 양이 많으면 버벅인다? ==> 일단 이걸로하던지
+        //2. 비동기로 작업을한다 => 느려지면 뻑갈수도있다. ==> 이 작업이 끝날떄까지 화면을 이미지로 덮어둔다. 인디케이터가 돌아간다던지해서 눈속임.
         // foreach (var VARIABLE in PlaceDBDatas.PlaceDB) //확인용
         // {
         //     Debug.Log(VARIABLE.Place_Name);
@@ -264,7 +266,7 @@ public class DataManager : SingletonBase<DataManager> //유니티 기능을 상�
 
         yield return DogamdataRead.Result;
 
-        List<int> dogamList = JsonConvert.DeserializeObject<List<int>>(DogamdataRead.Result);
+        List<int> dogamList = JsonConvert.DeserializeObject<List<int>>(DogamdataRead.Result); 
 
         foreach (var VARIABLE in dogamList)
         {

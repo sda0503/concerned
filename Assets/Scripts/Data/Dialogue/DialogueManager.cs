@@ -57,6 +57,8 @@ public class DialogueManager : MonoBehaviour
         chatwindowBtn.onClick.AddListener(ConfirmbtnClick);
         //_confirmbtn.onClick.AddListener(ConfirmbtnClick);
         allchatlog = ChatLogManager.Instance.allChatLog.allChatlog;
+        _questdic = DataManager.Instance._questDic.DialogueQuestDic;
+        _dialogdic = DataManager.Instance.dic.DialogueDic;
     }
 
 

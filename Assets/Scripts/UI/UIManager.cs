@@ -25,6 +25,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject canvasparents;
     [SerializeField] private Canvas bgCanvas;
     private Image bgImage;
+    [SerializeField] private Text _Datetext;
     
     private string BGFilePath = "Image/map";
     
@@ -67,7 +68,7 @@ public class UIManager : MonoBehaviour
         StringBuilder sb = new StringBuilder();
         sb.Append(playerinformation.date.ToString());
         sb.Append($"일차 {GetDayTime()}");
-        //_Datetext.text = sb.ToString(); //TODO : GameManager에서 옮겨오기.
+        _Datetext.text = sb.ToString(); //TODO : GameManager에서 옮겨오기.
     }
     
     private string GetDayTime() //정서에 맞게 변환
@@ -95,35 +96,42 @@ public class UIManager : MonoBehaviour
     public void CanvasChange() //결국 방 이동하는 것도 캔버스 체인지인가?
     {
         CanvasGroup[playerinformation.position].SetActive(false); //현재 캔버스 끄기.
-        //TODO : 캔버스를 세팅하는 부분에 오브젝트에 관한 Bool값을 가지는 데이터를 사용해보자.
-        //TODO : 해당하는 캔버스가 없으면 Instanciate, 있으면 꺼져있을테니 다시 키는걸로. => 현재 있는거랑 동일한건지 체크해줘야됨.
-        string path = DataManager.Instance.PlaceDBDatas.PlaceDB[playerinformation.position].Place_Path; //방끼리 이동.
-        if (!CanvasGroup.ContainsKey(playerinformation.position))
-        {
-            var obj = Resources.Load<GameObject>($"Prefabs/{path}");
-            var canvasinstance = Instantiate(obj, canvasparents.transform);
-            canvasinstance.SetActive(true);
-            if (canvasinstance.gameObject.TryGetComponent(out CanvasOnLoad canvasOnLoad))
-            {
-                CanvasGroup.Add(playerinformation.position, canvasinstance);
-                _canvasDic.CanvasContorllers.Add(playerinformation.position, canvasOnLoad.states);
-                canvasOnLoad.ObjectSet(_canvasDic.CanvasContorllers[playerinformation.position]);
-            }
-        }
-        else
-        {
-            CanvasGroup[playerinformation.position].SetActive(true);
-            //TODO : Load하는 경우 그에 맞게 데이터로 세팅해주는 것도 필요함.
-            //예시 : CanvasGroup의 ID에 맞는 오브젝트의 컴포넌트에 접근해서 ObjectSet이라는 메서드를 실행
-            CanvasGroup[playerinformation.position].GetComponent<CanvasOnLoad>().ObjectSet(_canvasDic.CanvasContorllers[playerinformation.position]);
-            //아예 다 하이어라키에 올려놓는 것도 방법이겠지만, 가능하면 위 방법으로 진행하자.
-        }
-
-        bgImage.sprite = Resources.Load<Sprite>($"{BGFilePath}/{playerinformation.dayTime.ToString()}/{path}");
-        //TODO : 순서대로 배경폴더/시간대폴더/배경이름
-        //TODO : 맵 배경 바뀌는 부분은 조건에 상관없이 동작. + 시간대 따져야됨
-        //bgImage.sprite = Resources.Load<Sprite>("Image/map/map3"); //맵 배경 바뀌는 부분은 조건에 상관없이 동작.
-        //TODO : 리소스는 계속 읽는게 아니라 한 번로드 해놓고 재사용하는 것.
+        PlaceDB NextPlaceData = DataManager.Instance.PlaceDBDatas.PlaceDB[playerinformation.position]; 
+        //string Objpath = DataManager.Instance.PlaceDBDatas.PlaceDB[playerinformation.position].Place_OBJ_Path; //TODO : 이건 여기 필요 없음. 미리 깔아둘 때 필요한 거
+        
+         // if (!CanvasGroup.ContainsKey(playerinformation.position))
+         // {
+         //     var obj = Resources.Load<GameObject>($"Prefabs/{path}");
+         //     var canvasinstance = Instantiate(obj, canvasparents.transform);
+         //     canvasinstance.SetActive(true);
+         //     if (canvasinstance.gameObject.TryGetComponent(out CanvasOnLoad canvasOnLoad))
+         //     {
+         //         CanvasGroup.Add(playerinformation.position, canvasinstance);
+         //         _canvasDic.CanvasContorllers.Add(playerinformation.position, canvasOnLoad.states);
+         //         canvasOnLoad.ObjectSet(_canvasDic.CanvasContorllers[playerinformation.position]);
+         //     }
+         // }
+         // else
+         // {
+         //     CanvasGroup[playerinformation.position].SetActive(true);
+         //     //TODO : Load하는 경우 그에 맞게 데이터로 세팅해주는 것도 필요함.
+         //     //예시 : CanvasGroup의 ID에 맞는 오브젝트의 컴포넌트에 접근해서 ObjectSet이라는 메서드를 실행
+         //     CanvasGroup[playerinformation.position].GetComponent<CanvasOnLoad>().ObjectSet(_canvasDic.CanvasContorllers[playerinformation.position]);
+         //     //아예 다 하이어라키에 올려놓는 것도 방법이겠지만, 가능하면 위 방법으로 진행하자.
+         // }
+         if (NextPlaceData.MapType == Map_Type.Change)
+         {
+             bgImage.sprite = Resources.Load<Sprite>($"{BGFilePath}/{playerinformation.dayTime.ToString()}/{path}");
+         }
+         else
+         {
+             bgImage.sprite = Resources.Load<Sprite>($"{BGFilePath}/{playerinformation.dayTime.ToString()}/{path}");
+         }
+         
+         //TODO : 순서대로 배경폴더/시간대폴더/배경이름
+         //TODO : 맵 배경 바뀌는 부분은 조건에 상관없이 동작. + 시간대 따져야됨
+         //bgImage.sprite = Resources.Load<Sprite>("Image/map/map3"); //맵 배경 바뀌는 부분은 조건에 상관없이 동작.
+         //TODO : 리소스는 계속 읽는게 아니라 한 번로드 해놓고 재사용하는 것.
     }
     
     void itemCanvaschange()
