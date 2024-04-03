@@ -273,6 +273,8 @@ MonoBehaviour:
   Loadingbar:
     progress: {fileID: 1711980991}
     text: {fileID: 712592926}
+    percent: 0
+    count: 0
 --- !u!1 &712592924
 GameObject:
   m_ObjectHideFlags: 0
@@ -331,7 +333,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: New Text
+  m_text: "\uB85C\uB529 \uC900\uBE44 \uC911"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: af22851ec2a2079459cfc5807c833496, type: 2}
   m_sharedMaterial: {fileID: -3042390606306684859, guid: af22851ec2a2079459cfc5807c833496, type: 2}

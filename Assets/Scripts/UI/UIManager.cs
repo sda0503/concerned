@@ -4,7 +4,7 @@ using DataStorage;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UIManager : SingletonBase<UIManager>
+public class UIManager : MonoBehaviour
 {
     //TODO : 다채로운 버튼,UI들의 향연 
      
@@ -31,9 +31,24 @@ public class UIManager : SingletonBase<UIManager>
     public Transform itemCanvas;
 
     private Information playerinformation;
-   
-    void Start()
+
+    public static UIManager Instance;
+    
+    private void Awake()
     {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    private void Start()
+    {
+       
         //TODO : 버튼에 애드리스너해서 메서드 달아주기
         //각 장소가 그 주소의 BG에 해당하는 ID값을 가지고 있어야함.
         //TODO : PosBtn.OnClick.AddListener(() => MovePosition(PosBtn.주소 관련된 스크립트나 컴포넌트.PosID));

@@ -30,7 +30,7 @@ public class GameManager : SingletonBase<GameManager>
     //TODO : Save 관련된 기능들도 event로 묶어서 관리
     public Information Playerinformation = new Information();
     
-    private void Start()
+    public override void init()
     {
         //CanvasOnLoad canvasOnLoad = _canvas.GetComponent<CanvasOnLoad>();
         //canvasOnLoad.ObjectSet(new List<bool>{false,false,false});

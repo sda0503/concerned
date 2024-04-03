@@ -10,7 +10,7 @@ public class Loadingbar
 
     public TextMeshProUGUI text; //로딩 텍스트
 
-    private float totalload = 4;
+    private float totalload = 3;
 
     public float percent=0f;
     public int count = 0;
@@ -20,11 +20,28 @@ public class Loadingbar
         return count / totalload;
     }
 
-    public void UpdateUI(string Text)
+    public void UpdateUI()
     {
         progress.fillAmount = GetPercent();
         text.text = "";
-        text.text = Text;
+        Debug.Log(count);
+        
+        switch (count)
+        {
+            case 0:
+                text.text = "다이얼로그 세팅";       
+                
+                break;
+            case 1:
+                text.text ="장소 세팅";
+                break;
+            case 2:
+                text.text = "아이템 세팅";
+                break;
+            case 3:
+                text.text = "도감 세팅";
+                break;
+        }
     }
 }
 
@@ -44,7 +61,7 @@ public class GameTrigger : MonoBehaviour
     void LoadingUpdate()
     {
         Loadingbar.count++;
-        //Loadingbar.UpdateUI();
+        Loadingbar.UpdateUI();
     }
     
     

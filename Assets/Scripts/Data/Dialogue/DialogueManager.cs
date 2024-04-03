@@ -7,7 +7,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using KoreanTyper;
 
-public class DialogueManager : SingletonBase<DialogueManager>
+public class DialogueManager : MonoBehaviour
 {
     [SerializeField] private Button[] choice_btn;
     [SerializeField] private Button _confirmbtn;
@@ -29,8 +29,22 @@ public class DialogueManager : SingletonBase<DialogueManager>
 
     [HideInInspector] public Dictionary<string, List<Dialogue_Quest_Data>> _questdic;
     [HideInInspector] public Dictionary<int, Dialogue_Data> _dialogdic;
-    private Dictionary<string,chatlogdic> allchatlog; 
-    
+    private Dictionary<string,chatlogdic> allchatlog;
+
+    public static DialogueManager Instance;
+
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+
     void Start()
     {
         for (int i = 0; i < choice_btn.Length; i++)
