@@ -41,6 +41,7 @@ public class ItemManager : MonoBehaviour
             if (DataManager.Instance.GetDefaultItemDataList().Data[i].itemType == ItemType.Normal) itemCount++;
             else if (DataManager.Instance.GetDefaultItemDataList().Data[i].itemType == ItemType.Trigger) triggerItemCount++;
         }
+        Debug.Log(itemCount);
         itemsData = new Item[itemCount];
         triggerItemsData = new Item[triggerItemCount];
 
@@ -79,7 +80,7 @@ public class ItemManager : MonoBehaviour
         {
             var obj = DataManager.Instance.GameObjectLoad("Prefabs/Item");
             obj.transform.GetComponent<Image>().sprite = DataManager.Instance.SpriteLoad("image");
-            Instantiate(obj, UIManager.instance.itemCanvas);
+            Instantiate(obj, UIManager.Instance.itemCanvas);
 
             GetItem(index);
         }
@@ -93,8 +94,8 @@ public class ItemManager : MonoBehaviour
 
             //Sprite sprite = SpriteLoad("Look");
             //obj.transform.GetComponent<Image>().sprite = sprite;
-            //obj.transform.GetComponent<TriggerItem>().id = index;
-            obj = Instantiate(obj, UIManager.instance.itemCanvas);
+            obj.transform.GetComponent<interactableItem>().ItemId = index;
+            obj = Instantiate(obj, UIManager.Instance.itemCanvas);
             GetTriggerItem(index, obj);
         }
         else triggerItems[index].SetActive(true);
