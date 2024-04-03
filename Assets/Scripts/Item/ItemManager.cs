@@ -1,8 +1,10 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Object = UnityEngine.Object;
 
-public class ItemManager : SingletonBase<ItemManager>
+public class ItemManager : MonoBehaviour
 {
     public Item[] itemsData;
     public Item[] triggerItemsData;
@@ -10,6 +12,20 @@ public class ItemManager : SingletonBase<ItemManager>
     public Dictionary<int, Item> getItems = new Dictionary<int, Item>();
     public Dictionary<int, GameObject> triggerItems = new Dictionary<int, GameObject>();
     public List<int> getItemsNumber = new List<int>();
+
+    public static ItemManager Instance;
+
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
 
     private void Start()
     {

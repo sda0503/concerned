@@ -9,8 +9,9 @@ public class SoundManager : SingletonBase<SoundManager>
     public GameObject soundOff;
     private bool muted = false;
 
-    void Start()
+    public override void init()
     {
+        base.init();
         Load();
         UpdateBtning();
         AudioListener.pause = muted;
