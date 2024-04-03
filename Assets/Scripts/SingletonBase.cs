@@ -22,7 +22,7 @@ public class SingletonBase<T> : MonoBehaviour where T : MonoBehaviour //제약�
         }
     }
 
-    public void init()
+    public virtual void init()
     {
         Debug.Log(transform.name + "is Activate.");
     }

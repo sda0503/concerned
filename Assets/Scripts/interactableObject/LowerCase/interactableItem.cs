@@ -18,7 +18,7 @@ public class interactableItem : interactableObject
 
     protected override void Start()
     {
-        Debug.Log($"{DataManager.Instance.GetDefaultItemDataList().Data[ItemId].item_name} | {ItemType}");
+        //Debug.Log($"{DataManager.Instance.GetDefaultItemDataList().Data[ItemId].item_name} | {ItemType}");
         base.Start();
         animator = gameObject.GetComponent<Animator>();
         _image = gameObject.GetComponent<Image>();

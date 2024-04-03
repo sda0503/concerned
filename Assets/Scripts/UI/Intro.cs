@@ -24,7 +24,7 @@ public class VideoController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            SceneManager.LoadScene("StartScene");
+            SceneManager.LoadScene("LoadingScene"); //TODO : 공통된 LoadingScene 넘어가는걸로 바꾸기.
         }
     }
 
@@ -36,7 +36,7 @@ public class VideoController : MonoBehaviour
 
     void OnVideoEnd(VideoPlayer vp)
     {
-        SceneManager.LoadScene("StartScene");
+        SceneManager.LoadScene("LoadingScene");
     }
 
     void LoadNextScene()
@@ -44,7 +44,7 @@ public class VideoController : MonoBehaviour
         int nextSceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
         if (nextSceneIndex < SceneManager.sceneCountInBuildSettings)
         {
-            SceneManager.LoadScene("StartScene");
+            SceneManager.LoadScene("LoadingScene");
         }
     }
 }

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
@@ -14,6 +15,8 @@ using UnityEngine;
 public class DataManager : SingletonBase<DataManager> //유니티 기능을 상속 받는거 /코루틴이나 유니티 이벤트를 연동하려면 필요함.
 {
     private Player _playerToSave; //Save & Load 대기용
+
+    public event Action LoadingChange;
 
     public Player player
     {
@@ -60,8 +63,9 @@ public class DataManager : SingletonBase<DataManager> //유니티 기능을 상�
 
     private StringBuilder sb = new StringBuilder();
 
-    void Start()
+    public override void init()
     {
+        base.init();
         path = Application.persistentDataPath;
         StartCoroutine(SetDatas());
     }
@@ -74,20 +78,26 @@ public class DataManager : SingletonBase<DataManager> //유니티 기능을 상�
     {
         //전체적으로 다 코루틴으로 꾸려주어야함.
         yield return StartCoroutine(dialogueDBSet()); 
+        //TODO : 로딩 종료될때마다 콜백줘서 진행도 표시하기
+        LoadingChange?.Invoke();
         Debug.Log("다이얼로그 세팅 완료");
 
         yield return StartCoroutine(PlaceDBSet());
+        LoadingChange?.Invoke();
         Debug.Log("장소 세팅 완료");
 
         yield return StartCoroutine(LoadDefaultData());
+        LoadingChange?.Invoke();
         Debug.Log("아이템 세팅 완료");
         ItemManager.Instance.getItems.Clear();
 
         yield return StartCoroutine(SetDogamData()); //TODO : 도감도 불러오기(세팅은 도감버튼 눌렀을 때 하고 데이터만 가져오기)
+        LoadingChange?.Invoke();
         Debug.Log("도감 세팅 완료");
         
         GameManager.Instance.Playerinformation = Playerinformation; //TODO : 이건뭐지
     }
+    //스트리밍에셋폴더에다가 에셋번들 집어넣어놓고 로딩하는 방법. 이 방법이 따로 서버 세팅안하고 준비할수있는 제일 좋은방법일 듯.
 
     public void LoadData() //TODO : 이어하기 선택 시 불러올 데이터 내용 작성 + 버튼에 들어갈 내용
     {
@@ -99,8 +109,22 @@ public class DataManager : SingletonBase<DataManager> //유니티 기능을 상�
 
     IEnumerator dialogueDBSet() //TODO : 로드에 관한 부분도 넣어서 작성해야됨 => 엎을 예정
     {
-        yield return loadingwait;
-        string loadData = Resources.Load("Dialogue_DB").ToString();
+        yield return loadingwait; //TODO : 이걸 쓰거나 마지막에 yield break / yield return null을 넣어줘도 사용 가능.
+        //string loadData = Resources.Load("Dialogue_DB").ToString(); //LoadAsync로 바꾸는 것 찾아보기.
+
+        ResourceRequest dialogueDBRequest = Resources.LoadAsync<TextAsset>("Dialogue_DB");
+
+        yield return dialogueDBRequest; //어싱크 사용할거면 무조건 기다려야함.
+
+        TextAsset loaddialougeDB = dialogueDBRequest.asset as TextAsset;
+
+        if (loaddialougeDB == null)
+        {
+            Debug.Log("파일이 없습니다. : DataManager 123");
+            yield break;
+        }
+
+        string loadData = loaddialougeDB.text;
 
         Dialogue_List dialogueList = JsonConvert.DeserializeObject<Dialogue_List>(loadData);
 
@@ -111,6 +135,7 @@ public class DataManager : SingletonBase<DataManager> //유니티 기능을 상�
             dic.DialogueDic.Add(dialogueList.Dialouge_Log_Data[i].Dialogue_idx, dialogueList.Dialouge_Log_Data[i]);
         }
 
+        //TODO : 개인 플레이 데이터 불러오는 부ㅜㅂㄴ이니까 분리하고 비동기로 작업하기.
         if (File.Exists(path + "/save.json"))
         {
             var c = File.ReadAllText(path + "/save.json");
@@ -193,9 +218,9 @@ public class DataManager : SingletonBase<DataManager> //유니티 기능을 상�
     /// <returns></returns>
     IEnumerator SetDogamData()
     {
-        //TODO : 게임 끝날 때 저장해서 따로 Json으로 저장해두기. + 삭제되는건 없고 계속 쌓여야됨.
+        
         yield return loadingwait;
-        LoadSaveData("Dogam");
+        LoadSaveData("Dogam"); //TODO : 도감 읽어오는 부분 변경해야됨. 타입이 안맞음.
         dogamItemDataList = GetItemDataList();
 
         DogamItemInDic();
@@ -254,7 +279,7 @@ public class DataManager : SingletonBase<DataManager> //유니티 기능을 상�
     public void Save()
     {
         _playerToSave.Information = GameManager.Instance.Playerinformation;
-        foreach (var VARIABLE in UIManager.instance.CanvasGroup)
+        foreach (var VARIABLE in UIManager.Instance.CanvasGroup)
         {
             _playerToSave.Information.canvasSettingData.Add(VARIABLE.Key,
                 VARIABLE.Value.GetComponent<CanvasOnLoad>().states);

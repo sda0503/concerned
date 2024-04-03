@@ -8,7 +8,7 @@ using UnityEngine.UI;
 using DataStorage;
 using TMPro;
 
-public class ChatLogManager : SingletonBase<ChatLogManager>
+public class ChatLogManager : MonoBehaviour
 {
     [SerializeField] public GameObject _chatLogPosition;
     [SerializeField] public GameObject _chatLogPrefab;
@@ -30,12 +30,28 @@ public class ChatLogManager : SingletonBase<ChatLogManager>
     //가장 큰 형태로 하나로 모든 데이터 저장.
     [HideInInspector] public AllChatLog allChatLog = new AllChatLog();
     private List<GameObject> _PrefabList = new List<GameObject>();
-
-    void Start()
+    
+    public static ChatLogManager Instance;
+    
+    private void Awake()
     {
-        _chatLogBtn.onClick.AddListener(ChatLogBtnClick);
-        _closeBtn.onClick.AddListener(ChatlogCloseBtnClick);
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
+
+    private void Start()
+    {
+        
+        // _chatLogBtn.onClick.AddListener(ChatLogBtnClick);
+        // _closeBtn.onClick.AddListener(ChatlogCloseBtnClick);
+    }
+    
 
     void test()
     {
