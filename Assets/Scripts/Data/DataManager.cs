@@ -89,7 +89,7 @@ public class DataManager : SingletonBase<DataManager> //유니티 기능을 상�
         yield return StartCoroutine(LoadDefaultData());
         LoadingChange?.Invoke();
         Debug.Log("아이템 세팅 완료");
-        ItemManager.Instance.getItems.Clear();
+        //ItemManager.Instance.getItems.Clear();
 
         yield return StartCoroutine(SetDogamData()); //TODO : 도감도 불러오기(세팅은 도감버튼 눌렀을 때 하고 데이터만 가져오기)
         LoadingChange?.Invoke();
@@ -135,16 +135,45 @@ public class DataManager : SingletonBase<DataManager> //유니티 기능을 상�
             dic.DialogueDic.Add(dialogueList.Dialouge_Log_Data[i].Dialogue_idx, dialogueList.Dialouge_Log_Data[i]);
         }
 
-        //TODO : 개인 플레이 데이터 불러오는 부ㅜㅂㄴ이니까 분리하고 비동기로 작업하기.
+        
+        //DialogueManager.Instance._dialogdic = dic.DialogueDic;
+    }
+
+    IEnumerator QuestSet() //TODO : 개인 플레이 데이터 불러오는 부분이니까 분리하고 비동기로 작업하기. + 이어하기 버튼에 연결
+    {
+        
         if (File.Exists(path + "/save.json"))
         {
-            var c = File.ReadAllText(path + "/save.json");
-            _questDic = JsonConvert.DeserializeObject<Dialogue_Quest_Dic>(c);
+            var readAllTextAsync = File.ReadAllTextAsync(path + "/save.json");
+            
+            yield return readAllTextAsync.Result;
+            
+            // if (readAllTextAsync == null)
+            // {
+            //     Debug.Log("파일이 없습니다. : DataManager 151");
+            //     yield break;
+            // }
+
+            string questData = readAllTextAsync.Result;
+            _questDic = JsonConvert.DeserializeObject<Dialogue_Quest_Dic>(questData);
         }
         else
         {
-            Dictionary<string, List<Dialogue_Quest_Data>> SettingDic = _questDic.DialogueQuestDic;
-            List<Dialogue_Quest_Data> questDatas = dialogueList.Dialogue_Quest_Data;
+            var readQuestJson = Resources.LoadAsync<TextAsset>("Quest_DB");
+            yield return readQuestJson;
+
+            if (readQuestJson == null)
+            {
+                Debug.Log("파일이 없습니다 : DataManager 166");
+                yield break;
+            }
+            
+            TextAsset questData = readQuestJson.asset as TextAsset;
+            string quest = questData.text;
+            Dialogue_Quest_List questList = JsonConvert.DeserializeObject<Dialogue_Quest_List>(quest);
+            
+            Dictionary<string, List<Dialogue_Quest_Data>> SettingDic = _questDic.DialogueQuestDic; //캐싱한거
+            List<Dialogue_Quest_Data> questDatas = questList.Dialogue_Quest_Data;
             for (int i = 0; i < questDatas.Count; i++)
             {
                 if (SettingDic.ContainsKey(questDatas[i].QuestTargetName))
@@ -158,25 +187,31 @@ public class DataManager : SingletonBase<DataManager> //유니티 기능을 상�
                 }
             }
         }
-
         DialogueManager.Instance._questdic = _questDic.DialogueQuestDic;
-        DialogueManager.Instance._dialogdic = dic.DialogueDic;
     }
 
     #endregion
 
     #region PlaceData
 
-    IEnumerator PlaceDBSet()
+    IEnumerator PlaceDBSet() //TODO : 이 구문 자체는 게임 시작할 때 들어가야됨.
     {
         yield return loadingwait;
-        string placeDB = Resources.Load("PlaceDB").ToString();
-        PlaceDBDatas = JsonConvert.DeserializeObject<PlaceDBDatas>(placeDB);
+        var placeDB = Resources.LoadAsync<TextAsset>("PlaceDB");
+        if (placeDB == null)
+        {
+            Debug.Log("파일이 없습니다 : DataManager 203");
+            yield break;
+        }
+
+        var place = placeDB.asset as TextAsset;
+        string placeData = place.text;
+        PlaceDBDatas = JsonConvert.DeserializeObject<PlaceDBDatas>(placeData);
 
 
         for (int i = 0; i < PlaceDBDatas.PlaceDB.Count; i++)
         {
-            //TODO : 수정 예정
+            //TODO : 수정 예정 + 캔버스 오브젝트의 트랜스폼을 받아오는 메서드를 하나 사용해야 할 듯.
             // var objtoload = Resources.Load<GameObject>($"{PlaceDBDatas.PlaceDB[i].Place_Path}");  // 프리팹 가져오기
             // var obj = Instantiate(objtoload, 캔버시즈 오브젝트 트랜스폼); // 프리팹 복제
             // obj.SetActive(false);
@@ -220,12 +255,26 @@ public class DataManager : SingletonBase<DataManager> //유니티 기능을 상�
     {
         
         yield return loadingwait;
-        LoadSaveData("Dogam"); //TODO : 도감 읽어오는 부분 변경해야됨. 타입이 안맞음.
-        dogamItemDataList = GetItemDataList();
+        if (!File.Exists(path + "/Dogam.json"))
+        {
+            Debug.Log("파일이 없습니다. : DataManager 260");
+             yield break;   
+        }
+        var DogamdataRead = File.ReadAllTextAsync(path + "/Dogam.json");
+
+        yield return DogamdataRead.Result;
+
+        List<int> dogamList = JsonConvert.DeserializeObject<List<int>>(DogamdataRead.Result);
+
+        foreach (var VARIABLE in dogamList)
+        {
+            dogamItemDataList.Data.Add(defaultItemDataList.Data[VARIABLE]);
+        }
+        //이렇게 변경해서 만들어줘야될듯.
 
         DogamItemInDic();
     }
-
+    
     private void DogamItemInDic()
     {
         for (int i = 0; i < dogamItemDataList.Data.Count; i++)
@@ -242,11 +291,21 @@ public class DataManager : SingletonBase<DataManager> //유니티 기능을 상�
     IEnumerator LoadDefaultData()
     {
         yield return loadingwait;
-        var data = Resources.Load("ItemInfo").ToString();
-        defaultItemDataList = JsonConvert.DeserializeObject<ItemDataList>(data);
+        var data = Resources.LoadAsync<TextAsset>("ItemInfo");
+        yield return data;
+        if (data == null)
+        {
+            Debug.Log("파일이 없습니다. : DataManager 298");
+            yield break;
+        }
+        
+        TextAsset loadfile = data.asset as TextAsset;
+        string loaditemdata = loadfile.text;
+        
+        defaultItemDataList = JsonConvert.DeserializeObject<ItemDataList>(loaditemdata);
     }
 
-    public GameObject GameObjectLoad(string str)
+    public GameObject GameObjectLoad(string str) //TODO : 어찌 처리할꼬
     {
         var obj = Resources.Load(str) as GameObject;
         if (obj == null)
@@ -342,8 +401,17 @@ public class DataManager : SingletonBase<DataManager> //유니티 기능을 상�
 
     IEnumerator LoadGameData()
     {
-        var readData = File.ReadAllText(path);
-        var converData = JsonConvert.DeserializeObject<Player>(readData);
+        if (!File.Exists(path + "/concerned.json"))
+        {
+            Debug.Log("파일이 없습니다 : DataManager 406");
+            yield break;
+        }
+        
+        var readData = File.ReadAllTextAsync(path+"/concerned.json");
+
+        yield return readData.Result;
+        
+        var converData = JsonConvert.DeserializeObject<Player>(readData.Result);
         _playerToSave.DialogueQuestDic = converData.DialogueQuestDic;
         _playerToSave.Inventory = converData.Inventory;
         yield return StartCoroutine(SetInventory()); //TODO : 인벤토리 세팅해주는 과정 추가해야함.

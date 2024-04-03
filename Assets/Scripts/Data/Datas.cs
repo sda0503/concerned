@@ -108,7 +108,6 @@ namespace DataStorage
     public class Dialogue_List
     {
         public List<Dialogue_Data> Dialouge_Log_Data;
-        public List<Dialogue_Quest_Data> Dialogue_Quest_Data;
     }
 
     public class Dialogue_Dic
@@ -133,6 +132,11 @@ namespace DataStorage
     {
       public Dictionary<string, List<Dialogue_Quest_Data>> DialogueQuestDic =
             new Dictionary<string, List<Dialogue_Quest_Data>>();
+    }
+
+    public class Dialogue_Quest_List
+    {
+        public List<Dialogue_Quest_Data> Dialogue_Quest_Data;
     }
 
     public class Iteminfo
