@@ -6311,6 +6311,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   btn: {fileID: 2019810455}
   Map: {fileID: 2000633643}
+  canvasparents: {fileID: 1396980237}
+  bgCanvas: {fileID: 1828603856}
+  itemCanvas: {fileID: 0}
 --- !u!1 &1396980237
 GameObject:
   m_ObjectHideFlags: 0
@@ -6390,11 +6393,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1fc8db98ca0bcc64fb870569a0cb1854, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canvasparents: {fileID: 1396980237}
-  bgCanvas: {fileID: 1828603856}
   origin: {fileID: 828680649}
   _Datetext: {fileID: 658067893}
-  _canvas: {fileID: 828680652}
 --- !u!1 &1425652926
 GameObject:
   m_ObjectHideFlags: 0
@@ -7048,7 +7048,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   asdf: {fileID: 828680653}
-  itemCanvas: {fileID: 0}
 --- !u!1 &1531598047
 GameObject:
   m_ObjectHideFlags: 0

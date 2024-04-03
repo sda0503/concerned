@@ -1,6 +1,7 @@
 using System;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 [Serializable]
@@ -30,7 +31,6 @@ public class Loadingbar
         {
             case 0:
                 text.text = "다이얼로그 세팅";       
-                
                 break;
             case 1:
                 text.text ="장소 세팅";
@@ -61,6 +61,10 @@ public class GameTrigger : MonoBehaviour
     void LoadingUpdate()
     {
         Loadingbar.count++;
+        if (Loadingbar.count == 3)
+        {
+            SceneManager.LoadScene("StartScene");
+        }
         Loadingbar.UpdateUI();
     }
     
