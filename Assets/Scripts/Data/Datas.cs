@@ -182,11 +182,14 @@ namespace DataStorage
 
     #region PlaceDB
 
+    public enum Map_Type {Change, Unchange}
     public class PlaceDB
     {
        public int Place_ID; //Index
        public string Place_Name; // 이름
-       public string Place_Path; // Resources.Load에 사용할 주소값
+       public string Place_BG_Path; // Resources.Load에 사용할 주소값
+       public string Place_OBJ_Path;
+       public Map_Type MapType;
     }
 
     public class PlaceDBDatas

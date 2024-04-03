@@ -22,7 +22,7 @@ public class GameManager : SingletonBase<GameManager>
    
     
     [SerializeField] private GameObject origin;
-    [SerializeField] private Text _Datetext;
+  
 
    
     

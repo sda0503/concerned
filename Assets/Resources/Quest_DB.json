@@ -1,1 +1,91 @@
-{}
+{
+  "Dialogue_Quest_Data": [
+    {
+      "QuestTargetName": "강민우",
+      "QuestIdx": "1",
+      "QuestStartPost": "10001010",
+      "QuestType": "0",
+      "QuestState": "false",
+      "NeedQuest": null,
+      "NeedItem": null
+    },
+    {
+      "QuestTargetName": "강민우",
+      "QuestIdx": "2",
+      "QuestStartPost": "20001010",
+      "QuestType": "0",
+      "QuestState": "false",
+      "NeedQuest": [
+        "강민우",
+        "0"
+      ],
+      "NeedItem": null
+    },
+    {
+      "QuestTargetName": "강민우",
+      "QuestIdx": "3",
+      "QuestStartPost": "10001010",
+      "QuestType": "0",
+      "QuestState": "false",
+      "NeedQuest": null,
+      "NeedItem": null
+    },
+    {
+      "QuestTargetName": "강민우",
+      "QuestIdx": "4",
+      "QuestStartPost": "20001010",
+      "QuestType": "0",
+      "QuestState": "false",
+      "NeedQuest": [
+        "강민우",
+        "3"
+      ],
+      "NeedItem": null
+    },
+    {
+      "QuestTargetName": "강민우",
+      "QuestIdx": "5",
+      "QuestStartPost": "30001010",
+      "QuestType": "1",
+      "QuestState": "false",
+      "NeedQuest": null,
+      "NeedItem": null
+    },
+    {
+      "QuestTargetName": "경비원",
+      "QuestIdx": "1",
+      "QuestStartPost": "10011010",
+      "QuestType": "1",
+      "QuestState": "false",
+      "NeedQuest": null,
+      "NeedItem": null
+    },
+    {
+      "QuestTargetName": "흥신소 탐정",
+      "QuestIdx": "1",
+      "QuestStartPost": "60001010",
+      "QuestType": "0",
+      "QuestState": "false",
+      "NeedQuest": null,
+      "NeedItem": null
+    },
+    {
+      "QuestTargetName": "흥신소 탐정",
+      "QuestIdx": "2",
+      "QuestStartPost": "60002010",
+      "QuestType": "1",
+      "QuestState": "false",
+      "NeedQuest": null,
+      "NeedItem": null
+    },
+    {
+      "QuestTargetName": "택배직원 1,2",
+      "QuestIdx": "1",
+      "QuestStartPost": "70001010",
+      "QuestType": "0",
+      "QuestState": "false",
+      "NeedQuest": null,
+      "NeedItem": null
+    }
+  ]
+}

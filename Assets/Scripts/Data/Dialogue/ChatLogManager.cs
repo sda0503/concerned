@@ -47,9 +47,8 @@ public class ChatLogManager : MonoBehaviour
 
     private void Start()
     {
-        
-        // _chatLogBtn.onClick.AddListener(ChatLogBtnClick);
-        // _closeBtn.onClick.AddListener(ChatlogCloseBtnClick);
+         _chatLogBtn.onClick.AddListener(ChatLogBtnClick);
+         _closeBtn.onClick.AddListener(ChatlogCloseBtnClick);
     }
     
 
