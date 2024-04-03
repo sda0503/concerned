@@ -27,8 +27,8 @@ public class PopupBtn : MonoBehaviour
     public void Move()
     {
         gameObject.SetActive(false);
-        GameManager.Instance.PositionChange(posID); //TODO : 추후 PosID값으로 이동
         GameManager.Instance.DayTimeChange();
+        GameManager.Instance.PositionChange(posID); //TODO : 추후 PosID값으로 이동
         transform.parent.gameObject.SetActive(false);
     }
 }

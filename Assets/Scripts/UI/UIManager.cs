@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using DataStorage;
 using UnityEngine;
@@ -55,7 +56,7 @@ public class UIManager : MonoBehaviour
         //TODO : PosBtn.OnClick.AddListener(() => MovePosition(PosBtn.주소 관련된 스크립트나 컴포넌트.PosID));
         //ID를 받으면 DB를 뒤져서 그에 맞는 파일 Path를 가지고 BG를 갈아끼운다? 그부분은 MovePosition에 있어야될듯.
         btn.onClick.AddListener(OpenMap);
-        bgImage = bgCanvas.GetComponent<Image>();
+        bgImage = bgCanvas.GetComponentInChildren<Image>();
         GameManager.Instance.OnDateChange += DateUpdate;
         GameManager.Instance.OnDayTimeChange += DateUpdate;
         GameManager.Instance.OnPositionChange += CanvasChange;
@@ -95,8 +96,16 @@ public class UIManager : MonoBehaviour
     /// </summary>
     public void CanvasChange() //결국 방 이동하는 것도 캔버스 체인지인가?
     {
-        CanvasGroup[playerinformation.position].SetActive(false); //현재 캔버스 끄기.
-        PlaceDB NextPlaceData = DataManager.Instance.PlaceDBDatas.PlaceDB[playerinformation.position]; 
+        PlaceDB NextPlaceData = new PlaceDB();
+        //CanvasGroup[playerinformation.position].SetActive(false); //현재 캔버스 끄기.
+        foreach (var VARIABLE in DataManager.Instance.PlaceDBDatas.PlaceDB)
+        {
+            if (VARIABLE.Place_ID == playerinformation.position)
+            {
+                NextPlaceData = VARIABLE; //TODO : dic으로 바꾸긴해야함.        
+            }
+        }
+        
         //string Objpath = DataManager.Instance.PlaceDBDatas.PlaceDB[playerinformation.position].Place_OBJ_Path; //TODO : 이건 여기 필요 없음. 미리 깔아둘 때 필요한 거
         
          // if (!CanvasGroup.ContainsKey(playerinformation.position))
@@ -121,22 +130,19 @@ public class UIManager : MonoBehaviour
          // }
          if (NextPlaceData.MapType == Map_Type.Change)
          {
-             bgImage.sprite = Resources.Load<Sprite>($"{BGFilePath}/{playerinformation.dayTime.ToString()}/{path}");
+             Debug.Log($"{BGFilePath}/{NextPlaceData.Place_BG_Path}_{playerinformation.dayTime.ToString()}");
+             bgImage.sprite = Resources.Load<Sprite>($"{BGFilePath}/{NextPlaceData.Place_BG_Path}_{playerinformation.dayTime.ToString()}");
          }
          else
          {
-             bgImage.sprite = Resources.Load<Sprite>($"{BGFilePath}/{playerinformation.dayTime.ToString()}/{path}");
+             bgImage.sprite = Resources.Load<Sprite>($"{BGFilePath}/{NextPlaceData.Place_BG_Path}");
          }
-         
-         //TODO : 순서대로 배경폴더/시간대폴더/배경이름
-         //TODO : 맵 배경 바뀌는 부분은 조건에 상관없이 동작. + 시간대 따져야됨
-         //bgImage.sprite = Resources.Load<Sprite>("Image/map/map3"); //맵 배경 바뀌는 부분은 조건에 상관없이 동작.
-         //TODO : 리소스는 계속 읽는게 아니라 한 번로드 해놓고 재사용하는 것.
+        
     }
     
     void itemCanvaschange()
     {
-        itemCanvas = CanvasGroup[playerinformation.position].transform;
+        //itemCanvas = CanvasGroup[playerinformation.position].transform; //TODO : 변경 후 열어주기
     }
 
     private void OpenMap()

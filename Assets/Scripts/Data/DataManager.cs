@@ -197,6 +197,9 @@ public class DataManager : SingletonBase<DataManager> //유니티 기능을 상�
     {
         yield return loadingwait;
         var placeDB = Resources.LoadAsync<TextAsset>("PlaceDB");
+        
+        yield return placeDB;
+        
         if (placeDB == null)
         {
             Debug.Log("파일이 없습니다 : DataManager 203");

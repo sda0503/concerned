@@ -6313,6 +6313,7 @@ MonoBehaviour:
   Map: {fileID: 2000633643}
   canvasparents: {fileID: 1396980237}
   bgCanvas: {fileID: 1828603856}
+  _Datetext: {fileID: 658067893}
   itemCanvas: {fileID: 0}
 --- !u!1 &1396980237
 GameObject:
@@ -6394,7 +6395,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   origin: {fileID: 828680649}
-  _Datetext: {fileID: 658067893}
 --- !u!1 &1425652926
 GameObject:
   m_ObjectHideFlags: 0
