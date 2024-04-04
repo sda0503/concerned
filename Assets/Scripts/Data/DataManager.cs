@@ -75,7 +75,7 @@ public class DataManager : SingletonBase<DataManager> //유니티 기능을 상�
         base.init();
         path = Application.persistentDataPath;
         StartCoroutine(SetDatas());
-        SetItemData();
+        
     }
 
     /// <summary>
@@ -102,7 +102,7 @@ public class DataManager : SingletonBase<DataManager> //유니티 기능을 상�
         yield return StartCoroutine(SetDogamData()); //TODO : 도감도 불러오기(세팅은 도감버튼 눌렀을 때 하고 데이터만 가져오기)
         LoadingChange?.Invoke();
         Debug.Log("도감 세팅 완료");
-        
+        SetItemData();
         GameManager.Instance.Playerinformation = Playerinformation; //TODO : 이건뭐지
     }
     //스트리밍에셋폴더에다가 에셋번들 집어넣어놓고 로딩하는 방법. 이 방법이 따로 서버 세팅안하고 준비할수있는 제일 좋은방법일 듯.
@@ -519,7 +519,7 @@ public class DataManager : SingletonBase<DataManager> //유니티 기능을 상�
         else if (itemsData.ContainsKey(index)) return;
         if (triggerItemsData.ContainsKey(index) && !triggerItems.ContainsKey(index))
         {
-            var obj = DataManager.Instance.GameObjectLoad("Prefabs/TriggerItem");
+            var obj = DataManager.Instance.GameObjectLoad("Prefabs/Item");
 
             //Sprite sprite = SpriteLoad("Look");
             //obj.transform.GetComponent<Image>().sprite = sprite;
