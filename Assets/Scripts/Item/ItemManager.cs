@@ -76,7 +76,7 @@ public class ItemManager : MonoBehaviour
         else if (itemsData.ContainsKey(index)) return;
         if (triggerItemsData.ContainsKey(index) && !triggerItems.ContainsKey(index))
         {
-            var obj = DataManager.Instance.GameObjectLoad("Prefabs/TriggerItem");
+            var obj = DataManager.Instance.GameObjectLoad("Prefabs/Item");
 
             //Sprite sprite = SpriteLoad("Look");
             //obj.transform.GetComponent<Image>().sprite = sprite;
