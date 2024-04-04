@@ -258,7 +258,6 @@ public class DataManager : SingletonBase<DataManager> //유니티 기능을 상�
     /// <returns></returns>
     IEnumerator SetDogamData()
     {
-        
         yield return loadingwait;
         if (!File.Exists(path + "/Dogam.json"))
         {

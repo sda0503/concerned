@@ -27,9 +27,9 @@ public class DialogueManager : MonoBehaviour
     public static int questcount = 0;
     public static string Targetname = "";
 
-    [HideInInspector] public Dictionary<string, List<Dialogue_Quest_Data>> _questdic;
+    [HideInInspector] public Dictionary<string, List<Dialogue_Quest_Data>> _questdic; 
     [HideInInspector] public Dictionary<int, Dialogue_Data> _dialogdic;
-    private Dictionary<string,chatlogdic> allchatlog;
+    public Dictionary<string,chatlogdic> allchatlog;
 
     public static DialogueManager Instance;
 
@@ -132,6 +132,11 @@ public class DialogueManager : MonoBehaviour
             {
                 _ChatlogBtn.gameObject.SetActive(true);
             }
+            else if (_questdic[Targetname][questcount - 1].QuestType == QuestType.Phone)
+            {
+                PopupUIManager.Instance.popupUI["PhoneNumberUI"].SetActive(false);
+                PopupUIManager.Instance.popupUI["PhoneUI"].SetActive(false);
+            }
             else
             {
                 _ChatlogBtn.gameObject.SetActive(false);
@@ -147,8 +152,12 @@ public class DialogueManager : MonoBehaviour
             Dialogue_Data dialogueData = _dialogdic[contextcount];
             if (dialogueData.Log_Type == Log_Type.normal)
                 NormalLog();
-            else if (dialogueData.Log_Type == Log_Type.choose ||dialogueData.Log_Type == Log_Type.Loop)
+            else if (dialogueData.Log_Type == Log_Type.choose || dialogueData.Log_Type == Log_Type.Loop)
                 chooseLog(dialogueData);
+            else if (dialogueData.Log_Type == Log_Type.Phone)
+            {
+                PhoneLog();
+            }
         }
         else
         {
@@ -165,10 +174,11 @@ public class DialogueManager : MonoBehaviour
                     Targetname = "";
                     questcount = 0;
                 }
-                // else if (questData.QuestType == QuestType.Main)
-                // {
-                //     part++;
-                // } //파트별로 퀘스트 나누기.
+                else if (questData.QuestType == QuestType.Phone)
+                {
+                    PopupUIManager.Instance.OpenPopupUI<CalendarUI>().SetButton(true);
+                    PopupUIManager.Instance.OpenPopupUI<CalendarUI>().charactername = Targetname; //+ " 약속";
+                } //파트별로 퀘스트 나누기.
             }
 
             _chatWindow.SetActive(false);
@@ -182,6 +192,14 @@ public class DialogueManager : MonoBehaviour
             //조건을 하나 붙이는게 좋을거같음. 만약 어떤 아이템이 있으면 다음 퀘스트로, 아니면 반복지문으로 가는데 어떤 아이템을 먹으면 시작 주소를 바꿔준다던지
         }
     }
+
+    void PhoneLog()
+    {
+        chatwindowBtn.onClick.RemoveListener(ConfirmbtnClick);
+        chatwindowBtn.onClick.AddListener(PloatingAllText);
+        StartCoroutine(LogTyper());
+    }
+
     // 재사용 x 있는거 가져다 쓰기. List<chatlogData> a = new List<chatlogData>();
     void NormalLog()
     {
