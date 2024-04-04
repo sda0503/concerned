@@ -66,6 +66,7 @@ public class ItemManager : MonoBehaviour
         if (itemsData.ContainsKey(index) && !getItems.ContainsKey(index))
         {
             var obj = DataManager.Instance.GameObjectLoad("Prefabs/Item");
+            obj.transform.GetComponent<interactableItem>().ItemId = index;
             obj.transform.GetComponent<Image>().sprite = DataManager.Instance.SpriteLoad("image");
             Instantiate(obj, UIManager.Instance.itemCanvas);
 
@@ -75,7 +76,7 @@ public class ItemManager : MonoBehaviour
         else if (itemsData.ContainsKey(index)) return;
         if (triggerItemsData.ContainsKey(index) && !triggerItems.ContainsKey(index))
         {
-            var obj = DataManager.Instance.GameObjectLoad("Prefabs/TriggerItem");
+            var obj = DataManager.Instance.GameObjectLoad("Prefabs/Item");
 
             //Sprite sprite = SpriteLoad("Look");
             //obj.transform.GetComponent<Image>().sprite = sprite;
