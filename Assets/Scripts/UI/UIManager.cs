@@ -30,7 +30,7 @@ public class UIManager : MonoBehaviour
     
     public Transform itemCanvas;
 
-    private Information playerinformation = DataManager.Instance.Playerinformation;
+    private Information playerinformation;
 
     public static UIManager Instance;
     
