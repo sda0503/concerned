@@ -66,6 +66,7 @@ public class ItemManager : MonoBehaviour
         if (itemsData.ContainsKey(index) && !getItems.ContainsKey(index))
         {
             var obj = DataManager.Instance.GameObjectLoad("Prefabs/Item");
+            obj.transform.GetComponent<interactableItem>().ItemId = index;
             obj.transform.GetComponent<Image>().sprite = DataManager.Instance.SpriteLoad("image");
             Instantiate(obj, UIManager.Instance.itemCanvas);
 

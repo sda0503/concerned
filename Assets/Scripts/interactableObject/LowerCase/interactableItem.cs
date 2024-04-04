@@ -13,7 +13,7 @@ public class interactableItem : interactableObject
     //private Sprite _image;
     public int ItemId;
 
-    public ItemType ItemType => DataManager.Instance.GetDefaultItemDataList().Data[ItemId].itemType;
+    public ItemType ItemType;
     //Type으로 trigger랑 분류해도 될 듯?
 
     protected override void Start()
@@ -37,6 +37,8 @@ public class interactableItem : interactableObject
 
     private void SettingItem()
     {
+        if (ItemManager.Instance.getItems.ContainsKey(ItemId)) ItemType = ItemType.Normal;
+        else if (ItemManager.Instance.triggerItemsData.ContainsKey(ItemId)) ItemType = ItemType.Trigger;
         if (ItemType == ItemType.Normal)
         {
             //ItemManager.Instance.OnClickToFindItem(item_id);
