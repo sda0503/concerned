@@ -16,14 +16,13 @@ public class map5 : MonoBehaviour
     {
         for(int i = 0; i < buttons.Count; i++)
         {
-            buttons[i].onClick.RemoveAllListeners();
             int n = i;
             buttons[i].onClick.AddListener(() => OnButtonClick(n));
         }
     }
 
 
-    private void OnButtonClick(int index)
+    public void OnButtonClick(int index)
     {
         switch (index)
         {

@@ -28,7 +28,7 @@ public class Map8 : MonoBehaviour
         switch (index)
         {
             case 0:
-                ItemManager.Instance.OnClickToFindTriggerItem(7);
+                ItemManager.Instance.OnClickToFindItem(51);
                 break;
             case 1:
                 ItemManager.Instance.OnClickToFindItem(2);

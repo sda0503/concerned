@@ -1,13 +1,15 @@
 using System;
 using System.Collections.Generic;
+using Unity.VisualScripting;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.UI;
 using Object = UnityEngine.Object;
 
 public class ItemManager : MonoBehaviour
 {
-    public Item[] itemsData;
-    public Item[] triggerItemsData;
+    public Dictionary<int, Item> itemsData = new Dictionary<int, Item>();
+    public Dictionary<int, Item> triggerItemsData = new Dictionary<int, Item>();
 
     public Dictionary<int, Item> getItems = new Dictionary<int, Item>();
     public Dictionary<int, GameObject> triggerItems = new Dictionary<int, GameObject>();
@@ -34,30 +36,15 @@ public class ItemManager : MonoBehaviour
 
     public void SetItemData()
     {
-        int itemCount = 0;
-        int triggerItemCount = 0;
-        for (int i = 0; i < DataManager.Instance.GetDefaultItemDataList().Data.Count; i++)
-        {
-            if (DataManager.Instance.GetDefaultItemDataList().Data[i].itemType == ItemType.Normal) itemCount++;
-            else if (DataManager.Instance.GetDefaultItemDataList().Data[i].itemType == ItemType.Trigger) triggerItemCount++;
-        }
-        Debug.Log(itemCount);
-        itemsData = new Item[itemCount];
-        triggerItemsData = new Item[triggerItemCount];
-
-        itemCount = 0;
-        triggerItemCount = 0;
         for (int i = 0; i < DataManager.Instance.GetDefaultItemDataList().Data.Count; i++)
         {
             if (DataManager.Instance.GetDefaultItemDataList().Data[i].itemType == ItemType.Normal)
             {
-                itemsData[itemCount] = new Item(i);
-                itemCount++;
+                itemsData.Add(DataManager.Instance.GetDefaultItemDataList().Data[i].item_id, new Item(i));
             }
             else if (DataManager.Instance.GetDefaultItemDataList().Data[i].itemType == ItemType.Trigger)
             {
-                triggerItemsData[itemCount] = new Item(i);
-                triggerItemCount++;
+                triggerItemsData.Add(DataManager.Instance.GetDefaultItemDataList().Data[i].item_id, new Item(i));
             }
         }
     }
@@ -76,29 +63,32 @@ public class ItemManager : MonoBehaviour
     
     public void OnClickToFindItem(int index) //여기가 아이템 클릭했을 때 실행되는 구간.
     {
-        if (!getItems.ContainsKey(index))
+        if (itemsData.ContainsKey(index) && !getItems.ContainsKey(index))
         {
             var obj = DataManager.Instance.GameObjectLoad("Prefabs/Item");
             obj.transform.GetComponent<Image>().sprite = DataManager.Instance.SpriteLoad("image");
             Instantiate(obj, UIManager.Instance.itemCanvas);
 
             GetItem(index);
+            return;
         }
-    }
-
-    public void OnClickToFindTriggerItem(int index)
-    {
-        if (!triggerItems.ContainsKey(index))
+        else if (itemsData.ContainsKey(index)) return;
+        if (triggerItemsData.ContainsKey(index) && !triggerItems.ContainsKey(index))
         {
-            var obj =  DataManager.Instance.GameObjectLoad("Prefabs/TriggerItem");
+            var obj = DataManager.Instance.GameObjectLoad("Prefabs/TriggerItem");
 
             //Sprite sprite = SpriteLoad("Look");
             //obj.transform.GetComponent<Image>().sprite = sprite;
             obj.transform.GetComponent<interactableItem>().ItemId = index;
             obj = Instantiate(obj, UIManager.Instance.itemCanvas);
             GetTriggerItem(index, obj);
+            return;
         }
-        else triggerItems[index].SetActive(true);
+        else if (triggerItemsData.ContainsKey(index)) 
+        { 
+            triggerItems[index].SetActive(true); 
+            return; 
+        }
+        Debug.Log("Item Error");
     }
-
 }

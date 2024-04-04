@@ -31,6 +31,7 @@ public class interactableItem : interactableObject
 
     public void OnClickTriggerItem()
     {
+        SettingTriggerItem(ItemId);
         gameObject.SetActive(false);
     }
 
@@ -45,7 +46,6 @@ public class interactableItem : interactableObject
         {
             //ItemManager.Instance.OnClickToFindTriggerItem(item_id);
             btn.onClick.AddListener(OnClickTriggerItem);
-            SettingTriggerItem(ItemId);
         }
     }
 
@@ -53,7 +53,7 @@ public class interactableItem : interactableObject
     {
         switch (id)
         {
-            case 0:
+            case 51:
                 ItemManager.Instance.OnClickToFindItem(1);
                 break;
         }
