@@ -35,12 +35,14 @@ public class InventoryUI : PopupUIBase
 
     private void AddItemList()
     {
-        for(int i = 0; i < ItemManager.Instance.getItemsNumber.Count;i++)
+        Dictionary<int, Item> getItems = DataManager.Instance.getItems;
+        for(int i = 0; i < DataManager.Instance.getItemsNumber.Count;i++)
         {
-            SetItemSlot(ItemManager.Instance.getItems[ItemManager.Instance.getItemsNumber[i]].id);
-            items.Add(ItemManager.Instance.getItems[ItemManager.Instance.getItemsNumber[i]].id, ItemManager.Instance.getItems[ItemManager.Instance.getItemsNumber[i]]);
+            List<int> getItemsNumber = DataManager.Instance.getItemsNumber;
+            SetItemSlot(getItems[getItemsNumber[i]].id);
+            items.Add(getItems[getItemsNumber[i]].id, getItems[getItemsNumber[i]]);
         }
-        ItemManager.Instance.getItemsNumber.Clear();
+        DataManager.Instance.getItemsNumber.Clear();
     }
 
     public void SetItemSlot(int id)

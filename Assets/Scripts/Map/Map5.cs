@@ -27,17 +27,17 @@ public class map5 : MonoBehaviour
         switch (index)
         {
             case 1:
-                if (ItemManager.Instance.getItems.ContainsKey(33))
+                if (DataManager.Instance.getItems.ContainsKey(33))
                 {
-                    ItemManager.Instance.OnClickToFindItem(15);
+                    DataManager.Instance.OnClickToFindItem(15);
                 }
                 else Debug.Log("nnnn.");
                 break;
             case 2:
-                ItemManager.Instance.OnClickToFindItem(17);
+                DataManager.Instance.OnClickToFindItem(17);
                 break;
             case 3:
-                ItemManager.Instance.OnClickToFindItem(33);
+                DataManager.Instance.OnClickToFindItem(33);
                 break;
         }
     }
