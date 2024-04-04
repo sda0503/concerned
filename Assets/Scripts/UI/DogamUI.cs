@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 public class DogamUI : PopupUIBase
@@ -22,7 +23,7 @@ public class DogamUI : PopupUIBase
     {
         ItemManager.Instance.SetItemData();
         MakeDogamItemSlot();
-        closeButton.onClick.AddListener(CloseDogam);
+        closeButton.onClick.AddListener(CloseUI);
     }
 
     private void MakeDogamItemSlot()
@@ -30,10 +31,15 @@ public class DogamUI : PopupUIBase
         for (int i = 0; i < 12; i++)
         {
             itemSlots[i] = Instantiate(DataManager.Instance.GameObjectLoad("Prefabs/DogamItemSlot"), itemSlot);
-            OnDogamItem(i);
             int n = i;
             itemSlots[i].GetComponent<Button>().onClick.RemoveAllListeners();
             itemSlots[i].GetComponent<Button>().onClick.AddListener(() => DogamSlotButton(n));
+            itemSlots[i].GetComponent<Button>().enabled = false;
+
+            if (DataManager.Instance.dogamItemData.ContainsKey(i))
+            {
+                OnDogamItem(i);
+            }
         }
     }
 
@@ -43,23 +49,10 @@ public class DogamUI : PopupUIBase
         descriptionText.text = DataManager.Instance.dogamItemData[index].default_description;
     }
 
-    public void OnDogamItem(int key)
+    private void OnDogamItem(int key)
     {
-        if (DataManager.Instance.dogamItemData.ContainsKey(key))
-        {
-            //�̹��� ����Ǵ� �κ��� �ʿ���.
-            itemSlots[key].transform.GetChild(1).gameObject.SetActive(true);
-            itemSlots[key].GetComponent<Button>().enabled = true;
-        }
-        else
-        {
-            itemSlots[key].transform.GetChild(1).gameObject.SetActive(false);
-            itemSlots[key].GetComponent<Button>().enabled = false;
-        }
-    }
-
-    public void CloseDogam()
-    {
-        gameObject.SetActive(false);
+        //이미지 변경되는 부분이 필요함.
+        itemSlots[key].transform.GetChild(1).gameObject.SetActive(true);
+        itemSlots[key].GetComponent<Button>().enabled = true;
     }
 }

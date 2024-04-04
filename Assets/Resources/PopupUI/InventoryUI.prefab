@@ -445,7 +445,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &5713494501365352360
 RectTransform:
   m_ObjectHideFlags: 0
@@ -469,7 +469,7 @@ RectTransform:
   - {fileID: 867273843559363305}
   - {fileID: 754511760134314112}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -555,6 +555,7 @@ MonoBehaviour:
   itemSlot: {fileID: 754511760134314112}
   nameText: {fileID: 8685051199834108580}
   descriptionText: {fileID: 900433967027681928}
+  closeButton: {fileID: 3580093524596225303}
 --- !u!1 &4797883210409747517
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,17 +1,19 @@
 using System;
 using System.Collections.Generic;
+using Unity.VisualScripting;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.UI;
 using Object = UnityEngine.Object;
 
 public class ItemManager : MonoBehaviour
 {
-    public Item[] itemsData = new Item[DataManager.Instance.GetDefaultItemDataList().Data.Count]; //������ ����ִ� ������
-    public TriggerItem[] triggerItemsData = new TriggerItem[DataManager.Instance.GetDefaultItemDataList().Trigger.Count];
+    public Dictionary<int, Item> itemsData = new Dictionary<int, Item>();
+    public Dictionary<int, Item> triggerItemsData = new Dictionary<int, Item>();
 
-    public Dictionary<int, Item> getItems = new Dictionary<int, Item>(); //���� Item��
+    public Dictionary<int, Item> getItems = new Dictionary<int, Item>();
     public Dictionary<int, GameObject> triggerItems = new Dictionary<int, GameObject>();
-    public List<int> getItemsNumber = new List<int>(); //���� Item�� ����
+    public List<int> getItemsNumber = new List<int>();
 
     public static ItemManager Instance;
 
@@ -34,13 +36,16 @@ public class ItemManager : MonoBehaviour
 
     public void SetItemData()
     {
-        for (int i = 0; i < itemsData.Length; i++)
+        for (int i = 0; i < DataManager.Instance.GetDefaultItemDataList().Data.Count; i++)
         {
-            itemsData[i] = new Item(i);
-        }
-        for (int i = 0; i < triggerItemsData.Length; i++)
-        {
-            triggerItemsData[i] = new TriggerItem(i);
+            if (DataManager.Instance.GetDefaultItemDataList().Data[i].itemType == ItemType.Normal)
+            {
+                itemsData.Add(DataManager.Instance.GetDefaultItemDataList().Data[i].item_id, new Item(i));
+            }
+            else if (DataManager.Instance.GetDefaultItemDataList().Data[i].itemType == ItemType.Trigger)
+            {
+                triggerItemsData.Add(DataManager.Instance.GetDefaultItemDataList().Data[i].item_id, new Item(i));
+            }
         }
     }
 
@@ -48,7 +53,7 @@ public class ItemManager : MonoBehaviour
     {
         getItems.Add(item_id, itemsData[item_id]);
         getItemsNumber.Add(item_id);
-        //DataManager.instance.saveGetItems.Data.Add(items[item_id].itemData);
+        DataManager.Instance.saveGetItems.Data.Add(itemsData[item_id].itemData);
     }
 
     public void GetTriggerItem(int item_id, GameObject obj)
@@ -56,32 +61,34 @@ public class ItemManager : MonoBehaviour
         triggerItems.Add(item_id, obj);
     }
     
-    public void OnClickToFindItem(int index, Transform canvas) //여기가 아이템 클릭했을 때 실행되는 구간.
+    public void OnClickToFindItem(int index) //여기가 아이템 클릭했을 때 실행되는 구간.
     {
-        if (!ItemManager.Instance.getItems.ContainsKey(index))
+        if (itemsData.ContainsKey(index) && !getItems.ContainsKey(index))
         {
             var obj = DataManager.Instance.GameObjectLoad("Prefabs/Item");
-            obj.transform.GetComponent<Image>().sprite = DataManager.Instance.SpriteLoad("image"); //index�� ���缭 �̹��� �ε�ǵ��� ����
-            Object.Instantiate(obj, canvas);
+            obj.transform.GetComponent<Image>().sprite = DataManager.Instance.SpriteLoad("image");
+            Instantiate(obj, UIManager.Instance.itemCanvas);
 
-            ItemManager.Instance.GetItem(index);
+            GetItem(index);
+            return;
         }
-    }
-
-    public void OnClickToFindTriggerItem(int index, Transform canvas)
-    {
-        if (!ItemManager.Instance.triggerItems.ContainsKey(index))
+        else if (itemsData.ContainsKey(index)) return;
+        if (triggerItemsData.ContainsKey(index) && !triggerItems.ContainsKey(index))
         {
-            var obj =  DataManager.Instance.GameObjectLoad("Prefabs/TriggerItem");
+            var obj = DataManager.Instance.GameObjectLoad("Prefabs/TriggerItem");
 
             //Sprite sprite = SpriteLoad("Look");
-            //sprite�� ������ Debug���� �� �ֵ��� �������ִ� ���� ����. 27��ó�� �ѹ��� �ۼ��� ������.
-            //obj.transform.GetComponent<Image>().sprite = sprite; //index�� ���缭 �̹��� �ε�ǵ��� ����
-            // obj.transform.GetComponent<TriggerItem>().id = index;
-            obj = Object.Instantiate(obj, canvas);
-            //ItemManager.Instance.GetTriggerItem(index, obj);
+            //obj.transform.GetComponent<Image>().sprite = sprite;
+            obj.transform.GetComponent<interactableItem>().ItemId = index;
+            obj = Instantiate(obj, UIManager.Instance.itemCanvas);
+            GetTriggerItem(index, obj);
+            return;
         }
-        else ItemManager.Instance.triggerItems[index].SetActive(true);
+        else if (triggerItemsData.ContainsKey(index)) 
+        { 
+            triggerItems[index].SetActive(true); 
+            return; 
+        }
+        Debug.Log("Item Error");
     }
-
 }

@@ -50,7 +50,6 @@ public class UIManager : MonoBehaviour
 
     private void Start()
     {
-       
         //TODO : 버튼에 애드리스너해서 메서드 달아주기
         //각 장소가 그 주소의 BG에 해당하는 ID값을 가지고 있어야함.
         //TODO : PosBtn.OnClick.AddListener(() => MovePosition(PosBtn.주소 관련된 스크립트나 컴포넌트.PosID));

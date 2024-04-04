@@ -94,13 +94,15 @@ namespace DataStorage
     {
         normal,
         choose,
-        Loop
+        Loop,
+        Phone
     }
 
     public enum QuestType
     {
         Normal,
         Loop,
+        Phone
     }
 
     public class Dialogue_List
@@ -217,17 +219,14 @@ namespace DataStorage
         public int item_id;
         public string item_name;
         public string default_description;
-        public string simple_description;
-        public ItemEventType itemEventType;
+        public LocationEvent locationEvent;
         public ItemType itemType;
         public string event_description;
     }
     
     public class ItemDataList
     {
-        //<������ �޾ƿ� class> �������� ��Ʈ�� �ִ� ������ �ִ� ��Ʈ��.
         public List<ItemData> Data = new List<ItemData>();
-        public List<ItemData> Trigger = new List<ItemData>();
     }
 
 

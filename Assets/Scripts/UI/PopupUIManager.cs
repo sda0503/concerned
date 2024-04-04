@@ -4,10 +4,6 @@ using UnityEngine;
 
 public class PopupUIManager
 {
-    //���׸����� �޾Ƽ� popupUI ������ UI ��ư ������ UI���� script�־��ֱ�
-
-    //UI �������� �ε� -> ���׸����� �ٲ㼭 �������� ����� �� �ֵ��� ����
-    //��ųʸ� key �� �̿��ؼ� ������ �����ϰ� ������ ���� ���� ��ųʸ��� ����
     public Dictionary<string, GameObject> popupUI = new Dictionary<string, GameObject>();
 
     private static PopupUIManager instance;
@@ -28,14 +24,14 @@ public class PopupUIManager
         return OpenPopupUI(typeof(T).Name) as T; //script�̸� == resources�̸�
     }
 
-    public PopupUIBase OpenPopupUI(string name)
+    private PopupUIBase OpenPopupUI(string name)
     {
         var obj = Resources.Load("PopupUI/" + name, typeof(GameObject)) as GameObject;
         if (obj == null) { Debug.Log("UI Load fail"); return null; }
         return MakePopupUI(obj);
     }
 
-    public PopupUIBase MakePopupUI(GameObject prefab)
+    private PopupUIBase MakePopupUI(GameObject prefab)
     {
         if (!popupUI.ContainsKey(prefab.name))
         {
@@ -46,7 +42,7 @@ public class PopupUIManager
         return GetComponentPopupUI(popupUI[prefab.name]);
     }
 
-    public PopupUIBase GetComponentPopupUI(GameObject clone)
+    private PopupUIBase GetComponentPopupUI(GameObject clone)
     {
         var script = clone.GetComponent<PopupUIBase>();
         return script;
