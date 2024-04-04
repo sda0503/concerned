@@ -7,6 +7,7 @@ using System.Text;
 using DataStorage;
 using Newtonsoft.Json;
 using UnityEngine;
+using UnityEngine.UI;
 
 //로딩이 얼마 안걸릴거같아도 확장성을 생각하면 코루틴이 좋고
 // 설계를 할 때 큰 그림을 그리고 설계를 하면 기술적 고민을 많이 해볼 수 있음.(취준생입장)
@@ -49,6 +50,13 @@ public class DataManager : SingletonBase<DataManager> //유니티 기능을 상�
     public PlaceDBLoad PlaceDBLoad = new PlaceDBLoad();
 
     private WaitForSeconds loadingwait = new WaitForSeconds(0.5f);
+    
+    public Dictionary<int, Item> itemsData = new Dictionary<int, Item>();
+    public Dictionary<int, Item> triggerItemsData = new Dictionary<int, Item>();
+
+    public Dictionary<int, Item> getItems = new Dictionary<int, Item>();
+    public Dictionary<int, GameObject> triggerItems = new Dictionary<int, GameObject>();
+    public List<int> getItemsNumber = new List<int>();
 
     #endregion
 
@@ -67,6 +75,7 @@ public class DataManager : SingletonBase<DataManager> //유니티 기능을 상�
         base.init();
         path = Application.persistentDataPath;
         StartCoroutine(SetDatas());
+        SetItemData();
     }
 
     /// <summary>
@@ -244,12 +253,27 @@ public class DataManager : SingletonBase<DataManager> //유니티 기능을 상�
         return itemDataList;
     }
 
-    IEnumerator SetItemData()
+    IEnumerator LoadItemData()
     {
         yield return loadingwait; //TODO : 가능하면 캐싱해서 사용 현재 3번 사용됨. 아니면 변경할 것.
         //TODO : 아이템 데이터 불러오는 부분은 뭔가 변경이 필요해 보임.
         LoadSaveData("Save"); //SaveItem이라고 이름 바뀌어야 함. => Inventory랑 
         saveItemDataList = GetItemDataList();
+    }
+    
+    public void SetItemData()
+    {
+        for (int i = 0; i < DataManager.Instance.GetDefaultItemDataList().Data.Count; i++)
+        {
+            if (DataManager.Instance.GetDefaultItemDataList().Data[i].itemType == ItemType.Normal)
+            {
+                itemsData.Add(DataManager.Instance.GetDefaultItemDataList().Data[i].item_id, new Item(i));
+            }
+            else if (DataManager.Instance.GetDefaultItemDataList().Data[i].itemType == ItemType.Trigger)
+            {
+                triggerItemsData.Add(DataManager.Instance.GetDefaultItemDataList().Data[i].item_id, new Item(i));
+            }
+        }
     }
 
     /// <summary>
@@ -350,7 +374,7 @@ public class DataManager : SingletonBase<DataManager> //유니티 기능을 상�
 
         _playerToSave.DialogueQuestDic = _questDic;
 
-        foreach (var items in ItemManager.Instance.getItems.Values)
+        foreach (var items in getItems.Values)
         {
             _playerToSave.Inventory.Add(items.id);
         }
@@ -429,7 +453,7 @@ public class DataManager : SingletonBase<DataManager> //유니티 기능을 상�
         yield return loadingwait;
         foreach (var VARIABLE in _playerToSave.Inventory)
         {
-            ItemManager.Instance.getItems.Add(VARIABLE,new Item(VARIABLE));    
+            getItems.Add(VARIABLE,new Item(VARIABLE));    
         }
     }
 
@@ -466,4 +490,52 @@ public class DataManager : SingletonBase<DataManager> //유니티 기능을 상�
     }
 
     #endregion
+
+    #region In_itemManager
+
+    public void GetItem(int item_id)
+    {
+        getItems.Add(item_id, itemsData[item_id]);
+        getItemsNumber.Add(item_id);
+        DataManager.Instance.saveGetItems.Data.Add(itemsData[item_id].itemData);
+    }
+
+    public void GetTriggerItem(int item_id, GameObject obj)
+    {
+        triggerItems.Add(item_id, obj);
+    }
+    
+    public void OnClickToFindItem(int index) //여기가 아이템 클릭했을 때 실행되는 구간.
+    {
+        if (itemsData.ContainsKey(index) && !getItems.ContainsKey(index))
+        {
+            var obj = DataManager.Instance.GameObjectLoad("Prefabs/Item");
+            obj.transform.GetComponent<Image>().sprite = DataManager.Instance.SpriteLoad("image");
+            Instantiate(obj, UIManager.Instance.itemCanvas);
+
+            GetItem(index);
+            return;
+        }
+        else if (itemsData.ContainsKey(index)) return;
+        if (triggerItemsData.ContainsKey(index) && !triggerItems.ContainsKey(index))
+        {
+            var obj = DataManager.Instance.GameObjectLoad("Prefabs/TriggerItem");
+
+            //Sprite sprite = SpriteLoad("Look");
+            //obj.transform.GetComponent<Image>().sprite = sprite;
+            obj.transform.GetComponent<interactableItem>().ItemId = index;
+            obj = Instantiate(obj, UIManager.Instance.itemCanvas);
+            GetTriggerItem(index, obj);
+            return;
+        }
+        else if (triggerItemsData.ContainsKey(index)) 
+        { 
+            triggerItems[index].SetActive(true); 
+            return; 
+        }
+        Debug.Log("Item Error");
+    }
+
+    #endregion
+    
 }

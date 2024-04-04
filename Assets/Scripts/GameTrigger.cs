@@ -25,7 +25,6 @@ public class Loadingbar
     {
         progress.fillAmount = GetPercent();
         text.text = "";
-        Debug.Log(count);
         
         switch (count)
         {
