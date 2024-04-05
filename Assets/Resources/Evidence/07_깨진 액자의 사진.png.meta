@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Resources/Evidence/07_깨진 액자의 사진.png.meta
 guid: 751d8d521af1da241a9e92be2c007323
+========
+guid: 5842912621116764180b640d654433ba
+>>>>>>>> main:Assets/Resources/Evidence/09_보혐서류.png.meta
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}

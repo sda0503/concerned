@@ -28,16 +28,16 @@ public class Map8 : MonoBehaviour
         switch (index)
         {
             case 0:
-                ItemManager.Instance.OnClickToFindItem(51);
+                DataManager.Instance.OnClickToFindItem(51);
                 break;
             case 1:
-                ItemManager.Instance.OnClickToFindItem(2);
+                DataManager.Instance.OnClickToFindItem(2);
                 break;
             case 2:
-                ItemManager.Instance.OnClickToFindItem(3);
+                DataManager.Instance.OnClickToFindItem(3);
                 break;
             case 3:
-                ItemManager.Instance.OnClickToFindItem(4);
+                DataManager.Instance.OnClickToFindItem(4);
                 break;
         }
     }

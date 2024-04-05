@@ -43,7 +43,7 @@ public class CanvasOnLoad : MonoBehaviour
                     else if (interactList[i].gameObject.TryGetComponent(out interactableItem interactableItem))
                     {
                         //아이템 넣는거 한번만 실행되려면 얘는 동적으로 해주는게 맞음.
-                        interactableItem.gameObject.GetComponent<Button>().onClick.AddListener(() => ItemManager.Instance.OnClickToFindItem(interactableItem.ItemId));
+                        interactableItem.gameObject.GetComponent<Button>().onClick.AddListener(() => DataManager.Instance.OnClickToFindItem(interactableItem.ItemId));
                         //일반 아이템은 회수하면 더 이상 등장하지 않음.
                         if (interactableItem.ItemType == ItemType.Trigger) //트리거 아이템은 다시 등장함.
                         {
