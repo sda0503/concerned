@@ -31,4 +31,6 @@ public class PopupBtn : MonoBehaviour
         GameManager.Instance.PositionChange(posID); //TODO : 추후 PosID값으로 이동
         transform.parent.gameObject.SetActive(false);
     }
+
+    
 }

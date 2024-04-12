@@ -4,7 +4,11 @@ using UnityEngine;
 
 public class ArrowMoveBtn : MonoBehaviour
 {
-    [SerializeField]
-    public string ArrowName;
+    [SerializeField] private string ArrowName;
+    public int posID;
 
+    public void ArrowMove()
+    {
+        GameManager.Instance.PositionChange(posID); //TODO : 추후 PosID값으로 이동
+    }
 }
