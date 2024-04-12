@@ -90,6 +90,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ArrowName: "\uC7A5\uB840\uC2DD\uC7A5"
+  posID: 610
 --- !u!1 &1049995002019199277
 GameObject:
   m_ObjectHideFlags: 0
@@ -299,7 +300,7 @@ GameObject:
   - component: {fileID: 624889010451505500}
   - component: {fileID: 3984772376499754545}
   m_Layer: 5
-  m_Name: map17
+  m_Name: map600
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

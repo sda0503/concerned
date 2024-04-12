@@ -90,6 +90,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ArrowName: "\uB2E4\uBAA9\uC801\uC2E4"
+  posID: 120
 --- !u!1 &1413426829460175906
 GameObject:
   m_ObjectHideFlags: 0
@@ -180,6 +181,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ArrowName: "\uACBD\uBE44\uC0AC\uBB34\uC18C"
+  posID: 130
 --- !u!1 &1839088032805388987
 GameObject:
   m_ObjectHideFlags: 0
@@ -389,7 +391,7 @@ GameObject:
   - component: {fileID: 3363086118519016684}
   - component: {fileID: 8700919356808455403}
   m_Layer: 5
-  m_Name: map2
+  m_Name: map100
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -585,3 +587,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ArrowName: "\uC591\uD604\uC11C \uC9D1"
+  posID: 110
