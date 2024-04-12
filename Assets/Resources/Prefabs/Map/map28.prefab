@@ -206,6 +206,7 @@ GameObject:
   - component: {fileID: 6292481748105696107}
   - component: {fileID: 8807220829169836809}
   - component: {fileID: 6223202378470290384}
+  - component: {fileID: 7051590432565763417}
   m_Layer: 5
   m_Name: movePoint (4)
   m_TagString: Untagged
@@ -230,7 +231,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: -2.774, y: 57.56, z: 351.91602}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -445, y: -203}
+  m_AnchoredPosition: {x: -586, y: -111}
   m_SizeDelta: {x: 300, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8807220829169836809
@@ -271,6 +272,19 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &7051590432565763417
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1513256025497995207}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07c1ade4ad0235b458d3b3fea6e7919c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ArrowName: "\uC591\uD604\uC11C \uC9D1 \uCE68\uC2E4"
 --- !u!1 &2566584438087420581
 GameObject:
   m_ObjectHideFlags: 0
@@ -282,6 +296,7 @@ GameObject:
   - component: {fileID: 2548665166750830667}
   - component: {fileID: 6639541691054324055}
   - component: {fileID: 1984555258090118175}
+  - component: {fileID: 2319920596266984896}
   m_Layer: 5
   m_Name: movePoint (5)
   m_TagString: Untagged
@@ -347,6 +362,19 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &2319920596266984896
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2566584438087420581}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07c1ade4ad0235b458d3b3fea6e7919c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ArrowName: "\uC591\uD604\uC11C \uC9D1 \uC11C\uC7AC"
 --- !u!1 &4285767538157744009
 GameObject:
   m_ObjectHideFlags: 0
@@ -434,6 +462,7 @@ GameObject:
   - component: {fileID: 9111763584989725380}
   - component: {fileID: 2010223638535034343}
   - component: {fileID: 7332884717239184801}
+  - component: {fileID: 8200958198822208187}
   m_Layer: 5
   m_Name: movePoint (6)
   m_TagString: Untagged
@@ -499,6 +528,19 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &8200958198822208187
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4781322866718741753}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07c1ade4ad0235b458d3b3fea6e7919c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ArrowName: "\uC544\uD30C\uD2B8 \uB2E8\uC9C0"
 --- !u!1 &5533765329438757524
 GameObject:
   m_ObjectHideFlags: 0
@@ -536,6 +578,7 @@ RectTransform:
   - {fileID: 7808208673726398797}
   - {fileID: 2548665166750830667}
   - {fileID: 9111763584989725380}
+  - {fileID: 7494381583577283073}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -620,3 +663,93 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   states: 
+--- !u!1 &7079964235968813295
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7494381583577283073}
+  - component: {fileID: 1071344174433238925}
+  - component: {fileID: 6198666877489378333}
+  - component: {fileID: 1021059432187456456}
+  m_Layer: 5
+  m_Name: movePoint (7)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &7494381583577283073
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7079964235968813295}
+  m_LocalRotation: {x: -0.3615875, y: 0.12216045, z: 0.9005528, w: 0.20817304}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4314246740949064553}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: -21.751, y: -40.272, z: 162.027}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 627, y: -416}
+  m_SizeDelta: {x: 300, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &1071344174433238925
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7079964235968813295}
+  m_CullTransparentMesh: 1
+--- !u!114 &6198666877489378333
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7079964235968813295}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 30eccdd5b7438d64a9db7e25fbbdf96b, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!114 &1021059432187456456
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7079964235968813295}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07c1ade4ad0235b458d3b3fea6e7919c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ArrowName: "\uC591\uD604\uC11C \uC9D1 \uC8FC\uBC29"

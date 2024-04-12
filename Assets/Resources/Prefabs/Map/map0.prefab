@@ -207,6 +207,7 @@ GameObject:
   - component: {fileID: 5354987688092270298}
   - component: {fileID: 1358337208132238582}
   - component: {fileID: 3196361047074887747}
+  - component: {fileID: 6124421144360984724}
   m_Layer: 5
   m_Name: movePoint (5)
   m_TagString: Untagged
@@ -272,6 +273,19 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &6124421144360984724
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6986251054520144091}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07c1ade4ad0235b458d3b3fea6e7919c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ArrowName: "\uD0DD\uBC30\uD68C\uC0AC \uC804\uACBD"
 --- !u!1 &7608056041745833523
 GameObject:
   m_ObjectHideFlags: 0

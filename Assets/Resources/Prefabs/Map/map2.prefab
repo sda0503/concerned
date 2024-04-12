@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1293304856248686694}
   - component: {fileID: 7529057136225207239}
   - component: {fileID: 1597531061638829458}
+  - component: {fileID: 4892431139883544705}
   m_Layer: 5
   m_Name: movePoint (5)
   m_TagString: Untagged
@@ -76,6 +77,19 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &4892431139883544705
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1011289439469329652}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07c1ade4ad0235b458d3b3fea6e7919c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ArrowName: "\uB2E4\uBAA9\uC801\uC2E4"
 --- !u!1 &1413426829460175906
 GameObject:
   m_ObjectHideFlags: 0
@@ -87,6 +101,7 @@ GameObject:
   - component: {fileID: 225584496591326210}
   - component: {fileID: 2664977271071343885}
   - component: {fileID: 7630186773789522051}
+  - component: {fileID: 6557946756192612706}
   m_Layer: 5
   m_Name: movePoint (4)
   m_TagString: Untagged
@@ -152,6 +167,19 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &6557946756192612706
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1413426829460175906}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07c1ade4ad0235b458d3b3fea6e7919c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ArrowName: "\uACBD\uBE44\uC0AC\uBB34\uC18C"
 --- !u!1 &1839088032805388987
 GameObject:
   m_ObjectHideFlags: 0
@@ -478,6 +506,7 @@ GameObject:
   - component: {fileID: 2089890189210849173}
   - component: {fileID: 8181475558272746903}
   - component: {fileID: 6399151653393622518}
+  - component: {fileID: 7267516488095672252}
   m_Layer: 5
   m_Name: movePoint (3)
   m_TagString: Untagged
@@ -543,3 +572,16 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &7267516488095672252
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6096972763689830577}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07c1ade4ad0235b458d3b3fea6e7919c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ArrowName: "\uC591\uD604\uC11C \uC9D1"

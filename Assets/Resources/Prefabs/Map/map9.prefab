@@ -284,6 +284,7 @@ GameObject:
   - component: {fileID: 4276049592579626820}
   - component: {fileID: 6811510565588271481}
   - component: {fileID: 4457732521851273124}
+  - component: {fileID: 2766437783779504464}
   m_Layer: 5
   m_Name: map9
   m_TagString: Untagged
@@ -389,3 +390,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   states: 
+--- !u!114 &2766437783779504464
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5808159992658337112}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07c1ade4ad0235b458d3b3fea6e7919c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ArrowName: "\uACBD\uCC30\uC11C \uBCF5\uB3C4"
