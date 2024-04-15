@@ -16,11 +16,12 @@ public class GameManager : SingletonBase<GameManager>
     public event Action OnDateChange; //날짜 변경 
     public event Action OnDayTimeChange; //시간 변경
     public event Action OnPositionChange; //장소 변경
-    
+    public event Action OnPositionObhChange; //오브젝트 변경
+
     #endregion
-    
-   
-    
+
+
+
     [SerializeField] private GameObject origin;
   
 
