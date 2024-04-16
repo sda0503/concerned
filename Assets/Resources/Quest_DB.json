@@ -86,6 +86,15 @@
       "QuestState": "false",
       "NeedQuest": null,
       "NeedItem": null
+    },
+    {
+      "QuestTargetName": "흥신소 탐정 핸드폰",
+      "QuestIdx": "1",
+      "QuestStartPost": "60002010",
+      "QuestType": "2",
+      "QuestState": "false",
+      "NeedQuest": null,
+      "NeedItem": null
     }
   ]
 }

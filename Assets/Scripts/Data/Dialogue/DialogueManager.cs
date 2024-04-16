@@ -6,6 +6,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using KoreanTyper;
+using System.Linq;
 
 public class DialogueManager : MonoBehaviour
 {
@@ -134,7 +135,6 @@ public class DialogueManager : MonoBehaviour
             }
             else if (_questdic[Targetname][questcount - 1].QuestType == QuestType.Phone)
             {
-                PopupUIManager.Instance.popupUI["PhoneNumberUI"].SetActive(false);
                 PopupUIManager.Instance.popupUI["PhoneUI"].SetActive(false);
             }
             else
@@ -176,8 +176,16 @@ public class DialogueManager : MonoBehaviour
                 }
                 else if (questData.QuestType == QuestType.Phone)
                 {
-                    PopupUIManager.Instance.OpenPopupUI<ChatCalendarUI>(PopupUIManager.Instance.popupUI["PhoneUI"].transform);
-                    //PopupUIManager.Instance.OpenPopupUI<CalendarUI>(PopupUIManager.Instance.popupUI["PhoneUI"].transform).charactername = Targetname;
+                    List<string> ss = Targetname.Split(' ').ToList();
+                    if(ss.Count > 1) 
+                    {
+                        for (int i = 0; i < ss.Count - 1; i++)
+                        {
+                            PopupUIManager.Instance.OpenPopupUI<ChatCalendarUI>(PopupUIManager.Instance.popupUI["PhoneUI"].transform).charactername += ss[i]+" ";
+                        }
+                    }
+                    else PopupUIManager.Instance.OpenPopupUI<ChatCalendarUI>(PopupUIManager.Instance.popupUI["PhoneUI"].transform).charactername = ss[0];
+
                 } //파트별로 퀘스트 나누기.
             }
 
@@ -230,7 +238,7 @@ public class DialogueManager : MonoBehaviour
     {
         if (_questdic[Targetname][questcount - 1].QuestType == QuestType.Normal)
         {
-            string name = "Player"; //형사 이름으로 변경
+            string name = "나"; //형사 이름으로 변경
             string log = _dialogdic[contextcount].Event_Log[index];
             chatlogData saveSingleLog = new chatlogData();
             saveSingleLog.Name = name;

@@ -18,6 +18,9 @@ public class GameManager : SingletonBase<GameManager>
     public event Action OnPositionChange; //장소 변경
     public event Action OnPositionObhChange; //오브젝트 변경
 
+    public List<int> check_date = new List<int>();
+    public List<string> check_name = new List<string>();
+
     #endregion
 
 
@@ -79,10 +82,17 @@ public class GameManager : SingletonBase<GameManager>
     //TODO : 이걸 맵 내부에서 이동하는거에 재사용 하려면? 1. Map 켜서 이동하는 PopupBtn에 DayTimeChange 달아주어서 분리하면 되긴 함.
     // 2. 1번이 제일 나은 듯. 굳이 이게 어디서 왔는지 따져서 갈라줄 필요는 없다고 생각함.
 
-    
-   
 
-  
+    public void CharacterMeetDate(int date, string name)
+    {
+        Debug.Log("schedule");
+        check_date.Add(date);
+        check_name.Add(name);
+        Debug.Log(date);
+        Debug.Log(name);
+    }
+
+
 
     //전체 갈수있는 방을 List로 넣어놓고 ex)왼쪽으로 -1, 오른쪽+1
     //TODO : 캔버스 불러오는거 작성, 캔버스에 들어갈 스크립트도 짜야되고, 각 버튼들 스크립트도 생각해야됨. 캔버스에 직렬화해서 버튼들 달아주고 enabled랑 disabled일때
@@ -90,7 +100,7 @@ public class GameManager : SingletonBase<GameManager>
     //TODO : 제일 최근생각 : 어차피 버튼에 동적으로 달건 달고, 아닌건 안함 => 장소끼리 이동하는 경우는 0번 위치로만 가고 내부 이동은 버튼에 미리 path 다 달아서 사용하자.
     //Path : 아파트/아파트입구[0] // 낮/점심/저녁
     //Resources.Load<Sprite>($"{Playerinformation.dayTime.ToString()}/{PositionDB[Playerinformation.position]}/0"); //이런 느낌으로 Path 지정
-    
+
     //각각 동작 달아주기.
     //TODO : 선결조건이 달성안되면 안 나온게한다. 특정 인물이 회피한다? Random 떄려야될듯.
     //TODO : 신현우(택배기사) 얘가 안나오는 날이 시작됬다. count++ => 1; 2; if (count ==2) => 무조건 출근; count=0;

@@ -6,14 +6,12 @@ using UnityEngine.UI;
 
 public class PhoneUI : PopupUIBase
 {
-    public Button item1;public Button item2;//юс╫ц
     public Button callButton;
     public Button messageButton;
     public Button calendarButton;
 
     private void Start()
     {
-        item1.onClick.AddListener(() => DataManager.Instance.OnClickToFindItem(1));item2.onClick.AddListener(() => DataManager.Instance.OnClickToFindItem(1000));
         callButton.onClick.AddListener(OnCallNumberUI);
         calendarButton.onClick.AddListener(OnCalendarUI);
     }
@@ -25,6 +23,6 @@ public class PhoneUI : PopupUIBase
 
     private void OnCalendarUI()
     {
-        PopupUIManager.Instance.OpenPopupUI<CalendarUI>(gameObject.transform).SetButton();
+        PopupUIManager.Instance.OpenPopupUI<CalendarUI>(gameObject.transform);
     }
 }
