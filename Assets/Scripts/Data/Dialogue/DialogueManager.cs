@@ -176,8 +176,8 @@ public class DialogueManager : MonoBehaviour
                 }
                 else if (questData.QuestType == QuestType.Phone)
                 {
-                    PopupUIManager.Instance.OpenPopupUI<CalendarUI>().SetButton(true);
-                    PopupUIManager.Instance.OpenPopupUI<CalendarUI>().charactername = Targetname; //+ " 약속";
+                    PopupUIManager.Instance.OpenPopupUI<ChatCalendarUI>(PopupUIManager.Instance.popupUI["PhoneUI"].transform);
+                    //PopupUIManager.Instance.OpenPopupUI<CalendarUI>(PopupUIManager.Instance.popupUI["PhoneUI"].transform).charactername = Targetname;
                 } //파트별로 퀘스트 나누기.
             }
 

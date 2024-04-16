@@ -37,8 +37,8 @@ public class interactableItem : interactableObject
 
     private void SettingItem()
     {
-        if (ItemManager.Instance.getItems.ContainsKey(ItemId)) ItemType = ItemType.Normal;
-        else if (ItemManager.Instance.triggerItemsData.ContainsKey(ItemId)) ItemType = ItemType.Trigger;
+        if (DataManager.Instance.getItems.ContainsKey(ItemId)) ItemType = ItemType.Normal;
+        else if (DataManager.Instance.triggerItemsData.ContainsKey(ItemId)) ItemType = ItemType.Trigger;
         if (ItemType == ItemType.Normal)
         {
             //ItemManager.Instance.OnClickToFindItem(item_id);

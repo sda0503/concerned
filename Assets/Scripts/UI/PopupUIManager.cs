@@ -19,23 +19,23 @@ public class PopupUIManager
         }
     }
 
-    public T OpenPopupUI<T>() where T : PopupUIBase
+    public T OpenPopupUI<T>(Transform t = null) where T : PopupUIBase
     {
-        return OpenPopupUI(typeof(T).Name) as T; //script�̸� == resources�̸�
+        return OpenPopupUI(typeof(T).Name, t) as T; //script�̸� == resources�̸�
     }
 
-    private PopupUIBase OpenPopupUI(string name)
+    private PopupUIBase OpenPopupUI(string name, Transform t = null)
     {
         var obj = Resources.Load("PopupUI/" + name, typeof(GameObject)) as GameObject;
         if (obj == null) { Debug.Log("UI Load fail"); return null; }
-        return MakePopupUI(obj);
+        return MakePopupUI(obj, t);
     }
 
-    private PopupUIBase MakePopupUI(GameObject prefab)
+    private PopupUIBase MakePopupUI(GameObject prefab, Transform t = null)
     {
         if (!popupUI.ContainsKey(prefab.name))
         {
-            var obj = Object.Instantiate(prefab); //MonoBehaviour������ ���������ϵ���
+            var obj = Object.Instantiate(prefab, t); //MonoBehaviour������ ���������ϵ���
             popupUI.Add(prefab.name, obj);
         }
         popupUI[prefab.name].SetActive(true);
