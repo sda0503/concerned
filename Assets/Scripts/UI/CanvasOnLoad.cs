@@ -9,7 +9,7 @@ public class CanvasOnLoad : MonoBehaviour
     //TODO : 버튼 다 달아주기.
     //[SerializeField] private Button asdf;
     private interactableObject[] interactList;
-    public List<bool> states;
+    public List<bool> states; //TODO : 게임매니저에서 통으로 관리예정...일까 초기값이 없다.
 
     private void OnEnable()
     {
