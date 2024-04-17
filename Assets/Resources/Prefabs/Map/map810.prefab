@@ -405,7 +405,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ArrowName: "\uC2E0\uD604\uC6B0 \uC9D1\uC55E"
-  posID: 810
+  posID: 800
 --- !u!114 &1764356508474178382
 MonoBehaviour:
   m_ObjectHideFlags: 0
