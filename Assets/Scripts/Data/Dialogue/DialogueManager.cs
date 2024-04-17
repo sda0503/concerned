@@ -262,7 +262,7 @@ public class DialogueManager : MonoBehaviour
         _choiceWindow.gameObject.SetActive(true);
         for (int i = 0; i < data.Event_Log.Length; i++)
         {
-            if (data.Log_Type == Log_Type.choose || !data.Event_Log_State[i])
+            if (data.Log_Type == Log_Type.choose && !data.Event_Log_State[i])
             {
                 if (!DataManager.Instance._inventory.inventory.ContainsKey(int.Parse(data.Check_Item[i])))
                 {
