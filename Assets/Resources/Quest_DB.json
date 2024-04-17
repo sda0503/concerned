@@ -1,52 +1,37 @@
 {
   "Dialogue_Quest_Data": [
     {
-      "QuestTargetName": "강민우",
+      "QuestTargetName": "나(튜토리얼)",
       "QuestIdx": "1",
-      "QuestStartPost": "10001010",
+      "QuestStartPost": "71100000",
       "QuestType": "0",
       "QuestState": "false",
       "NeedQuest": null,
       "NeedItem": null
     },
     {
-      "QuestTargetName": "강민우",
+      "QuestTargetName": "흥신소 탐정",
+      "QuestIdx": "1",
+      "QuestStartPost": "40014000",
+      "QuestType": "0",
+      "QuestState": "false",
+      "NeedQuest": null,
+      "NeedItem": null
+    },
+    {
+      "QuestTargetName": "흥신소 탐정",
       "QuestIdx": "2",
-      "QuestStartPost": "20001010",
-      "QuestType": "0",
-      "QuestState": "false",
-      "NeedQuest": [
-        "강민우",
-        "0"
-      ],
-      "NeedItem": null
-    },
-    {
-      "QuestTargetName": "강민우",
-      "QuestIdx": "3",
-      "QuestStartPost": "10001010",
-      "QuestType": "0",
+      "QuestStartPost": "40014025",
+      "QuestType": "1",
       "QuestState": "false",
       "NeedQuest": null,
       "NeedItem": null
     },
     {
-      "QuestTargetName": "강민우",
-      "QuestIdx": "4",
-      "QuestStartPost": "20001010",
+      "QuestTargetName": "변호사",
+      "QuestIdx": "1",
+      "QuestStartPost": "50004000",
       "QuestType": "0",
-      "QuestState": "false",
-      "NeedQuest": [
-        "강민우",
-        "3"
-      ],
-      "NeedItem": null
-    },
-    {
-      "QuestTargetName": "강민우",
-      "QuestIdx": "5",
-      "QuestStartPost": "30001010",
-      "QuestType": "1",
       "QuestState": "false",
       "NeedQuest": null,
       "NeedItem": null
@@ -54,34 +39,106 @@
     {
       "QuestTargetName": "경비원",
       "QuestIdx": "1",
-      "QuestStartPost": "10011010",
-      "QuestType": "1",
-      "QuestState": "false",
-      "NeedQuest": null,
-      "NeedItem": null
-    },
-    {
-      "QuestTargetName": "흥신소 탐정",
-      "QuestIdx": "1",
-      "QuestStartPost": "60001010",
+      "QuestStartPost": "13005000",
       "QuestType": "0",
       "QuestState": "false",
       "NeedQuest": null,
       "NeedItem": null
     },
     {
-      "QuestTargetName": "흥신소 탐정",
-      "QuestIdx": "2",
-      "QuestStartPost": "60002010",
-      "QuestType": "1",
+      "QuestTargetName": "부녀회장",
+      "QuestIdx": "1",
+      "QuestStartPost": "12013000",
+      "QuestType": "0",
       "QuestState": "false",
       "NeedQuest": null,
       "NeedItem": null
     },
     {
-      "QuestTargetName": "택배직원 1,2",
+      "QuestTargetName": "강민우",
       "QuestIdx": "1",
-      "QuestStartPost": "70001010",
+      "QuestStartPost": "11001000",
+      "QuestType": "0",
+      "QuestState": "false",
+      "NeedQuest": null,
+      "NeedItem": null
+    },
+    {
+      "QuestTargetName": "코인회사 직원들",
+      "QuestIdx": "1",
+      "QuestStartPost": "20000000",
+      "QuestType": "0",
+      "QuestState": "false",
+      "NeedQuest": null,
+      "NeedItem": null
+    },
+    {
+      "QuestTargetName": "한미래",
+      "QuestIdx": "1",
+      "QuestStartPost": "21002000",
+      "QuestType": "0",
+      "QuestState": "false",
+      "NeedQuest": null,
+      "NeedItem": null
+    },
+    {
+      "QuestTargetName": "김태현",
+      "QuestIdx": "1",
+      "QuestStartPost": "23003000",
+      "QuestType": "0",
+      "QuestState": "false",
+      "NeedQuest": null,
+      "NeedItem": null
+    },
+    {
+      "QuestTargetName": "택배회사 대표",
+      "QuestIdx": "1",
+      "QuestStartPost": "91000000",
+      "QuestType": "0",
+      "QuestState": "false",
+      "NeedQuest": null,
+      "NeedItem": null
+    },
+    {
+      "QuestTargetName": "택배회사 직원1,2",
+      "QuestIdx": "1",
+      "QuestStartPost": "90000000",
+      "QuestType": "0",
+      "QuestState": "false",
+      "NeedQuest": null,
+      "NeedItem": null
+    },
+    {
+      "QuestTargetName": "택배회사 직원3",
+      "QuestIdx": "1",
+      "QuestStartPost": "90000006",
+      "QuestType": "0",
+      "QuestState": "false",
+      "NeedQuest": null,
+      "NeedItem": null
+    },
+    {
+      "QuestTargetName": "택배회사 직원4,5",
+      "QuestIdx": "1",
+      "QuestStartPost": "90000008",
+      "QuestType": "0",
+      "QuestState": "false",
+      "NeedQuest": null,
+      "NeedItem": null
+    },
+    {
+      "QuestTargetName": "택배회사 직원6",
+      "QuestIdx": "1",
+      "QuestStartPost": "90000013",
+      "QuestType": "0",
+      "QuestState": "false",
+      "NeedQuest": null,
+      "NeedItem": null
+    },
+    {
+      "QuestTargetName": "택배회사 직원7",
+      "QuestIdx": "1",
+      "QuestStartPost": "90000015",
       "QuestType": "0",
       "QuestState": "false",
       "NeedQuest": null,

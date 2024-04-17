@@ -19,7 +19,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Button btn;
     [SerializeField] private GameObject Map; 
     
-    public Dictionary<int, GameObject> CanvasGroup = new Dictionary<int, GameObject>(); 
+    public Dictionary<int, GameObject> CanvasGroup = new Dictionary<int, GameObject>(); //TODO : 이거 기준으로 캔버스 세팅해주기? Json하나 있어야될거같음.
     //ID값으로 캔버스 저장. TODO : 프리팹기준으로 빈공간이라도 생성하는거 필요함. 세팅할 때 
     private CanvasDic _canvasDic = new CanvasDic();
 
@@ -73,18 +73,22 @@ public class UIManager : MonoBehaviour
     
     private string GetDayTime() //정서에 맞게 변환
     {
-        switch (playerinformation.dayTime)
+        switch (playerinformation.daytime)
         {
-            case Information.DayTimeenum.Evening:
+            case DayTimeenum.Evening:
                 return "오전";
-            case Information.DayTimeenum.Afternoon:
+            case DayTimeenum.Afternoon:
                 return "오후";
-            case Information.DayTimeenum.Night:
+            case DayTimeenum.Night:
                 return "저녁";
         }
         return "";
     }
-    
+
+    public void Off_Current_Canvas()
+    {
+        CanvasGroup[GameManager.Instance.Playerinformation.position].SetActive(false); //현재 캔버스 끄기.
+    }
     
     /// <summary>
     /// 캔버스 변경할 때 사용하는 메서드
@@ -96,14 +100,15 @@ public class UIManager : MonoBehaviour
     public void CanvasChange() //결국 방 이동하는 것도 캔버스 체인지인가?
     {
         PlaceDB NextPlaceData = new PlaceDB();
-        //CanvasGroup[playerinformation.position].SetActive(false); //현재 캔버스 끄기.
+        
         foreach (var VARIABLE in DataManager.Instance.PlaceDBDatas.PlaceDB)
         {
-            if (VARIABLE.Place_ID == playerinformation.position)
+            if (VARIABLE.Place_ID == GameManager.Instance.Playerinformation.position)
             {
                 NextPlaceData = VARIABLE; //TODO : dic으로 바꾸긴해야함.        
             }
         }
+        
         
         //string Objpath = DataManager.Instance.PlaceDBDatas.PlaceDB[playerinformation.position].Place_OBJ_Path; //TODO : 이건 여기 필요 없음. 미리 깔아둘 때 필요한 거
         
@@ -121,19 +126,22 @@ public class UIManager : MonoBehaviour
          // }
          // else
          // {
-         //     CanvasGroup[playerinformation.position].SetActive(true);
-         //     //TODO : Load하는 경우 그에 맞게 데이터로 세팅해주는 것도 필요함.
-         //     //예시 : CanvasGroup의 ID에 맞는 오브젝트의 컴포넌트에 접근해서 ObjectSet이라는 메서드를 실행
-         //     CanvasGroup[playerinformation.position].GetComponent<CanvasOnLoad>().ObjectSet(_canvasDic.CanvasContorllers[playerinformation.position]);
-         //     //아예 다 하이어라키에 올려놓는 것도 방법이겠지만, 가능하면 위 방법으로 진행하자.
+         CanvasGroup[GameManager.Instance.Playerinformation.position].SetActive(true);
+         //TODO : Load하는 경우 그에 맞게 데이터로 세팅해주는 것도 필요함.
+         //예시 : CanvasGroup의 ID에 맞는 오브젝트의 컴포넌트에 접근해서 ObjectSet이라는 메서드를 실행
+         //CanvasGroup[playerinformation.position].GetComponent<CanvasOnLoad>().ObjectSet(_canvasDic.CanvasContorllers[playerinformation.position]);
+         //아예 다 하이어라키에 올려놓는 것도 방법이겠지만, 가능하면 위 방법으로 진행하자.
          // }
-         if (NextPlaceData.MapType == Map_Type.Change)
+         
+         if (NextPlaceData.Map_Type == Map_Type.Change)
          {
-             Debug.Log($"{BGFilePath}/{NextPlaceData.Place_BG_Path}_{playerinformation.dayTime.ToString()}");
-             bgImage.sprite = Resources.Load<Sprite>($"{BGFilePath}/{NextPlaceData.Place_BG_Path}_{playerinformation.dayTime.ToString()}");
+             Debug.Log("Change");
+             //Debug.Log($"{BGFilePath}/{NextPlaceData.Place_BG_Path}_{playerinformation.daytime.ToString()}");
+             bgImage.sprite = Resources.Load<Sprite>($"{BGFilePath}/{NextPlaceData.Place_BG_Path}_{playerinformation.daytime.ToString()}");
          }
-         else
+         else if (NextPlaceData.Map_Type == Map_Type.Unchange)
          {
+             Debug.Log("UnChange");
              bgImage.sprite = Resources.Load<Sprite>($"{BGFilePath}/{NextPlaceData.Place_BG_Path}");
          }
         

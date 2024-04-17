@@ -26,7 +26,6 @@ public class SingleChatLogSet : MonoBehaviour
     {
         ChatlogDatas = ChatLogManager.Instance.allChatLog.allChatlog[name].saveOneLog[idx];
         text.text = $"{name} {idx}";
-       
     }
 
     void onclick()
