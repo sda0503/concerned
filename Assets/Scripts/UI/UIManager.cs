@@ -132,13 +132,16 @@ public class UIManager : MonoBehaviour
          //CanvasGroup[playerinformation.position].GetComponent<CanvasOnLoad>().ObjectSet(_canvasDic.CanvasContorllers[playerinformation.position]);
          //아예 다 하이어라키에 올려놓는 것도 방법이겠지만, 가능하면 위 방법으로 진행하자.
          // }
-         if (NextPlaceData.MapType == Map_Type.Change)
+         
+         if (NextPlaceData.Map_Type == Map_Type.Change)
          {
+             Debug.Log("Change");
              //Debug.Log($"{BGFilePath}/{NextPlaceData.Place_BG_Path}_{playerinformation.daytime.ToString()}");
              bgImage.sprite = Resources.Load<Sprite>($"{BGFilePath}/{NextPlaceData.Place_BG_Path}_{playerinformation.daytime.ToString()}");
          }
-         else
+         else if (NextPlaceData.Map_Type == Map_Type.Unchange)
          {
+             Debug.Log("UnChange");
              bgImage.sprite = Resources.Load<Sprite>($"{BGFilePath}/{NextPlaceData.Place_BG_Path}");
          }
         
