@@ -11,32 +11,39 @@ public class MessageUI : PopupUIBase
     public Dictionary<string, GameObject> messageListDictionary = new Dictionary<string, GameObject>();
 
     //¹øÈ£°¡ µî·ÏµÇ¾ú´ÂÁö ¾Æ´ÑÁö µñ¼Å³Ê¸®·Î ÀúÀåÇØ¼­ È®ÀÎÇÒ °Í
-    private void OnEnable()
+    private void Start()
     {
-        
+        MakeList();
     }
 
     private void MakeList()
     {
-        if (DialogueManager.Instance.allchatlog.Count > 0)
-        {
-            foreach (string ss in DialogueManager.Instance.allchatlog.Keys)
-            {
-                if (ss.Contains("°­¹Î¿ì")) OnSet("°­¹Î¿ì");
-                else if(ss.Contains("ÇÑ¹Ì·¡")) OnSet("ÇÑ¹Ì·¡");
-                else if (ss.Contains("Èï½Å¼Ò")) OnSet("Èï½Å¼Ò");
-            }
-        }
+        OnSetList("Èï½Å¼Ò Å½Á¤");
+        //if (DialogueManager.Instance.allchatlog.Count > 0)
+        //{
+        //    foreach (string ss in DialogueManager.Instance.allchatlog.Keys)
+        //    {
+        //        if (ss.Contains("°­¹Î¿ì")) OnSetList("°­¹Î¿ì");
+        //        else if(ss.Contains("ÇÑ¹Ì·¡")) OnSetList("ÇÑ¹Ì·¡");
+        //        else if (ss.Contains("Èï½Å¼Ò")) OnSetList("Èï½Å¼Ò");
+        //    }
+        //}
     }
 
-    private void OnSet(string name)
+    private void OnSetList(string name)
     {
         if(!messageListDictionary.ContainsKey(name))
         {
             GameObject obj = Instantiate(messageListPrefab, messageNumberListPosition);
             obj.transform.GetChild(1).gameObject.transform.GetChild(0).GetComponent<Image>().sprite = DataManager.Instance.SpriteLoad("Image/Phone/" + name);
             obj.transform.GetChild(2).GetComponent<Text>().text = name;
+            obj.transform.GetChild(3).GetComponent<Button>().onClick.AddListener(() => OnSetButton(name));
             messageListDictionary.Add(name, obj);
         }
+    }
+
+    private void OnSetButton(string name)
+    {
+        PopupUIManager.Instance.OpenPopupUI<MessageBubbleUI>(gameObject.transform).OnSetBubble(name);
     }
 }

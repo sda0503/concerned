@@ -13,12 +13,18 @@ public class PhoneUI : PopupUIBase
     private void Start()
     {
         callButton.onClick.AddListener(OnCallNumberUI);
+        messageButton.onClick.AddListener(OnMessageUI);
         calendarButton.onClick.AddListener(OnCalendarUI);
     }
 
     private void OnCallNumberUI()
     {
         PopupUIManager.Instance.OpenPopupUI<CallNumberUI>(gameObject.transform);
+    }
+
+    private void OnMessageUI()
+    {
+        PopupUIManager.Instance.OpenPopupUI<MessageUI>(gameObject.transform);
     }
 
     private void OnCalendarUI()

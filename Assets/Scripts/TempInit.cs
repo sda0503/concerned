@@ -12,9 +12,9 @@ public class TempInit : MonoBehaviour
     void Start()
     {
         DataManager.Instance.init();
-        b1.onClick.AddListener(GameManager.Instance.DateChange);
-        b2.onClick.AddListener(ssss);
-        b3.onClick.AddListener(() => DataManager.Instance.OnClickToFindItem(1));
+        //b1.onClick.AddListener(GameManager.Instance.DateChange);
+        //b2.onClick.AddListener(ssss);
+        //b3.onClick.AddListener(() => DataManager.Instance.OnClickToFindItem(1));
     }
 
     void ssss()
