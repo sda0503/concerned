@@ -68,8 +68,20 @@ public class UIManager : MonoBehaviour
         StringBuilder sb = new StringBuilder();
         sb.Append(playerinformation.date.ToString());
         sb.Append($"일차 {GetDayTime()}");
+        sb.Append($" {playerinformation.position}");
         _Datetext.text = sb.ToString(); //TODO : GameManager에서 옮겨오기.
     }
+    
+    void DateUpdate(string pos) //TODO : UI변경에 관한 부분은 모두 UIManager로 넘길 것
+    {
+        StringBuilder sb = new StringBuilder();
+        sb.Append(playerinformation.date.ToString());
+        sb.Append($"일차 {GetDayTime()}");
+        sb.Append($" {pos}");
+        _Datetext.text = sb.ToString(); //TODO : GameManager에서 옮겨오기.
+    }
+    
+    
     
     private string GetDayTime() //정서에 맞게 변환
     {
@@ -108,6 +120,8 @@ public class UIManager : MonoBehaviour
                 NextPlaceData = VARIABLE; //TODO : dic으로 바꾸긴해야함.        
             }
         }
+
+        DateUpdate(NextPlaceData.Place_Name);
         
         
         //string Objpath = DataManager.Instance.PlaceDBDatas.PlaceDB[playerinformation.position].Place_OBJ_Path; //TODO : 이건 여기 필요 없음. 미리 깔아둘 때 필요한 거
