@@ -30,6 +30,7 @@ public class CallNumberUI : PopupUIBase
 
     private void OnSet(int id)
     {
+        string name = "";
         GameObject obj = Instantiate(callListPrefab, phoneNumberListPosition);
         switch (id) 
         {
@@ -42,7 +43,8 @@ public class CallNumberUI : PopupUIBase
                 break;
             case 111:
             case 112:
-                obj.GetComponentInChildren<Text>().text = "흥신소";
+                name = "흥신소";
+                obj.GetComponentInChildren<Text>().text = name;
                 obj.GetComponent<interactableNPC>().TargetName = "흥신소 핸드폰";
                 break;
             case 121:
@@ -51,7 +53,12 @@ public class CallNumberUI : PopupUIBase
                 obj.GetComponent<interactableNPC>().TargetName = "변호사 핸드폰";
                 break;
         }
+        obj.GetComponentInChildren<Button>().onClick.AddListener(() => OnCalling(name));
         phoneNumberDictionary.Add(DataManager.Instance.getItems[id].itemData.item_name, obj);
     }
 
+    void OnCalling(string name)
+    {
+        PopupUIManager.Instance.OpenPopupUI<CallingUI>().OnSet(name);
+    }
 }
