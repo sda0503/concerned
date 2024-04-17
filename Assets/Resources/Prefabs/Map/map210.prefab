@@ -131,6 +131,7 @@ GameObject:
   - component: {fileID: 5657818273870271750}
   - component: {fileID: 8547859263219892577}
   - component: {fileID: 586931947558522335}
+  - component: {fileID: 3265464557694136392}
   m_Layer: 5
   m_Name: movePoint (7)
   m_TagString: Untagged
@@ -196,6 +197,20 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &3265464557694136392
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3068494539701534354}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07c1ade4ad0235b458d3b3fea6e7919c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ArrowName: "\uB300\uD45C\uC774\uC0AC\uC2E4"
+  posID: 211
 --- !u!1 &3430710861038998886
 GameObject:
   m_ObjectHideFlags: 0
@@ -478,6 +493,7 @@ GameObject:
   - component: {fileID: 1802287961775791052}
   - component: {fileID: 3639245166441814214}
   - component: {fileID: 2681633805132563717}
+  - component: {fileID: 3515365845951411521}
   m_Layer: 5
   m_Name: movePoint (5)
   m_TagString: Untagged
@@ -543,3 +559,17 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &3515365845951411521
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6602874050339432800}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07c1ade4ad0235b458d3b3fea6e7919c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ArrowName: "\uBE57\uD14C\uD06C\uC0AC\uBB34\uC2E4"
+  posID: 200

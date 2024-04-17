@@ -49,7 +49,7 @@ public class MapManager : MonoBehaviour
             var _newMark = Instantiate(_marker, _mapDate[i].Item1, Quaternion.identity, gameObject.transform);
             _newMark.GetComponent<Button>().onClick.AddListener(ClickMarker);
             _newMark.transform.GetChild(0).gameObject.SetActive(false);
-            _newMark.transform.GetChild(1).gameObject.SetActive(false);
+            _newMark.transform.GetChild(1).gameObject.SetActive(true);
             _newMark.transform.GetChild(2).gameObject.SetActive(false);
             _newMark.transform.GetChild(1).GetComponent<Text>().text = _mapDate[i].Item2;
             _newMark.transform.GetChild(2).GetComponent<Text>().text = _mapDate[i].Item3.ToString();
@@ -99,7 +99,7 @@ public class MapManager : MonoBehaviour
         {
             if (GetClickedUIObject() != null) return;
             _obj.transform.GetChild(0).gameObject.SetActive(false);
-            _obj.transform.GetChild(1).gameObject.SetActive(false);
+            _obj.transform.GetChild(1).gameObject.SetActive(true);
             _obj.transform.GetChild(2).gameObject.SetActive(false);
             _isMouseOver = false;
         }

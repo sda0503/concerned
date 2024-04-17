@@ -36,7 +36,7 @@ RectTransform:
   - {fileID: 4006526471140815744}
   - {fileID: 8664597925563072826}
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -130,6 +130,7 @@ GameObject:
   - component: {fileID: 4006526471140815744}
   - component: {fileID: 2909869525389356852}
   - component: {fileID: 4136295769914657048}
+  - component: {fileID: 2898599078236496315}
   m_Layer: 5
   m_Name: movePoint (5)
   m_TagString: Untagged
@@ -195,6 +196,20 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &2898599078236496315
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3505293601530616304}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07c1ade4ad0235b458d3b3fea6e7919c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ArrowName: "\uBE57\uD14C\uD06C\uC0AC\uBB34\uC2E4"
+  posID: 200
 --- !u!1 &5326514076887535648
 GameObject:
   m_ObjectHideFlags: 0
