@@ -36,19 +36,19 @@ public class CallNumberUI : PopupUIBase
             case 1:
             case 1000:
                 Debug.Log(id);
-                //이미지 변경 있어야함.
+                obj.transform.GetChild(1).gameObject.transform.GetChild(0).GetComponent<Image>().sprite = DataManager.Instance.SpriteLoad("Image/Phone/강민우");
                 obj.GetComponentInChildren<Text>().text = "test";
-                obj.GetComponentInChildren<interactableNPC>().TargetName = "test 전화";
+                obj.GetComponentInChildren<interactableNPC>().TargetName = "test 핸드폰";
                 break;
             case 111:
             case 112:
                 obj.GetComponentInChildren<Text>().text = "흥신소";
-                obj.GetComponent<interactableNPC>().TargetName = "흥신소 전화";
+                obj.GetComponent<interactableNPC>().TargetName = "흥신소 핸드폰";
                 break;
             case 121:
             case 122:
                 obj.GetComponentInChildren<Text>().text = "변호사";
-                obj.GetComponent<interactableNPC>().TargetName = "변호사 전화";
+                obj.GetComponent<interactableNPC>().TargetName = "변호사 핸드폰";
                 break;
         }
         phoneNumberDictionary.Add(DataManager.Instance.getItems[id].itemData.item_name, obj);

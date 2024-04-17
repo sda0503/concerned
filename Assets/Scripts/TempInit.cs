@@ -14,11 +14,13 @@ public class TempInit : MonoBehaviour
         DataManager.Instance.init();
         b1.onClick.AddListener(GameManager.Instance.DateChange);
         b2.onClick.AddListener(ssss);
+        b3.onClick.AddListener(() => DataManager.Instance.OnClickToFindItem(1));
     }
 
     void ssss()
     {
+        string ss = "Èï½Å¼Ò Å½Á¤ ÇÚµåÆù";
         PopupUIManager.Instance.popupUI["PhoneUI"].SetActive(false);
-        PopupUIManager.Instance.OpenPopupUI<ChatCalendarUI>().charactername = "Èï½Å¼Ò Å½Á¤";
+        PopupUIManager.Instance.OpenPopupUI<ChatCalendarUI>().charactername = ss.Replace("ÇÚµåÆù", "");
     }
 }
