@@ -25,19 +25,22 @@ public class BookShelf : MonoBehaviour
     {
         if (!click_button[0]) 
         { 
-            click_button = Enumerable.Repeat(false, click_button.Length).ToArray(); 
+            click_button = Enumerable.Repeat(false, click_button.Length).ToArray();
+            GameManager.Instance.PuzzleCount--;
             Debug.Log("fail");
             return;
         }
         if (!click_button[1] && (click_button[2] || click_button[3])) 
         { 
-            click_button = Enumerable.Repeat(false, click_button.Length).ToArray(); 
+            click_button = Enumerable.Repeat(false, click_button.Length).ToArray();
+            GameManager.Instance.PuzzleCount--;
             Debug.Log("fail");
             return;
         }
         if (!click_button[2] && click_button[3]) 
         { 
-            click_button = Enumerable.Repeat(false, click_button.Length).ToArray(); 
+            click_button = Enumerable.Repeat(false, click_button.Length).ToArray();
+            GameManager.Instance.PuzzleCount--;
             Debug.Log("fail"); 
             return;
         }
