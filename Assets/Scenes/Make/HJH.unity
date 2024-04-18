@@ -211,6 +211,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1378933999012298822, guid: 46e6c9b5f00b9ad4bba040119a1dd8a0, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 7221174462746725698}
     - target: {fileID: 2146097163686319103, guid: 46e6c9b5f00b9ad4bba040119a1dd8a0, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -2749,6 +2753,11 @@ RectTransform:
   m_AnchoredPosition: {x: 90, y: 330}
   m_SizeDelta: {x: 50, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!224 &796329528 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 754511760134314112, guid: 0d5062303fd10b840961c859793f01c6, type: 3}
+  m_PrefabInstance: {fileID: 7221174462746725697}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &804057898
 GameObject:
   m_ObjectHideFlags: 0
@@ -2930,7 +2939,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &809286104
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4505,7 +4514,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1312918934
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7010,6 +7019,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -50
       objectReference: {fileID: 0}
+    - target: {fileID: 8158788592404894870, guid: 6f9b8beca74c31b45ad3df961b08d215, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -7023,6 +7036,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 523075919077100822, guid: 0d5062303fd10b840961c859793f01c6, type: 3}
+      propertyPath: m_Spacing.y
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 3309483136376282328, guid: 0d5062303fd10b840961c859793f01c6, type: 3}
+      propertyPath: itemSlotTransform
+      value: 
+      objectReference: {fileID: 796329528}
     - target: {fileID: 4017734026806979229, guid: 0d5062303fd10b840961c859793f01c6, type: 3}
       propertyPath: m_Name
       value: InventoryUI
@@ -7120,3 +7141,8 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0d5062303fd10b840961c859793f01c6, type: 3}
+--- !u!1 &7221174462746725698 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4017734026806979229, guid: 0d5062303fd10b840961c859793f01c6, type: 3}
+  m_PrefabInstance: {fileID: 7221174462746725697}
+  m_PrefabAsset: {fileID: 0}
