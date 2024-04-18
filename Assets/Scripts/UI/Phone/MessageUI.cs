@@ -3,15 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class MessageUI : PopupUIBase
+public class MessageUI : MonoBehaviour
 {
     public GameObject messageListPrefab;
     public Transform messageNumberListPosition;
-    public Button messageButton;
     public Dictionary<string, GameObject> messageListDictionary = new Dictionary<string, GameObject>();
 
     //번호가 등록되었는지 아닌지 딕셔너리로 저장해서 확인할 것
-    private void Start()
+    private void OnEnable()
     {
         MakeList();
     }

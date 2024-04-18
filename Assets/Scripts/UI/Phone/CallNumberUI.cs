@@ -7,7 +7,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
-public class CallNumberUI : PopupUIBase
+public class CallNumberUI : MonoBehaviour
 {
     public GameObject callListPrefab;
     public Transform phoneNumberListPosition;

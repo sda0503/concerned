@@ -10,6 +10,10 @@ public class PhoneUI : PopupUIBase
     public Button messageButton;
     public Button calendarButton;
 
+    public GameObject CallObject;
+    public GameObject MessageObject;
+    public GameObject CalendarObject;
+
     private void Start()
     {
         callButton.onClick.AddListener(OnCallNumberUI);
@@ -19,16 +23,16 @@ public class PhoneUI : PopupUIBase
 
     private void OnCallNumberUI()
     {
-        PopupUIManager.Instance.OpenPopupUI<CallNumberUI>(gameObject.transform);
+        CallObject.SetActive(true);
     }
 
     private void OnMessageUI()
     {
-        PopupUIManager.Instance.OpenPopupUI<MessageUI>(gameObject.transform);
+        MessageObject.SetActive(true);
     }
 
     private void OnCalendarUI()
     {
-        PopupUIManager.Instance.OpenPopupUI<CalendarUI>(gameObject.transform);
+        CalendarObject.SetActive(true);
     }
 }

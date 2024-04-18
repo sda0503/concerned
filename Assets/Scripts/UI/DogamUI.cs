@@ -32,7 +32,6 @@ public class DogamUI : PopupUIBase
 
         DataManager.Instance.SetItemData(); //TODO : 순서 상 로비화면에서 아이템 매니저가 없음. 딱히 없어도 될 것 같긴 함.
         MakeDogamItemSlot();
-        closeButton.onClick.AddListener(CloseUI);
     }
 
     private void OnEnable()

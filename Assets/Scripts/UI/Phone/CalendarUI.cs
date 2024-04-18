@@ -4,7 +4,7 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class CalendarUI : PopupUIBase
+public class CalendarUI : MonoBehaviour
 {
     public Transform dataTransform;
     public GameObject dayPrefab;
@@ -30,7 +30,6 @@ public class CalendarUI : PopupUIBase
         MoveDate();
         CheckSchedule(GameManager.Instance.Playerinformation.date + 1);
         CharacterMeetSchedule();
-
     }
 
     private void MakeSlots()

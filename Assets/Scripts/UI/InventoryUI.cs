@@ -25,7 +25,6 @@ public class InventoryUI : PopupUIBase
     {
         nextPageButton.onClick.AddListener(OnNextPageButton);
         prePageButton.onClick.AddListener(OnPrePageButton);
-        closeButton.onClick.AddListener(CloseUI);
     }
 
     private void OnEnable()

@@ -13,4 +13,12 @@ public class CallingUI : PopupUIBase
         characterImage.sprite = DataManager.Instance.SpriteLoad("Image/Phone/" + name);
         characterText.text = name;
     }
+
+    public void OnDestroy()
+    {
+        characterImage.sprite = null;
+        characterText.text = null;
+        PopupUIManager.Instance.popupUI.Remove("CallingUI");
+        Destroy(gameObject);
+    }
 }

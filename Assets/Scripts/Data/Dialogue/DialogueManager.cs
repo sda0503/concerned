@@ -195,7 +195,7 @@ public class DialogueManager : MonoBehaviour
                 else if (questData.QuestType == QuestType.Phone)
                 {
                     string ss = Targetname;
-                    PopupUIManager.Instance.OpenPopupUI<ChatCalendarUI>(PopupUIManager.Instance.popupUI["PhoneUI"].transform).charactername = ss.Replace("핸드폰", "");
+                    PopupUIManager.Instance.OpenPopupUI<ChatCalendarUI>().charactername = ss.Replace("핸드폰", "");
                 } //파트별로 퀘스트 나누기.
             }
 
@@ -325,7 +325,7 @@ public class DialogueManager : MonoBehaviour
             else if (questData.QuestType == QuestType.Phone)
             {
                 string ss = Targetname;
-                PopupUIManager.Instance.OpenPopupUI<ChatCalendarUI>(PopupUIManager.Instance.popupUI["PhoneUI"].transform).charactername = ss.Replace("핸드폰", "");
+                PopupUIManager.Instance.OpenPopupUI<ChatCalendarUI>().charactername = ss.Replace("핸드폰", "");
             } //파트별로 퀘스트 나누기.
             foreach (Button btns in choice_btn)
             {
