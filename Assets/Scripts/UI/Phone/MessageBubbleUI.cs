@@ -41,7 +41,7 @@ public class MessageBubbleUI : PopupUIBase
 
     public void OnDestroy()
     {
-        Destroy(bubbleTransform.gameObject);
         PopupUIManager.Instance.popupUI.Remove("MessageBubbleUI");
+        Destroy(gameObject);
     }
 }
