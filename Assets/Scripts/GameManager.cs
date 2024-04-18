@@ -20,16 +20,37 @@ public class GameManager : SingletonBase<GameManager>
 
     #endregion
 
-
-
     [SerializeField] private GameObject origin;
   
-
-   
-    
-   
     //TODO : Save 관련된 기능들도 event로 묶어서 관리
     public Information Playerinformation = new Information();
+
+    private int _puzzleCount = 5; //퍼즐 횟수제한 시간당 3회
+
+    public int PuzzleCount
+    {
+        get
+        {
+            return _puzzleCount;
+        }
+        set
+        {
+            _puzzleCount = value;
+        }
+    }
+    private int _talkCount = 5; //대화 횟수제한 시간당 5회
+    
+    public int TalkCount
+    {
+        get
+        {
+            return _talkCount;
+        }
+        set
+        {
+            _talkCount = value;
+        }
+    }
     
     public override void init()
     {
@@ -39,6 +60,7 @@ public class GameManager : SingletonBase<GameManager>
         //OnDateChange.Invoke(); //TODO : 나중에 정리되면 삭제
         //CanvasGroup.Add(-1,origin);
         //Playerinformation.position = -1;
+        OnDayTimeChange += CountReset;
     }
 
     public void DateChange()
@@ -58,27 +80,33 @@ public class GameManager : SingletonBase<GameManager>
         //TODO : DayTime 기준으로 저녁이면 집밖에 못가거나 강제로 보내거나 결정해야함.
         //TODO : 일단 지도 상으로 이동했을 때 시간 증가하는걸로 
         
-        int daytime = (int)Playerinformation.dayTime + 1;
+        int daytime = (int)Playerinformation.daytime + 1;
         if (daytime == 3)
             DateChange();
-        Playerinformation.dayTime = (Information.DayTimeenum)(daytime % 3);
+        Playerinformation.daytime = (DayTimeenum)(daytime % 3);
         //나머지연산자로 하면 if없이 순환시킬 수 있다.
 
         OnDayTimeChange?.Invoke(); //UIUpdate //시간대 (조명, 휴대폰이나 다른 UI)
     }
-    
-   
 
     public void PositionChange(int PosID) 
         //엑셀로 관리 : 기획자나 다른사람이 관리하기에 편함 협업에 유리 . 코드로 관리 : 개발자가 전체 관리하면 해도됨 근데 컴파일 되는거신경써야됨.
     {
-        Playerinformation.position = PosID;
+        UIManager.Instance.Off_Current_Canvas();
+        Playerinformation.position = PosID; //TODO : 여기서 바꿔서 지난번 프리팹이 안꺼짐.
         OnPositionChange?.Invoke(); //UIUpdate 아마 BG 바꾸는 용도로 사용될 듯.
         //TODO : 위치 바뀌면 시간대 바뀌는걸로 추가.
     }
     //TODO : 이걸 맵 내부에서 이동하는거에 재사용 하려면? 1. Map 켜서 이동하는 PopupBtn에 DayTimeChange 달아주어서 분리하면 되긴 함.
     // 2. 1번이 제일 나은 듯. 굳이 이게 어디서 왔는지 따져서 갈라줄 필요는 없다고 생각함.
 
+    void CountReset()
+    {
+        TalkCount = 5;
+        PuzzleCount = 3;
+    }
+    
+    
     
    
 

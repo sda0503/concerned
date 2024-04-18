@@ -27,9 +27,9 @@ public class DialogueManager : MonoBehaviour
     public static int questcount = 0;
     public static string Targetname = "";
 
-    [HideInInspector] public Dictionary<string, List<Dialogue_Quest_Data>> _questdic; 
+    [HideInInspector] public Dictionary<string, List<Dialogue_Quest_Data>> _questdic;
     [HideInInspector] public Dictionary<int, Dialogue_Data> _dialogdic;
-    public Dictionary<string,chatlogdic> allchatlog;
+    public Dictionary<string, chatlogdic> allchatlog;
 
     public static DialogueManager Instance;
 
@@ -108,6 +108,14 @@ public class DialogueManager : MonoBehaviour
 
     public void StartDialogue(string targetname)
     {
+        if (GameManager.Instance.TalkCount < 1)
+        {
+            //TODO : 대화할 수 없다는 팝업을 띄우는게 좋을 듯.
+            Debug.Log("대화 횟수가 없습니다.");
+            return;
+        }
+
+        GameManager.Instance.TalkCount--;
         contextcount = CheckQuest(targetname);
 
         if (contextcount == 0)
@@ -123,7 +131,7 @@ public class DialogueManager : MonoBehaviour
 
             if (!allchatlog.ContainsKey(targetname))
             {
-                allchatlog.Add(targetname,new chatlogdic());
+                allchatlog.Add(targetname, new chatlogdic());
             }
 
             //_characterImage.gameObject.SetActive(true);
@@ -141,6 +149,7 @@ public class DialogueManager : MonoBehaviour
             {
                 _ChatlogBtn.gameObject.SetActive(false);
             }
+
             NormalLog();
         }
     }
@@ -149,9 +158,17 @@ public class DialogueManager : MonoBehaviour
     {
         if (contextcount != 0)
         {
+            Debug.Log("Next Log O");
             Dialogue_Data dialogueData = _dialogdic[contextcount];
-            if (dialogueData.Log_Type == Log_Type.normal)
+            if (dialogueData.Log_Type == Log_Type.normal || dialogueData.Log_Type == Log_Type.GiveItem)
+            {
                 NormalLog();
+                if (dialogueData.Log_Type == Log_Type.GiveItem)
+                {
+                    //TODO : 여기에 아이템 추가하는 메서드 넣기
+                }
+            }
+
             else if (dialogueData.Log_Type == Log_Type.choose || dialogueData.Log_Type == Log_Type.Loop)
                 chooseLog(dialogueData);
             else if (dialogueData.Log_Type == Log_Type.Phone)
@@ -161,12 +178,13 @@ public class DialogueManager : MonoBehaviour
         }
         else
         {
+            Debug.Log("Next Log X");
             //_confirmbtn.gameObject.SetActive(false);
             //btn3.gameObject.SetActive(true);
             _chatTxt.text = "";
             if (Targetname != "")
             {
-                Dialogue_Quest_Data questData = _questdic[Targetname][questcount-1]; //퀘스트 idx와 실제 위치차이 1칸
+                Dialogue_Quest_Data questData = _questdic[Targetname][questcount - 1]; //퀘스트 idx와 실제 위치차이 1칸
                 if (questData.QuestType == QuestType.Normal)
                 {
                     //이전 데이터가 없으면, 최초로 누른게 퀘스트가 필요한 경우면 값이 없음.
@@ -219,10 +237,10 @@ public class DialogueManager : MonoBehaviour
             chatlogData saveSingleLog = new chatlogData();
             saveSingleLog.Name = name;
             saveSingleLog.Log = log;
-        
+
             if (!allchatlog[Targetname].saveOneLog.ContainsKey(questcount))
-                allchatlog[Targetname].saveOneLog.Add(questcount,new List<chatlogData>());
-            allchatlog[Targetname].saveOneLog[questcount].Add(saveSingleLog);    
+                allchatlog[Targetname].saveOneLog.Add(questcount, new List<chatlogData>());
+            allchatlog[Targetname].saveOneLog[questcount].Add(saveSingleLog);
         }
     }
 
@@ -248,10 +266,42 @@ public class DialogueManager : MonoBehaviour
         _choiceWindow.gameObject.SetActive(true);
         for (int i = 0; i < data.Event_Log.Length; i++)
         {
-            if (data.Log_Type == Log_Type.choose||!data.Event_Log_State[i])
+            if (data.Log_Type == Log_Type.choose || !data.Event_Log_State[i])
             {
-                choice_btn[i].gameObject.SetActive(true);
-                choice_btn[i].GetComponentInChildren<TextMeshProUGUI>().text = data.Event_Log[i];    
+                // if (!DataManager.Instance._inventory.inventory.ContainsKey(int.Parse(data.Check_Item[i])))
+                // {
+                //     return;
+                // }
+
+                if (data.Check_Quest == null && data.Check_Item == null)
+                {
+                    choice_btn[i].gameObject.SetActive(true);
+                    choice_btn[i].GetComponentInChildren<TextMeshProUGUI>().text = data.Event_Log[i];
+                }
+                else
+                {
+                    string[] checkqeust = data.Check_Quest[i].Split(',');
+
+                    if (int.TryParse(checkqeust[0], out int result))
+                    {
+                        choice_btn[i].gameObject.SetActive(true);
+                        choice_btn[i].GetComponentInChildren<TextMeshProUGUI>().text = data.Event_Log[i];
+                    }
+                    else
+                    {
+                        if (!DataManager.Instance._questDic.DialogueQuestDic[checkqeust[0]][int.Parse(checkqeust[1])]
+                                .QuestState)
+                        {
+                            return;
+                        }
+                            
+                        else
+                        {
+                            choice_btn[i].gameObject.SetActive(true);
+                            choice_btn[i].GetComponentInChildren<TextMeshProUGUI>().text = data.Event_Log[i];
+                        }
+                    }
+                }
             }
         }
     }
@@ -259,10 +309,40 @@ public class DialogueManager : MonoBehaviour
     void btnclick(int index)
     {
         savelog(index);
-        if(_dialogdic[contextcount].Log_Type==Log_Type.Loop)
+        if (_dialogdic[contextcount].Log_Type == Log_Type.Loop)
             _dialogdic[contextcount].Event_Log_State[index] = true;
         //TODO : 몇번째 선택지를 골랐는지 저장해서 LOG 확인용으로 남길 것.
         contextcount = int.Parse(_dialogdic[contextcount].Event_Next_Log[index]);
+        if (contextcount == 0)
+        {
+            _forechatObject.SetActive(true);
+            _chatWindow.SetActive(false);
+            Dialogue_Quest_Data questData = _questdic[Targetname][questcount - 1];
+            if (questData.QuestType == QuestType.Normal)
+            {
+                //이전 데이터가 없으면, 최초로 누른게 퀘스트가 필요한 경우면 값이 없음.
+                questData.QuestState = true;
+                Targetname = "";
+                questcount = 0;
+            }
+            else if (questData.QuestType == QuestType.Phone)
+            {
+                PopupUIManager.Instance.OpenPopupUI<CalendarUI>().SetButton(true);
+                PopupUIManager.Instance.OpenPopupUI<CalendarUI>().charactername = Targetname; //+ " 약속";
+            } //파트별로 퀘스트 나누기.
+            foreach (Button btns in choice_btn)
+            {
+                if (btns.isActiveAndEnabled)
+                {
+                    btns.gameObject.SetActive(false);
+                }
+                //btns.gameObject.activeInHierarchy //게임 오브젝트에서만 하이어라키로 체크 가능.
+            }
+
+            _choiceWindow.gameObject.SetActive(false);
+            return;
+        }
+            
         NormalLog();
         _confirmbtn.enabled = true;
         foreach (Button btns in choice_btn)
@@ -275,7 +355,6 @@ public class DialogueManager : MonoBehaviour
         }
 
         _choiceWindow.gameObject.SetActive(false);
-        
     }
 
     IEnumerator LogTyper()

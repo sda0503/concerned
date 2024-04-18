@@ -38,6 +38,7 @@ public class SafeBox : MonoBehaviour
         }
         else
         {
+            GameManager.Instance.PuzzleCount--;
             passwordText.text = "ERROR";
             inputPassword = "";
         }
