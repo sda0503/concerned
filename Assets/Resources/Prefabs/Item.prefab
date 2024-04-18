@@ -156,6 +156,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5000baca87665054ea419f4c0ff20938, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 0}
-  btn: {fileID: 7914809087367849031}
+  animator: {fileID: 7406871698530085808}
   ItemId: 0
+  ItemType: 0

@@ -20,7 +20,7 @@ public class StartSceneUI : MonoBehaviour
 
     private void OnStartGame()
     {
-        SceneManager.LoadScene("TestScene");
+        SceneManager.LoadScene("TestScene 1");
     }
 
     private void OnOpenBook()

@@ -6,6 +6,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using KoreanTyper;
+using System.Linq;
 
 public class DialogueManager : MonoBehaviour
 {
@@ -142,7 +143,6 @@ public class DialogueManager : MonoBehaviour
             }
             else if (_questdic[Targetname][questcount - 1].QuestType == QuestType.Phone)
             {
-                PopupUIManager.Instance.popupUI["PhoneNumberUI"].SetActive(false);
                 PopupUIManager.Instance.popupUI["PhoneUI"].SetActive(false);
             }
             else
@@ -194,8 +194,8 @@ public class DialogueManager : MonoBehaviour
                 }
                 else if (questData.QuestType == QuestType.Phone)
                 {
-                    PopupUIManager.Instance.OpenPopupUI<CalendarUI>().SetButton(true);
-                    PopupUIManager.Instance.OpenPopupUI<CalendarUI>().charactername = Targetname; //+ " 약속";
+                    string ss = Targetname;
+                    PopupUIManager.Instance.OpenPopupUI<ChatCalendarUI>(PopupUIManager.Instance.popupUI["PhoneUI"].transform).charactername = ss.Replace("핸드폰", "");
                 } //파트별로 퀘스트 나누기.
             }
 
@@ -248,7 +248,7 @@ public class DialogueManager : MonoBehaviour
     {
         if (_questdic[Targetname][questcount - 1].QuestType == QuestType.Normal)
         {
-            string name = "Player"; //형사 이름으로 변경
+            string name = "선택"; //형사 이름으로 변경
             string log = _dialogdic[contextcount].Event_Log[index];
             chatlogData saveSingleLog = new chatlogData();
             saveSingleLog.Name = name;
@@ -291,10 +291,7 @@ public class DialogueManager : MonoBehaviour
                     {
                         if (!DataManager.Instance._questDic.DialogueQuestDic[checkqeust[0]][int.Parse(checkqeust[1])]
                                 .QuestState)
-                        {
                             return;
-                        }
-                            
                         else
                         {
                             choice_btn[i].gameObject.SetActive(true);
@@ -327,8 +324,8 @@ public class DialogueManager : MonoBehaviour
             }
             else if (questData.QuestType == QuestType.Phone)
             {
-                PopupUIManager.Instance.OpenPopupUI<CalendarUI>().SetButton(true);
-                PopupUIManager.Instance.OpenPopupUI<CalendarUI>().charactername = Targetname; //+ " 약속";
+                string ss = Targetname;
+                PopupUIManager.Instance.OpenPopupUI<ChatCalendarUI>(PopupUIManager.Instance.popupUI["PhoneUI"].transform).charactername = ss.Replace("핸드폰", "");
             } //파트별로 퀘스트 나누기.
             foreach (Button btns in choice_btn)
             {
@@ -342,7 +339,6 @@ public class DialogueManager : MonoBehaviour
             _choiceWindow.gameObject.SetActive(false);
             return;
         }
-            
         NormalLog();
         _confirmbtn.enabled = true;
         foreach (Button btns in choice_btn)

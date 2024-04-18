@@ -17,6 +17,14 @@
       "event_description": null
     },
     {
+      "item_id": "1000",
+      "item_name": "변호사 명함",
+      "default_description": "김이사 지갑에 있던 명함. 전화해서 물어보는 것이 좋을 것 같다.",
+      "LocationEvent": "0",
+      "itemType": "0",
+      "event_description": null
+    },
+    {
       "item_id": "2",
       "item_name": "흥신소 명함",
       "default_description": "피해자 양현서 지갑에 있던 명함. 전화해서 물어보는 것이 좋을 것 같다.",

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.UIElements;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -12,16 +13,22 @@ public class PhoneUI : PopupUIBase
     private void Start()
     {
         callButton.onClick.AddListener(OnCallNumberUI);
+        messageButton.onClick.AddListener(OnMessageUI);
         calendarButton.onClick.AddListener(OnCalendarUI);
     }
 
     private void OnCallNumberUI()
     {
-        PopupUIManager.Instance.OpenPopupUI<PhoneNumberUI>();
+        PopupUIManager.Instance.OpenPopupUI<CallNumberUI>(gameObject.transform);
+    }
+
+    private void OnMessageUI()
+    {
+        PopupUIManager.Instance.OpenPopupUI<MessageUI>(gameObject.transform);
     }
 
     private void OnCalendarUI()
     {
-        PopupUIManager.Instance.OpenPopupUI<CalendarUI>().SetButton(false);
+        PopupUIManager.Instance.OpenPopupUI<CalendarUI>(gameObject.transform);
     }
 }
