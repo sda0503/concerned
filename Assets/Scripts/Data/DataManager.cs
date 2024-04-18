@@ -247,7 +247,7 @@ public class DataManager : SingletonBase<DataManager> //유니티 기능을 상�
              var obj = Instantiate(objload, go.transform); // 프리팹 복제
              obj.SetActive(false);
              //obj.GetComponent<CanvasOnLoad>().states = _playerToSave.Information.canvasObjSet[PlaceDBDatas.PlaceDB[i].Place_ID];
-             UIManager.Instance.CanvasGroup.Add(PlaceDBDatas.PlaceDB[i].Place_ID,obj); //프리팹 Dic에 추가하기.
+             //UIManager.Instance.CanvasGroup.Add(PlaceDBDatas.PlaceDB[i].Place_ID,obj); //TODO : 메인 씬 넘어갔을 때 다 옮겨주기
         }
 
         GameManager.Instance.Playerinformation.position = 200;
