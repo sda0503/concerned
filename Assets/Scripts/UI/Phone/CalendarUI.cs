@@ -65,7 +65,7 @@ public class CalendarUI : PopupUIBase
         dateText.text = "양력 4월 " + date.ToString("00") + "일";
         if(click_calendarDates.ContainsKey(date))
         {
-            explain.text = click_calendarDates[date] + "만남";
+            explain.text = click_calendarDates[date] + "약속";
         }
         else { explain.text = "약속 없음"; }
     }

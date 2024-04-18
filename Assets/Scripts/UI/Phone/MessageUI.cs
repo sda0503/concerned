@@ -18,16 +18,15 @@ public class MessageUI : PopupUIBase
 
     private void MakeList()
     {
-        OnSetList("Èï½Å¼Ò Å½Á¤");
-        //if (DialogueManager.Instance.allchatlog.Count > 0)
-        //{
-        //    foreach (string ss in DialogueManager.Instance.allchatlog.Keys)
-        //    {
-        //        if (ss.Contains("°­¹Î¿ì")) OnSetList("°­¹Î¿ì");
-        //        else if(ss.Contains("ÇÑ¹Ì·¡")) OnSetList("ÇÑ¹Ì·¡");
-        //        else if (ss.Contains("Èï½Å¼Ò")) OnSetList("Èï½Å¼Ò");
-        //    }
-        //}
+        if (DialogueManager.Instance.allchatlog.Count > 0)
+        {
+            foreach (string ss in DialogueManager.Instance.allchatlog.Keys)
+            {
+                if (ss.Contains("°­¹Î¿ì")) OnSetList("°­¹Î¿ì");
+                else if (ss.Contains("ÇÑ¹Ì·¡")) OnSetList("ÇÑ¹Ì·¡");
+                else if (ss.Contains("Èï½Å¼Ò")) OnSetList("Èï½Å¼Ò Å½Á¤");
+            }
+        }
     }
 
     private void OnSetList(string name)
