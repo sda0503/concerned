@@ -14,9 +14,6 @@ public class Ending : MonoBehaviour
 
     private void Start()
     {
-        // 구독을 통해서 TargetName이 바뀌면 페이드 인 아웃 되도록 설정. OnSelectCharacter 안에 구독 넣으면 될 거 같음!
-        DialogueManager.Instance.TargetNameChange += OnEnding;
-
         for (int i = 0; i < buttons.Length; i++)
         {
             int n = i;
@@ -58,12 +55,7 @@ public class Ending : MonoBehaviour
                 }
                 else DialogueManager.Instance.StartDialogue("NomalEnding");
                 break;
-        }
-    }
-
-    private void OnEnding()
-    {
-        Debug.Log("End");
+        }        
     }
     
     IEnumerator PadeInPadeOut()
@@ -75,7 +67,9 @@ public class Ending : MonoBehaviour
             blinkImage.color = color;
             yield return null;
         }
+
         yield return new WaitForSeconds(1f);
+        
         OnSetBadEnding();
     }
 }
