@@ -1,9 +1,9 @@
 fileFormatVersion: 2
-<<<<<<< Updated upstream
-guid: 3446c000d5614a248b5f0bcac1f569ca
-=======
-guid: 3946344406299434ebeb08eff5d15ced
->>>>>>> Stashed changes
+<<<<<<<< HEAD:Assets/Resources/Image/1x/closeBtn.png.meta
+guid: eef7141ff04eb384cb6722f44311c28e
+========
+guid: 659548b39b896a54c828b07ed197ec0a
+>>>>>>>> main:Assets/Resources/Image/Phone/변호사.png.meta
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}

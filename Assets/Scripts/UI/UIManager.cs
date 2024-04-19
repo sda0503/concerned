@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using DataStorage;
 using TMPro;
 using UnityEngine;
@@ -9,7 +10,7 @@ using UnityEngine.UI;
 public class UIManager : MonoBehaviour
 {
     //TODO : 다채로운 버튼,UI들의 향연 
-     
+
     /// <summary>
     //TODO : 직접 내가 버튼이랑 UI 다 달아주는것보다 Interface나 컴포넌트를 활용해서 Type으로 찾아오는 편이 더 좋게 먹힐 수 도 있음.
     //TODO : 그리고 event로 콜백 처리하는는 부분들이 UI 같은 경우에는 간단할 수도 있는데, 대화 들어갈 때 뒤에 클릭할 수 있는 애들 꺼지는 부분도 관리 해줘야되는 부분이기때문에
@@ -18,11 +19,15 @@ public class UIManager : MonoBehaviour
     private StringBuilder sb = new StringBuilder();
 
     [SerializeField] private Button btn;
-    [SerializeField] private GameObject Map; 
-    
-    public Dictionary<int, GameObject> CanvasGroup = new Dictionary<int, GameObject>(); //TODO : 이거 기준으로 캔버스 세팅해주기? Json하나 있어야될거같음.
+    [SerializeField] private GameObject Map;
+
+    public Dictionary<int, GameObject>
+        CanvasGroup = new Dictionary<int, GameObject>(); //TODO : 이거 기준으로 캔버스 세팅해주기? Json하나 있어야될거같음.
+
     //ID값으로 캔버스 저장. TODO : 프리팹기준으로 빈공간이라도 생성하는거 필요함. 세팅할 때 
     private CanvasDic _canvasDic = new CanvasDic();
+
+    [SerializeField] private List<GameObject> map_List;
 
     [SerializeField] private GameObject canvasparents;
     [SerializeField] private Canvas bgCanvas;
@@ -30,13 +35,13 @@ public class UIManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _Datetext;
     
     private string BGFilePath = "Image/map";
-    
+
     public Transform itemCanvas;
 
     private Information playerinformation;
 
     public static UIManager Instance;
-    
+
     private void Awake()
     {
         if (Instance == null)
@@ -62,8 +67,28 @@ public class UIManager : MonoBehaviour
         GameManager.Instance.OnPositionChange += CanvasChange;
         GameManager.Instance.OnPositionChange += itemCanvaschange;
         playerinformation = DataManager.Instance.Playerinformation;
+        CanvasGroupSet();
+        foreach (var variables in CanvasGroup)
+        {
+            Debug.Log(variables.Key);
+        }
     }
-    
+
+    private void CanvasGroupSet() //정규식 사용하여 Map들의 이름을 기준으로 CanvasGroup 세팅
+    {
+        string pattern = @"\d+";
+        foreach (var VARIABLE in map_List)
+        {
+            MatchCollection index = Regex.Matches(VARIABLE.name, pattern);
+
+            if (!CanvasGroup.ContainsKey(int.Parse(index[0].Value)))
+            {
+                CanvasGroup.Add(int.Parse(index[0].Value), VARIABLE);
+            }
+        }
+    }
+
+
     void DateUpdate() //TODO : UI변경에 관한 부분은 모두 UIManager로 넘길 것
     {
         StringBuilder sb = new StringBuilder();
@@ -72,7 +97,7 @@ public class UIManager : MonoBehaviour
         sb.Append($" {playerinformation.position}");
         _Datetext.text = sb.ToString(); //TODO : GameManager에서 옮겨오기.
     }
-    
+
     void DateUpdate(string pos) //TODO : UI변경에 관한 부분은 모두 UIManager로 넘길 것
     {
         StringBuilder sb = new StringBuilder();
@@ -81,9 +106,8 @@ public class UIManager : MonoBehaviour
         sb.Append($" {pos}");
         _Datetext.text = sb.ToString(); //TODO : GameManager에서 옮겨오기.
     }
-    
-    
-    
+
+
     private string GetDayTime() //정서에 맞게 변환
     {
         switch (playerinformation.daytime)
@@ -95,6 +119,7 @@ public class UIManager : MonoBehaviour
             case DayTimeenum.Night:
                 return "저녁";
         }
+
         return "";
     }
 
@@ -102,7 +127,7 @@ public class UIManager : MonoBehaviour
     {
         CanvasGroup[GameManager.Instance.Playerinformation.position].SetActive(false); //현재 캔버스 끄기.
     }
-    
+
     /// <summary>
     /// 캔버스 변경할 때 사용하는 메서드
     /// 1. 첫번째 게임의 경우
@@ -113,7 +138,7 @@ public class UIManager : MonoBehaviour
     public void CanvasChange() //결국 방 이동하는 것도 캔버스 체인지인가?
     {
         PlaceDB NextPlaceData = new PlaceDB();
-        
+
         foreach (var VARIABLE in DataManager.Instance.PlaceDBDatas.PlaceDB)
         {
             if (VARIABLE.Place_ID == GameManager.Instance.Playerinformation.position)
@@ -123,45 +148,46 @@ public class UIManager : MonoBehaviour
         }
 
         DateUpdate(NextPlaceData.Place_Name);
-        
-        
+
+
         //string Objpath = DataManager.Instance.PlaceDBDatas.PlaceDB[playerinformation.position].Place_OBJ_Path; //TODO : 이건 여기 필요 없음. 미리 깔아둘 때 필요한 거
-        
-         // if (!CanvasGroup.ContainsKey(playerinformation.position))
-         // {
-         //     var obj = Resources.Load<GameObject>($"Prefabs/{path}");
-         //     var canvasinstance = Instantiate(obj, canvasparents.transform);
-         //     canvasinstance.SetActive(true);
-         //     if (canvasinstance.gameObject.TryGetComponent(out CanvasOnLoad canvasOnLoad))
-         //     {
-         //         CanvasGroup.Add(playerinformation.position, canvasinstance);
-         //         _canvasDic.CanvasContorllers.Add(playerinformation.position, canvasOnLoad.states);
-         //         canvasOnLoad.ObjectSet(_canvasDic.CanvasContorllers[playerinformation.position]);
-         //     }
-         // }
-         // else
-         // {
-         CanvasGroup[GameManager.Instance.Playerinformation.position].SetActive(true);
-         //TODO : Load하는 경우 그에 맞게 데이터로 세팅해주는 것도 필요함.
-         //예시 : CanvasGroup의 ID에 맞는 오브젝트의 컴포넌트에 접근해서 ObjectSet이라는 메서드를 실행
-         //CanvasGroup[playerinformation.position].GetComponent<CanvasOnLoad>().ObjectSet(_canvasDic.CanvasContorllers[playerinformation.position]);
-         //아예 다 하이어라키에 올려놓는 것도 방법이겠지만, 가능하면 위 방법으로 진행하자.
-         // }
-         
-         if (NextPlaceData.Map_Type == Map_Type.Change)
-         {
-             Debug.Log("Change");
-             //Debug.Log($"{BGFilePath}/{NextPlaceData.Place_BG_Path}_{playerinformation.daytime.ToString()}");
-             bgImage.sprite = Resources.Load<Sprite>($"{BGFilePath}/{NextPlaceData.Place_BG_Path}_{playerinformation.daytime.ToString()}");
-         }
-         else if (NextPlaceData.Map_Type == Map_Type.Unchange)
-         {
-             Debug.Log("UnChange");
-             bgImage.sprite = Resources.Load<Sprite>($"{BGFilePath}/{NextPlaceData.Place_BG_Path}");
-         }
-        
+
+        // if (!CanvasGroup.ContainsKey(playerinformation.position))
+        // {
+        //     var obj = Resources.Load<GameObject>($"Prefabs/{path}");
+        //     var canvasinstance = Instantiate(obj, canvasparents.transform);
+        //     canvasinstance.SetActive(true);
+        //     if (canvasinstance.gameObject.TryGetComponent(out CanvasOnLoad canvasOnLoad))
+        //     {
+        //         CanvasGroup.Add(playerinformation.position, canvasinstance);
+        //         _canvasDic.CanvasContorllers.Add(playerinformation.position, canvasOnLoad.states);
+        //         canvasOnLoad.ObjectSet(_canvasDic.CanvasContorllers[playerinformation.position]);
+        //     }
+        // }
+        // else
+        // {
+        CanvasGroup[GameManager.Instance.Playerinformation.position].SetActive(true);
+        //TODO : Load하는 경우 그에 맞게 데이터로 세팅해주는 것도 필요함.
+        //예시 : CanvasGroup의 ID에 맞는 오브젝트의 컴포넌트에 접근해서 ObjectSet이라는 메서드를 실행
+        //CanvasGroup[playerinformation.position].GetComponent<CanvasOnLoad>().ObjectSet(_canvasDic.CanvasContorllers[playerinformation.position]);
+        //아예 다 하이어라키에 올려놓는 것도 방법이겠지만, 가능하면 위 방법으로 진행하자.
+        // }
+
+        if (NextPlaceData.Map_Type == Map_Type.Change)
+        {
+            Debug.Log("Change");
+            //Debug.Log($"{BGFilePath}/{NextPlaceData.Place_BG_Path}_{playerinformation.daytime.ToString()}");
+            bgImage.sprite =
+                Resources.Load<Sprite>(
+                    $"{BGFilePath}/{NextPlaceData.Place_BG_Path}_{playerinformation.daytime.ToString()}");
+        }
+        else if (NextPlaceData.Map_Type == Map_Type.Unchange)
+        {
+            Debug.Log("UnChange");
+            bgImage.sprite = Resources.Load<Sprite>($"{BGFilePath}/{NextPlaceData.Place_BG_Path}");
+        }
     }
-    
+
     void itemCanvaschange()
     {
         //itemCanvas = CanvasGroup[playerinformation.position].transform; //TODO : 변경 후 열어주기
@@ -177,10 +203,10 @@ public class UIManager : MonoBehaviour
         GameManager.Instance.DayTimeChange();
     }
 
-    // void MovePosition(int PosID)
-    // {
-    //     
-    // }
+// void MovePosition(int PosID)
+// {
+//     
+// }
 
     void ChangeBG()
     {

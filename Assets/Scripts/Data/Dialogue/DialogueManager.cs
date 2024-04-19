@@ -22,6 +22,8 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] private GameObject _forechatObject;
     [SerializeField] private Button chatwindowBtn;
 
+    public event Action TargetNameChange;
+
     private WaitForSeconds typerWaitTime = new WaitForSeconds(0.05f);
 
     private int contextcount = 0;
@@ -191,6 +193,7 @@ public class DialogueManager : MonoBehaviour
                     questData.QuestState = true;
                     Targetname = "";
                     questcount = 0;
+                    TargetNameChange?.Invoke();
                 }
                 else if (questData.QuestType == QuestType.Phone)
                 {
