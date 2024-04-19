@@ -1,9 +1,5 @@
 fileFormatVersion: 2
-<<<<<<<< HEAD:Assets/Resources/Image/1x/closeBtn.png.meta
-guid: 39030dd840d26fb4ba0dc0f419ed0df6
-========
-guid: 659548b39b896a54c828b07ed197ec0a
->>>>>>>> main:Assets/Resources/Image/Phone/변호사.png.meta
+guid: 3b148a63262b85345b6b5ee8b7e3ea3d
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
