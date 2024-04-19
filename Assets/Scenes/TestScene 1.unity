@@ -807,6 +807,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: map300
       objectReference: {fileID: 0}
+    - target: {fileID: 7758875282955400094, guid: bcbd7fec274d6944ea4afa48c87060da, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8249592049033139470, guid: bcbd7fec274d6944ea4afa48c87060da, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -995,6 +999,10 @@ PrefabInstance:
     - target: {fileID: 5494698869858467292, guid: 3d0fdb5f6e3b9594b8f6d783ec762417, type: 3}
       propertyPath: m_Name
       value: map711
+      objectReference: {fileID: 0}
+    - target: {fileID: 5494698869858467292, guid: 3d0fdb5f6e3b9594b8f6d783ec762417, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1292,7 +1300,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &243413569
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2114,6 +2122,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: map610
       objectReference: {fileID: 0}
+    - target: {fileID: 5002112564584293818, guid: 77a3d820b4f114643a1fec8040f3055c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2218,7 +2230,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &322752091
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2499,6 +2511,10 @@ PrefabInstance:
     - target: {fileID: 4427844181763034115, guid: 4e36e3c990ad42341ad7fa4f98c062d2, type: 3}
       propertyPath: m_Name
       value: map910
+      objectReference: {fileID: 0}
+    - target: {fileID: 4427844181763034115, guid: 4e36e3c990ad42341ad7fa4f98c062d2, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2791,6 +2807,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: map400
       objectReference: {fileID: 0}
+    - target: {fileID: 3936806665649607583, guid: e3c63cb3fe41c57498ab97a016cf87bc, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8051994257242963801, guid: e3c63cb3fe41c57498ab97a016cf87bc, type: 3}
       propertyPath: m_SortingOrder
       value: 0
@@ -2938,6 +2958,10 @@ PrefabInstance:
     - target: {fileID: 2508602360973114016, guid: abf912b9c4ef90346a8911d62f7b7a9f, type: 3}
       propertyPath: m_Name
       value: map920
+      objectReference: {fileID: 0}
+    - target: {fileID: 2508602360973114016, guid: abf912b9c4ef90346a8911d62f7b7a9f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4251722657052924976, guid: abf912b9c4ef90346a8911d62f7b7a9f, type: 3}
       propertyPath: m_Pivot.x
@@ -3170,6 +3194,10 @@ PrefabInstance:
     - target: {fileID: 4438645911382662879, guid: 055cb78fb613e584fab5f7e9f72b82c3, type: 3}
       propertyPath: m_Name
       value: map900
+      objectReference: {fileID: 0}
+    - target: {fileID: 4438645911382662879, guid: 055cb78fb613e584fab5f7e9f72b82c3, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3415,6 +3443,10 @@ PrefabInstance:
     - target: {fileID: 5533765329438757524, guid: 7cbcab62885c88b4d8212a0fa4b69cda, type: 3}
       propertyPath: m_Name
       value: map110
+      objectReference: {fileID: 0}
+    - target: {fileID: 5533765329438757524, guid: 7cbcab62885c88b4d8212a0fa4b69cda, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3709,6 +3741,10 @@ PrefabInstance:
     - target: {fileID: 3530465601960142011, guid: bd24a7a71977f9745a00718100897ebc, type: 3}
       propertyPath: m_Name
       value: map600
+      objectReference: {fileID: 0}
+    - target: {fileID: 3530465601960142011, guid: bd24a7a71977f9745a00718100897ebc, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4346789584055826286, guid: bd24a7a71977f9745a00718100897ebc, type: 3}
       propertyPath: m_SortingOrder
@@ -4327,6 +4363,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: map714
       objectReference: {fileID: 0}
+    - target: {fileID: 245393890846502470, guid: 9eae831ea424cfb4995a7005bf31b578, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1657198809633886165, guid: 9eae831ea424cfb4995a7005bf31b578, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -4586,7 +4626,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1039032702}
-  - {fileID: 1138419136}
   - {fileID: 1394078124}
   - {fileID: 1399769309}
   - {fileID: 300289822}
@@ -4894,7 +4933,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &825089268
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5191,6 +5230,10 @@ PrefabInstance:
     - target: {fileID: 5970370124734068310, guid: e90597851e4a4f84593e3e4c1cf22a20, type: 3}
       propertyPath: m_Name
       value: map113
+      objectReference: {fileID: 0}
+    - target: {fileID: 5970370124734068310, guid: e90597851e4a4f84593e3e4c1cf22a20, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5673,6 +5716,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: map111
       objectReference: {fileID: 0}
+    - target: {fileID: 7659641194934789697, guid: 326a919efc26a574f81a722dfc22d2d9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5765,6 +5812,10 @@ PrefabInstance:
     - target: {fileID: 4153249622606087187, guid: 323a93976f5beab42859b72981896122, type: 3}
       propertyPath: m_Name
       value: map112
+      objectReference: {fileID: 0}
+    - target: {fileID: 4153249622606087187, guid: 323a93976f5beab42859b72981896122, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6832388340280831511, guid: 323a93976f5beab42859b72981896122, type: 3}
       propertyPath: m_SortingOrder
@@ -6095,6 +6146,10 @@ PrefabInstance:
     - target: {fileID: 6690413534327509613, guid: c6008d776eff6e5418bb6aca49a4b0e3, type: 3}
       propertyPath: m_Name
       value: map130
+      objectReference: {fileID: 0}
+    - target: {fileID: 6690413534327509613, guid: c6008d776eff6e5418bb6aca49a4b0e3, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6796715110475750427, guid: c6008d776eff6e5418bb6aca49a4b0e3, type: 3}
       propertyPath: m_Pivot.x
@@ -6503,6 +6558,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: map120
       objectReference: {fileID: 0}
+    - target: {fileID: 8544090931043886568, guid: ae78fd9e5f7812349851eb70927a20ae, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6818,61 +6877,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1136412045}
   m_CullTransparentMesh: 1
---- !u!1 &1138419135
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1138419136}
-  - component: {fileID: 1138419137}
-  m_Layer: 0
-  m_Name: ChatLogManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1138419136
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1138419135}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 799318608}
-  m_RootOrder: -1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1138419137
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1138419135}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa9fbae9a3c76b14ab0ff496d8e37686, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _chatLogPosition: {fileID: 0}
-  _chatLogPrefab: {fileID: 3581466619816596756, guid: f71bacefd39a30e4b867cd82d4315256, type: 3}
-  _chatLogBtn: {fileID: 0}
-  _closeBtn: {fileID: 0}
-  _chatlogwindow: {fileID: 0}
-  _chatlogwindow2: {fileID: 0}
-  _chatLogPosition2: {fileID: 0}
-  allchatlogpannel: {fileID: 0}
-  singlechatlogpannel: {fileID: 0}
-  chatpannelPrefab: {fileID: 2614702213820362589, guid: 28fa2a1dd31f49c43a542aea8f65e051, type: 3}
-  chatpannelPrefab2: {fileID: 2614702213820362589, guid: a2426f1eb5a46bb4aab044533f74336d, type: 3}
 --- !u!1 &1144014104
 GameObject:
   m_ObjectHideFlags: 0
@@ -7848,6 +7852,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: map810
       objectReference: {fileID: 0}
+    - target: {fileID: 1152903602013205793, guid: 945c0dff3ebbb244d929eaacd010b4ee, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1598373261326898097, guid: 945c0dff3ebbb244d929eaacd010b4ee, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -8550,6 +8558,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   btn: {fileID: 2019810455}
   Map: {fileID: 2000633643}
+  map_List: []
   canvasparents: {fileID: 1396980237}
   bgCanvas: {fileID: 1828603856}
   _Datetext: {fileID: 658067893}
@@ -9010,7 +9019,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1501109446
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9515,6 +9524,10 @@ PrefabInstance:
     - target: {fileID: 7319388404303904385, guid: 92a982f9a0543be41b07582e76cad14a, type: 3}
       propertyPath: m_Name
       value: map310
+      objectReference: {fileID: 0}
+    - target: {fileID: 7319388404303904385, guid: 92a982f9a0543be41b07582e76cad14a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8953946942312355857, guid: 92a982f9a0543be41b07582e76cad14a, type: 3}
       propertyPath: m_Pivot.x
@@ -10123,6 +10136,10 @@ PrefabInstance:
     - target: {fileID: 3848342568730566324, guid: c0b82b7280fdbdc4bb5bf274075619f2, type: 3}
       propertyPath: m_Name
       value: map100
+      objectReference: {fileID: 0}
+    - target: {fileID: 3848342568730566324, guid: c0b82b7280fdbdc4bb5bf274075619f2, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6656558478927929300, guid: c0b82b7280fdbdc4bb5bf274075619f2, type: 3}
       propertyPath: m_Pivot.x
@@ -10760,6 +10777,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: map500
       objectReference: {fileID: 0}
+    - target: {fileID: 1422523891251594962, guid: d42fc8d04105e4c47a9c0ccdcf4115c9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5377833560278444564, guid: d42fc8d04105e4c47a9c0ccdcf4115c9, type: 3}
       propertyPath: m_SortingOrder
       value: 0
@@ -11055,7 +11076,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1775337025
 RectTransform:
   m_ObjectHideFlags: 0
@@ -11324,6 +11345,7 @@ GameObject:
   - component: {fileID: 1817786049}
   - component: {fileID: 1817786048}
   - component: {fileID: 1817786047}
+  - component: {fileID: 1817786050}
   m_Layer: 5
   m_Name: Image
   m_TagString: Untagged
@@ -11433,6 +11455,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1817786045}
   m_CullTransparentMesh: 1
+--- !u!114 &1817786050
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1817786045}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fa8c9efc2c0d7542a0f25c176e2b945, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TargetName: "\uAC15\uBBFC\uC6B0"
+  check: 000000
 --- !u!1 &1820914848
 GameObject:
   m_ObjectHideFlags: 0
@@ -13916,6 +13952,10 @@ PrefabInstance:
     - target: {fileID: 1199318854232085570, guid: 6898d51cdc8956d488514bd39a23725d, type: 3}
       propertyPath: m_Name
       value: map800
+      objectReference: {fileID: 0}
+    - target: {fileID: 1199318854232085570, guid: 6898d51cdc8956d488514bd39a23725d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5312243102246926468, guid: 6898d51cdc8956d488514bd39a23725d, type: 3}
       propertyPath: m_SortingOrder
