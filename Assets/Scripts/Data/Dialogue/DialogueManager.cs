@@ -32,7 +32,7 @@ public class DialogueManager : MonoBehaviour
 
     [HideInInspector] public Dictionary<string, List<Dialogue_Quest_Data>> _questdic;
     [HideInInspector] public Dictionary<int, Dialogue_Data> _dialogdic;
-    public Dictionary<string, chatlogdic> allchatlog;
+    public Dictionary<string, chatlogdic> allchatlog = new Dictionary<string, chatlogdic>();
 
     public static DialogueManager Instance;
 
@@ -59,7 +59,7 @@ public class DialogueManager : MonoBehaviour
         //_skipbtn.onClick.AddListener(PloatingAllText);
         chatwindowBtn.onClick.AddListener(ConfirmbtnClick);
         //_confirmbtn.onClick.AddListener(ConfirmbtnClick);
-        allchatlog = ChatLogManager.Instance.allChatLog.allChatlog;
+        //allchatlog = ChatLogManager.Instance.allChatLog.allChatlog;
         _questdic = DataManager.Instance._questDic.DialogueQuestDic;
         _dialogdic = DataManager.Instance.dic.DialogueDic;
     }
@@ -139,18 +139,18 @@ public class DialogueManager : MonoBehaviour
 
             //_characterImage.gameObject.SetActive(true);
 
-            if (_questdic[Targetname][questcount - 1].QuestType == QuestType.Normal)
-            {
-                _ChatlogBtn.gameObject.SetActive(true);
-            }
-            else if (_questdic[Targetname][questcount - 1].QuestType == QuestType.Phone)
+            //if (_questdic[Targetname][questcount - 1].QuestType == QuestType.Normal)
+            //{
+            //    _ChatlogBtn.gameObject.SetActive(true);
+            //}
+            if (_questdic[Targetname][questcount - 1].QuestType == QuestType.Phone)
             {
                 PopupUIManager.Instance.popupUI["PhoneUI"].SetActive(false);
             }
-            else
-            {
-                _ChatlogBtn.gameObject.SetActive(false);
-            }
+            //else
+            //{
+            //    _ChatlogBtn.gameObject.SetActive(false);
+            //}
 
             NormalLog();
         }
