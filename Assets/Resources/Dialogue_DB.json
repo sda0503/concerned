@@ -3139,6 +3139,19 @@
       "Check_Item": null,
       "Check_Quest": null,
       "Give_Item": null
+    },
+    {
+      "Dialogue_idx": "60002010",
+      "Name": "흥신소 탐정",
+      "Log": "전화 받았습니다.",
+      "Log_Type": "3",
+      "Next_Log": "0",
+      "Event_Log": null,
+      "Event_Next_Log": null,
+      "Event_Log_State": null,
+      "Check_Item": null,
+      "Check_Quest": null,
+      "Give_Item": null
     }
   ]
 }

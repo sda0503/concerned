@@ -21,18 +21,31 @@ public class PhoneUI : PopupUIBase
         calendarButton.onClick.AddListener(OnCalendarUI);
     }
 
+    private void OnEnable()
+    {
+        CallObject.SetActive(false);
+        MessageObject.SetActive(false);
+        CalendarObject.SetActive(false);
+    }
+
     private void OnCallNumberUI()
     {
         CallObject.SetActive(true);
+        MessageObject.SetActive(false);
+        CalendarObject.SetActive(false);
     }
 
     private void OnMessageUI()
     {
+        CallObject.SetActive(false);
         MessageObject.SetActive(true);
+        CalendarObject.SetActive(false);
     }
 
     private void OnCalendarUI()
     {
+        CallObject.SetActive(false);
+        MessageObject.SetActive(false);
         CalendarObject.SetActive(true);
     }
 }

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,8 +9,8 @@ public class CalendarUI : MonoBehaviour
 {
     public Transform dataTransform;
     public GameObject dayPrefab;
-    public Text explain;
-    public Text dateText;
+    public TextMeshProUGUI explain;
+    public TextMeshProUGUI dateText;
     private int date;
     private int predate = 0;
     private GameObject[] calendarDates = new GameObject[31];
@@ -37,7 +38,7 @@ public class CalendarUI : MonoBehaviour
         for (int i = 0; i < calendarDates.Length; i++)
         {
             calendarDates[i] = Instantiate(dayPrefab, dataTransform);
-            calendarDates[i].GetComponentInChildren<Text>().text = i.ToString("00");
+            calendarDates[i].GetComponentInChildren<TextMeshProUGUI>().text = i.ToString("00");
             int n = i;
             calendarDates[i].GetComponent<Button>().onClick.AddListener(() => CheckSchedule(n));
         }
@@ -75,10 +76,10 @@ public class CalendarUI : MonoBehaviour
 
         for (int i = predate; i < date; i++)
         {
-            if(i > 0) calendarDates[i].GetComponentInChildren<Text>().color = color;
+            if(i > 0) calendarDates[i].GetComponentInChildren<TextMeshProUGUI>().color = color;
             calendarDates[i].transform.GetChild(0).gameObject.SetActive(false);
         }
-        calendarDates[date].GetComponentInChildren<Text>().color = Color.white;
+        calendarDates[date].GetComponentInChildren<TextMeshProUGUI>().color = Color.white;
         calendarDates[date].transform.GetChild(0).gameObject.SetActive(true);
 
         predate = date;

@@ -9,7 +9,6 @@ public class GUI : MonoBehaviour
     //GameManager로 내용이 들어갈 예정
     public Button inventoryButton;
     public Button phoneButton;
-    public Button mapButton;
 
     private void Start()
     {

@@ -1,13 +1,14 @@
 using DataStorage;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class MessageBubbleUI : PopupUIBase
 {
     public Image characterImage;
-    public Text characterText;
+    public TextMeshProUGUI characterText;
 
     public GameObject bubblePrefab1;
     public GameObject bubblePrefab2;
@@ -27,13 +28,13 @@ public class MessageBubbleUI : PopupUIBase
                 if (chat.Name == "³ª")
                 {
                     GameObject obj = Instantiate(bubblePrefab1, bubbleTransform);
-                    obj.transform.GetChild(0).GetComponent<Text>().text = chat.Log;
+                    obj.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = chat.Log;
                 }
                 else if (chat.Name == "¼±ÅÃ") { }
                 else
                 {
                     GameObject obj = Instantiate(bubblePrefab2, bubbleTransform);
-                    obj.transform.GetChild(0).GetComponent<Text>().text = chat.Log;
+                    obj.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = chat.Log;
                 }
             }
         }

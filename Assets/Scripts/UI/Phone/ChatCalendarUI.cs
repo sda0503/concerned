@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -31,7 +32,7 @@ public class ChatCalendarUI : PopupUIBase
         for (int i = 0; i < calendarDates.Length; i++)
         {
             calendarDates[i] = Instantiate(dayPrefab, dataTransform);
-            calendarDates[i].GetComponentInChildren<Text>().text = i.ToString("00");
+            calendarDates[i].GetComponentInChildren<TextMeshProUGUI>().text = i.ToString("00");
             int n = i;
             calendarDates[i].GetComponent<Button>().onClick.AddListener(() => MeetCharacter(n));
         }
@@ -54,7 +55,6 @@ public class ChatCalendarUI : PopupUIBase
         {
             calendarDates[i].transform.GetChild(0).gameObject.SetActive(false);
             calendarDates[i].GetComponent<Button>().enabled = false;
-            //calendarDates[i].transform.Find("pass").gameObject.SetActive(true); //지났다는 의미에서 x표시 하는 이미지 띄우도록 하는 것도 좋을 것 같음. 
         }
 
         calendarDates[date].GetComponent<Button>().enabled = false;

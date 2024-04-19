@@ -51,8 +51,8 @@ public class MapManager : MonoBehaviour
             _newMark.transform.GetChild(0).gameObject.SetActive(false);
             _newMark.transform.GetChild(1).gameObject.SetActive(true);
             _newMark.transform.GetChild(2).gameObject.SetActive(false);
-            _newMark.transform.GetChild(1).GetComponent<Text>().text = _mapDate[i].Item2;
-            _newMark.transform.GetChild(2).GetComponent<Text>().text = _mapDate[i].Item3.ToString();
+            _newMark.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = _mapDate[i].Item2;
+            _newMark.transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = _mapDate[i].Item3.ToString();
         }
         var _pp = Instantiate(_popup, new Vector3(960,540,0), Quaternion.identity, gameObject.transform);
         _pp.SetActive(false);
@@ -114,8 +114,8 @@ public class MapManager : MonoBehaviour
             Debug.Log("에러 발생 : 컴포넌트가 없음.");
             return;
         }
-        popupBtn.posID = int.Parse(_obj.transform.GetChild(2).GetComponent<Text>().text);
-        string _popupText = _obj.transform.GetChild(1).gameObject.GetComponent<Text>().text;
-        popupUI.transform.GetChild(1).GetComponent<Text>().text = _popupText;
+        popupBtn.posID = int.Parse(_obj.transform.GetChild(2).GetComponent<TextMeshProUGUI>().text);
+        string _popupText = _obj.transform.GetChild(1).gameObject.GetComponent<TextMeshProUGUI>().text;
+        popupUI.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = _popupText;
     }
 }

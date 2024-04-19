@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -34,7 +35,7 @@ public class MessageUI : MonoBehaviour
         {
             GameObject obj = Instantiate(messageListPrefab, messageNumberListPosition);
             obj.transform.GetChild(1).gameObject.transform.GetChild(0).GetComponent<Image>().sprite = DataManager.Instance.SpriteLoad("Image/Phone/" + name);
-            obj.transform.GetChild(2).GetComponent<Text>().text = name;
+            obj.transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = name;
             obj.transform.GetChild(3).GetComponent<Button>().onClick.AddListener(() => OnSetButton(name));
             messageListDictionary.Add(name, obj);
         }

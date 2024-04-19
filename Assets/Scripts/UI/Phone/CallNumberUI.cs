@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Xml.Serialization;
+using TMPro;
 using UnityEditor.UIElements;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -37,16 +38,16 @@ public class CallNumberUI : MonoBehaviour
             case 1://111
             case 112:
                 name = "흥신소 탐정";
-                obj.transform.GetChild(1).gameObject.transform.GetChild(0).GetComponent<Image>().sprite = DataManager.Instance.SpriteLoad("Image/Phone/"+name);
-                obj.GetComponentInChildren<Text>().text = name;
                 obj.GetComponentInChildren<interactableNPC>().TargetName = "흥신소 탐정 핸드폰";
                 break;
             case 121:
             case 122:
-                obj.GetComponentInChildren<Text>().text = "변호사";
+                name = "변호사";
                 obj.GetComponentInChildren<interactableNPC>().TargetName = "변호사 핸드폰";
                 break;
         }
+        obj.transform.GetChild(1).gameObject.transform.GetChild(0).GetComponent<Image>().sprite = DataManager.Instance.SpriteLoad("Image/Phone/" + name);
+        obj.GetComponentInChildren<TextMeshProUGUI>().text = name;
         obj.GetComponentInChildren<Button>().onClick.AddListener(() => OnCalling(name));
         phoneNumberDictionary.Add(DataManager.Instance.getItems[id].itemData.item_name, obj);
     }
