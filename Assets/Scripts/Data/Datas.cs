@@ -140,14 +140,17 @@ namespace DataStorage
         Phone,
         GiveItem,
         FavoriteDown, //호감도 다운
-        FavoriteUp
+        FavoriteUp,
+        Ending
     }
 
     public enum QuestType
     {
         Normal,
         Loop,
-        Phone
+        Phone,
+        Tuto,
+        Ending
     }
 
     public class Dialogue_List

@@ -18,29 +18,29 @@ public class SingleChatLogSet : MonoBehaviour
 
     private void Start()
     {
-        btn.onClick.AddListener(onclick);
+       btn.onClick.AddListener(onclick);
     }
 
 
     public void set(int idx,string name)
     {
-        ChatlogDatas = ChatLogManager.Instance.allChatLog.allChatlog[name].saveOneLog[idx];
-        text.text = $"{name} {idx}";
+       ChatlogDatas = ChatLogManager.Instance.allChatLog.allChatlog[name].saveOneLog[idx];
+       text.text = $"{name} {idx}";
     }
 
     void onclick()
     {
-        ChatLogManager.Instance._chatlogwindow2.SetActive(true);
+       ChatLogManager.Instance._chatlogwindow2.SetActive(true);
         
-        foreach (chatlogData chat in ChatlogDatas)
-        {
-            var obj = Instantiate(ChatLogManager.Instance._chatLogPrefab, ChatLogManager.Instance._chatLogPosition2.transform);
-            if (obj.TryGetComponent(out ChatLogSet chatLogSet))
-            {
-                string a = chat.Name + " : ";   
-                chatLogSet.LogSetting(a,chat.Log);
-            }
-        }
+       foreach (chatlogData chat in ChatlogDatas)
+       {
+           var obj = Instantiate(ChatLogManager.Instance._chatLogPrefab, ChatLogManager.Instance._chatLogPosition2.transform);
+           if (obj.TryGetComponent(out ChatLogSet chatLogSet))
+           {
+               string a = chat.Name + " : ";   
+               chatLogSet.LogSetting(a,chat.Log);
+           }
+       }
     }
     
     

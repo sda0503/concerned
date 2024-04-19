@@ -94,5 +94,4 @@ public class ChatLogManager : MonoBehaviour
         _chatlogwindow.SetActive(false);
         _chatLogBtn.gameObject.SetActive(true);
     }
-
 }

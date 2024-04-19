@@ -1321,7 +1321,7 @@
         "11000003",
         "11000007",
         "11000012",
-        ""
+        "0"
       ],
       "Event_Log_State": [
         "False",
@@ -3145,6 +3145,60 @@
       "Name": "흥신소 탐정",
       "Log": "전화 받았습니다.",
       "Log_Type": "3",
+      "Next_Log": "0",
+      "Event_Log": null,
+      "Event_Next_Log": null,
+      "Event_Log_State": null,
+      "Check_Item": null,
+      "Check_Quest": null,
+      "Give_Item": null
+    },
+    {
+      "Dialogue_idx": "11111111",
+      "Name": "나",
+      "Log": "엔딩 선택지",
+      "Log_Type": "7",
+      "Next_Log": "11111112",
+      "Event_Log": null,
+      "Event_Next_Log": null,
+      "Event_Log_State": null,
+      "Check_Item": null,
+      "Check_Quest": null,
+      "Give_Item": null
+    },
+    {
+      "Dialogue_idx": "11111112",
+      "Name": null,
+      "Log": null,
+      "Log_Type": "7",
+      "Next_Log": "0",
+      "Event_Log": [
+        "의뢰에 대한 내용",
+        "다른 의뢰에 대해서",
+        "편지에 대해서",
+        "그만둔다."
+      ],
+      "Event_Next_Log": [
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
+      "Event_Log_State": [
+        "False",
+        "False",
+        "False",
+        "False"
+      ],
+      "Check_Item": null,
+      "Check_Quest": null,
+      "Give_Item": null
+    },
+    {
+      "Dialogue_idx": "11111122",
+      "Name": "나",
+      "Log": "엔딩 독백",
+      "Log_Type": "0",
       "Next_Log": "0",
       "Event_Log": null,
       "Event_Next_Log": null,

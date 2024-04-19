@@ -21,6 +21,7 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] private Button _ChatlogBtn;
     [SerializeField] private GameObject _forechatObject;
     [SerializeField] private Button chatwindowBtn;
+    [SerializeField] private GameObject _endingWindow;
 
     public event Action TargetNameChange;
 
@@ -177,6 +178,10 @@ public class DialogueManager : MonoBehaviour
             {
                 PhoneLog();
             }
+            else if(dialogueData.Log_Type == Log_Type.Ending)
+            {
+                _endingWindow.gameObject.SetActive(true);
+            }
         }
         else
         {
@@ -193,13 +198,17 @@ public class DialogueManager : MonoBehaviour
                     questData.QuestState = true;
                     Targetname = "";
                     questcount = 0;
-                    TargetNameChange?.Invoke();
+                    
                 }
                 else if (questData.QuestType == QuestType.Phone)
                 {
                     string ss = Targetname;
                     PopupUIManager.Instance.OpenPopupUI<ChatCalendarUI>().charactername = ss.Replace("핸드폰", "");
                 } //파트별로 퀘스트 나누기.
+                else if(questData.QuestType == QuestType.Tuto)
+                {
+                    TargetNameChange?.Invoke();
+                }
             }
 
             _chatWindow.SetActive(false);
@@ -212,6 +221,11 @@ public class DialogueManager : MonoBehaviour
             //대화가 모두 종료되면 반복되는 대화 지문으로 넘겨야할듯. 이야기가 진행되면 거기서도 빠져나올 수 있어야함.
             //조건을 하나 붙이는게 좋을거같음. 만약 어떤 아이템이 있으면 다음 퀘스트로, 아니면 반복지문으로 가는데 어떤 아이템을 먹으면 시작 주소를 바꿔준다던지
         }
+    }
+
+    public void ChatOff()
+    {
+        _chatWindow.SetActive(false);
     }
 
     void PhoneLog()
@@ -330,6 +344,11 @@ public class DialogueManager : MonoBehaviour
                 string ss = Targetname;
                 PopupUIManager.Instance.OpenPopupUI<ChatCalendarUI>().charactername = ss.Replace("핸드폰", "");
             } //파트별로 퀘스트 나누기.
+            else if(questData.QuestType == QuestType.Ending)
+            {
+                TargetNameChange?.Invoke();
+            }
+
             foreach (Button btns in choice_btn)
             {
                 if (btns.isActiveAndEnabled)

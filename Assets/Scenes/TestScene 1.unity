@@ -4252,7 +4252,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inventoryButton: {fileID: 295743186}
   phoneButton: {fileID: 1357156011}
-  mapButton: {fileID: 2019810455}
 --- !u!1 &701219188
 GameObject:
   m_ObjectHideFlags: 0
@@ -8561,7 +8560,7 @@ MonoBehaviour:
   map_List: []
   canvasparents: {fileID: 1396980237}
   bgCanvas: {fileID: 1828603856}
-  _Datetext: {fileID: 658067893}
+  _Datetext: {fileID: 0}
   itemCanvas: {fileID: 0}
 --- !u!1 &1396980237
 GameObject:

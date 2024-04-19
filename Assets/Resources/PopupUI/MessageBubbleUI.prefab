@@ -419,7 +419,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterImage: {fileID: 8114214211366095116}
-  characterText: {fileID: 0}
+  characterText: {fileID: 4628596527223317118}
   bubblePrefab1: {fileID: 1982755879920609099, guid: e89770883916fa54aa99990a81418ad9, type: 3}
   bubblePrefab2: {fileID: 1375449402953388521, guid: d263e554235d3b94281a3dea55dbb142, type: 3}
   bubbleTransform: {fileID: 5337160838533471360}

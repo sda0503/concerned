@@ -4,7 +4,7 @@
       "QuestTargetName": "나(튜토리얼-경찰서)",
       "QuestIdx": "1",
       "QuestStartPost": "71100000",
-      "QuestType": "0",
+      "QuestType": "3",
       "QuestState": "false",
       "NeedQuest": null,
       "NeedItem": null
@@ -158,6 +158,24 @@
       "QuestIdx": "1",
       "QuestStartPost": "60002010",
       "QuestType": "2",
+      "QuestState": "false",
+      "NeedQuest": null,
+      "NeedItem": null
+    },
+    {
+      "QuestTargetName": "Ending",
+      "QuestIdx": "1",
+      "QuestStartPost": "11111111",
+      "QuestType": "4",
+      "QuestState": "false",
+      "NeedQuest": null,
+      "NeedItem": null
+    },
+    {
+      "QuestTargetName": "BadEnding",
+      "QuestIdx": "1",
+      "QuestStartPost": "11111122",
+      "QuestType": "4",
       "QuestState": "false",
       "NeedQuest": null,
       "NeedItem": null
