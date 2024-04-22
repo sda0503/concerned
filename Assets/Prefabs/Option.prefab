@@ -565,7 +565,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 5051990025631061283}
         m_TargetAssemblyTypeName: VideoOption, Assembly-CSharp
         m_MethodName: DropboxOptionChange
         m_Mode: 0
