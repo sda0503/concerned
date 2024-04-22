@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -5,6 +6,7 @@ using System.Text.RegularExpressions;
 using DataStorage;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
@@ -33,7 +35,9 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Canvas bgCanvas;
     private Image bgImage;
     [SerializeField] private TextMeshProUGUI _Datetext;
-    
+
+    public GameObject endingCredits;
+
     private string BGFilePath = "Image/map";
 
     public Transform itemCanvas;
@@ -211,5 +215,27 @@ public class UIManager : MonoBehaviour
     void ChangeBG()
     {
         //BG.Sprite = Resources.Load<Sprite>(경로 + DB에서 찾은 파일 이름);
+    }
+
+
+    IEnumerator EndingCredits()
+    {
+        canvasparents.SetActive(false);
+        Vector3 position = endingCredits.transform.GetChild(2).position;
+        Vector3 move = new Vector3(960, position.y, 0);
+        while (endingCredits.transform.GetChild(2).position.y <3000f)
+        {
+            move.y += 1f;
+            endingCredits.transform.GetChild(2).position = move;
+            yield return null;
+        }
+        yield return null;
+        //씬 강제 이동
+        SceneManager.LoadScene("StartScene");
+    }
+
+    public void StartEndingCredits()
+    {
+        StartCoroutine(EndingCredits());
     }
 }
