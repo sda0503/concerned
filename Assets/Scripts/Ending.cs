@@ -63,7 +63,7 @@ public class Ending : MonoBehaviour
         Color color = blinkImage.color;
         while (blinkImage.color.a <= 1)
         {
-            color.a += 3f / 255f;
+            color.a += 1f / 255f;
             blinkImage.color = color;
             yield return null;
         }
