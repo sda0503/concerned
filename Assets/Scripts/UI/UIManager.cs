@@ -223,7 +223,7 @@ public class UIManager : MonoBehaviour
         canvasparents.SetActive(false);
         Vector3 position = endingCredits.transform.GetChild(2).position;
         Vector3 move = new Vector3(960, position.y, 0);
-        while (endingCredits.transform.GetChild(2).position.y <3000f)
+        while (endingCredits.transform.GetChild(2).position.y < 3500f)
         {
             move.y += 1f;
             endingCredits.transform.GetChild(2).position = move;
