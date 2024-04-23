@@ -130,6 +130,7 @@ public class DialogueManager : MonoBehaviour
         {
             _forechatObject.SetActive(false);
             //_confirmbtn.gameObject.SetActive(true);
+            _chatWindow.transform.parent.gameObject.SetActive(true);
             _chatWindow.SetActive(true);
             //btn3.gameObject.SetActive(false);
 
@@ -213,7 +214,7 @@ public class DialogueManager : MonoBehaviour
             }
 
             _chatWindow.SetActive(false);
-
+            _chatWindow.transform.parent.gameObject.SetActive(false);
             questcount = 0;
             _characterImage.sprite = null;
             _characterImage.gameObject.SetActive(false);

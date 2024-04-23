@@ -16,7 +16,7 @@ public class TutoChangeImage : MonoBehaviour
             gameObject.transform.parent.gameObject.SetActive(false);
             gameObject.transform.parent.transform.GetChild(0).GetComponent<Image>().sprite = tutoImage[imageCnt];
             GameManager.Instance.PositionChange(300);
-            DialogueManager.Instance.StartDialogue("³ª(Æ©Åä¸®¾ó-½£)");
+            DialogueManager.Instance.StartDialogue("ë‚˜(íŠœí† ë¦¬ì–¼-ìˆ²)");
 
             DialogueManager.Instance.TargetNameChange += showImage;
         }
@@ -34,8 +34,9 @@ public class TutoChangeImage : MonoBehaviour
     {
         if (!showImageBool)
         {
-            Debug.Log("´ëÈ­ ³¡");
+            Debug.Log("ï¿½ï¿½È­ ï¿½ï¿½");
             gameObject.transform.parent.gameObject.SetActive(true);
+            gameObject.transform.parent.transform.GetChild(0).GetChild(1).gameObject.SetActive(true);
             showImageBool = true;
         }
     }

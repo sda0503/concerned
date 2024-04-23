@@ -32,7 +32,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject canvasparents;
     [SerializeField] private Canvas bgCanvas;
     private Image bgImage;
-    [SerializeField] private TextMeshProUGUI _Datetext;
+    [SerializeField] private Text _Datetext;
     
     private string BGFilePath = "Image/map";
 
@@ -67,6 +67,7 @@ public class UIManager : MonoBehaviour
         GameManager.Instance.OnPositionChange += CanvasChange;
         GameManager.Instance.OnPositionChange += itemCanvaschange;
         playerinformation = DataManager.Instance.Playerinformation;
+        
         CanvasGroupSet();
         foreach (var variables in CanvasGroup)
         {
@@ -84,7 +85,13 @@ public class UIManager : MonoBehaviour
             if (!CanvasGroup.ContainsKey(int.Parse(index[0].Value)))
             {
                 CanvasGroup.Add(int.Parse(index[0].Value), VARIABLE);
+                if (DataManager.Instance.GameState == Game_State.New)
+                {
+                    DataManager.Instance.Playerinformation.canvasObjSet.Add(int.Parse(index[0].Value),VARIABLE.GetComponent<CanvasOnLoad>().states);
+                    Debug.Log(DataManager.Instance.Playerinformation.canvasObjSet[int.Parse(index[0].Value)].Count);
+                }
             }
+            VARIABLE.SetActive(false);
         }
     }
 

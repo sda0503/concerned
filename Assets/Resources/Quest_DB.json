@@ -19,6 +19,15 @@
       "NeedItem": null
     },
     {
+      "QuestTargetName": "나(튜토리얼-숲)",
+      "QuestIdx": "1",
+      "QuestStartPost": "30000000",
+      "QuestType": "0",
+      "QuestState": "false",
+      "NeedQuest": null,
+      "NeedItem": null
+    },
+    {
       "QuestTargetName": "흥신소 탐정",
       "QuestIdx": "1",
       "QuestStartPost": "40014000",

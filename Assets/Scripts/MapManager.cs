@@ -87,7 +87,7 @@ public class MapManager : MonoBehaviour
             { 
                 _obj.transform.GetChild(0).gameObject.SetActive(true);
                 _obj.transform.GetChild(1).gameObject.SetActive(true);
-                _obj.transform.GetChild(2).gameObject.SetActive(true);
+                //_obj.transform.GetChild(2).gameObject.SetActive(true);
                 _isMouseOver = true;
             }
         }

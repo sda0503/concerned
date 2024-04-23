@@ -8,6 +8,7 @@ public class SoundManager : SingletonBase<SoundManager>
     public GameObject soundOn;
     public GameObject soundOff;
     private bool muted = false;
+    //TODO : public List<AudioSource> musicList = new List<AudioSource>(); //사용할 배경음악 파일 먹여서 필요에 따라 실행시키기.
 
     public override void init()
     {
@@ -44,7 +45,8 @@ public class SoundManager : SingletonBase<SoundManager>
 
     private void PlaySceneMusic(string sceneName)
     {
-        GameObject sceneMusic = GameObject.Find(sceneName + "Music");
+        GameObject sceneMusic = GameObject.Find(sceneName + "Music"); //TODO : 수정사항. 현재 씬에 필요한 노래가 뭔지 판단하고 재생시키는 것까지.
+        //AudioSource sceneMusic = musicList[SceneManager.GetActiveScene().buildIndex]; //TODO : 빌드 인덱스에 따라 노래 다르게 재생.
         if (sceneMusic != null)
         {
             AudioSource audioSource = sceneMusic.GetComponent<AudioSource>();

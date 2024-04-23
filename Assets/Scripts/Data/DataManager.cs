@@ -15,6 +15,8 @@ using UnityEngine.UI;
 
 public class DataManager : SingletonBase<DataManager> //유니티 기능을 상속 받는거 /코루틴이나 유니티 이벤트를 연동하려면 필요함.
 {
+    public Game_State GameState;
+    
     private Player _playerToSave; //Save & Load 대기용
     public event Action LoadingChange;
     
@@ -68,6 +70,8 @@ public class DataManager : SingletonBase<DataManager> //유니티 기능을 상�
 
     public Dictionary<string, Profile> charProfile = new Dictionary<string, Profile>(); //캐릭터 이름 / 호감도, 경찰 면담 횟수
 
+    public bool canSkip = false;
+
     #endregion
 
     public class Profile
@@ -92,7 +96,6 @@ public class DataManager : SingletonBase<DataManager> //유니티 기능을 상�
         base.init();
         path = Application.persistentDataPath;
         StartCoroutine(SetDatas());
-        
     }
 
     /// <summary>
@@ -101,30 +104,35 @@ public class DataManager : SingletonBase<DataManager> //유니티 기능을 상�
     /// <returns></returns>
     IEnumerator SetDatas() //전체 기본 데이터 세팅
     {
-        //전체적으로 다 코루틴으로 꾸려주어야함.
         yield return StartCoroutine(dialogueDBSet()); 
         //TODO : 로딩 종료될때마다 콜백줘서 진행도 표시하기
-        LoadingChange?.Invoke();
         Debug.Log("다이얼로그 세팅 완료");
-
+        
         yield return StartCoroutine(PlaceDBSet());
-        LoadingChange?.Invoke();
-        //Debug.Log("장소 세팅 완료");
-
+        Debug.Log("장소 세팅 완료");
+        
         yield return StartCoroutine(LoadDefaultData());
-        LoadingChange?.Invoke();
         Debug.Log("아이템 세팅 완료");
         //ItemManager.Instance.getItems.Clear();
-
+        
         yield return StartCoroutine(SetDogamData()); //TODO : 도감도 불러오기(세팅은 도감버튼 눌렀을 때 하고 데이터만 가져오기)
-        LoadingChange?.Invoke();
         Debug.Log("도감 세팅 완료");
-        SetItemData();
-        //GameManager.Instance.Playerinformation = Playerinformation; //TODO : 이건뭐지
+        //SetItemData();    
+        //여기까진 필수
+        canSkip = true;
     }
     //스트리밍에셋폴더에다가 에셋번들 집어넣어놓고 로딩하는 방법. 이 방법이 따로 서버 세팅안하고 준비할수있는 제일 좋은방법일 듯.
 
-    public void LoadData() //TODO : 이어하기 선택 시 불러올 데이터 내용 작성 + 버튼에 들어갈 내용
+    public IEnumerator SetPlayerData()
+    {
+        yield return StartCoroutine(New_QuestSet());
+        Debug.Log("대화 진행 정보 세팅 완료");
+        Playerinformation = new Information();
+        LoadingChange?.Invoke();
+        
+    }
+
+    public void LoadPlayerData() //TODO : 이어하기 선택 시 불러올 데이터 내용 작성 + 버튼에 들어갈 내용
     {
         StartCoroutine(LoadGameData()); 
         Debug.Log("게임 데이터 로드 완료");
@@ -160,11 +168,11 @@ public class DataManager : SingletonBase<DataManager> //유니티 기능을 상�
             dic.DialogueDic.Add(dialogueList.Dialouge_Log_Data[i].Dialogue_idx, dialogueList.Dialouge_Log_Data[i]);
         }
 
-        yield return StartCoroutine(QuestSet()); //TODO : 게임 시작할 때로 옮겨주기
+        
         //DialogueManager.Instance._dialogdic = dic.DialogueDic;
     }
 
-    IEnumerator QuestSet() //TODO : 개인 플레이 데이터 불러오는 부분이니까 분리하고 비동기로 작업하기. + 이어하기 버튼에 연결
+    IEnumerator Load_QuestSet() //TODO : 개인 플레이 데이터 불러오는 부분이니까 분리하고 비동기로 작업하기. + 이어하기 버튼에 연결
     {
         if (File.Exists(path + "/save.json"))
         {
@@ -181,8 +189,11 @@ public class DataManager : SingletonBase<DataManager> //유니티 기능을 상�
             string questData = readAllTextAsync.Result;
             _questDic = JsonConvert.DeserializeObject<Dialogue_Quest_Dic>(questData);
         }
-        else
-        {
+    }
+    
+    IEnumerator New_QuestSet() //TODO : 개인 플레이 데이터 불러오는 부분이니까 분리하고 비동기로 작업하기. + 이어하기 버튼에 연결
+    {
+       
             var readQuestJson = Resources.LoadAsync<TextAsset>("Quest_DB");
             yield return readQuestJson;
 
@@ -210,7 +221,7 @@ public class DataManager : SingletonBase<DataManager> //유니티 기능을 상�
                     SettingDic[questDatas[i].QuestTargetName].Add(questDatas[i]); //이후 값 추가
                 }
             }
-        }
+      
         //DialogueManager.Instance._questdic = _questDic.DialogueQuestDic;
     }
 
@@ -235,22 +246,22 @@ public class DataManager : SingletonBase<DataManager> //유니티 기능을 상�
         string placeData = place.text;
         PlaceDBDatas = JsonConvert.DeserializeObject<PlaceDBDatas>(placeData);
 
-        GameObject go = new GameObject(); //TODO : 로딩에 사용될 임시 오브젝트 로딩 끝난 후 파괴되야됨. 만들어질때 파괴 안되는지 체크할 것. 
-
-
-        for (int i = 0; i < PlaceDBDatas.PlaceDB.Count; i++) //TODO : 오브젝트 미리 깔아놓는건데 이것도 위치 옮겨야됨
-        {
-            //TODO : 수정 예정 + 캔버스 오브젝트의 트랜스폼을 받아오는 메서드를 하나 사용해야 할 듯.
-             var objtoload = Resources.LoadAsync<GameObject>($"Prefabs/Map/{PlaceDBDatas.PlaceDB[i].Place_OBJ_Path}");  // 프리팹 가져오기
-             yield return objtoload;
-             var objload = objtoload.asset as GameObject;
-             var obj = Instantiate(objload, go.transform); // 프리팹 복제
-             obj.SetActive(false);
-             //obj.GetComponent<CanvasOnLoad>().states = _playerToSave.Information.canvasObjSet[PlaceDBDatas.PlaceDB[i].Place_ID];
-             //UIManager.Instance.CanvasGroup.Add(PlaceDBDatas.PlaceDB[i].Place_ID,obj); //TODO : 메인 씬 넘어갔을 때 다 옮겨주기
-        }
-
-        GameManager.Instance.Playerinformation.position = 200;
+        // GameObject go = new GameObject(); //TODO : 로딩에 사용될 임시 오브젝트 로딩 끝난 후 파괴되야됨. 만들어질때 파괴 안되는지 체크할 것. 
+        //
+        //
+        // for (int i = 0; i < PlaceDBDatas.PlaceDB.Count; i++) //TODO : 오브젝트 미리 깔아놓는건데 이것도 위치 옮겨야됨
+        // {
+        //     //TODO : 수정 예정 + 캔버스 오브젝트의 트랜스폼을 받아오는 메서드를 하나 사용해야 할 듯.
+        //      var objtoload = Resources.LoadAsync<GameObject>($"Prefabs/Map/{PlaceDBDatas.PlaceDB[i].Place_OBJ_Path}");  // 프리팹 가져오기
+        //      yield return objtoload;
+        //      var objload = objtoload.asset as GameObject;
+        //      var obj = Instantiate(objload, go.transform); // 프리팹 복제
+        //      obj.SetActive(false);
+        //      //obj.GetComponent<CanvasOnLoad>().states = _playerToSave.Information.canvasObjSet[PlaceDBDatas.PlaceDB[i].Place_ID];
+        //      //UIManager.Instance.CanvasGroup.Add(PlaceDBDatas.PlaceDB[i].Place_ID,obj); //TODO : 메인 씬 넘어갔을 때 다 옮겨주기
+        // }
+        //
+        // GameManager.Instance.Playerinformation.position = 200;
 
         //1. 동기로 작업을 한다 => 오브젝트 양이 많으면 버벅인다? ==> 일단 이걸로하던지
         //2. 비동기로 작업을한다 => 느려지면 뻑갈수도있다. ==> 이 작업이 끝날떄까지 화면을 이미지로 덮어둔다. 인디케이터가 돌아간다던지해서 눈속임.
@@ -387,7 +398,7 @@ public class DataManager : SingletonBase<DataManager> //유니티 기능을 상�
     //Save & Load 여부에 관계없이 읽어오는 파일들은 이미 구현 되어있음. TODO : 아이템 관련해서 잠깐 볼 것.
     public void Save()
     {
-        _playerToSave.Information = GameManager.Instance.Playerinformation;
+        _playerToSave.Information = GameManager.Instance.Playerinformation; //TODO : 변경해야됨. Data는 DataManager에
         //_playerToSave.Information
         ////TODO : 캔버스 오브젝트 세팅하는 부분 짜맞추기 (변경할 점 : 각 캔버스에서 오브젝트 건드렸을 때 값 변경하는것, 로딩할 데이터가 없을 시 초기 데이터 설정)
         
