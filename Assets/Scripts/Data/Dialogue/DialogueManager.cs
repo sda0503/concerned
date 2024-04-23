@@ -210,7 +210,12 @@ public class DialogueManager : MonoBehaviour
                 {
                     TargetNameChange?.Invoke();
                 }
-                else if (questData.QuestType == QuestType.Ending) Debug.Log("end");
+                else if (questData.QuestType == QuestType.Ending) 
+                {
+                    Debug.Log("end"); //엔딩크레딧 올라가는 곳
+                    UIManager.Instance.StartEndingCredits();
+                }
+
             }
 
             _chatWindow.SetActive(false);

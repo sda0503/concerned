@@ -73,6 +73,7 @@ public class GameManager : SingletonBase<GameManager>
         if (Playerinformation.date == 30)
         {
             //TODO : 선택하는 씬(엔딩)으로 넘어가야됨
+            UIManager.Instance.endingCredits.SetActive(true);
         }
     }
 
