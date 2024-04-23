@@ -3338,7 +3338,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inventoryButton: {fileID: 295743186}
   phoneButton: {fileID: 1357156011}
-  mapButton: {fileID: 2019810455}
 --- !u!1 &701219188
 GameObject:
   m_ObjectHideFlags: 0
@@ -4144,6 +4143,7 @@ MonoBehaviour:
   _ChatlogBtn: {fileID: 1494260970}
   _forechatObject: {fileID: 811208752}
   chatwindowBtn: {fileID: 1985888524}
+  _endingWindow: {fileID: 0}
 --- !u!1 &1108250131
 GameObject:
   m_ObjectHideFlags: 0
@@ -5949,9 +5949,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   btn: {fileID: 2019810455}
   Map: {fileID: 2000633643}
+  map_List: []
   canvasparents: {fileID: 1396980237}
   bgCanvas: {fileID: 1828603856}
-  _Datetext: {fileID: 658067893}
+  _Datetext: {fileID: 0}
+  endingCredits: {fileID: 0}
   itemCanvas: {fileID: 0}
 --- !u!1 &1396980237
 GameObject:
