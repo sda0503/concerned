@@ -299,11 +299,13 @@ public class DataManager : SingletonBase<DataManager> //유니티 기능을 상�
         {
             if (defaultItemDataList.Data[i].itemType == ItemType.Normal)
             {
-                itemsData.Add(defaultItemDataList.Data[i].item_id, new Item(i));
+                if(!itemsData.ContainsKey(defaultItemDataList.Data[i].item_id))
+                    itemsData.Add(defaultItemDataList.Data[i].item_id, new Item(i));
             }
             else if (defaultItemDataList.Data[i].itemType == ItemType.Trigger)
             {
-                triggerItemsData.Add(defaultItemDataList.Data[i].item_id, new Item(i));
+                if(!triggerItemsData.ContainsKey(defaultItemDataList.Data[i].item_id))
+                    triggerItemsData.Add(defaultItemDataList.Data[i].item_id, new Item(i));
             }
             
         }

@@ -31,7 +31,7 @@ public class TutoChangeImage : MonoBehaviour
         else if (imageCnt == 7)
         {
            
-            GameManager.Instance.Playerinformation.position = 711;
+            GameManager.Instance.Playerinformation.position = 300;
             UIManager.CanvasGroup.Clear();
             UIManager.Instance.DeleteListener();
             SceneManager.LoadScene("TestScene 1");

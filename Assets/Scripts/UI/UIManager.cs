@@ -120,7 +120,7 @@ public class UIManager : MonoBehaviour
         StringBuilder sb = new StringBuilder();
         sb.Append(playerinformation.date.ToString());
         sb.Append($"일차 {GetDayTime()}");
-        sb.Append($" {playerinformation.position}");
+        sb.Append($"\n {playerinformation.position}");
         _Datetext.text = sb.ToString(); //TODO : GameManager에서 옮겨오기.
     }
 
@@ -129,7 +129,7 @@ public class UIManager : MonoBehaviour
         StringBuilder sb = new StringBuilder();
         sb.Append(playerinformation.date.ToString());
         sb.Append($"일차 {GetDayTime()}");
-        sb.Append($" {pos}");
+        sb.Append($"\n {pos}");
         _Datetext.text = sb.ToString(); //TODO : GameManager에서 옮겨오기.
     }
 
