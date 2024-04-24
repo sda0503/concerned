@@ -7,11 +7,13 @@ using System.Xml.Serialization;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using static UnityEditor.Progress;
 
 public class DogamUI : PopupUIBase
 {
     public Transform itemSlotTransform;
     private GameObject[] itemSlots = new GameObject[50];
+    public Image itemImage;
 
     public Button closeButton;
 
@@ -74,6 +76,14 @@ public class DogamUI : PopupUIBase
 
     public void DogamSlotButton(int index)
     {
+        if (index < 10)
+        {
+            itemImage.sprite = DataManager.Instance.SpriteLoad("Evidence/" + index.ToString());
+        }
+        else
+        {
+            itemImage.sprite = DataManager.Instance.SpriteLoad("Evidence/" + ((index / 10) * 10).ToString());
+        }
         nameText.text = DataManager.Instance.dogamItemData[index].item_name;
         descriptionText.text = DataManager.Instance.dogamItemData[index].default_description;
     }
@@ -81,6 +91,14 @@ public class DogamUI : PopupUIBase
     private void OnDogamItem(int key)
     {
         //이미지 변경되는 부분이 필요함.
+        if (key < 10)
+        {
+            itemSlots[key].transform.GetChild(1).GetComponent<Image>().sprite = DataManager.Instance.SpriteLoad("Guide Book/" + key.ToString());
+        }
+        else
+        {
+            itemSlots[key].transform.GetChild(1).GetComponent<Image>().sprite = DataManager.Instance.SpriteLoad("Guide Book/" + ((key / 10) * 10).ToString());
+        }
         itemSlots[key].transform.GetChild(1).gameObject.SetActive(true);
         itemSlots[key].GetComponent<Button>().enabled = true;
     }
