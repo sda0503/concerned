@@ -2316,7 +2316,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 0
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 5
+  m_SortingOrder: 2
   m_TargetDisplay: 0
 --- !u!1 &430123602
 GameObject:
@@ -3223,6 +3223,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 326480369}
     m_Modifications:
+    - target: {fileID: 4833668360419679241, guid: 3d0fdb5f6e3b9594b8f6d783ec762417, type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5284511258227202044, guid: 3d0fdb5f6e3b9594b8f6d783ec762417, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -10624,3 +10628,4 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 3b148a63262b85345b6b5ee8b7e3ea3d, type: 3}
   - {fileID: 21300000, guid: 39e6c7cc8b334fa4aac5682e3c79e0b4, type: 3}
   - {fileID: 21300000, guid: 3567e756f3be1ca448faa9c90787d87f, type: 3}
+  canvas: {fileID: 1396980237}
