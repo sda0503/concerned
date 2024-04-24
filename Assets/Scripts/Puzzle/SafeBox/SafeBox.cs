@@ -10,6 +10,8 @@ public class SafeBox : MonoBehaviour
     private string inputPassword = "";
     public TextMeshProUGUI passwordText;
 
+    public int item;
+
 
     public void EnterDigit(int digit)
     {
@@ -36,6 +38,7 @@ public class SafeBox : MonoBehaviour
         if (inputPassword == correctPassword)
         {
             passwordText.text = "<color=#4682B4>OPEN</color>";
+            DataManager.Instance.GetItem(item);
         }
         else
         {

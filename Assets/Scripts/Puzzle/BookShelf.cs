@@ -58,7 +58,7 @@ public class BookShelf : MonoBehaviour
             Debug.Log("clear");
             DataManager.Instance.GetItem(clear);
             gameObject.SetActive(false);
-            UIManager.Instance.OnGUI();
+            UIManager.Instance.GUIOn();
         }
     }
 

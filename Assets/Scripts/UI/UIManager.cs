@@ -248,7 +248,7 @@ public class UIManager : MonoBehaviour
         StartCoroutine(EndingCredits());
     }
 
-    public void OnGUI()
+    public void GUIOn()
     {
         canvasparents.transform.GetChild(2).gameObject.SetActive(true);
     }
