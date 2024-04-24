@@ -14,11 +14,14 @@ public class TutoChangeImage : MonoBehaviour
     public void ChangeImage()
     {
         imageCnt++;
-        Debug.Log(imageCnt);
+
         if (imageCnt == 5)
+
         {
-            gameObject.transform.parent.gameObject.SetActive(false);
-            gameObject.transform.parent.transform.GetChild(0).GetComponent<Image>().sprite = tutoImage[imageCnt];
+            gameObject.transform.parent.GetChild(0).gameObject.SetActive(false);
+            gameObject.transform.parent.GetChild(2).GetComponent<Image>().sprite = tutoImage[imageCnt];
+            gameObject.transform.parent.GetChild(2).gameObject.SetActive(false);
+            gameObject.transform.parent.GetChild(3).gameObject.SetActive(false);
             GameManager.Instance.PositionChange(300);
             DialogueManager.Instance.StartDialogue("나(튜토리얼-숲)");
 
@@ -27,12 +30,16 @@ public class TutoChangeImage : MonoBehaviour
         }
         else if (imageCnt == 7)
         {
+           
+            GameManager.Instance.Playerinformation.position = 711;
+            UIManager.CanvasGroup.Clear();
+            UIManager.Instance.DeleteListener();
             SceneManager.LoadScene("TestScene 1");
             gameObject.transform.parent.gameObject.SetActive(false);
         }
         else
         {
-            gameObject.transform.parent.transform.GetChild(0).GetComponent<Image>().sprite = tutoImage[imageCnt];
+            gameObject.transform.parent.GetChild(2).GetComponent<Image>().sprite = tutoImage[imageCnt];
         }
     }
 
@@ -45,6 +52,7 @@ public class TutoChangeImage : MonoBehaviour
             canvas.SetActive(false);
             gameObject.transform.parent.gameObject.SetActive(true);
             gameObject.transform.parent.transform.GetChild(0).GetChild(1).gameObject.SetActive(true);
+
             showImageBool = true;
         }
     }
