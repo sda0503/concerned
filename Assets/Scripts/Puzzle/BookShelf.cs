@@ -11,9 +11,11 @@ public class BookShelf : MonoBehaviour
 {
     public Transform books;
 
-    public Button[] triggerButton = new Button[4];
+    public Button[] triggerButton = new Button[5];
 
-    private bool[] click_button = new bool[4];
+    private bool[] click_button = new bool[5];
+
+    public int clear;
 
     private void Start()
     {
@@ -30,24 +32,33 @@ public class BookShelf : MonoBehaviour
             Debug.Log("fail");
             return;
         }
-        if (!click_button[1] && (click_button[2] || click_button[3])) 
+        if (!click_button[1] && (click_button[2] || click_button[3] || click_button[4])) 
         { 
             click_button = Enumerable.Repeat(false, click_button.Length).ToArray();
             GameManager.Instance.PuzzleCount--;
             Debug.Log("fail");
             return;
         }
-        if (!click_button[2] && click_button[3]) 
+        if (!click_button[2] && (click_button[3] || click_button[4]))
         { 
             click_button = Enumerable.Repeat(false, click_button.Length).ToArray();
             GameManager.Instance.PuzzleCount--;
             Debug.Log("fail"); 
             return;
         }
-        if (click_button[3])
+        if (!click_button[3] && click_button[4])
         {
+            click_button = Enumerable.Repeat(false, click_button.Length).ToArray();
+            GameManager.Instance.PuzzleCount--;
+            Debug.Log("fail");
+            return;
+        }
+        if (click_button[4]) 
+        { 
             Debug.Log("clear");
-            DataManager.Instance.OnClickToFindItem(2);
+            DataManager.Instance.GetItem(clear);
+            gameObject.SetActive(false);
+            UIManager.Instance.OnGUI();
         }
     }
 
@@ -69,10 +80,9 @@ public class BookShelf : MonoBehaviour
     private void MakeBook()
     {
         var obj = DataManager.Instance.GameObjectLoad("Prefabs/book");
-        for (int i = 0; i < 32; i++)
+        for (int i = 0; i < 40; i++)
         {
-            GameObject newBook = Instantiate(obj, books);
-            newBook.transform.localPosition = new Vector3(-25 + 60 * (i % 8), 0 - 120 * (i / 8), 0);
+            Instantiate(obj, new Vector3(783 + 51 * (i % 8), 800 - 126 * (i / 8), 0), Quaternion.identity, books);
         }
     }
 }

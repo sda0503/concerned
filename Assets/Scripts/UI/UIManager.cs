@@ -247,4 +247,9 @@ public class UIManager : MonoBehaviour
     {
         StartCoroutine(EndingCredits());
     }
+
+    public void OnGUI()
+    {
+        canvasparents.transform.GetChild(2).gameObject.SetActive(true);
+    }
 }
