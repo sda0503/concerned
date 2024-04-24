@@ -1,4 +1,5 @@
 using System;
+using DataStorage;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -11,7 +12,7 @@ public class Loadingbar
 
     public TextMeshProUGUI text; //로딩 텍스트
 
-    private float totalload = 3;
+    private float totalload = 1;
 
     public float percent=0f;
     public int count = 0;
@@ -29,16 +30,10 @@ public class Loadingbar
         switch (count)
         {
             case 0:
-                text.text = "다이얼로그 세팅";       
+                text.text = "플레이어 정보 세팅";       
                 break;
             case 1:
-                text.text ="장소 세팅";
-                break;
-            case 2:
-                text.text = "아이템 세팅";
-                break;
-            case 3:
-                text.text = "도감 세팅";
+                text.text ="완료";
                 break;
         }
     }
@@ -52,7 +47,9 @@ public class GameTrigger : MonoBehaviour
     //1. 콜백으로 등록해서 처리하기
     void Start()
     {
-        DataManager.Instance.init();
+        if(DataManager.Instance.GameState == Game_State.New)
+            StartCoroutine(DataManager.Instance.SetPlayerData());
+        else DataManager.Instance.LoadPlayerData();
         DataManager.Instance.LoadingChange += LoadingUpdate;
         Loadingbar.progress.fillAmount = 0;
     }
@@ -60,12 +57,11 @@ public class GameTrigger : MonoBehaviour
     void LoadingUpdate()
     {
         Loadingbar.count++;
-        if (Loadingbar.count == 3)
+        if (Loadingbar.count == 1)
         {
-            SceneManager.LoadScene("StartScene");
+            SceneManager.LoadScene("TutoScene");
         }
         Loadingbar.UpdateUI();
+        
     }
-    
-    
 }

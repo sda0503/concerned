@@ -5,6 +5,7 @@ using UnityEngine;
 
 namespace DataStorage
 {
+    public enum Game_State {New,Load}
     public enum DayTimeenum
     {
         Evening,
@@ -77,7 +78,7 @@ namespace DataStorage
         {
             daytime = DayTimeenum.Evening;
             date = 0;
-            //Position = "집 주소"; DB상 주소를 얘기함. 집주소 아니면 사건현장?
+            Position = 711;
         }
 
         public Dictionary<string, int> favorite = new Dictionary<string, int>(); //호감도 TODO : 저장하려면 따로 구조 잡아줘야됨. 

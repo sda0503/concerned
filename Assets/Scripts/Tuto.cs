@@ -26,8 +26,9 @@ public class Tuto : MonoBehaviour
     {
         if (!showImageBool)
         {
-            Debug.Log("´ëÈ­ ³¡");
+            Debug.Log("ï¿½ï¿½È­ ï¿½ï¿½");
             transform.GetChild(0).gameObject.SetActive(true);
+            transform.GetChild(0).GetChild(0).gameObject.SetActive(true);
             showImageBool = true;
         }
     }
