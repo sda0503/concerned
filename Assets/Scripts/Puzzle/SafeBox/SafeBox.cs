@@ -38,7 +38,7 @@ public class SafeBox : MonoBehaviour
         if (inputPassword == correctPassword)
         {
             passwordText.text = "<color=#4682B4>OPEN</color>";
-            DataManager.Instance.GetItem(item);
+            DataManager.Instance.OnClickToFindItem(item);
         }
         else
         {

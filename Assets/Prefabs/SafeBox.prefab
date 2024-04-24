@@ -722,7 +722,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   number: 3
-  Password: {fileID: 0}
+  Password: {fileID: 3930068938865556472}
 --- !u!114 &8574523598052340414
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -859,7 +859,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   number: 8
-  Password: {fileID: 0}
+  Password: {fileID: 3930068938865556472}
 --- !u!114 &1903175630059835296
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1156,7 +1156,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   number: 9
-  Password: {fileID: 0}
+  Password: {fileID: 3930068938865556472}
 --- !u!114 &4649769588056962814
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1369,7 +1369,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   number: 2
-  Password: {fileID: 0}
+  Password: {fileID: 3930068938865556472}
 --- !u!114 &3287580726232667182
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1666,7 +1666,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   number: 1
-  Password: {fileID: 0}
+  Password: {fileID: 3930068938865556472}
 --- !u!114 &2386477828948936253
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1803,7 +1803,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   number: 7
-  Password: {fileID: 0}
+  Password: {fileID: 3930068938865556472}
 --- !u!114 &5300637203246559752
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2313,7 +2313,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   number: 6
-  Password: {fileID: 0}
+  Password: {fileID: 3930068938865556472}
 --- !u!114 &7980694469412190445
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2450,7 +2450,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   number: 4
-  Password: {fileID: 0}
+  Password: {fileID: 3930068938865556472}
 --- !u!114 &7693594985628491164
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2763,6 +2763,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   correctPassword: 1234
   passwordText: {fileID: 6483217596616516432}
+  item: 0
 --- !u!1 &8505441454107810059
 GameObject:
   m_ObjectHideFlags: 0
@@ -2855,7 +2856,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   number: 1
-  Password: {fileID: 0}
+  Password: {fileID: 3930068938865556472}
 --- !u!114 &252992056749786348
 MonoBehaviour:
   m_ObjectHideFlags: 0

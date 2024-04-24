@@ -35,7 +35,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Canvas bgCanvas;
     private Image bgImage;
 
-    [SerializeField] private Text _Datetext;
+    [SerializeField] private TextMeshProUGUI _Datetext;
     
 
     public GameObject endingCredits;
