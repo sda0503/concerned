@@ -354,6 +354,7 @@ public class DataManager : SingletonBase<DataManager> //유니티 기능을 상�
         yield return loadingwait;
         var data = Resources.LoadAsync<TextAsset>("ItemInfo");
         yield return data;
+        
         if (data == null)
         {
             Debug.Log("파일이 없습니다. : DataManager 298");
