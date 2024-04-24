@@ -2,199 +2,227 @@
   "PlaceDB": [
     {
       "Place_ID": "100",
-      "Place_Name": "아파트 단지 (수정했어요)",
+      "Place_Name": "아파트 단지",
       "Place_BG_Path": "map100",
       "Place_OBJ_Path": "map100",
-      "Map_Type": "0"
+      "Map_Type": "0",
+      "Music_Name": "Decision"
     },
     {
       "Place_ID": "110",
       "Place_Name": "양현서 집 거실",
       "Place_BG_Path": "map110",
       "Place_OBJ_Path": "map110",
-      "Map_Type": "0"
+      "Map_Type": "0",
+      "Music_Name": "Decision"
     },
     {
       "Place_ID": "111",
       "Place_Name": "양현서 집 부엌",
       "Place_BG_Path": "map111",
       "Place_OBJ_Path": "map111",
-      "Map_Type": "0"
+      "Map_Type": "0",
+      "Music_Name": "Decision"
     },
     {
       "Place_ID": "112",
       "Place_Name": "양현서 집 침실",
       "Place_BG_Path": "map112",
       "Place_OBJ_Path": "map112",
-      "Map_Type": "0"
+      "Map_Type": "0",
+      "Music_Name": "Decision"
     },
     {
       "Place_ID": "113",
       "Place_Name": "양현서 집 서재",
       "Place_BG_Path": "map113",
       "Place_OBJ_Path": "map113",
-      "Map_Type": "0"
+      "Map_Type": "0",
+      "Music_Name": "Decision"
     },
     {
       "Place_ID": "120",
       "Place_Name": "아파트 다목적실",
       "Place_BG_Path": "map120",
       "Place_OBJ_Path": "map120",
-      "Map_Type": "0"
+      "Map_Type": "0",
+      "Music_Name": "Decision"
     },
     {
       "Place_ID": "130",
       "Place_Name": "아파트 경비 사무소",
       "Place_BG_Path": "map130",
       "Place_OBJ_Path": "map130",
-      "Map_Type": "1"
+      "Map_Type": "1",
+      "Music_Name": "Decision"
     },
     {
       "Place_ID": "200",
       "Place_Name": "사무실",
       "Place_BG_Path": "map200",
       "Place_OBJ_Path": "map200",
-      "Map_Type": "1"
+      "Map_Type": "1",
+      "Music_Name": "Evasion"
     },
     {
       "Place_ID": "210",
       "Place_Name": "비서실",
       "Place_BG_Path": "map210",
       "Place_OBJ_Path": "map210",
-      "Map_Type": "0"
+      "Map_Type": "0",
+      "Music_Name": "Evasion"
     },
     {
       "Place_ID": "211",
       "Place_Name": "대표이사실(양현서 방)",
       "Place_BG_Path": "map211",
       "Place_OBJ_Path": "map211",
-      "Map_Type": "0"
+      "Map_Type": "0",
+      "Music_Name": "Evasion"
     },
     {
       "Place_ID": "220",
       "Place_Name": "회의실",
       "Place_BG_Path": "map220",
       "Place_OBJ_Path": "map220",
-      "Map_Type": "1"
+      "Map_Type": "1",
+      "Music_Name": "Evasion"
     },
     {
       "Place_ID": "230",
       "Place_Name": "김이사방",
       "Place_BG_Path": "map230",
       "Place_OBJ_Path": "map230",
-      "Map_Type": "0"
+      "Map_Type": "0",
+      "Music_Name": "Evasion"
     },
     {
       "Place_ID": "300",
       "Place_Name": "인적 드문 숲",
       "Place_BG_Path": "map300",
       "Place_OBJ_Path": "map300",
-      "Map_Type": "0"
+      "Map_Type": "0",
+      "Music_Name": "dark fallout"
     },
     {
       "Place_ID": "310",
       "Place_Name": "차량",
       "Place_BG_Path": "map310",
       "Place_OBJ_Path": "map310",
-      "Map_Type": "0"
+      "Map_Type": "0",
+      "Music_Name": "dark fallout"
     },
     {
       "Place_ID": "400",
       "Place_Name": "흥신소 사무실",
       "Place_BG_Path": "map400",
       "Place_OBJ_Path": "map400",
-      "Map_Type": "1"
+      "Map_Type": "1",
+      "Music_Name": "by-product"
     },
     {
       "Place_ID": "500",
       "Place_Name": "변호사 사무실",
       "Place_BG_Path": "map500",
       "Place_OBJ_Path": "map500",
-      "Map_Type": "0"
+      "Map_Type": "0",
+      "Music_Name": "mediathreat"
     },
     {
       "Place_ID": "600",
       "Place_Name": "병원 전경",
       "Place_BG_Path": "map600",
       "Place_OBJ_Path": "map600",
-      "Map_Type": "0"
+      "Map_Type": "0",
+      "Music_Name": "lose2"
     },
     {
       "Place_ID": "610",
       "Place_Name": "장례식장",
       "Place_BG_Path": "map610",
       "Place_OBJ_Path": "map610",
-      "Map_Type": "1"
+      "Map_Type": "1",
+      "Music_Name": "lose2"
     },
     {
       "Place_ID": "700",
       "Place_Name": "경찰서 전경",
       "Place_BG_Path": "map700",
       "Place_OBJ_Path": "map700",
-      "Map_Type": "0"
+      "Map_Type": "0",
+      "Music_Name": "coherence"
     },
     {
       "Place_ID": "710",
       "Place_Name": "경찰서 복도",
       "Place_BG_Path": "map710",
       "Place_OBJ_Path": "map710",
-      "Map_Type": "1"
+      "Map_Type": "1",
+      "Music_Name": "coherence"
     },
     {
       "Place_ID": "711",
       "Place_Name": "내 자리",
-      "Place_BG_Path": "map711",
-      "Place_OBJ_Path": "map711",
-      "Map_Type": "0"
+      "Place_BG_Path": "map710",
+      "Place_OBJ_Path": "map710",
+      "Map_Type": "0",
+      "Music_Name": "coherence"
     },
     {
       "Place_ID": "712",
       "Place_Name": "전자기록 열람실",
       "Place_BG_Path": "map712",
       "Place_OBJ_Path": "map712",
-      "Map_Type": "0"
+      "Map_Type": "0",
+      "Music_Name": "coherence"
     },
     {
       "Place_ID": "714",
       "Place_Name": "취조실",
       "Place_BG_Path": "map714",
       "Place_OBJ_Path": "map714",
-      "Map_Type": "1"
+      "Map_Type": "1",
+      "Music_Name": "coherence"
     },
     {
       "Place_ID": "800",
       "Place_Name": "신현우 집 앞",
       "Place_BG_Path": "map800",
       "Place_OBJ_Path": "map800",
-      "Map_Type": "0"
+      "Map_Type": "0",
+      "Music_Name": "ambientmain_0"
     },
     {
       "Place_ID": "810",
       "Place_Name": "신현우 집 안",
       "Place_BG_Path": "map810",
       "Place_OBJ_Path": "map810",
-      "Map_Type": "0"
+      "Map_Type": "0",
+      "Music_Name": "ambientmain_0"
     },
     {
       "Place_ID": "900",
       "Place_Name": "택배회사 전경",
       "Place_BG_Path": "map900",
       "Place_OBJ_Path": "map900",
-      "Map_Type": "0"
+      "Map_Type": "0",
+      "Music_Name": "inevitable"
     },
     {
       "Place_ID": "910",
       "Place_Name": "택배회사 내부",
       "Place_BG_Path": "map910",
       "Place_OBJ_Path": "map910",
-      "Map_Type": "1"
+      "Map_Type": "1",
+      "Music_Name": "inevitable"
     },
     {
       "Place_ID": "920",
       "Place_Name": "택배 차량",
       "Place_BG_Path": "map920",
       "Place_OBJ_Path": "map920",
-      "Map_Type": "0"
+      "Map_Type": "0",
+      "Music_Name": "inevitable"
     }
   ]
 }
