@@ -29,8 +29,8 @@ public class Tuto : MonoBehaviour
            
             transform.GetChild(0).gameObject.SetActive(true);
             transform.GetChild(0).GetChild(0).gameObject.SetActive(true);
-            transform.GetChild(0).GetChild(2).gameObject.SetActive(true);
-            transform.GetChild(0).GetChild(3).gameObject.SetActive(true);
+            //transform.GetChild(0).GetChild(2).gameObject.SetActive(true);
+            //transform.GetChild(0).GetChild(3).gameObject.SetActive(true);
             showImageBool = true;
         }
     }

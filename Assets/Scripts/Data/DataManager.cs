@@ -305,6 +305,7 @@ public class DataManager : SingletonBase<DataManager> //유니티 기능을 상�
             {
                 triggerItemsData.Add(defaultItemDataList.Data[i].item_id, new Item(i));
             }
+            
         }
         Debug.Log(itemsData.Count);
     }
