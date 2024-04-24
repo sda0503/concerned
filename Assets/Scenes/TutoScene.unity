@@ -6221,6 +6221,7 @@ MonoBehaviour:
   canvasparents: {fileID: 1396980237}
   bgCanvas: {fileID: 1828603856}
   _Datetext: {fileID: 658067893}
+  endingCredits: {fileID: 0}
   itemCanvas: {fileID: 0}
 --- !u!1 &1396980237
 GameObject:
@@ -7371,7 +7372,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1644361719
 MonoBehaviour:
   m_ObjectHideFlags: 0

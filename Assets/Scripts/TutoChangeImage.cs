@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class TutoChangeImage : MonoBehaviour
 {
@@ -22,6 +23,7 @@ public class TutoChangeImage : MonoBehaviour
         }
         else if (imageCnt == 7)
         {
+            SceneManager.LoadScene("TestScene 1");
             gameObject.transform.parent.gameObject.SetActive(false);
         }
         else
