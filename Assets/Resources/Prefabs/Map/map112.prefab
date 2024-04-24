@@ -92,7 +92,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 7406871698530085808, guid: 39462d418441459468c81af7c7918007, type: 3}
-  ItemId: 12
+  ItemId: 21
   ItemType: 0
 --- !u!114 &3523758827175380793
 MonoBehaviour:
@@ -213,7 +213,7 @@ RectTransform:
   m_GameObject: {fileID: 3279823478202591594}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: -1.9, y: 1.9, z: 1}
+  m_LocalScale: {x: 1.9, y: 1.9, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8368409766603928311}
@@ -221,7 +221,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 384, y: -152}
+  m_AnchoredPosition: {x: -214, y: -149.5}
   m_SizeDelta: {x: 119, y: 399}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8923373394315978206
@@ -545,7 +545,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 7406871698530085808, guid: 39462d418441459468c81af7c7918007, type: 3}
-  ItemId: 13
+  ItemId: 22
   ItemType: 0
 --- !u!114 &7717696181679542173
 MonoBehaviour:

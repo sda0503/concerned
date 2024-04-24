@@ -2225,7 +2225,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   correctPassword: 8241
   passwordText: {fileID: 1468076672942723750}
-  item: 7
+  item: 40
 --- !u!1 &2824915605098967830
 GameObject:
   m_ObjectHideFlags: 0
@@ -2681,8 +2681,8 @@ GameObject:
   - component: {fileID: 7729034798204302007}
   - component: {fileID: 5789744072270130551}
   - component: {fileID: 5193089205795183474}
-  - component: {fileID: 1312140214941409136}
   - component: {fileID: 4707617376627875390}
+  - component: {fileID: 4279627169443563037}
   m_Layer: 5
   m_Name: Image (6)
   m_TagString: Untagged
@@ -2792,21 +2792,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &1312140214941409136
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3626694395159019788}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5000baca87665054ea419f4c0ff20938, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animator: {fileID: 7406871698530085808, guid: 39462d418441459468c81af7c7918007, type: 3}
-  ItemId: 4
-  ItemType: 0
 --- !u!114 &4707617376627875390
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2852,6 +2837,20 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+--- !u!114 &4279627169443563037
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3626694395159019788}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fa8c9efc2c0d7542a0f25c176e2b945, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TargetName: null
+  check: 000000
 --- !u!1 &4285767538157744009
 GameObject:
   m_ObjectHideFlags: 0
@@ -3637,7 +3636,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 7406871698530085808, guid: 39462d418441459468c81af7c7918007, type: 3}
-  ItemId: 2
+  ItemId: 31
   ItemType: 0
 --- !u!114 &5760465950551995284
 MonoBehaviour:
@@ -3820,7 +3819,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 7406871698530085808, guid: 39462d418441459468c81af7c7918007, type: 3}
-  ItemId: 1
+  ItemId: 30
   ItemType: 0
 --- !u!114 &3290501520608085930
 MonoBehaviour:
@@ -4003,7 +4002,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 7406871698530085808, guid: 39462d418441459468c81af7c7918007, type: 3}
-  ItemId: 3
+  ItemId: 40
   ItemType: 0
 --- !u!114 &6956356629410989253
 MonoBehaviour:
@@ -4069,7 +4068,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &4314246740949064553
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4434,7 +4433,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 7406871698530085808, guid: 39462d418441459468c81af7c7918007, type: 3}
-  ItemId: 9
+  ItemId: 10
   ItemType: 0
 --- !u!114 &7266846476254710101
 MonoBehaviour:
@@ -4811,7 +4810,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 7406871698530085808, guid: 39462d418441459468c81af7c7918007, type: 3}
-  ItemId: 10
+  ItemId: 20
   ItemType: 0
 --- !u!114 &7725110967119156901
 MonoBehaviour:
@@ -5914,7 +5913,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 7406871698530085808, guid: 39462d418441459468c81af7c7918007, type: 3}
-  ItemId: 8
+  ItemId: 1
   ItemType: 0
 --- !u!114 &7983051616075824016
 MonoBehaviour:

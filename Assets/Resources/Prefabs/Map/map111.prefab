@@ -92,7 +92,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 7406871698530085808, guid: 39462d418441459468c81af7c7918007, type: 3}
-  ItemId: 11
+  ItemId: 3
   ItemType: 0
 --- !u!114 &5386913120755527769
 MonoBehaviour:
