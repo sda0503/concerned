@@ -46,7 +46,7 @@ public class Ending : MonoBehaviour
             case 3:
                 if (DataManager.Instance.getItems.Count / DataManager.Instance.itemsData.Count > 0.8f && DataManager.Instance.getItems.ContainsKey(20000))
                 {
-                    DialogueManager.Instance.StartDialogue("RealEnding");
+                    DialogueManager.Instance.StartDialogue("TrueEnding");
                 }
                 else DialogueManager.Instance.StartDialogue("NomalEnding");
                 break;
