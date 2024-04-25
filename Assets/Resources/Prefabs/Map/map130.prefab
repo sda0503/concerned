@@ -136,7 +136,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fa8c9efc2c0d7542a0f25c176e2b945, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TargetName: 
+  TargetName: "\uACBD\uBE44\uC6D0"
   check: 000000
 --- !u!114 &5243634129382825940
 MonoBehaviour:
