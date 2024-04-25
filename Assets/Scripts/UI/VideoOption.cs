@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class VideoOption : MonoBehaviour
@@ -82,5 +83,10 @@ public class VideoOption : MonoBehaviour
     {
         float targetAspect = (float)resolution.width / resolution.height;
         mainCamera.aspect = targetAspect;
+    }
+
+    public void OutBtnClick()
+    {
+        SceneManager.LoadScene("StartScene");
     }
 }
