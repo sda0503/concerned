@@ -8,6 +8,7 @@ public class SoundManager : MonoBehaviour
     public GameObject soundOn;
     public GameObject soundOff;
     private bool muted = false;
+  
 
     // 음악 파일 리스트
     public List<AudioClip> musicList = new List<AudioClip>();
@@ -61,11 +62,18 @@ public class SoundManager : MonoBehaviour
 
     private void PlaySceneMusic()
     {
-        
+        if (currentMusic.clip == null)
+            return;
+        if (currentMusic.clip.name == (musicList[int.Parse(GameManager.Instance.Playerinformation.position.ToString()[0].ToString()) - 1].name))
+        {
+            return;
+        }
         currentMusic.Stop();
-        currentMusic.clip = musicList[int.Parse(GameManager.Instance.Playerinformation.position.ToString()[0].ToString())-1];
+        currentMusic.clip = musicList[int.Parse(GameManager.Instance.Playerinformation.position.ToString()[0].ToString()) - 1];
         currentMusic.Play();
+
     }
+
 
     void OnEnable()
     {
