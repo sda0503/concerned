@@ -70,6 +70,7 @@ public class GameManager : SingletonBase<GameManager>
     {
         Playerinformation.date++;
         OnDateChange?.Invoke(); //UIUpdate (날짜표시)
+        
         if (Playerinformation.date == 30)
         {
             //TODO : 선택하는 씬(엔딩)으로 넘어가야됨
@@ -86,10 +87,10 @@ public class GameManager : SingletonBase<GameManager>
         
         int daytime = (int)Playerinformation.daytime + 1;
         if (daytime == 2)
-            DateChange();
+        DateChange();
         Playerinformation.daytime = (DayTimeenum)(daytime % 2);
         //나머지연산자로 하면 if없이 순환시킬 수 있다.
-
+        CountReset();
         OnDayTimeChange?.Invoke(); //UIUpdate //시간대 (조명, 휴대폰이나 다른 UI)
     }
 
