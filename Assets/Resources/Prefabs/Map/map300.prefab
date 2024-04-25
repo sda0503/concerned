@@ -551,6 +551,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   charceterNum: 3
+  placeNum: 0
 --- !u!114 &362485942698385707
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -564,7 +565,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TargetName: "\uACBD\uCC30"
-  check: 000000
+  check: 010100
 --- !u!114 &4146278929833995500
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -945,6 +946,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   charceterNum: 8
+  placeNum: 0
 --- !u!114 &4273628369407026654
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -958,7 +960,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TargetName: "\uC2E0\uD604\uC6B0"
-  check: 000000
+  check: 010100
 --- !u!114 &2801008511045896778
 MonoBehaviour:
   m_ObjectHideFlags: 0

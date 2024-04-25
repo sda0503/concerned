@@ -440,6 +440,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   charceterNum: 5
+  placeNum: 0
 --- !u!114 &7794714654638494851
 MonoBehaviour:
   m_ObjectHideFlags: 0

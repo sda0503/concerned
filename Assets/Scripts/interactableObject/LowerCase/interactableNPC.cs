@@ -15,7 +15,7 @@ public class interactableNPC : interactableObject
     {
         base.Start();
         btn.onClick.AddListener(()=>DialogueManager.Instance.StartDialogue(TargetName));
-        GameManager.Instance.OnDayTimeChange += onoff;
+        //GameManager.Instance.OnDayTimeChange += onoff;
     }
 
     void onoff()

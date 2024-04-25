@@ -916,6 +916,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   charceterNum: 1
+  placeNum: 0
 --- !u!114 &5219298155455061711
 MonoBehaviour:
   m_ObjectHideFlags: 0
