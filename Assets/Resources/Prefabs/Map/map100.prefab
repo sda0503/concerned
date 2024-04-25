@@ -19,7 +19,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &6851977608663880943
 RectTransform:
   m_ObjectHideFlags: 0
@@ -355,7 +355,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ArrowName: "\uC591\uD604\uC11C \uC9D1 \uBD80\uC5CC"
-  posID: 111
+  posID: 130
 --- !u!114 &1146780302203922481
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -485,14 +485,14 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7580171542148124432}
-  m_LocalRotation: {x: 0.43400094, y: -0.77058667, z: -0.31934702, w: -0.34037742}
+  m_LocalRotation: {x: 0, y: -0, z: 0.9063079, w: -0.42261827}
   m_LocalPosition: {x: 0, y: 0, z: -143}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6851977608663880943}
   m_RootOrder: -1
-  m_LocalEulerAnglesHint: {x: -51.963, y: -203.672, z: -47.115}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 230}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 419, y: -381}
@@ -549,7 +549,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ArrowName: "\uC544\uD30C\uD2B8 \uB2E8\uC9C0"
-  posID: 100
+  posID: 120
 --- !u!114 &7346651681658454617
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -743,7 +743,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ArrowName: "\uC591\uD604\uC11C \uC9D1 \uC11C\uC7AC"
-  posID: 113
+  posID: 110
 --- !u!114 &484650769974388605
 MonoBehaviour:
   m_ObjectHideFlags: 0

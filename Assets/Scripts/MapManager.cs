@@ -34,10 +34,10 @@ public class MapManager : MonoBehaviour
         _mapDate.Add((new Vector2(396, 1080 + -539), "경찰서",700));
         _mapDate.Add((new Vector2(1684, 1080 + -363), "인적 드문 숲",300));
         _mapDate.Add((new Vector2(1245, 1080 + -446), "택배회사",900));
-        _mapDate.Add((new Vector2(594, 1080 + -756), "빗테크 오피스",210));
+        _mapDate.Add((new Vector2(594, 1080 + -756), "빗테크 오피스",200));
         _mapDate.Add((new Vector2(646, 1080 + -270), "빗테크 오피스텔",100));
         _mapDate.Add((new Vector2(692, 1080 + -885), "병원 & 장례식장",600));
-        _mapDate.Add((new Vector2(331, 1080 + -950), "양현서의 집",110));
+        _mapDate.Add((new Vector2(331, 1080 + -950), "양현서의 집",100));
         _mapDate.Add((new Vector2(505, 1080 + -322), "변호사 사무실",500));
         _mapDate.Add((new Vector2(1731, 1080 + -578), "신현우의 집",800));
         _mapDate.Add((new Vector2(548, 1080 + -171), "탐정사무소",400));
