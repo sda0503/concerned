@@ -2065,7 +2065,7 @@ PrefabInstance:
       objectReference: {fileID: 1015300805}
     - target: {fileID: 7298279826141403200, guid: 4e36e3c990ad42341ad7fa4f98c062d2, type: 3}
       propertyPath: TargetName
-      value: 
+      value: "\uD0DD\uBC30\uD68C\uC0AC \uC9C1\uC6D07"
       objectReference: {fileID: 0}
     - target: {fileID: 8459228222838171307, guid: 4e36e3c990ad42341ad7fa4f98c062d2, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
