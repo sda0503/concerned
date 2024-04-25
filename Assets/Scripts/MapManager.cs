@@ -34,10 +34,10 @@ public class MapManager : MonoBehaviour
         _mapDate.Add((new Vector2(396, 1080 + -539), "경찰서",700));
         _mapDate.Add((new Vector2(1684, 1080 + -363), "인적 드문 숲",300));
         _mapDate.Add((new Vector2(1245, 1080 + -446), "택배회사",900));
-        _mapDate.Add((new Vector2(594, 1080 + -756), "빗테크 오피스",210));
+        _mapDate.Add((new Vector2(594, 1080 + -756), "빗테크 오피스",200));
         _mapDate.Add((new Vector2(646, 1080 + -270), "빗테크 오피스텔",100));
         _mapDate.Add((new Vector2(692, 1080 + -885), "병원 & 장례식장",600));
-        _mapDate.Add((new Vector2(331, 1080 + -950), "양현서의 집",110));
+        _mapDate.Add((new Vector2(331, 1080 + -950), "양현서의 집",100));
         _mapDate.Add((new Vector2(505, 1080 + -322), "변호사 사무실",500));
         _mapDate.Add((new Vector2(1731, 1080 + -578), "신현우의 집",800));
         _mapDate.Add((new Vector2(548, 1080 + -171), "탐정사무소",400));
@@ -86,8 +86,8 @@ public class MapManager : MonoBehaviour
             if(_obj != null && _obj.tag != "Popup") 
             { 
                 _obj.transform.GetChild(0).gameObject.SetActive(true);
-                _obj.transform.GetChild(1).gameObject.SetActive(true);
-                _obj.transform.GetChild(2).gameObject.SetActive(true);
+                //_obj.transform.GetChild(1).gameObject.SetActive(true);
+                //_obj.transform.GetChild(2).gameObject.SetActive(true);
                 _isMouseOver = true;
             }
         }
@@ -99,23 +99,27 @@ public class MapManager : MonoBehaviour
         {
             if (GetClickedUIObject() != null) return;
             _obj.transform.GetChild(0).gameObject.SetActive(false);
-            _obj.transform.GetChild(1).gameObject.SetActive(true);
-            _obj.transform.GetChild(2).gameObject.SetActive(false);
+            //_obj.transform.GetChild(1).gameObject.SetActive(true);
+            //_obj.transform.GetChild(2).gameObject.SetActive(false);
             _isMouseOver = false;
         }
     }
 
     public void ClickMarker() //여기가 PopUp띄우는부분.
     {
-        var popupUI = transform.GetChild(12).gameObject;
-        popupUI.SetActive(true);
-        if (!popupUI.TryGetComponent(out PopupBtn popupBtn))
+        if (_obj.tag != "Popup")
         {
-            Debug.Log("에러 발생 : 컴포넌트가 없음.");
-            return;
+            var popupUI = transform.GetChild(12).gameObject;
+            popupUI.SetActive(true);
+            if (!popupUI.TryGetComponent(out PopupBtn popupBtn))
+            {
+                Debug.Log("에러 발생 : 컴포넌트가 없음.");
+                return;
+            }
+
+            popupBtn.posID = int.Parse(_obj.transform.GetChild(2).GetComponent<TextMeshProUGUI>().text);
+            string _popupText = _obj.transform.GetChild(1).gameObject.GetComponent<TextMeshProUGUI>().text;
+            popupUI.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = _popupText;
         }
-        popupBtn.posID = int.Parse(_obj.transform.GetChild(2).GetComponent<TextMeshProUGUI>().text);
-        string _popupText = _obj.transform.GetChild(1).gameObject.GetComponent<TextMeshProUGUI>().text;
-        popupUI.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = _popupText;
     }
 }

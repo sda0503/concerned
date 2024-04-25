@@ -194,22 +194,6 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-  - eventID: 4
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 0}
-          m_TargetAssemblyTypeName: CursorManage, Assembly-CSharp
-          m_MethodName: OnMouseExit
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
 --- !u!1 &3394671784188087709
 GameObject:
   m_ObjectHideFlags: 0
@@ -238,18 +222,18 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3394671784188087709}
-  m_LocalRotation: {x: -0.25543725, y: -0.5022438, z: 0.63312095, w: -0.5307174}
-  m_LocalPosition: {x: 0, y: 0, z: 18.9453}
+  m_LocalRotation: {x: -0.32292923, y: -0.41473854, z: 0.6936014, w: -0.4925706}
+  m_LocalPosition: {x: 0, y: 0, z: 40.0459}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 732358098285217960}
   m_RootOrder: -1
-  m_LocalEulerAnglesHint: {x: 65.107, y: 29.872, z: 279.272}
+  m_LocalEulerAnglesHint: {x: 63.311, y: -5.032, z: 247.659}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 508.77222, y: -269.8113}
-  m_SizeDelta: {x: 255.7632, y: 100}
+  m_AnchoredPosition: {x: 516.3148, y: -259.5773}
+  m_SizeDelta: {x: 206.494, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1357065375422351844
 CanvasRenderer:
@@ -389,22 +373,6 @@ MonoBehaviour:
             m_BoolArgument: 0
           m_CallState: 2
   - eventID: 1
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 0}
-          m_TargetAssemblyTypeName: CursorManage, Assembly-CSharp
-          m_MethodName: OnMouseExit
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-  - eventID: 4
     callback:
       m_PersistentCalls:
         m_Calls:

@@ -821,7 +821,7 @@ RectTransform:
   - {fileID: 6731401325729393427}
   - {fileID: 5330370847540851485}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -904,6 +904,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemSlotTransform: {fileID: 6731401325729393427}
+  itemImage: {fileID: 8669174158148845137}
   closeButton: {fileID: 1378933999012298822}
   nextPageButton: {fileID: 4910301759209428783}
   prePageButton: {fileID: 3910775865575145397}

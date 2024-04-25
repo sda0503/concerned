@@ -1,13 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class SafeBox : MonoBehaviour
 {
-    public string correctPassword = "1791"; 
+    public string correctPassword = ""; 
     private string inputPassword = "";
-    public Text passwordText;
+    public TextMeshProUGUI passwordText;
+
+    public int item;
 
 
     public void EnterDigit(int digit)
@@ -35,6 +38,7 @@ public class SafeBox : MonoBehaviour
         if (inputPassword == correctPassword)
         {
             passwordText.text = "<color=#4682B4>OPEN</color>";
+            DataManager.Instance.OnClickToFindItem(item);
         }
         else
         {

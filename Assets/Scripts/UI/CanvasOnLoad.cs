@@ -11,10 +11,11 @@ public class CanvasOnLoad : MonoBehaviour
     private interactableObject[] interactList;
     public List<bool> states; //TODO : 게임매니저에서 통으로 관리예정...일까 초기값이 없다.
 
-    private void OnEnable()
+    private void Start()
     {
         if (states == null)
         {
+            Debug.Log("States Set");
             interactList = gameObject.GetComponentsInChildren<interactableObject>();
             states = new List<bool>(interactList.Length);
             for (int i=0;i<states.Capacity;i++)

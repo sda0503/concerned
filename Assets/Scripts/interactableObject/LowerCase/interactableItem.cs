@@ -37,11 +37,11 @@ public class interactableItem : interactableObject
 
     private void SettingItem()
     {
-        if (DataManager.Instance.getItems.ContainsKey(ItemId)) ItemType = ItemType.Normal;
+        if (DataManager.Instance.itemsData.ContainsKey(ItemId)) ItemType = ItemType.Normal;
         else if (DataManager.Instance.triggerItemsData.ContainsKey(ItemId)) ItemType = ItemType.Trigger;
         if (ItemType == ItemType.Normal)
         {
-            //ItemManager.Instance.OnClickToFindItem(item_id);
+            //DataManager.Instance.OnClickToFindItem(ItemId);
             btn.onClick.AddListener(OnClickItem);
         }
         else if (ItemType == ItemType.Trigger)
@@ -55,8 +55,8 @@ public class interactableItem : interactableObject
     {
         switch (id)
         {
-            case 51:
-                DataManager.Instance.OnClickToFindItem(1);
+            case 1:
+                DataManager.Instance.OnClickToFindItem(24);
                 break;
         }
     }

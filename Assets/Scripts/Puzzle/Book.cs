@@ -5,12 +5,12 @@ using UnityEngine.UI;
 
 public class Book : MonoBehaviour
 {
-    Button book;
+    public Sprite[] images = new Sprite[4];
 
     private void Start()
     {
-        book = GetComponent<Button>();
-        book.onClick.AddListener(OnClickBook);
+        gameObject.GetComponent<Image>().sprite = images[Random.Range(0,4)];
+        gameObject.GetComponent<Button>().onClick.AddListener(OnClickBook);
     }
 
     private void OnClickBook()

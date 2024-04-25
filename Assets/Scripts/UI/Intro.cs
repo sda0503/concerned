@@ -16,15 +16,16 @@ public class VideoController : MonoBehaviour
         videoPlayer.renderMode = VideoRenderMode.RenderTexture;
         videoPlayer.targetTexture = new RenderTexture(Screen.width, Screen.height, 24);
         videoScreen.texture = videoPlayer.targetTexture;
+        DataManager.Instance.init();
         PlayVideo();
         videoPlayer.loopPointReached += OnVideoEnd;
     }
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && DataManager.Instance.canSkip)
         {
-            SceneManager.LoadScene("LoadingScene"); //TODO : 공통된 LoadingScene 넘어가는걸로 바꾸기.
+            SceneManager.LoadScene("StartScene"); //TODO : 공통된 LoadingScene 넘어가는걸로 바꾸기.
         }
     }
 
@@ -36,7 +37,7 @@ public class VideoController : MonoBehaviour
 
     void OnVideoEnd(VideoPlayer vp)
     {
-        SceneManager.LoadScene("LoadingScene");
+        SceneManager.LoadScene("StartScene");
     }
 
     void LoadNextScene()
@@ -44,7 +45,7 @@ public class VideoController : MonoBehaviour
         int nextSceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
         if (nextSceneIndex < SceneManager.sceneCountInBuildSettings)
         {
-            SceneManager.LoadScene("LoadingScene");
+            SceneManager.LoadScene("StartScene");
         }
     }
 }
