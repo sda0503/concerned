@@ -3621,7 +3621,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &4373260902048534233
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3729,6 +3729,7 @@ MonoBehaviour:
   callButton: {fileID: 4613175177409696114}
   messageButton: {fileID: 9024784052559676839}
   calendarButton: {fileID: 5650910677238751173}
+  timeText: {fileID: 1397833183585099998}
   CallObject: {fileID: 8063311925044685439}
   MessageObject: {fileID: 6821264634420481303}
   CalendarObject: {fileID: 4903650085501188463}

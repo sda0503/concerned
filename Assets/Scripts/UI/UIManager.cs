@@ -127,7 +127,7 @@ public class UIManager : MonoBehaviour
     void DateUpdate(string pos) //TODO : UI변경에 관한 부분은 모두 UIManager로 넘길 것
     {
         StringBuilder sb = new StringBuilder();
-        sb.Append(playerinformation.date.ToString());
+        sb.Append(GameManager.Instance.Playerinformation.date.ToString());
         sb.Append($"일차 {GetDayTime()}");
         sb.Append($"\n {pos}");
         _Datetext.text = sb.ToString(); //TODO : GameManager에서 옮겨오기.
@@ -136,7 +136,7 @@ public class UIManager : MonoBehaviour
 
     private string GetDayTime() //정서에 맞게 변환
     {
-        switch (playerinformation.daytime)
+        switch (GameManager.Instance.Playerinformation.daytime)
         {
             case DayTimeenum.Evening:
                 return "오전";
