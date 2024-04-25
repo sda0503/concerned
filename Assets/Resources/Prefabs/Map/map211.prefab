@@ -191,7 +191,6 @@ GameObject:
   - component: {fileID: 5901056677695651808}
   - component: {fileID: 7970345785940820260}
   - component: {fileID: 4450856178281902388}
-  - component: {fileID: 7399044225364086312}
   - component: {fileID: 1003154208114710833}
   m_Layer: 5
   m_Name: Image (7)
@@ -302,21 +301,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &7399044225364086312
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3000090536358526056}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5000baca87665054ea419f4c0ff20938, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animator: {fileID: 7406871698530085808, guid: 39462d418441459468c81af7c7918007, type: 3}
-  ItemId: 43
-  ItemType: 0
 --- !u!114 &1003154208114710833
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -757,7 +741,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &5066956606940652223
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1036,7 +1020,6 @@ GameObject:
   - component: {fileID: 3874616560883741092}
   - component: {fileID: 8351770798053337705}
   - component: {fileID: 8750527616932756741}
-  - component: {fileID: 451929179575358476}
   - component: {fileID: 2153173050232024072}
   m_Layer: 5
   m_Name: Image (6)
@@ -1147,21 +1130,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &451929179575358476
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7021720998105760397}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5000baca87665054ea419f4c0ff20938, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animator: {fileID: 7406871698530085808, guid: 39462d418441459468c81af7c7918007, type: 3}
-  ItemId: 5
-  ItemType: 0
 --- !u!114 &2153173050232024072
 MonoBehaviour:
   m_ObjectHideFlags: 0
