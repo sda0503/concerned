@@ -81,13 +81,11 @@ public class DataManager : SingletonBase<DataManager> //유니티 기능을 상�
         public int meetingCount;
     }
 
-#if UNITY_EDITOR
     string path;
 
     [SerializeField] public Transform asdf;
 
 
-#endif
 
     private StringBuilder sb = new StringBuilder();
 
