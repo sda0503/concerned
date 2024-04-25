@@ -1535,8 +1535,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f25c25317a8d0b84eb2648a43ac68b3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< Updated upstream
   soundOn: {fileID: 5074143027941866326}
   soundOff: {fileID: 5080049438252705005}
+=======
+  soundOn: {fileID: 215761367}
+  soundOff: {fileID: 1922531774}
+  musicList:
+  - scenePrefabName: map100
+    musicClip: {fileID: 8300000, guid: 507d251a78559b145b489fbffb512755, type: 3}
+  - scenePrefabName: map110
+    musicClip: {fileID: 8300000, guid: 507d251a78559b145b489fbffb512755, type: 3}
+  - scenePrefabName: map111
+    musicClip: {fileID: 8300000, guid: 507d251a78559b145b489fbffb512755, type: 3}
+  - scenePrefabName: map112
+    musicClip: {fileID: 8300000, guid: 507d251a78559b145b489fbffb512755, type: 3}
+  - scenePrefabName: map113
+    musicClip: {fileID: 8300000, guid: 507d251a78559b145b489fbffb512755, type: 3}
+  - scenePrefabName: map120
+    musicClip: {fileID: 8300000, guid: 507d251a78559b145b489fbffb512755, type: 3}
+  - scenePrefabName: map130
+    musicClip: {fileID: 8300000, guid: 507d251a78559b145b489fbffb512755, type: 3}
+  - scenePrefabName: map200
+    musicClip: {fileID: 8300000, guid: ec705887f46edc44881116f489589a71, type: 3}
+  - scenePrefabName: 
+    musicClip: {fileID: 8300000, guid: 3aa8fc2505df0b347bcb5d70ab8af392, type: 3}
+  - scenePrefabName: 
+    musicClip: {fileID: 8300000, guid: 3aa8fc2505df0b347bcb5d70ab8af392, type: 3}
+>>>>>>> Stashed changes
 --- !u!82 &300289821
 AudioSource:
   m_ObjectHideFlags: 0
@@ -7744,9 +7770,15 @@ MonoBehaviour:
   - {fileID: 463830815}
   canvasparents: {fileID: 1396980237}
   bgCanvas: {fileID: 1828603856}
+<<<<<<< Updated upstream
   _Datetext: {fileID: 1537017492}
   endingCredits: {fileID: 8910244464676715490}
   itemCanvas: {fileID: 961456749}
+=======
+  _Datetext: {fileID: 658067893}
+  endingCredits: {fileID: 0}
+  itemCanvas: {fileID: 0}
+>>>>>>> Stashed changes
 --- !u!1 &1396980237
 GameObject:
   m_ObjectHideFlags: 0
