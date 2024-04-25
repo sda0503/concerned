@@ -277,7 +277,6 @@ namespace DataStorage
         public string default_description;
         public LocationEvent locationEvent;
         public ItemType itemType;
-        public string event_description;
     }
 
     public class ItemDataList

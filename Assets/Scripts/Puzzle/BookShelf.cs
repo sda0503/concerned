@@ -56,7 +56,7 @@ public class BookShelf : MonoBehaviour
         if (click_button[4]) 
         { 
             Debug.Log("clear");
-            DataManager.Instance.GetItem(clear);
+            DataManager.Instance.OnClickToFindItem(clear);
             gameObject.SetActive(false);
             UIManager.Instance.GUIOn();
         }

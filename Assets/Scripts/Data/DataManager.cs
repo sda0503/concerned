@@ -299,12 +299,15 @@ public class DataManager : SingletonBase<DataManager> //유니티 기능을 상�
         {
             if (defaultItemDataList.Data[i].itemType == ItemType.Normal)
             {
-                itemsData.Add(defaultItemDataList.Data[i].item_id, new Item(i));
+                if(!itemsData.ContainsKey(defaultItemDataList.Data[i].item_id))
+                    itemsData.Add(defaultItemDataList.Data[i].item_id, new Item(i));
             }
             else if (defaultItemDataList.Data[i].itemType == ItemType.Trigger)
             {
-                triggerItemsData.Add(defaultItemDataList.Data[i].item_id, new Item(i));
+                if(!triggerItemsData.ContainsKey(defaultItemDataList.Data[i].item_id))
+                    triggerItemsData.Add(defaultItemDataList.Data[i].item_id, new Item(i));
             }
+            
         }
         Debug.Log(itemsData.Count);
     }
@@ -333,7 +336,7 @@ public class DataManager : SingletonBase<DataManager> //유니티 기능을 상�
         }
         //이렇게 변경해서 만들어줘야될듯.
 
-        DogamItemInDic();
+        DogamItemInDic(); 
     }
     
     private void DogamItemInDic()
@@ -354,6 +357,7 @@ public class DataManager : SingletonBase<DataManager> //유니티 기능을 상�
         yield return loadingwait;
         var data = Resources.LoadAsync<TextAsset>("ItemInfo");
         yield return data;
+        
         if (data == null)
         {
             Debug.Log("파일이 없습니다. : DataManager 298");
@@ -364,6 +368,8 @@ public class DataManager : SingletonBase<DataManager> //유니티 기능을 상�
         string loaditemdata = loadfile.text;
         
         defaultItemDataList = JsonConvert.DeserializeObject<ItemDataList>(loaditemdata);
+
+        SetItemData();
     }
 
     public GameObject GameObjectLoad(string str) //TODO : 어찌 처리할꼬
@@ -542,7 +548,15 @@ public class DataManager : SingletonBase<DataManager> //유니티 기능을 상�
         if (itemsData.ContainsKey(index) && !getItems.ContainsKey(index))
         {
             var obj = GameObjectLoad("Prefabs/Item");
-            //obj.transform.GetComponent<Image>().sprite = SpriteLoad("image");
+            if(index < 10)
+            {
+                obj.transform.GetComponent<Image>().sprite = SpriteLoad("Evidence/" + index.ToString());
+            }
+            else
+            {
+                obj.transform.GetComponent<Image>().sprite = SpriteLoad("Evidence/" + ((index / 10) * 10).ToString());
+            }
+            obj.transform.GetComponent<interactableItem>().ItemId = index;
             Instantiate(obj, UIManager.Instance.itemCanvas);
 
             GetItem(index);
@@ -553,8 +567,7 @@ public class DataManager : SingletonBase<DataManager> //유니티 기능을 상�
         {
             var obj = GameObjectLoad("Prefabs/Item");
 
-            //Sprite sprite = SpriteLoad("Look");
-            //obj.transform.GetComponent<Image>().sprite = sprite;
+            obj.transform.GetComponent<Image>().sprite = SpriteLoad("Evidence/" + index.ToString());
             obj.transform.GetComponent<interactableItem>().ItemId = index;
             obj = Instantiate(obj, UIManager.Instance.itemCanvas);
             GetTriggerItem(index, obj);
