@@ -1,3 +1,4 @@
+using DataStorage;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -6,6 +7,7 @@ using System.Reflection;
 using System.Xml.Serialization;
 using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 using static UnityEditor.Progress;
 
@@ -55,6 +57,9 @@ public class DogamUI : PopupUIBase
             }
             else itemSlots[i].SetActive(false);
         }
+        itemImage.sprite = DataManager.Instance.SpriteLoad("Evidence/100");
+        nameText.text = "???";
+        descriptionText.text = "???";
     }
 
     private void MakeDogamItemSlot()
@@ -62,16 +67,13 @@ public class DogamUI : PopupUIBase
         for (int i = 0; i < itemSlots.Length; i++)
         {
             itemSlots[i] = Instantiate(DataManager.Instance.GameObjectLoad("Prefabs/DogamItemSlot"), itemSlotTransform);
-            int n = i;
+            //int n = i;
             itemSlots[i].GetComponent<Button>().onClick.RemoveAllListeners();
-            itemSlots[i].GetComponent<Button>().onClick.AddListener(() => DogamSlotButton(n));
+            //itemSlots[i].GetComponent<Button>().onClick.AddListener(() => DogamSlotButton(n));
             itemSlots[i].GetComponent<Button>().enabled = false;
-
-            if (DataManager.Instance.dogamItemData.ContainsKey(i))
-            {
-                OnDogamItem(i);
-            }
         }
+
+        OnDogamItem();
     }
 
     public void DogamSlotButton(int index)
@@ -88,19 +90,31 @@ public class DogamUI : PopupUIBase
         descriptionText.text = DataManager.Instance.dogamItemData[index].default_description;
     }
 
-    private void OnDogamItem(int key)
+    private void OnDogamItem()
     {
-        //이미지 변경되는 부분이 필요함.
-        if (key < 10)
+        int i = 0;
+        foreach (ItemData item in DataManager.Instance.GetDefaultItemDataList().Data)
         {
-            itemSlots[key].transform.GetChild(1).GetComponent<Image>().sprite = DataManager.Instance.SpriteLoad("Guide Book/" + key.ToString());
+            if (item.item_id >= 10000) break;
+            if(item.itemType == ItemType.Normal)
+            {
+                if (DataManager.Instance.dogamItemData.ContainsKey(item.item_id))
+                {
+                    if (item.item_id < 10)
+                    {
+                        itemSlots[i].transform.GetChild(1).GetComponent<Image>().sprite = DataManager.Instance.SpriteLoad("Guide Book/" + item.item_id.ToString());
+                    }
+                    else
+                    {
+                        itemSlots[i].transform.GetChild(1).GetComponent<Image>().sprite = DataManager.Instance.SpriteLoad("Guide Book/" + ((item.item_id / 10) * 10).ToString());
+                    }
+                    itemSlots[i].transform.GetChild(1).gameObject.SetActive(true);
+                    itemSlots[i].GetComponent<Button>().onClick.AddListener(() => DogamSlotButton(item.item_id));
+                    itemSlots[i].GetComponent<Button>().enabled = true;
+                }
+                i++;
+            }
         }
-        else
-        {
-            itemSlots[key].transform.GetChild(1).GetComponent<Image>().sprite = DataManager.Instance.SpriteLoad("Guide Book/" + ((key / 10) * 10).ToString());
-        }
-        itemSlots[key].transform.GetChild(1).gameObject.SetActive(true);
-        itemSlots[key].GetComponent<Button>().enabled = true;
     }
 
     private void OnNextPageButton()
