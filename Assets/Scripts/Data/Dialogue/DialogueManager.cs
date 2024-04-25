@@ -219,7 +219,7 @@ public class DialogueManager : MonoBehaviour
             }
 
             _chatWindow.SetActive(false);
-            _chatWindow.transform.parent.gameObject.SetActive(false);
+            //_chatWindow.transform.parent.gameObject.SetActive(false);
             questcount = 0;
             _characterImage.sprite = null;
             _characterImage.gameObject.SetActive(false);

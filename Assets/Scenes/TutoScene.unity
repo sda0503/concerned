@@ -2316,7 +2316,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 0
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 1
   m_TargetDisplay: 0
 --- !u!1 &430123602
 GameObject:
@@ -4246,7 +4246,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7758875282955400094, guid: bcbd7fec274d6944ea4afa48c87060da, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8249592049033139470, guid: bcbd7fec274d6944ea4afa48c87060da, type: 3}
       propertyPath: m_Pivot.x
