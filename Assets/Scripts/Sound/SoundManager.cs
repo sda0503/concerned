@@ -8,7 +8,23 @@ public class SoundManager : SingletonBase<SoundManager>
     public GameObject soundOn;
     public GameObject soundOff;
     private bool muted = false;
-    //TODO : public List<AudioSource> musicList = new List<AudioSource>(); //사용할 배경음악 파일 먹여서 필요에 따라 실행시키기.
+
+    // 음악 파일 리스트
+    public List<AudioClip> musicList = new List<AudioClip>();
+
+    // 현재 재생 중인 노래
+    private AudioSource currentMusic;
+
+    // JSON 데이터를 담을 구조체
+    [System.Serializable]
+    public struct PlaceData
+    {
+        public string Place_ID;
+        public string Music_Name;
+    }
+
+    // JSON 데이터를 파싱하여 저장할 리스트
+    public List<PlaceData> placeDataList = new List<PlaceData>();
 
     public override void init()
     {
@@ -45,45 +61,45 @@ public class SoundManager : SingletonBase<SoundManager>
 
     private void PlaySceneMusic(string sceneName)
     {
-        // JSON 파일 읽기 (예: Resources 폴더에 위치한 Place_DB.json 파일)
-        string jsonText = Resources.Load<TextAsset>("Place_DB").text;
-        LocationData locationData = JsonUtility.FromJson<LocationData>(jsonText);
-
-        // Scene 이름에 해당하는 장소 찾기
-        LocationInfo location = locationData.locations.Find(x => x.Place_Name == sceneName);
-        if (location != null)
+        // sceneName에 해당하는 Place_ID를 찾아서 해당하는 Music_Name을 가져옴
+        string musicName = "";
+        foreach (var placeData in placeDataList)
         {
-            // 장소에 맞는 노래 재생
-            AudioClip song = Resources.Load<AudioClip>(location.Music_Name);
-            if (song != null)
+            if (placeData.Place_ID == sceneName)
             {
-                AudioSource.PlayClipAtPoint(song, Vector3.zero); // 임시로 재생 (위치 중요하지 않음)
+                musicName = placeData.Music_Name;
+                break;
+            }
+        }
+
+        if (musicName != "")
+        {
+            // Music_Name에 해당하는 AudioClip을 찾아서 재생
+            AudioClip clipToPlay = musicList.Find(x => x.name == musicName);
+            if (clipToPlay != null)
+            {
+                if (currentMusic != null && currentMusic.clip.name == clipToPlay.name)
+                {
+                    // 현재 재생 중인 노래와 같은 노래라면 다시 재생하지 않음
+                    return;
+                }
+
+                // 이전에 재생 중이던 노래를 정지하고 새로운 노래를 재생
+                if (currentMusic != null)
+                {
+                    currentMusic.Stop();
+                }
+
+                currentMusic = gameObject.AddComponent<AudioSource>();
+                currentMusic.clip = clipToPlay;
+                currentMusic.loop = true;
+                currentMusic.Play();
             }
             else
             {
-                Debug.LogWarning("Song not found for location: " + sceneName);
+                Debug.LogWarning("Music clip not found: " + musicName);
             }
         }
-        else
-        {
-            Debug.LogWarning("Location not found: " + sceneName);
-        }
-    }
-
-    [System.Serializable]
-    public class LocationInfo
-    {
-        public string Place_ID;
-        public string Place_Name;
-        public string Place_BG_Path;
-        public string Place_OBJ_Path;
-        public string Map_Type;
-        public string Music_Name;
-    }
-    [System.Serializable]
-    public class LocationData
-    {
-        public List<LocationInfo> locations;
     }
 
     void OnEnable()

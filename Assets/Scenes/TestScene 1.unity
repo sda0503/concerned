@@ -1515,14 +1515,14 @@ GameObject:
   m_Component:
   - component: {fileID: 300289822}
   - component: {fileID: 300289820}
-  - component: {fileID: 300289821}
+  - component: {fileID: 300289823}
   m_Layer: 0
   m_Name: SoundManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &300289820
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1537,7 +1537,91 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   soundOn: {fileID: 5074143027941866326}
   soundOff: {fileID: 5080049438252705005}
---- !u!82 &300289821
+  musicList:
+  - {fileID: 8300000, guid: 507d251a78559b145b489fbffb512755, type: 3}
+  - {fileID: 8300000, guid: ec705887f46edc44881116f489589a71, type: 3}
+  - {fileID: 8300000, guid: 0e6c389d3f91fe54f982cadd172c406a, type: 3}
+  - {fileID: 8300000, guid: ea8a10f7483119847b64e504cb9f4a98, type: 3}
+  - {fileID: 8300000, guid: c2897cbaff18ef24095385188e3e341b, type: 3}
+  - {fileID: 8300000, guid: 3aa8fc2505df0b347bcb5d70ab8af392, type: 3}
+  - {fileID: 8300000, guid: c6050adb77dbc4848af717d184845f0d, type: 3}
+  - {fileID: 8300000, guid: a7aa67dc6668df3459531974e29c8e7d, type: 3}
+  - {fileID: 8300000, guid: 8cc4bf8ef07dd29469e7f40afaefd840, type: 3}
+  - {fileID: 8300000, guid: 9ceefd4ba558aed48bbe4e63f26b9845, type: 3}
+  - {fileID: 8300000, guid: 92de4377bda30264d9d46151f94fb1d8, type: 3}
+  placeDataList:
+  - Place_ID: 100
+    Music_Name: Decision
+  - Place_ID: 110
+    Music_Name: Decision
+  - Place_ID: 111
+    Music_Name: Decision
+  - Place_ID: 112
+    Music_Name: Decision
+  - Place_ID: 113
+    Music_Name: Decision
+  - Place_ID: 120
+    Music_Name: Decision
+  - Place_ID: 130
+    Music_Name: Decision
+  - Place_ID: 200
+    Music_Name: Evasion
+  - Place_ID: 210
+    Music_Name: Evasion
+  - Place_ID: 211
+    Music_Name: Evasion
+  - Place_ID: 220
+    Music_Name: Evasion
+  - Place_ID: 230
+    Music_Name: Evasion
+  - Place_ID: 300
+    Music_Name: dark fallout
+  - Place_ID: 310
+    Music_Name: dark fallout
+  - Place_ID: 400
+    Music_Name: by-product
+  - Place_ID: 500
+    Music_Name: mediathreat
+  - Place_ID: 600
+    Music_Name: lose2
+  - Place_ID: 610
+    Music_Name: lose2
+  - Place_ID: 700
+    Music_Name: coherence
+  - Place_ID: 710
+    Music_Name: coherence
+  - Place_ID: 711
+    Music_Name: coherence
+  - Place_ID: 712
+    Music_Name: coherence
+  - Place_ID: 714
+    Music_Name: coherence
+  - Place_ID: 800
+    Music_Name: ambientmain_0
+  - Place_ID: 810
+    Music_Name: ambientmain_0
+  - Place_ID: 900
+    Music_Name: inevitable
+  - Place_ID: 910
+    Music_Name: inevitable
+  - Place_ID: 920
+    Music_Name: inevitable
+--- !u!4 &300289822
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 300289819}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0, y: 0, z: 0}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 799318608}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &300289823
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1547,9 +1631,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: c6050adb77dbc4848af717d184845f0d, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 507d251a78559b145b489fbffb512755, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.13
+  m_Volume: 1
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -1633,21 +1717,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!4 &300289822
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 300289819}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0, y: 0, z: 0}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 799318608}
-  m_RootOrder: -1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &304943672
 PrefabInstance:
   m_ObjectHideFlags: 0
