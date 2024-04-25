@@ -12,7 +12,7 @@ public class Tuto : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Invoke("TutoStart", 3f);
+        Invoke("TutoStart", 1f);
 
         DialogueManager.Instance.TargetNameChange += showImage;
     }

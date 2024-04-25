@@ -57,6 +57,9 @@ public class InventoryUI : PopupUIBase
                 else inventorySlots[i].SetActive(false);
             }
         }
+        itemImage.sprite = DataManager.Instance.SpriteLoad("Square");
+        nameText.text = "";
+        descriptionText.text = "";
     }
 
     private void MakeInventorySlot(int count)
