@@ -248,6 +248,7 @@ namespace DataStorage
         public string Place_BG_Path; // Resources.Load에 사용할 주소값
         public string Place_OBJ_Path;
         public Map_Type Map_Type;
+        public string Music_Name;
     }
 
     public class PlaceDBDatas

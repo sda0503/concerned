@@ -1549,6 +1549,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 8cc4bf8ef07dd29469e7f40afaefd840, type: 3}
   - {fileID: 8300000, guid: 9ceefd4ba558aed48bbe4e63f26b9845, type: 3}
   - {fileID: 8300000, guid: 92de4377bda30264d9d46151f94fb1d8, type: 3}
+  currentMusic: {fileID: 300289823}
   placeDataList:
   - Place_ID: 100
     Music_Name: Decision
@@ -1631,7 +1632,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 507d251a78559b145b489fbffb512755, type: 3}
+  m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1

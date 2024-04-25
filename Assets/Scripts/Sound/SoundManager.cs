@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class SoundManager : SingletonBase<SoundManager>
+public class SoundManager : MonoBehaviour
 {
     public GameObject soundOn;
     public GameObject soundOff;
@@ -13,7 +13,7 @@ public class SoundManager : SingletonBase<SoundManager>
     public List<AudioClip> musicList = new List<AudioClip>();
 
     // 현재 재생 중인 노래
-    private AudioSource currentMusic;
+    [SerializeField] private AudioSource currentMusic;
 
     // JSON 데이터를 담을 구조체
     [System.Serializable]
@@ -26,13 +26,13 @@ public class SoundManager : SingletonBase<SoundManager>
     // JSON 데이터를 파싱하여 저장할 리스트
     public List<PlaceData> placeDataList = new List<PlaceData>();
 
-    public override void init()
+    public void Start()
     {
-        base.init();
         Load();
         UpdateBtning();
         AudioListener.pause = muted;
-        PlaySceneMusic(SceneManager.GetActiveScene().name);
+        GameManager.Instance.OnPositionChange += PlaySceneMusic;
+        PlaySceneMusic();
     }
 
     public void SoundBtnClick()
@@ -59,47 +59,12 @@ public class SoundManager : SingletonBase<SoundManager>
         PlayerPrefs.SetInt("muted", muted ? 1 : 0);
     }
 
-    private void PlaySceneMusic(string sceneName)
+    private void PlaySceneMusic()
     {
-        // sceneName에 해당하는 Place_ID를 찾아서 해당하는 Music_Name을 가져옴
-        string musicName = "";
-        foreach (var placeData in placeDataList)
-        {
-            if (placeData.Place_ID == sceneName)
-            {
-                musicName = placeData.Music_Name;
-                break;
-            }
-        }
-
-        if (musicName != "")
-        {
-            // Music_Name에 해당하는 AudioClip을 찾아서 재생
-            AudioClip clipToPlay = musicList.Find(x => x.name == musicName);
-            if (clipToPlay != null)
-            {
-                if (currentMusic != null && currentMusic.clip.name == clipToPlay.name)
-                {
-                    // 현재 재생 중인 노래와 같은 노래라면 다시 재생하지 않음
-                    return;
-                }
-
-                // 이전에 재생 중이던 노래를 정지하고 새로운 노래를 재생
-                if (currentMusic != null)
-                {
-                    currentMusic.Stop();
-                }
-
-                currentMusic = gameObject.AddComponent<AudioSource>();
-                currentMusic.clip = clipToPlay;
-                currentMusic.loop = true;
-                currentMusic.Play();
-            }
-            else
-            {
-                Debug.LogWarning("Music clip not found: " + musicName);
-            }
-        }
+        
+        currentMusic.Stop();
+        currentMusic.clip = musicList[int.Parse(GameManager.Instance.Playerinformation.position.ToString()[0].ToString())-1];
+        currentMusic.Play();
     }
 
     void OnEnable()
@@ -114,6 +79,6 @@ public class SoundManager : SingletonBase<SoundManager>
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        PlaySceneMusic(scene.name);
+        PlaySceneMusic();
     }
 }
