@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class map5 : MonoBehaviour
+public class MapItemSetting : MonoBehaviour
 {
     public List<Button> buttons;
     public List<int> itemID;
@@ -19,7 +19,20 @@ public class map5 : MonoBehaviour
         for(int i = 0; i < buttons.Count; i++)
         {
             int n = i;
-            buttons[i].onClick.AddListener(() => DataManager.Instance.OnClickToFindItem(itemID[n]));
+            buttons[i].onClick.AddListener(() => SetItem(itemID[n]));
         }
+    }
+
+    private void SetItem(int id)
+    {
+        if(id == 51)
+        {
+            if (DataManager.Instance.getItems.ContainsKey(31)) DataManager.Instance.OnClickToFindItem(id);
+        }
+        else if(id == 1)
+        {
+            if (DataManager.Instance.getItems.ContainsKey(32)) DataManager.Instance.OnClickToFindItem(id);
+        }
+        else DataManager.Instance.OnClickToFindItem(id);
     }
 }

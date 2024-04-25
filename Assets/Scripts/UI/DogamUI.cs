@@ -57,7 +57,7 @@ public class DogamUI : PopupUIBase
             }
             else itemSlots[i].SetActive(false);
         }
-        itemImage.sprite = DataManager.Instance.SpriteLoad("Evidence/100");
+        itemImage.sprite = DataManager.Instance.SpriteLoad("Evidence/00");
         nameText.text = "???";
         descriptionText.text = "???";
     }
@@ -84,7 +84,7 @@ public class DogamUI : PopupUIBase
         }
         else
         {
-            itemImage.sprite = DataManager.Instance.SpriteLoad("Evidence/" + ((index / 10) * 10).ToString());
+            itemImage.sprite = DataManager.Instance.SpriteLoad("Evidence/" + ((index / 100) * 100).ToString());
         }
         nameText.text = DataManager.Instance.dogamItemData[index].item_name;
         descriptionText.text = DataManager.Instance.dogamItemData[index].default_description;

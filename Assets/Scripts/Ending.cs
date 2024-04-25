@@ -19,11 +19,6 @@ public class Ending : MonoBehaviour
             int n = i;
             buttons[i].onClick.AddListener(() => OnSelectCharacter(n));
         }
-        Invoke("test", 3f);
-    }
-
-    private void test()
-    {
         DialogueManager.Instance.StartDialogue("Ending");
     }
 
@@ -49,7 +44,7 @@ public class Ending : MonoBehaviour
                 break;
             case 2:
             case 3:
-                if (DataManager.Instance.getItems.Count / DataManager.Instance.itemsData.Count > 0.8f) //&&
+                if (DataManager.Instance.getItems.Count / DataManager.Instance.itemsData.Count > 0.8f && DataManager.Instance.getItems.ContainsKey(20000))
                 {
                     DialogueManager.Instance.StartDialogue("RealEnding");
                 }

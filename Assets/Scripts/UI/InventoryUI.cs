@@ -92,7 +92,7 @@ public class InventoryUI : PopupUIBase
         }
         else
         {
-            inventorySlots[items.Count].transform.GetChild(1).GetComponent<Image>().sprite = DataManager.Instance.SpriteLoad("Guide Book/" + ((id / 10) * 10).ToString());
+            inventorySlots[items.Count].transform.GetChild(1).GetComponent<Image>().sprite = DataManager.Instance.SpriteLoad("Guide Book/" + ((id / 100) * 100).ToString());
         }
         inventorySlots[items.Count].transform.GetChild(1).gameObject.SetActive(true);
         inventorySlots[items.Count].GetComponent<Button>().onClick.AddListener(() => InventorySlotButton(id));
@@ -106,7 +106,7 @@ public class InventoryUI : PopupUIBase
         }
         else
         {
-            itemImage.sprite = DataManager.Instance.SpriteLoad("Evidence/" + ((id / 10) * 10).ToString());
+            itemImage.sprite = DataManager.Instance.SpriteLoad("Evidence/" + ((id / 100) * 100).ToString());
         }
         nameText.text = items[id].itemData.item_name;
         descriptionText.text = items[id].itemData.default_description;

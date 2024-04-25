@@ -554,7 +554,7 @@ public class DataManager : SingletonBase<DataManager> //유니티 기능을 상�
             }
             else
             {
-                obj.transform.GetComponent<Image>().sprite = SpriteLoad("Evidence/" + ((index / 10) * 10).ToString());
+                obj.transform.GetComponent<Image>().sprite = SpriteLoad("Evidence/" + ((index / 100) * 100).ToString());
             }
             obj.transform.GetComponent<interactableItem>().ItemId = index;
             Instantiate(obj, UIManager.Instance.itemCanvas);

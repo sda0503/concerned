@@ -2225,7 +2225,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   correctPassword: 8241
   passwordText: {fileID: 1468076672942723750}
-  item: 40
+  item: 400
 --- !u!1 &2824915605098967830
 GameObject:
   m_ObjectHideFlags: 0
@@ -3110,7 +3110,7 @@ MonoBehaviour:
   - {fileID: 9140636354869122282}
   - {fileID: 845358363692898109}
   - {fileID: 8998625585256534293}
-  itemID: 0100000014000000000000001f0000000a000000
+  itemID: 01000000c8000000000000002d01000064000000
 --- !u!1 &4300873911518636285
 GameObject:
   m_ObjectHideFlags: 0
