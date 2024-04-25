@@ -86,7 +86,7 @@ public class MapManager : MonoBehaviour
             if(_obj != null && _obj.tag != "Popup") 
             { 
                 _obj.transform.GetChild(0).gameObject.SetActive(true);
-                _obj.transform.GetChild(1).gameObject.SetActive(true);
+                //_obj.transform.GetChild(1).gameObject.SetActive(true);
                 //_obj.transform.GetChild(2).gameObject.SetActive(true);
                 _isMouseOver = true;
             }
@@ -99,7 +99,7 @@ public class MapManager : MonoBehaviour
         {
             if (GetClickedUIObject() != null) return;
             _obj.transform.GetChild(0).gameObject.SetActive(false);
-            _obj.transform.GetChild(1).gameObject.SetActive(true);
+            //_obj.transform.GetChild(1).gameObject.SetActive(true);
             //_obj.transform.GetChild(2).gameObject.SetActive(false);
             _isMouseOver = false;
         }
@@ -107,15 +107,19 @@ public class MapManager : MonoBehaviour
 
     public void ClickMarker() //여기가 PopUp띄우는부분.
     {
-        var popupUI = transform.GetChild(12).gameObject;
-        popupUI.SetActive(true);
-        if (!popupUI.TryGetComponent(out PopupBtn popupBtn))
+        if (_obj.tag != "Popup")
         {
-            Debug.Log("에러 발생 : 컴포넌트가 없음.");
-            return;
+            var popupUI = transform.GetChild(12).gameObject;
+            popupUI.SetActive(true);
+            if (!popupUI.TryGetComponent(out PopupBtn popupBtn))
+            {
+                Debug.Log("에러 발생 : 컴포넌트가 없음.");
+                return;
+            }
+
+            popupBtn.posID = int.Parse(_obj.transform.GetChild(2).GetComponent<TextMeshProUGUI>().text);
+            string _popupText = _obj.transform.GetChild(1).gameObject.GetComponent<TextMeshProUGUI>().text;
+            popupUI.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = _popupText;
         }
-        popupBtn.posID = int.Parse(_obj.transform.GetChild(2).GetComponent<TextMeshProUGUI>().text);
-        string _popupText = _obj.transform.GetChild(1).gameObject.GetComponent<TextMeshProUGUI>().text;
-        popupUI.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = _popupText;
     }
 }
