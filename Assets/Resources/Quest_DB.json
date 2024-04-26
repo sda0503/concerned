@@ -305,6 +305,60 @@
       "QuestState": "false",
       "NeedQuest": null,
       "NeedItem": null
+    },
+    {
+      "QuestTargetName": "흥신소 탐정 핸드폰",
+      "QuestIdx": "1",
+      "QuestStartPost": "9990001",
+      "QuestType": "2",
+      "QuestState": "false",
+      "NeedQuest": null,
+      "NeedItem": null
+    },
+    {
+      "QuestTargetName": "변호사 핸드폰",
+      "QuestIdx": "1",
+      "QuestStartPost": "9990005",
+      "QuestType": "1",
+      "QuestState": "false",
+      "NeedQuest": null,
+      "NeedItem": null
+    },
+    {
+      "QuestTargetName": "강민우 핸드폰",
+      "QuestIdx": "1",
+      "QuestStartPost": "9990009",
+      "QuestType": "2",
+      "QuestState": "false",
+      "NeedQuest": null,
+      "NeedItem": null
+    },
+    {
+      "QuestTargetName": "한미래 핸드폰",
+      "QuestIdx": "1",
+      "QuestStartPost": "9990013",
+      "QuestType": "1",
+      "QuestState": "false",
+      "NeedQuest": null,
+      "NeedItem": null
+    },
+    {
+      "QuestTargetName": "김태현 핸드폰",
+      "QuestIdx": "1",
+      "QuestStartPost": "9990017",
+      "QuestType": "2",
+      "QuestState": "false",
+      "NeedQuest": null,
+      "NeedItem": null
+    },
+    {
+      "QuestTargetName": "신현우 핸드폰",
+      "QuestIdx": "1",
+      "QuestStartPost": "9990021",
+      "QuestType": "2",
+      "QuestState": "false",
+      "NeedQuest": null,
+      "NeedItem": null
     }
   ]
 }

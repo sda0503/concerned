@@ -318,7 +318,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fa8c9efc2c0d7542a0f25c176e2b945, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TargetName: "\uAC15\uBBFC\uC6B0"
+  TargetName: "\uAC15\uBBFC\uC6B0 - \uC591\uD604\uC11C \uC9D1"
   check: 000000
 --- !u!114 &1779124717148570948
 MonoBehaviour:
