@@ -22,9 +22,7 @@ public class MessageUI : MonoBehaviour
         {
             foreach (string ss in DialogueManager.Instance.allchatlog.Keys)
             {
-                if (ss.Contains("°­¹Î¿ì")) OnSetList("°­¹Î¿ì");
-                else if (ss.Contains("ÇÑ¹Ì·¡")) OnSetList("ÇÑ¹Ì·¡");
-                else if (ss.Contains("Èï½Å¼Ò")) OnSetList("Èï½Å¼Ò Å½Á¤");
+                OnSetList(ss);
             }
         }
     }
@@ -34,12 +32,26 @@ public class MessageUI : MonoBehaviour
         if(!messageListDictionary.ContainsKey(name))
         {
             GameObject obj = Instantiate(messageListPrefab, messageNumberListPosition);
-            obj.transform.GetChild(1).gameObject.transform.GetChild(0).GetComponent<Image>().sprite = DataManager.Instance.SpriteLoad("Image/Phone/" + name);
-            obj.transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = name;
             obj.transform.GetChild(3).GetComponent<Button>().onClick.AddListener(() => OnSetButton(name));
             messageListDictionary.Add(name, obj);
+
+            OnSetPrefab(name);
         }
     }
+
+    private void OnSetPrefab(string name)
+    {
+        string view_name = "";
+        if (name.Contains("°­¹Î¿ì")) view_name = "°­¹Î¿ì";
+        else if (name.Contains("ÇÑ¹Ì·¡")) view_name = "ÇÑ¹Ì·¡";
+        else if (name.Contains("Èï½Å¼Ò")) view_name = "Èï½Å¼Ò Å½Á¤";
+        else if (name.Contains("ÇÑ¹Ì·¡")) view_name = "º¯È£»ç";
+        else if (name.Contains("ÇÑ¹Ì·¡")) view_name = "±èÅÂÇö";
+        else if (name.Contains("ÇÑ¹Ì·¡")) view_name = "½ÅÇö¿ì";
+        messageListDictionary[name].transform.GetChild(1).gameObject.transform.GetChild(0).GetComponent<Image>().sprite = DataManager.Instance.SpriteLoad("Image/Phone/" + view_name);
+        messageListDictionary[name].transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = view_name;
+    }
+
 
     private void OnSetButton(string name)
     {
