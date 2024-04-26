@@ -815,7 +815,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fa8c9efc2c0d7542a0f25c176e2b945, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TargetName: "\uC2E0\uD604\uC6B0"
+  TargetName: "\uC2E0\uACE0\uC790"
   check: 010100
 --- !u!114 &2801008511045896778
 MonoBehaviour:

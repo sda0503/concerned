@@ -73,6 +73,15 @@ public class DialogueManager : MonoBehaviour
 
     int CheckQuest(string targetname)
     {
+        if (GameManager.Instance.TalkCount < 1)
+        {
+            //TODO : 대화할 수 없다는 팝업을 띄우는게 좋을 듯.
+            Debug.Log("대화 횟수가 없습니다.");
+            return -1;
+        }
+        
+        GameManager.Instance.TalkCount--;
+        
         int startpost = 0;
         Dialogue_Quest_Data[] dialogueQuestDatas = _questdic[targetname].ToArray(); //이렇게 캐싱
         for (int i = 0; i < dialogueQuestDatas.Length; i++)
@@ -112,19 +121,15 @@ public class DialogueManager : MonoBehaviour
 
     public void StartDialogue(string targetname)
     {
-        if (GameManager.Instance.TalkCount < 1)
-        {
-            //TODO : 대화할 수 없다는 팝업을 띄우는게 좋을 듯.
-            Debug.Log("대화 횟수가 없습니다.");
-            return;
-        }
-
-        GameManager.Instance.TalkCount--;
         contextcount = CheckQuest(targetname);
 
         if (contextcount == 0)
         {
             Debug.Log("대화가 없습니다.");
+        }
+        else if (contextcount == -1)
+        {
+            Debug.Log("대화 횟수가 없습니다.");
         }
         else //대화 가능
         {

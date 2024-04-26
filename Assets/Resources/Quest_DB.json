@@ -19,16 +19,7 @@
       "NeedItem": null
     },
     {
-      "QuestTargetName": "나(튜토리얼-숲)",
-      "QuestIdx": "1",
-      "QuestStartPost": "30000000",
-      "QuestType": "3",
-      "QuestState": "false",
-      "NeedQuest": null,
-      "NeedItem": null
-    },
-    {
-      "QuestTargetName": "흥신소 탐정",
+      "QuestTargetName": "흥신소 탐정 - 흥신소",
       "QuestIdx": "1",
       "QuestStartPost": "40014000",
       "QuestType": "0",
@@ -37,19 +28,28 @@
       "NeedItem": null
     },
     {
-      "QuestTargetName": "흥신소 탐정",
+      "QuestTargetName": "흥신소 탐정 - 흥신소",
       "QuestIdx": "2",
-      "QuestStartPost": "40014025",
+      "QuestStartPost": "40014023",
       "QuestType": "1",
       "QuestState": "false",
       "NeedQuest": null,
       "NeedItem": null
     },
     {
-      "QuestTargetName": "변호사",
+      "QuestTargetName": "변호사 - 변호사 사무실",
       "QuestIdx": "1",
       "QuestStartPost": "50004000",
       "QuestType": "0",
+      "QuestState": "false",
+      "NeedQuest": null,
+      "NeedItem": null
+    },
+    {
+      "QuestTargetName": "변호사 - 변호사 사무실",
+      "QuestIdx": "2",
+      "QuestStartPost": "50004026",
+      "QuestType": "1",
       "QuestState": "false",
       "NeedQuest": null,
       "NeedItem": null
@@ -73,7 +73,7 @@
       "NeedItem": null
     },
     {
-      "QuestTargetName": "강민우",
+      "QuestTargetName": "강민우 - 양현서 집",
       "QuestIdx": "1",
       "QuestStartPost": "11001000",
       "QuestType": "0",
@@ -85,13 +85,13 @@
       "QuestTargetName": "코인회사 직원들",
       "QuestIdx": "1",
       "QuestStartPost": "20000000",
-      "QuestType": "0",
+      "QuestType": "1",
       "QuestState": "false",
       "NeedQuest": null,
       "NeedItem": null
     },
     {
-      "QuestTargetName": "한미래",
+      "QuestTargetName": "한미래 - 회사",
       "QuestIdx": "1",
       "QuestStartPost": "21002000",
       "QuestType": "0",
@@ -100,7 +100,7 @@
       "NeedItem": null
     },
     {
-      "QuestTargetName": "김태현",
+      "QuestTargetName": "김태현 - 회사",
       "QuestIdx": "1",
       "QuestStartPost": "23003000",
       "QuestType": "0",
@@ -121,7 +121,7 @@
       "QuestTargetName": "택배회사 직원1,2",
       "QuestIdx": "1",
       "QuestStartPost": "90000000",
-      "QuestType": "0",
+      "QuestType": "1",
       "QuestState": "false",
       "NeedQuest": null,
       "NeedItem": null
@@ -130,7 +130,7 @@
       "QuestTargetName": "택배회사 직원3",
       "QuestIdx": "1",
       "QuestStartPost": "90000006",
-      "QuestType": "0",
+      "QuestType": "1",
       "QuestState": "false",
       "NeedQuest": null,
       "NeedItem": null
@@ -139,7 +139,7 @@
       "QuestTargetName": "택배회사 직원4,5",
       "QuestIdx": "1",
       "QuestStartPost": "90000008",
-      "QuestType": "0",
+      "QuestType": "1",
       "QuestState": "false",
       "NeedQuest": null,
       "NeedItem": null
@@ -148,7 +148,7 @@
       "QuestTargetName": "택배회사 직원6",
       "QuestIdx": "1",
       "QuestStartPost": "90000013",
-      "QuestType": "0",
+      "QuestType": "1",
       "QuestState": "false",
       "NeedQuest": null,
       "NeedItem": null
@@ -157,16 +157,115 @@
       "QuestTargetName": "택배회사 직원7",
       "QuestIdx": "1",
       "QuestStartPost": "90000015",
+      "QuestType": "1",
+      "QuestState": "false",
+      "NeedQuest": null,
+      "NeedItem": null
+    },
+    {
+      "QuestTargetName": "신고자",
+      "QuestIdx": "1",
+      "QuestStartPost": "30016002",
       "QuestType": "0",
       "QuestState": "false",
       "NeedQuest": null,
       "NeedItem": null
     },
     {
-      "QuestTargetName": "흥신소 탐정 핸드폰",
+      "QuestTargetName": "경찰",
       "QuestIdx": "1",
-      "QuestStartPost": "60002010",
-      "QuestType": "2",
+      "QuestStartPost": "30015017",
+      "QuestType": "0",
+      "QuestState": "false",
+      "NeedQuest": null,
+      "NeedItem": null
+    },
+    {
+      "QuestTargetName": "강민우 - 장례식장",
+      "QuestIdx": "1",
+      "QuestStartPost": "61000000",
+      "QuestType": "0",
+      "QuestState": "false",
+      "NeedQuest": null,
+      "NeedItem": null
+    },
+    {
+      "QuestTargetName": "강민우 - 장례식장",
+      "QuestIdx": "2",
+      "QuestStartPost": "61000006",
+      "QuestType": "1",
+      "QuestState": "false",
+      "NeedQuest": null,
+      "NeedItem": null
+    },
+    {
+      "QuestTargetName": "흥신소 탐정 - 소환조사",
+      "QuestIdx": "1",
+      "QuestStartPost": "71414000",
+      "QuestType": "0",
+      "QuestState": "false",
+      "NeedQuest": null,
+      "NeedItem": null
+    },
+    {
+      "QuestTargetName": "흥신소 탐정 - 소환조사",
+      "QuestIdx": "2",
+      "QuestStartPost": "71414024",
+      "QuestType": "1",
+      "QuestState": "false",
+      "NeedQuest": null,
+      "NeedItem": null
+    },
+    {
+      "QuestTargetName": "강민우 - 소환조사",
+      "QuestIdx": "1",
+      "QuestStartPost": "71401026",
+      "QuestType": "0",
+      "QuestState": "false",
+      "NeedQuest": null,
+      "NeedItem": null
+    },
+    {
+      "QuestTargetName": "강민우 - 소환조사",
+      "QuestIdx": "2",
+      "QuestStartPost": "71401066",
+      "QuestType": "1",
+      "QuestState": "false",
+      "NeedQuest": null,
+      "NeedItem": null
+    },
+    {
+      "QuestTargetName": "김태현 - 소환조사",
+      "QuestIdx": "1",
+      "QuestStartPost": "71403068",
+      "QuestType": "0",
+      "QuestState": "false",
+      "NeedQuest": null,
+      "NeedItem": null
+    },
+    {
+      "QuestTargetName": "김태현 - 소환조사",
+      "QuestIdx": "2",
+      "QuestStartPost": "71403101",
+      "QuestType": "1",
+      "QuestState": "false",
+      "NeedQuest": null,
+      "NeedItem": null
+    },
+    {
+      "QuestTargetName": "신현우 - 소환조사",
+      "QuestIdx": "1",
+      "QuestStartPost": "71416001",
+      "QuestType": "0",
+      "QuestState": "false",
+      "NeedQuest": null,
+      "NeedItem": null
+    },
+    {
+      "QuestTargetName": "신현우 - 소환조사",
+      "QuestIdx": "2",
+      "QuestStartPost": "71416050",
+      "QuestType": "0",
       "QuestState": "false",
       "NeedQuest": null,
       "NeedItem": null
@@ -174,8 +273,8 @@
     {
       "QuestTargetName": "Ending",
       "QuestIdx": "1",
-      "QuestStartPost": "11111111",
-      "QuestType": "4",
+      "QuestStartPost": "10000000",
+      "QuestType": "0",
       "QuestState": "false",
       "NeedQuest": null,
       "NeedItem": null
@@ -183,8 +282,26 @@
     {
       "QuestTargetName": "BadEnding",
       "QuestIdx": "1",
-      "QuestStartPost": "11111122",
-      "QuestType": "4",
+      "QuestStartPost": "10000002",
+      "QuestType": "0",
+      "QuestState": "false",
+      "NeedQuest": null,
+      "NeedItem": null
+    },
+    {
+      "QuestTargetName": "NormalEnding",
+      "QuestIdx": "1",
+      "QuestStartPost": "10000003",
+      "QuestType": "0",
+      "QuestState": "false",
+      "NeedQuest": null,
+      "NeedItem": null
+    },
+    {
+      "QuestTargetName": "TrueEnding",
+      "QuestIdx": "1",
+      "QuestStartPost": "10000004",
+      "QuestType": "0",
       "QuestState": "false",
       "NeedQuest": null,
       "NeedItem": null

@@ -1041,7 +1041,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 300289822}
-  - component: {fileID: 300289820}
   - component: {fileID: 300289821}
   m_Layer: 0
   m_Name: SoundManager
@@ -1050,20 +1049,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &300289820
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 300289819}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f25c25317a8d0b84eb2648a43ac68b3b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  soundOn: {fileID: 0}
-  soundOff: {fileID: 0}
 --- !u!82 &300289821
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1076,7 +1061,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 4403773354592a9429cf850cf0403203, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0
+  m_Volume: 0.134
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -1426,7 +1411,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &326480369
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4322,6 +4307,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   btn: {fileID: 2019810455}
   Map: {fileID: 2000633643}
+  ObjList: {fileID: 0}
   map_List:
   - {fileID: 956095910}
   - {fileID: 673119005}
