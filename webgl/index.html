@@ -8,6 +8,10 @@
       <link rel="stylesheet" href="TemplateData/style.css">
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+      <style>
+         body{width: 100%; height:100vh; margin:0 auto; padding: 0; background:url("/game/bg.png"); overflow: hidden;}
+         #unity-container{display: flex; align-items: center; justify-content: center;}
+      </style>
    </head>
    <body>
       <div id="unity-container" class="unity-desktop">
@@ -58,13 +62,20 @@
          var fullscreenButton = document.querySelector("#unity-fullscreen-button");
          var loadingBar = document.querySelector("#unity-loading-bar");
          
+
+         if(window.innerWidth > 1920){
+               var get_Width = 1200;
+            }else{
+               var get_Width = window.innerWidth;
+            }
+
          if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
            container.className = "unity-mobile";
          //  config.devicePixelRatio = 1;
            // canvas.style.width =(window.innerWidth + 5) + "px";
          //  canvas.style.height =(window.innerHeight + 5) + "px";
 
-         var get_Width = window.innerWidth;
+         //var get_Width = window.innerWidth;
 
            canvas.style.width = get_Width + "px";
            canvas.style.height = get_Width*0.5625 + "px";
@@ -78,11 +89,7 @@
            //canvas.style.width =(window.innerWidth + 5) + "px";
            //canvas.style.height =(window.innerHeight + 5) + "px";
 
-            if(window.innerWidth > 1920){
-               var get_Width = 1200;
-            }else{
-               var get_Width = window.innerWidth;
-            }
+            
 
            canvas.style.width = get_Width + "px";
            canvas.style.height = get_Width*0.5625 + "px";
