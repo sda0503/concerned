@@ -145,7 +145,6 @@ public class DialogueManager : MonoBehaviour
             }
 
             //_characterImage.gameObject.SetActive(true);
-
             //if (_questdic[Targetname][questcount - 1].QuestType == QuestType.Normal)
             //{
             //    _ChatlogBtn.gameObject.SetActive(true);
@@ -175,6 +174,7 @@ public class DialogueManager : MonoBehaviour
                 if (dialogueData.Log_Type == Log_Type.GiveItem)
                 {
                     //TODO : 여기에 아이템 추가하는 메서드 넣기
+                    DataManager.Instance.getItems.Add(int.Parse(dialogueData.Give_Item), DataManager.Instance.itemsData[int.Parse(dialogueData.Give_Item)]);
                 }
             }
 
