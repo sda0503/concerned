@@ -318,7 +318,7 @@
       "Dialogue_idx": "30000118",
       "Name": null,
       "Log": null,
-      "Log_Type": "2",
+      "Log_Type": "1",
       "Next_Log": "0",
       "Event_Log": [
         "상황 보고",
@@ -2448,14 +2448,14 @@
       "Log_Type": "1",
       "Next_Log": "0",
       "Event_Log": [
-        "양현서에 대해서",
-        ""
+        "양현서에 대해서"
       ],
       "Event_Next_Log": [
-        "21000002",
-        ""
+        "21000002"
       ],
-      "Event_Log_State": null,
+      "Event_Log_State": [
+        "False" 
+      ],
       "Check_Item": null,
       "Check_Quest": null,
       "Give_Item": null
@@ -2478,7 +2478,7 @@
       "Name": "한미래",
       "Log": "질문이 너무 포괄적인 것 같네요. 좀 더 구체적으로 질문해 주셨으면 합니다.",
       "Log_Type": "4",
-      "Next_Log": "21000104",
+      "Next_Log": "21000105",
       "Event_Log": null,
       "Event_Next_Log": null,
       "Event_Log_State": null,
@@ -2491,7 +2491,7 @@
       "Name": "한미래",
       "Log": "다른 질문은 있습니까?",
       "Log_Type": "0",
-      "Next_Log": "21000104",
+      "Next_Log": "21000105",
       "Event_Log": null,
       "Event_Next_Log": null,
       "Event_Log_State": null,
@@ -2523,11 +2523,16 @@
         "False",
         "False"
       ],
-      "Check_Item": null,
+      "Check_Item": [
+        "-1",
+        "-1",
+        "-1",
+        "-1"
+      ],
       "Check_Quest": [
         "0",
         "0",
-        "김태현,1",
+        "김태현 - 회사,1",
         "0"
       ],
       "Give_Item": null
