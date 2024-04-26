@@ -1,4 +1,6 @@
+using System;
 using System.Collections.Generic;
+using System.Reflection;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -9,6 +11,7 @@ public class InventoryUI : PopupUIBase
     public Dictionary<int,Item> items = new Dictionary<int, Item>();
     public List<GameObject> inventorySlots = new List<GameObject>();
 
+    public Image itemImage;
     public TextMeshProUGUI nameText;
     public TextMeshProUGUI descriptionText;
     public TextMeshProUGUI fullPage;
@@ -54,6 +57,9 @@ public class InventoryUI : PopupUIBase
                 else inventorySlots[i].SetActive(false);
             }
         }
+        itemImage.sprite = DataManager.Instance.SpriteLoad("Square");
+        nameText.text = "";
+        descriptionText.text = "";
     }
 
     private void MakeInventorySlot(int count)
@@ -80,13 +86,28 @@ public class InventoryUI : PopupUIBase
         {
             MakeInventorySlot(3);
         }
-        //inventorySlot[items.Count].transform.GetComponent<SpriteRenderer>().sprite = item.Image; �̹��� ����.
+        if (id < 10)
+        {
+            inventorySlots[items.Count].transform.GetChild(1).GetComponent<Image>().sprite = DataManager.Instance.SpriteLoad("Guide Book/" + id.ToString());
+        }
+        else
+        {
+            inventorySlots[items.Count].transform.GetChild(1).GetComponent<Image>().sprite = DataManager.Instance.SpriteLoad("Guide Book/" + ((id / 100) * 100).ToString());
+        }
         inventorySlots[items.Count].transform.GetChild(1).gameObject.SetActive(true);
         inventorySlots[items.Count].GetComponent<Button>().onClick.AddListener(() => InventorySlotButton(id));
     }
 
     private void InventorySlotButton(int id)
     {
+        if (id < 10)
+        {
+            itemImage.sprite = DataManager.Instance.SpriteLoad("Evidence/" + id.ToString());
+        }
+        else
+        {
+            itemImage.sprite = DataManager.Instance.SpriteLoad("Evidence/" + ((id / 100) * 100).ToString());
+        }
         nameText.text = items[id].itemData.item_name;
         descriptionText.text = items[id].itemData.default_description;
     }

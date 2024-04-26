@@ -26,7 +26,7 @@ public class PopupUIManager
 
     private PopupUIBase OpenPopupUI(string name, Transform t = null)
     {
-        var obj = Resources.Load("PopupUI/" + name, typeof(GameObject)) as GameObject;
+        var obj = Resources.Load("Prefabs/PopupUI/" + name, typeof(GameObject)) as GameObject;
         if (obj == null) { Debug.Log("UI Load fail"); return null; }
         return MakePopupUI(obj, t);
     }

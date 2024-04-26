@@ -1,6 +1,7 @@
+using DataStorage;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.UIElements;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,6 +10,8 @@ public class PhoneUI : PopupUIBase
     public Button callButton;
     public Button messageButton;
     public Button calendarButton;
+
+    public TextMeshProUGUI timeText;
 
     public GameObject CallObject;
     public GameObject MessageObject;
@@ -26,6 +29,7 @@ public class PhoneUI : PopupUIBase
         CallObject.SetActive(false);
         MessageObject.SetActive(false);
         CalendarObject.SetActive(false);
+        timeText.text = GetDayTime();
     }
 
     private void OnCallNumberUI()
@@ -47,5 +51,20 @@ public class PhoneUI : PopupUIBase
         CallObject.SetActive(false);
         MessageObject.SetActive(false);
         CalendarObject.SetActive(true);
+    }
+
+    private string GetDayTime() //정서에 맞게 변환
+    {
+        switch (GameManager.Instance.Playerinformation.daytime)
+        {
+            case DayTimeenum.Evening:
+                return "오전";
+            case DayTimeenum.Afternoon:
+                return "오후";
+            case DayTimeenum.Night:
+                return "저녁";
+        }
+
+        return "";
     }
 }

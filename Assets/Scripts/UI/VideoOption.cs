@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class VideoOption : MonoBehaviour
@@ -43,7 +44,12 @@ public class VideoOption : MonoBehaviour
         }
         resolutionDropdown.RefreshShownValue();
 
-        fullscreenBtn.isOn = PlayerPrefs.GetInt(FullscreenKey, 0) == 1;
+        Debug.Log(PlayerPrefs.GetInt(FullscreenKey, 0));
+        Debug.Log(fullscreenBtn);
+        if (PlayerPrefs.GetInt(FullscreenKey, 0) != null)
+        {
+            //fullscreenBtn.isOn = PlayerPrefs.GetInt(FullscreenKey, 0) != 1 ?  true : false;
+        }
     }
 
     public void DropboxOptionChange(int x)
@@ -51,9 +57,9 @@ public class VideoOption : MonoBehaviour
         resolutionNum = x;
     }
 
-    public void FullScreenBtn(bool isFull)
+    public void FullScreenBtn(Toggle isFull)
     {
-        screenMode = isFull ? FullScreenMode.FullScreenWindow : FullScreenMode.Windowed;
+        screenMode = isFull.isOn ? FullScreenMode.FullScreenWindow : FullScreenMode.Windowed;
     }
 
     public void OkBtnClick()
@@ -82,5 +88,10 @@ public class VideoOption : MonoBehaviour
     {
         float targetAspect = (float)resolution.width / resolution.height;
         mainCamera.aspect = targetAspect;
+    }
+
+    public void OutBtnClick()
+    {
+        SceneManager.LoadScene("StartScene");
     }
 }

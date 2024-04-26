@@ -73,6 +73,15 @@ public class DialogueManager : MonoBehaviour
 
     int CheckQuest(string targetname)
     {
+        if (GameManager.Instance.TalkCount < 1)
+        {
+            //TODO : 대화할 수 없다는 팝업을 띄우는게 좋을 듯.
+            Debug.Log("대화 횟수가 없습니다.");
+            return -1;
+        }
+        
+        GameManager.Instance.TalkCount--;
+        
         int startpost = 0;
         Dialogue_Quest_Data[] dialogueQuestDatas = _questdic[targetname].ToArray(); //이렇게 캐싱
         for (int i = 0; i < dialogueQuestDatas.Length; i++)
@@ -112,19 +121,15 @@ public class DialogueManager : MonoBehaviour
 
     public void StartDialogue(string targetname)
     {
-        if (GameManager.Instance.TalkCount < 1)
-        {
-            //TODO : 대화할 수 없다는 팝업을 띄우는게 좋을 듯.
-            Debug.Log("대화 횟수가 없습니다.");
-            return;
-        }
-
-        GameManager.Instance.TalkCount--;
         contextcount = CheckQuest(targetname);
 
         if (contextcount == 0)
         {
             Debug.Log("대화가 없습니다.");
+        }
+        else if (contextcount == -1)
+        {
+            Debug.Log("대화 횟수가 없습니다.");
         }
         else //대화 가능
         {
@@ -140,7 +145,6 @@ public class DialogueManager : MonoBehaviour
             }
 
             //_characterImage.gameObject.SetActive(true);
-
             //if (_questdic[Targetname][questcount - 1].QuestType == QuestType.Normal)
             //{
             //    _ChatlogBtn.gameObject.SetActive(true);
@@ -170,6 +174,7 @@ public class DialogueManager : MonoBehaviour
                 if (dialogueData.Log_Type == Log_Type.GiveItem)
                 {
                     //TODO : 여기에 아이템 추가하는 메서드 넣기
+                    DataManager.Instance.getItems.Add(int.Parse(dialogueData.Give_Item), DataManager.Instance.itemsData[int.Parse(dialogueData.Give_Item)]);
                 }
             }
 
@@ -219,7 +224,7 @@ public class DialogueManager : MonoBehaviour
             }
 
             _chatWindow.SetActive(false);
-            _chatWindow.transform.parent.gameObject.SetActive(false);
+            //_chatWindow.transform.parent.gameObject.SetActive(false);
             questcount = 0;
             _characterImage.sprite = null;
             _characterImage.gameObject.SetActive(false);

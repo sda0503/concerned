@@ -194,22 +194,6 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-  - eventID: 4
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 0}
-          m_TargetAssemblyTypeName: CursorManage, Assembly-CSharp
-          m_MethodName: OnMouseExit
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
 --- !u!1 &3539429030735874919
 GameObject:
   m_ObjectHideFlags: 0
@@ -411,22 +395,6 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-  - eventID: 4
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 0}
-          m_TargetAssemblyTypeName: CursorManage, Assembly-CSharp
-          m_MethodName: OnMouseExit
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
 --- !u!114 &7502985370271654747
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -440,6 +408,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   charceterNum: 3
+  placeNum: 0
 --- !u!114 &362485942698385707
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -453,7 +422,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TargetName: "\uACBD\uCC30"
-  check: 000000
+  check: 010100
 --- !u!114 &4146278929833995500
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -593,7 +562,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &8249592049033139470
 RectTransform:
   m_ObjectHideFlags: 0
@@ -820,22 +789,6 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-  - eventID: 4
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 0}
-          m_TargetAssemblyTypeName: CursorManage, Assembly-CSharp
-          m_MethodName: OnMouseExit
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
 --- !u!114 &4787100097129127269
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -849,6 +802,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   charceterNum: 8
+  placeNum: 0
 --- !u!114 &4273628369407026654
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -861,8 +815,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fa8c9efc2c0d7542a0f25c176e2b945, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TargetName: "\uC2E0\uD604\uC6B0"
-  check: 000000
+  TargetName: "\uC2E0\uACE0\uC790"
+  check: 010100
 --- !u!114 &2801008511045896778
 MonoBehaviour:
   m_ObjectHideFlags: 0

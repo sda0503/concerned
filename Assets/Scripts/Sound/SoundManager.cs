@@ -3,20 +3,37 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class SoundManager : SingletonBase<SoundManager>
+public class SoundManager : MonoBehaviour
 {
     public GameObject soundOn;
     public GameObject soundOff;
     private bool muted = false;
-    //TODO : public List<AudioSource> musicList = new List<AudioSource>(); //사용할 배경음악 파일 먹여서 필요에 따라 실행시키기.
+  
 
-    public override void init()
+    // 음악 파일 리스트
+    public List<AudioClip> musicList = new List<AudioClip>();
+
+    // 현재 재생 중인 노래
+    [SerializeField] private AudioSource currentMusic;
+
+    // JSON 데이터를 담을 구조체
+    [System.Serializable]
+    public struct PlaceData
     {
-        base.init();
+        public string Place_ID;
+        public string Music_Name;
+    }
+
+    // JSON 데이터를 파싱하여 저장할 리스트
+    public List<PlaceData> placeDataList = new List<PlaceData>();
+
+    public void Start()
+    {
         Load();
         UpdateBtning();
         AudioListener.pause = muted;
-        PlaySceneMusic(SceneManager.GetActiveScene().name);
+        GameManager.Instance.OnPositionChange += PlaySceneMusic;
+        PlaySceneMusic();
     }
 
     public void SoundBtnClick()
@@ -43,19 +60,20 @@ public class SoundManager : SingletonBase<SoundManager>
         PlayerPrefs.SetInt("muted", muted ? 1 : 0);
     }
 
-    private void PlaySceneMusic(string sceneName)
+    private void PlaySceneMusic()
     {
-        GameObject sceneMusic = GameObject.Find(sceneName + "Music"); //TODO : 수정사항. 현재 씬에 필요한 노래가 뭔지 판단하고 재생시키는 것까지.
-        //AudioSource sceneMusic = musicList[SceneManager.GetActiveScene().buildIndex]; //TODO : 빌드 인덱스에 따라 노래 다르게 재생.
-        if (sceneMusic != null)
+        if (currentMusic.clip == null)
+            return;
+        if (currentMusic.clip.name == (musicList[int.Parse(GameManager.Instance.Playerinformation.position.ToString()[0].ToString()) - 1].name))
         {
-            AudioSource audioSource = sceneMusic.GetComponent<AudioSource>();
-            if (audioSource != null)
-            {
-                audioSource.Play();
-            }
+            return;
         }
+        currentMusic.Stop();
+        currentMusic.clip = musicList[int.Parse(GameManager.Instance.Playerinformation.position.ToString()[0].ToString()) - 1];
+        currentMusic.Play();
+
     }
+
 
     void OnEnable()
     {
@@ -69,6 +87,6 @@ public class SoundManager : SingletonBase<SoundManager>
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        PlaySceneMusic(scene.name);
+        PlaySceneMusic();
     }
 }

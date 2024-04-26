@@ -22,8 +22,9 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] private Button btn;
     [SerializeField] private GameObject Map;
+    [SerializeField] public GameObject ObjList;
 
-    public Dictionary<int, GameObject>
+    public static Dictionary<int, GameObject>
         CanvasGroup = new Dictionary<int, GameObject>(); //TODO : 이거 기준으로 캔버스 세팅해주기? Json하나 있어야될거같음.
 
     //ID값으로 캔버스 저장. TODO : 프리팹기준으로 빈공간이라도 생성하는거 필요함. 세팅할 때 
@@ -35,7 +36,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Canvas bgCanvas;
     private Image bgImage;
 
-    [SerializeField] private Text _Datetext;
+    [SerializeField] private TextMeshProUGUI _Datetext;
     
 
     public GameObject endingCredits;
@@ -73,12 +74,24 @@ public class UIManager : MonoBehaviour
         GameManager.Instance.OnPositionChange += CanvasChange;
         GameManager.Instance.OnPositionChange += itemCanvaschange;
         playerinformation = DataManager.Instance.Playerinformation;
-        
+        //CanvasGroup.Clear();
+        //Debug.Log(CanvasGroup.Count);
+        DataManager.Instance.Playerinformation.canvasObjSet.Clear();
         CanvasGroupSet();
-        foreach (var variables in CanvasGroup)
-        {
-            Debug.Log(variables.Key);
-        }
+        //Debug.Log($"{CanvasGroup.Count}    1");
+        CanvasChange();
+    }
+    
+    public void DeleteListener()
+    {
+        btn.onClick.RemoveAllListeners();
+        bgImage = null;
+        GameManager.Instance.OnDateChange -= DateUpdate;
+        GameManager.Instance.OnDayTimeChange -= DateUpdate;
+        GameManager.Instance.OnPositionChange -= CanvasChange;
+        GameManager.Instance.OnPositionChange -= itemCanvaschange;
+        playerinformation = DataManager.Instance.Playerinformation;
+        DataManager.Instance.Playerinformation.canvasObjSet.Clear();
     }
 
     private void CanvasGroupSet() //정규식 사용하여 Map들의 이름을 기준으로 CanvasGroup 세팅
@@ -87,14 +100,15 @@ public class UIManager : MonoBehaviour
         foreach (var VARIABLE in map_List)
         {
             MatchCollection index = Regex.Matches(VARIABLE.name, pattern);
-
+            
             if (!CanvasGroup.ContainsKey(int.Parse(index[0].Value)))
             {
                 CanvasGroup.Add(int.Parse(index[0].Value), VARIABLE);
+                
                 if (DataManager.Instance.GameState == Game_State.New)
                 {
                     DataManager.Instance.Playerinformation.canvasObjSet.Add(int.Parse(index[0].Value),VARIABLE.GetComponent<CanvasOnLoad>().states);
-                    Debug.Log(DataManager.Instance.Playerinformation.canvasObjSet[int.Parse(index[0].Value)].Count);
+                    //Debug.Log(DataManager.Instance.Playerinformation.canvasObjSet[int.Parse(index[0].Value)].Count);
                 }
             }
             VARIABLE.SetActive(false);
@@ -107,23 +121,23 @@ public class UIManager : MonoBehaviour
         StringBuilder sb = new StringBuilder();
         sb.Append(playerinformation.date.ToString());
         sb.Append($"일차 {GetDayTime()}");
-        sb.Append($" {playerinformation.position}");
+        sb.Append($"\n {playerinformation.position}");
         _Datetext.text = sb.ToString(); //TODO : GameManager에서 옮겨오기.
     }
 
     void DateUpdate(string pos) //TODO : UI변경에 관한 부분은 모두 UIManager로 넘길 것
     {
         StringBuilder sb = new StringBuilder();
-        sb.Append(playerinformation.date.ToString());
+        sb.Append(GameManager.Instance.Playerinformation.date.ToString());
         sb.Append($"일차 {GetDayTime()}");
-        sb.Append($" {pos}");
+        sb.Append($"\n {pos}");
         _Datetext.text = sb.ToString(); //TODO : GameManager에서 옮겨오기.
     }
 
 
     private string GetDayTime() //정서에 맞게 변환
     {
-        switch (playerinformation.daytime)
+        switch (GameManager.Instance.Playerinformation.daytime)
         {
             case DayTimeenum.Evening:
                 return "오전";
@@ -139,6 +153,18 @@ public class UIManager : MonoBehaviour
     public void Off_Current_Canvas()
     {
         CanvasGroup[GameManager.Instance.Playerinformation.position].SetActive(false); //현재 캔버스 끄기.
+    }
+
+    public void asdf()
+    {
+        Debug.Log(CanvasGroup.Count);
+        if (CanvasGroup.Count != 28)
+        {
+            foreach (var VARIABLE in CanvasGroup)
+            {
+                Debug.Log(VARIABLE.Key);
+            }
+        }
     }
 
     /// <summary>
@@ -179,6 +205,10 @@ public class UIManager : MonoBehaviour
         // }
         // else
         // {
+        foreach (var VARIABLE in CanvasGroup)
+        {
+            Debug.Log($"{VARIABLE.Key} | {VARIABLE.Value}");
+        }
         CanvasGroup[GameManager.Instance.Playerinformation.position].SetActive(true);
         //TODO : Load하는 경우 그에 맞게 데이터로 세팅해주는 것도 필요함.
         //예시 : CanvasGroup의 ID에 맞는 오브젝트의 컴포넌트에 접근해서 ObjectSet이라는 메서드를 실행
@@ -188,7 +218,6 @@ public class UIManager : MonoBehaviour
 
         if (NextPlaceData.Map_Type == Map_Type.Change)
         {
-            Debug.Log("Change");
             //Debug.Log($"{BGFilePath}/{NextPlaceData.Place_BG_Path}_{playerinformation.daytime.ToString()}");
             bgImage.sprite =
                 Resources.Load<Sprite>(
@@ -196,7 +225,6 @@ public class UIManager : MonoBehaviour
         }
         else if (NextPlaceData.Map_Type == Map_Type.Unchange)
         {
-            Debug.Log("UnChange");
             bgImage.sprite = Resources.Load<Sprite>($"{BGFilePath}/{NextPlaceData.Place_BG_Path}");
         }
     }
@@ -208,6 +236,7 @@ public class UIManager : MonoBehaviour
 
     private void OpenMap()
     {
+        ObjList.SetActive(false);
         Map.SetActive(true);
     }
 
@@ -246,5 +275,10 @@ public class UIManager : MonoBehaviour
     public void StartEndingCredits()
     {
         StartCoroutine(EndingCredits());
+    }
+
+    public void GUIOn()
+    {
+        canvasparents.transform.GetChild(2).gameObject.SetActive(true);
     }
 }

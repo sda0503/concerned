@@ -504,7 +504,9 @@ PlayerSettings:
   openGLRequireES31: 0
   openGLRequireES31AEP: 0
   openGLRequireES32: 0
-  m_TemplateCustomTags: {}
+  m_TemplateCustomTags:
+    CANVAS_OVERLAY_COLOR: 
+    MAIN_STYLE_COLOR: 
   mobileMTRendering:
     Android: 1
     iPhone: 1
@@ -765,7 +767,7 @@ PlayerSettings:
   webGLDebugSymbols: 0
   webGLEmscriptenArgs: 
   webGLModulesDirectory: 
-  webGLTemplate: APPLICATION:Default
+  webGLTemplate: PROJECT:Modern
   webGLAnalyzeBuildSize: 0
   webGLUseEmbeddedResources: 0
   webGLCompressionFormat: 0
@@ -806,7 +808,7 @@ PlayerSettings:
   suppressCommonWarnings: 1
   allowUnsafeCode: 0
   useDeterministicCompilation: 1
-  selectedPlatform: 0
+  selectedPlatform: 4
   additionalIl2CppArgs: 
   scriptingRuntimeVersion: 1
   gcIncremental: 1
@@ -889,11 +891,11 @@ PlayerSettings:
   apiCompatibilityLevel: 6
   activeInputHandler: 2
   windowsGamepadBackendHint: 0
-  cloudProjectId: fb9d2768-7b70-4bb2-bb79-cb4b869b849f
+  cloudProjectId: 6f458a7a-365d-4f96-a4da-2772755c3f53
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
   projectName: concerned
-  organizationId: snfndwl
+  organizationId: 910503y
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
   hmiLoadingImage: {fileID: 0}
