@@ -75,6 +75,7 @@ public class CallNumberUI : MonoBehaviour
 
     void OnCalling(string name)
     {
+        PopupUIManager.Instance.popupUI["CallingUI"].SetActive(false);
         PopupUIManager.Instance.OpenPopupUI<CallingUI>();
         PopupUIManager.Instance.OpenPopupUI<CallingUI>().OnSet(name);
     }
