@@ -29,7 +29,8 @@ public class MessageUI : MonoBehaviour
 
     private void OnSetList(string name)
     {
-        if(!messageListDictionary.ContainsKey(name))
+        //if (!name.Contains("강민우") || !name.Contains("한미래") || !name.Contains("흥신소") || !name.Contains("변호사") || !name.Contains("김태현") || !name.Contains("신현우")) return;
+        if (!messageListDictionary.ContainsKey(name))
         {
             GameObject obj = Instantiate(messageListPrefab, messageNumberListPosition);
             obj.transform.GetChild(3).GetComponent<Button>().onClick.AddListener(() => OnSetButton(name));
@@ -45,9 +46,9 @@ public class MessageUI : MonoBehaviour
         if (name.Contains("강민우")) view_name = "강민우";
         else if (name.Contains("한미래")) view_name = "한미래";
         else if (name.Contains("흥신소")) view_name = "흥신소 탐정";
-        else if (name.Contains("한미래")) view_name = "변호사";
-        else if (name.Contains("한미래")) view_name = "김태현";
-        else if (name.Contains("한미래")) view_name = "신현우";
+        else if (name.Contains("변호사")) view_name = "변호사";
+        else if (name.Contains("김태현")) view_name = "김태현";
+        else if (name.Contains("신현우")) view_name = "신현우";
         messageListDictionary[name].transform.GetChild(1).gameObject.transform.GetChild(0).GetComponent<Image>().sprite = DataManager.Instance.SpriteLoad("Image/Phone/" + view_name);
         messageListDictionary[name].transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = view_name;
     }
