@@ -19,7 +19,7 @@ public class TutoChangeImage : MonoBehaviour
 
         {
             gameObject.transform.parent.gameObject.SetActive(false);
-            gameObject.transform.parent.GetChild(1).GetComponent<Image>().sprite = tutoImage[imageCnt];
+            gameObject.transform.parent.GetChild(0).GetComponent<Image>().sprite = tutoImage[imageCnt];
             //gameObject.transform.parent.GetChild(2).gameObject.SetActive(false);
             //gameObject.transform.parent.GetChild(3).gameObject.SetActive(false);
             GameManager.Instance.PositionChange(300);
@@ -39,7 +39,7 @@ public class TutoChangeImage : MonoBehaviour
         }
         else
         {
-            gameObject.transform.parent.GetChild(1).GetComponent<Image>().sprite = tutoImage[imageCnt];
+            gameObject.transform.parent.GetChild(0).GetComponent<Image>().sprite = tutoImage[imageCnt];
         }
     }
 
@@ -48,6 +48,7 @@ public class TutoChangeImage : MonoBehaviour
         if (!showImageBool)
         {
             Debug.Log("��ȭ ��");
+            gameObject.transform.parent.parent.transform.GetChild(0).gameObject.SetActive(false);
             gameObject.transform.parent.parent.transform.GetChild(1).gameObject.SetActive(false);
             canvas.SetActive(false);
             gameObject.transform.parent.gameObject.SetActive(true);

@@ -182,7 +182,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buttons:
   - {fileID: 5230892582263199523}
-  itemID: 0b000000
+  itemID: 65000000
 --- !u!1 &1422523891251594962
 GameObject:
   m_ObjectHideFlags: 0
@@ -202,7 +202,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &751166852311441474
 RectTransform:
   m_ObjectHideFlags: 0
@@ -218,7 +218,7 @@ RectTransform:
   - {fileID: 580518983287755748}
   - {fileID: 3167428551183380156}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}

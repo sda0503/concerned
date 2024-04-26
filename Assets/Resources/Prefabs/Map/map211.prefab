@@ -741,7 +741,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &5066956606940652223
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1237,7 +1237,7 @@ MonoBehaviour:
   - {fileID: 1903920451127487113}
   - {fileID: 8750527616932756741}
   - {fileID: 4450856178281902388}
-  itemID: 1b00000051000000050000002b000000
+  itemID: cf000000210300000500000093010000
 --- !u!1 &7845897622173755335
 GameObject:
   m_ObjectHideFlags: 0
@@ -1863,7 +1863,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3930068938865556472, guid: 267d414eb7fc2ac40af018a8359f1741, type: 3}
       propertyPath: item
-      value: 42
+      value: 402
       objectReference: {fileID: 0}
     - target: {fileID: 3930068938865556472, guid: 267d414eb7fc2ac40af018a8359f1741, type: 3}
       propertyPath: correctPassword

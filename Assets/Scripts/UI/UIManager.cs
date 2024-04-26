@@ -22,6 +22,7 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] private Button btn;
     [SerializeField] private GameObject Map;
+    [SerializeField] public GameObject ObjList;
 
     public static Dictionary<int, GameObject>
         CanvasGroup = new Dictionary<int, GameObject>(); //TODO : 이거 기준으로 캔버스 세팅해주기? Json하나 있어야될거같음.
@@ -235,6 +236,7 @@ public class UIManager : MonoBehaviour
 
     private void OpenMap()
     {
+        ObjList.SetActive(false);
         Map.SetActive(true);
     }
 

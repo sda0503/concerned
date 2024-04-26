@@ -2,11 +2,11 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Video;
 using UnityEngine.SceneManagement;
+using System.Collections;
 
 public class VideoController : MonoBehaviour
 {
     public RawImage videoScreen;
-    public VideoClip videoClip;
     private VideoPlayer videoPlayer;
 
     void Start()
@@ -17,8 +17,8 @@ public class VideoController : MonoBehaviour
         videoPlayer.targetTexture = new RenderTexture(Screen.width, Screen.height, 24);
         videoScreen.texture = videoPlayer.targetTexture;
         DataManager.Instance.init();
-        PlayVideo();
         videoPlayer.loopPointReached += OnVideoEnd;
+        StartCoroutine(PlayVideo());
     }
 
     void Update()
@@ -29,10 +29,11 @@ public class VideoController : MonoBehaviour
         }
     }
 
-    void PlayVideo()
+     IEnumerator PlayVideo()
     {
-        videoPlayer.clip = videoClip;
+        videoPlayer.url = "https://todaykeywords.kr/game/video1.mp4";
         videoPlayer.Play();
+        yield break;
     }
 
     void OnVideoEnd(VideoPlayer vp)
