@@ -71,7 +71,7 @@ public class GameManager : SingletonBase<GameManager>
             //TODO : 선택하는 씬(엔딩)으로 넘어가야됨
             UIManager.Instance.endingCredits.SetActive(true);
         }
-        if (check_date.Contains(Playerinformation.date))
+        if (check_date.Contains(Playerinformation.date + 1))
         {
             PopupUIManager.Instance.popupUI["PhoneUI"].SetActive(true);
             PopupUIManager.Instance.popupUI["PhoneUI"].transform.GetChild(8).gameObject.SetActive(true);

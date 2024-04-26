@@ -175,7 +175,7 @@
       "QuestTargetName": "경찰",
       "QuestIdx": "1",
       "QuestStartPost": "30015017",
-      "QuestType": "0",
+      "QuestType": "1",
       "QuestState": "false",
       "NeedQuest": null,
       "NeedItem": null

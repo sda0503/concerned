@@ -58,6 +58,21 @@ public class CalendarUI : MonoBehaviour
             //경찰 소환조사 세팅
             UIManager.Instance.characterComponent.SetActive(true);
             UIManager.Instance.characterComponent.GetComponent<interactableNPC>().TargetName = click_calendarDates[GameManager.Instance.Playerinformation.date + 1] + "- 소환조사";
+            switch (click_calendarDates[GameManager.Instance.Playerinformation.date + 1])
+            {
+                case "강민우 ":
+                    UIManager.Instance.characterComponent.GetComponent<Image>().sprite = DataManager.Instance.SpriteLoad("Image/Charters/kangminoo_mini2");
+                    break;
+                case "흥신소 탐정 ":
+                    UIManager.Instance.characterComponent.GetComponent<Image>().sprite = DataManager.Instance.SpriteLoad("Image/Charters/detective");
+                    break;
+                case "김태현 ":
+                    UIManager.Instance.characterComponent.GetComponent<Image>().sprite = DataManager.Instance.SpriteLoad("Image/Charters/KimTaehyun");
+                    break;
+                case "신현우 ":
+                    UIManager.Instance.characterComponent.GetComponent<Image>().sprite = DataManager.Instance.SpriteLoad("Image/Charters/ShinHyunwoo");
+                    break;
+            }
         }
     }
     
