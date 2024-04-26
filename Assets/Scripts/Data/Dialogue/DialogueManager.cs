@@ -345,8 +345,6 @@ public class DialogueManager : MonoBehaviour
         contextcount = int.Parse(_dialogdic[contextcount].Event_Next_Log[index]);
         if (contextcount == 0)
         {
-            _forechatObject.SetActive(true);
-            _chatWindow.SetActive(false);
             Dialogue_Quest_Data questData = _questdic[Targetname][questcount - 1];
             if (questData.QuestType == QuestType.Normal)
             {
@@ -363,13 +361,15 @@ public class DialogueManager : MonoBehaviour
 
             foreach (Button btns in choice_btn)
             {
-                if (btns.isActiveAndEnabled)
+                if (btns.gameObject.activeInHierarchy)
                 {
                     btns.gameObject.SetActive(false);
                 }
                 //btns.gameObject.activeInHierarchy //게임 오브젝트에서만 하이어라키로 체크 가능.
             }
 
+            _forechatObject.SetActive(true);
+            _chatWindow.SetActive(false);
             _choiceWindow.gameObject.SetActive(false);
             return;
         }
@@ -378,7 +378,8 @@ public class DialogueManager : MonoBehaviour
         _confirmbtn.enabled = true;
         foreach (Button btns in choice_btn)
         {
-            if (btns.isActiveAndEnabled)
+            Debug.Log("btn Off");
+            if (btns.gameObject.activeInHierarchy)
             {
                 btns.gameObject.SetActive(false);
             }
