@@ -318,7 +318,7 @@
       "Dialogue_idx": "30000118",
       "Name": null,
       "Log": null,
-      "Log_Type": "2",
+      "Log_Type": "1",
       "Next_Log": "0",
       "Event_Log": [
         "상황 보고",

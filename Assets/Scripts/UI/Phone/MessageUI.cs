@@ -29,7 +29,7 @@ public class MessageUI : MonoBehaviour
 
     private void OnSetList(string name)
     {
-        //if (!name.Contains("강민우") || !name.Contains("한미래") || !name.Contains("흥신소") || !name.Contains("변호사") || !name.Contains("김태현") || !name.Contains("신현우")) return;
+        if (!name.Contains("강민우") || !name.Contains("한미래") || !name.Contains("흥신소") || !name.Contains("변호사") || !name.Contains("김태현") || !name.Contains("신현우")) return;
         if (!messageListDictionary.ContainsKey(name))
         {
             GameObject obj = Instantiate(messageListPrefab, messageNumberListPosition);
