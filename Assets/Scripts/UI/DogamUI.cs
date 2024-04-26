@@ -13,7 +13,7 @@ using UnityEngine.UI;
 public class DogamUI : PopupUIBase
 {
     public Transform itemSlotTransform;
-    private GameObject[] itemSlots = new GameObject[50];
+    private GameObject[] itemSlots = new GameObject[40];
     public Image itemImage;
 
     public Button closeButton;
