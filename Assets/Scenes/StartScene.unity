@@ -4676,7 +4676,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hand: {fileID: 2800000, guid: 204cecbacf30bf84f9a952ad58ef2d4f, type: 3}
-  original: {fileID: 2800000, guid: 0b6d418c5bed5804aad202cea43aa209, type: 3}
+  original: {fileID: 2800000, guid: b8813a00fe2a26b4e8735f3b12e952dd, type: 3}
 --- !u!4 &2115255309
 Transform:
   m_ObjectHideFlags: 0
