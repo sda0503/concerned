@@ -482,7 +482,6 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 453266168}
   - {fileID: 259849671}
   - {fileID: 2126837846}
   - {fileID: 1037808166}
@@ -510,6 +509,7 @@ RectTransform:
   - {fileID: 2059167709}
   - {fileID: 1915496329}
   - {fileID: 4850703}
+  - {fileID: 1676258839}
   m_Father: {fileID: 1396980238}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1975,6 +1975,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   soundOn: {fileID: 215761367}
   soundOff: {fileID: 1922531774}
+  musicList: []
+  currentMusic: {fileID: 0}
+  placeDataList: []
 --- !u!82 &300289821
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2889,11 +2892,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e3c63cb3fe41c57498ab97a016cf87bc, type: 3}
---- !u!224 &453266168 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 6656558478927929300, guid: c0b82b7280fdbdc4bb5bf274075619f2, type: 3}
-  m_PrefabInstance: {fileID: 1676258838}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &454662207
 GameObject:
   m_ObjectHideFlags: 0
@@ -3237,6 +3235,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdb5047cc66217448ae36d1d1c148b58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  b1: {fileID: 0}
+  b2: {fileID: 0}
+  b3: {fileID: 0}
 --- !u!4 &468722797
 Transform:
   m_ObjectHideFlags: 0
@@ -4244,7 +4245,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inventoryButton: {fileID: 295743186}
   phoneButton: {fileID: 1357156011}
-  mapButton: {fileID: 2019810455}
 --- !u!1 &701219188
 GameObject:
   m_ObjectHideFlags: 0
@@ -5891,6 +5891,7 @@ MonoBehaviour:
   _ChatlogBtn: {fileID: 1494260970}
   _forechatObject: {fileID: 811208752}
   chatwindowBtn: {fileID: 1985888524}
+  _endingWindow: {fileID: 0}
 --- !u!1001 &1063454247
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7938,10 +7939,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   btn: {fileID: 2019810455}
   Map: {fileID: 2000633643}
+  ObjList: {fileID: 0}
+  map_List: []
   canvasparents: {fileID: 1396980237}
   bgCanvas: {fileID: 1828603856}
-  _Datetext: {fileID: 658067893}
+  _Datetext: {fileID: 0}
+  endingCredits: {fileID: 0}
   itemCanvas: {fileID: 0}
+  characterComponent: {fileID: 0}
 --- !u!1 &1396980237
 GameObject:
   m_ObjectHideFlags: 0
@@ -8021,6 +8026,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1fc8db98ca0bcc64fb870569a0cb1854, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  check_date: 
+  check_name: []
   origin: {fileID: 0}
 --- !u!224 &1412138154 stripped
 RectTransform:
@@ -8581,7 +8588,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e4fefc085f58e84086419fabe3c80fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  GameState: 0
   getItemsNumber: 
+  canSkip: 0
   asdf: {fileID: 0}
 --- !u!1 &1531598047
 GameObject:
@@ -9293,7 +9302,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1639716087
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9616,6 +9625,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c0b82b7280fdbdc4bb5bf274075619f2, type: 3}
+--- !u!224 &1676258839 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 6851977608663880943, guid: c0b82b7280fdbdc4bb5bf274075619f2, type: 3}
+  m_PrefabInstance: {fileID: 1676258838}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1679025554
 GameObject:
   m_ObjectHideFlags: 0
