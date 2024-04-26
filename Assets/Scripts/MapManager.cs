@@ -65,7 +65,8 @@ public class MapManager : MonoBehaviour
             _newMark.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = _mapDate[i].Item2;
             _newMark.transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = _mapDate[i].Item3.ToString();
         }
-        var _pp = Instantiate(_popup, new Vector3(960,540,0), Quaternion.identity, gameObject.transform);
+        var _pp = Instantiate(_popup,  gameObject.transform);
+        _pp.transform.localPosition = Vector2.zero;
         _pp.SetActive(false);
     }
     
