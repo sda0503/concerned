@@ -12,8 +12,8 @@ public class Tuto : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        GameManager.Instance.Playerinformation.position = 711;
         Invoke("TutoStart", 1f);
-
         DialogueManager.Instance.TargetNameChange += showImage;
     }
 

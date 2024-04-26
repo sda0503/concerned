@@ -89,9 +89,4 @@ public class VideoOption : MonoBehaviour
         float targetAspect = (float)resolution.width / resolution.height;
         mainCamera.aspect = targetAspect;
     }
-
-    public void OutBtnClick()
-    {
-        SceneManager.LoadScene("StartScene");
-    }
 }

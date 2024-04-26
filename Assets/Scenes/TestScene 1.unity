@@ -6980,8 +6980,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 108121880}
-        m_TargetAssemblyTypeName: VideoOption, Assembly-CSharp
+      - m_Target: {fileID: 1394078125}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
         m_MethodName: OutBtnClick
         m_Mode: 1
         m_Arguments:
@@ -14858,7 +14858,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &2871010278725551027
 MonoBehaviour:
   m_ObjectHideFlags: 0

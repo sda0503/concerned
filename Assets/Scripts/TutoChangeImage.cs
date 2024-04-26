@@ -16,7 +16,6 @@ public class TutoChangeImage : MonoBehaviour
         imageCnt++;
         Debug.Log(imageCnt);
         if (imageCnt == 5)
-
         {
             gameObject.transform.parent.gameObject.SetActive(false);
             gameObject.transform.parent.GetChild(0).GetComponent<Image>().sprite = tutoImage[imageCnt];
@@ -30,7 +29,6 @@ public class TutoChangeImage : MonoBehaviour
         }
         else if (imageCnt == 7)
         {
-           
             GameManager.Instance.Playerinformation.position = 300;
             UIManager.CanvasGroup.Clear();
             UIManager.Instance.DeleteListener();

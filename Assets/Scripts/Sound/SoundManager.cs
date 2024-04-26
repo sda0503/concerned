@@ -62,6 +62,7 @@ public class SoundManager : MonoBehaviour
 
     private void PlaySceneMusic()
     {
+        if (currentMusic == null) return;
         if (currentMusic.clip == null)
             return;
         if (currentMusic.clip.name == (musicList[int.Parse(GameManager.Instance.Playerinformation.position.ToString()[0].ToString()) - 1].name))
