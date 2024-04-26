@@ -98,7 +98,6 @@ public class UIManager : MonoBehaviour
 
     private void CanvasGroupSet() //정규식 사용하여 Map들의 이름을 기준으로 CanvasGroup 세팅
     {
-        CanvasGroup.Clear();
         string pattern = @"\d+";
         foreach (var VARIABLE in map_List)
         {
@@ -288,5 +287,8 @@ public class UIManager : MonoBehaviour
     public void OutBtnClick()
     {
         SceneManager.LoadScene("StartScene");
+        GameManager.Instance.Playerinformation = new Information();
+        CanvasGroup.Clear();
+        DeleteListener();
     }
 }
