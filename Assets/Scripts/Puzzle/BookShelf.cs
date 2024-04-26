@@ -82,7 +82,8 @@ public class BookShelf : MonoBehaviour
         var obj = DataManager.Instance.GameObjectLoad("Prefabs/book");
         for (int i = 0; i < 40; i++)
         {
-            Instantiate(obj, new Vector3(783 + 51 * (i % 8), 800 - 126 * (i / 8), 0), Quaternion.identity, books);
+            GameObject gameobj = Instantiate(obj,  books);
+            gameobj.transform.localPosition = new Vector3((783 + 51 * (i % 8))-960, (800 - 126 * (i / 8))-540, 0);
         }
     }
 }
