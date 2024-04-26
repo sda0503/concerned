@@ -73,12 +73,6 @@ public class DialogueManager : MonoBehaviour
 
     int CheckQuest(string targetname)
     {
-        if (GameManager.Instance.TalkCount < 1)
-        {
-            //TODO : 대화할 수 없다는 팝업을 띄우는게 좋을 듯.
-            Debug.Log($"대화 횟수가 없습니다. {GameManager.Instance.TalkCount}");
-            return -1;
-        }
 
         int startpost = 0;
         Dialogue_Quest_Data[] dialogueQuestDatas = _questdic[targetname].ToArray(); //이렇게 캐싱
@@ -113,8 +107,7 @@ public class DialogueManager : MonoBehaviour
                 }
             }
         }
-
-        GameManager.Instance.TalkCount--;
+       
         return startpost;
     }
 
@@ -138,7 +131,7 @@ public class DialogueManager : MonoBehaviour
             _chatWindow.SetActive(true);
             //btn3.gameObject.SetActive(false);
 
-            if (!allchatlog.ContainsKey(targetname))
+            if (!allchatlog.ContainsKey(targetname) && _questdic[Targetname][questcount - 1].QuestType == QuestType.Normal)
             {
                 allchatlog.Add(targetname, new chatlogdic());
             }
@@ -293,7 +286,7 @@ public class DialogueManager : MonoBehaviour
         _choiceWindow.gameObject.SetActive(true);
         for (int i = 0; i < data.Event_Log.Length; i++)
         {
-            if (data.Log_Type == Log_Type.choose || data.Log_Type == Log_Type.Loop || !data.Event_Log_State[i])
+            if (!data.Event_Log_State[i])
             {
                 // if (!DataManager.Instance._inventory.inventory.ContainsKey(int.Parse(data.Check_Item[i])))
                 // {

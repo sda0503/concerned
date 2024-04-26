@@ -37,19 +37,6 @@ public class GameManager : SingletonBase<GameManager>
             _puzzleCount = value;
         }
     }
-    private int _talkCount = 5; //대화 횟수제한 시간당 5회
-    
-    public int TalkCount
-    {
-        get
-        {
-            return _talkCount;
-        }
-        set
-        {
-            _talkCount = value;
-        }
-    }
     
     public override void init()
     {
@@ -59,7 +46,6 @@ public class GameManager : SingletonBase<GameManager>
         //OnDateChange.Invoke(); //TODO : 나중에 정리되면 삭제
         //CanvasGroup.Add(-1,origin);
         //Playerinformation.position = -1;
-        OnDayTimeChange += CountReset;
     }
 
     public void DateChange()
@@ -108,13 +94,7 @@ public class GameManager : SingletonBase<GameManager>
     //TODO : 이걸 맵 내부에서 이동하는거에 재사용 하려면? 1. Map 켜서 이동하는 PopupBtn에 DayTimeChange 달아주어서 분리하면 되긴 함.
     // 2. 1번이 제일 나은 듯. 굳이 이게 어디서 왔는지 따져서 갈라줄 필요는 없다고 생각함.
 
-    void CountReset()
-    {
-        Debug.Log("countReset");
-        TalkCount = 5;
-        PuzzleCount = 3;
-    }
-    
+
     
     
    
