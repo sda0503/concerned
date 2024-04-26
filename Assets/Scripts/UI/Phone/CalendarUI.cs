@@ -49,12 +49,15 @@ public class CalendarUI : MonoBehaviour
     //잡힌 약속은 그 날이 되면 작동하도록 설정 필요. -> 이건 어렵지 않을거같긴함. 약속이 있으면 경찰서에서 시작을 하던가, 혼잣말로 나올 수 잇게 하던가, 핸드폰 알림으로 만들던가.
     private void MeetCharacterCallback()
     {
-        Debug.Log("check");
         if (click_calendarDates.ContainsKey(GameManager.Instance.Playerinformation.date))
         {
-            Debug.Log(GameManager.Instance.Playerinformation.date);
             Debug.Log("D - day");
-            //DialogueManager.Instance.StartDialogue(click_calendarDates[GameManager.Instance.Playerinformation.date]); //혼잣말 버전
+            PopupUIManager.Instance.popupUI["PhoneUI"].SetActive(true);
+            PopupUIManager.Instance.popupUI["PhoneUI"].transform.GetChild(8).gameObject.SetActive(true);
+
+            //경찰 소환조사 세팅
+            UIManager.Instance.characterComponent.SetActive(true);
+            UIManager.Instance.characterComponent.GetComponent<interactableNPC>().TargetName = click_calendarDates[GameManager.Instance.Playerinformation.date] + "- 소환조사";
         }
     }
     
@@ -65,7 +68,7 @@ public class CalendarUI : MonoBehaviour
         dateText.text = "양력 4월 " + date.ToString("00") + "일";
         if(click_calendarDates.ContainsKey(date))
         {
-            explain.text = click_calendarDates[date] + "약속";
+            explain.text = click_calendarDates[date] + " 약속";
         }
         else { explain.text = "약속 없음"; }
     }
@@ -95,6 +98,7 @@ public class CalendarUI : MonoBehaviour
                 calendarDates[GameManager.Instance.check_date[i]].transform.GetChild(1).gameObject.SetActive(true);
             }
             GameManager.Instance.check_date.Clear();
+            GameManager.Instance.check_name.Clear();
         }
     }
 }

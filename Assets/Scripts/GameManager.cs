@@ -1,11 +1,7 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Text;
 using DataStorage;
-using Unity.VisualScripting;
+using System;
+using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 
 public class GameManager : SingletonBase<GameManager>
@@ -69,15 +65,29 @@ public class GameManager : SingletonBase<GameManager>
     public void DateChange()
     {
         Playerinformation.date++;
-        OnDateChange?.Invoke(); //UIUpdate (날짜표시)
+
         if (Playerinformation.date == 30)
         {
             //TODO : 선택하는 씬(엔딩)으로 넘어가야됨
             UIManager.Instance.endingCredits.SetActive(true);
         }
+
+        if (Playerinformation.date == 1)
+        {
+            PopupUIManager.Instance.popupUI["PhoneUI"].SetActive(true);
+            PopupUIManager.Instance.popupUI["PhoneUI"].transform.GetChild(8).gameObject.SetActive(true);
+        }
+
+        //if (check_date.Contains(Playerinformation.date))
+        //{
+        //    PopupUIManager.Instance.popupUI["PhoneUI"].SetActive(true);
+        //    PopupUIManager.Instance.popupUI["PhoneUI"].transform.GetChild(8).gameObject.SetActive(true);
+        //}
+
+        OnDateChange?.Invoke(); //UIUpdate (날짜표시)
     }
 
-   
+
 
     public void DayTimeChange()
     {

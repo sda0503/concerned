@@ -4316,6 +4316,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 245393890846502470, guid: 9eae831ea424cfb4995a7005bf31b578, type: 3}
   m_PrefabInstance: {fileID: 704278796}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &704278798 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5855065992527918395, guid: 9eae831ea424cfb4995a7005bf31b578, type: 3}
+  m_PrefabInstance: {fileID: 704278796}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &749161148 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5619179279404322449, guid: b7e99e775e0877e4b88779de60d4c778, type: 3}
@@ -8288,6 +8293,7 @@ MonoBehaviour:
   _Datetext: {fileID: 1537017492}
   endingCredits: {fileID: 8910244464676715490}
   itemCanvas: {fileID: 961456749}
+  characterComponent: {fileID: 704278798}
 --- !u!1 &1396980237
 GameObject:
   m_ObjectHideFlags: 0

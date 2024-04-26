@@ -45,6 +45,8 @@ public class UIManager : MonoBehaviour
 
     public Transform itemCanvas;
 
+    public GameObject characterComponent;
+
     private Information playerinformation;
 
     public static UIManager Instance;
