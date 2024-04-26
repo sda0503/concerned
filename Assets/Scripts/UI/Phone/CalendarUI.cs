@@ -49,7 +49,7 @@ public class CalendarUI : MonoBehaviour
     //잡힌 약속은 그 날이 되면 작동하도록 설정 필요. -> 이건 어렵지 않을거같긴함. 약속이 있으면 경찰서에서 시작을 하던가, 혼잣말로 나올 수 잇게 하던가, 핸드폰 알림으로 만들던가.
     private void MeetCharacterCallback()
     {
-        if (click_calendarDates.ContainsKey(GameManager.Instance.Playerinformation.date))
+        if (click_calendarDates.ContainsKey(GameManager.Instance.Playerinformation.date + 1))
         {
             Debug.Log("D - day");
             PopupUIManager.Instance.popupUI["PhoneUI"].SetActive(true);
@@ -57,7 +57,7 @@ public class CalendarUI : MonoBehaviour
 
             //경찰 소환조사 세팅
             UIManager.Instance.characterComponent.SetActive(true);
-            UIManager.Instance.characterComponent.GetComponent<interactableNPC>().TargetName = click_calendarDates[GameManager.Instance.Playerinformation.date] + "- 소환조사";
+            UIManager.Instance.characterComponent.GetComponent<interactableNPC>().TargetName = click_calendarDates[GameManager.Instance.Playerinformation.date + 1] + "- 소환조사";
         }
     }
     
