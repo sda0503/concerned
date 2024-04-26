@@ -14,11 +14,11 @@ public class MessageBubbleUI : PopupUIBase
     public GameObject bubblePrefab2;
     public Transform bubbleTransform;
 
-    public void OnSetBubble(string name)
+    public void OnSetBubble(string name, string image)
     {
         //새로운 오브젝트가 생성되야하므로..
         //저장되어야하는 내용 분류 어떻게 했는지 확인 필요
-        characterImage.sprite = DataManager.Instance.SpriteLoad("Image/Phone/" + name);
+        characterImage.sprite = DataManager.Instance.SpriteLoad("Image/Phone/" + image);
         characterText.text = name + " 대화";
 
         foreach(int n in DialogueManager.Instance.allchatlog[name].saveOneLog.Keys)

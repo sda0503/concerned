@@ -29,14 +29,15 @@ public class MessageUI : MonoBehaviour
 
     private void OnSetList(string name)
     {
-        if (!name.Contains("강민우") || !name.Contains("한미래") || !name.Contains("흥신소") || !name.Contains("변호사") || !name.Contains("김태현") || !name.Contains("신현우")) return;
-        if (!messageListDictionary.ContainsKey(name))
+        if (name.Contains("강민우") || name.Contains("한미래") || name.Contains("흥신소") || name.Contains("변호사") || name.Contains("김태현") || name.Contains("신현우"))
         {
-            GameObject obj = Instantiate(messageListPrefab, messageNumberListPosition);
-            obj.transform.GetChild(3).GetComponent<Button>().onClick.AddListener(() => OnSetButton(name));
-            messageListDictionary.Add(name, obj);
+            if (!messageListDictionary.ContainsKey(name))
+            {
+                GameObject obj = Instantiate(messageListPrefab, messageNumberListPosition);
+                messageListDictionary.Add(name, obj);
 
-            OnSetPrefab(name);
+                OnSetPrefab(name);
+            }
         }
     }
 
@@ -51,11 +52,12 @@ public class MessageUI : MonoBehaviour
         else if (name.Contains("신현우")) view_name = "신현우";
         messageListDictionary[name].transform.GetChild(1).gameObject.transform.GetChild(0).GetComponent<Image>().sprite = DataManager.Instance.SpriteLoad("Image/Phone/" + view_name);
         messageListDictionary[name].transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = view_name;
+        messageListDictionary[name].transform.GetChild(3).GetComponent<Button>().onClick.AddListener(() => OnSetButton(name, view_name));
     }
 
 
-    private void OnSetButton(string name)
+    private void OnSetButton(string chat_name, string image_name)
     {
-        PopupUIManager.Instance.OpenPopupUI<MessageBubbleUI>(gameObject.transform).OnSetBubble(name);
+        PopupUIManager.Instance.OpenPopupUI<MessageBubbleUI>(gameObject.transform).OnSetBubble(chat_name, image_name);
     }
 }
