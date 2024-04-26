@@ -17,6 +17,7 @@ public class VideoController : MonoBehaviour
         videoPlayer.targetTexture = new RenderTexture(Screen.width, Screen.height, 24);
         videoScreen.texture = videoPlayer.targetTexture;
         DataManager.Instance.init();
+        GameManager.Instance.init();
         videoPlayer.loopPointReached += OnVideoEnd;
         StartCoroutine(PlayVideo());
     }

@@ -71,6 +71,7 @@ public class GameManager : SingletonBase<GameManager>
             //TODO : 선택하는 씬(엔딩)으로 넘어가야됨
             UIManager.Instance.endingCredits.SetActive(true);
         }
+
         if (check_date.Contains(Playerinformation.date + 1))
         {
             PopupUIManager.Instance.popupUI["PhoneUI"].SetActive(true);
@@ -92,7 +93,7 @@ public class GameManager : SingletonBase<GameManager>
             DateChange();
         Playerinformation.daytime = (DayTimeenum)(daytime % 2);
         //나머지연산자로 하면 if없이 순환시킬 수 있다.
-
+        Debug.Log("DayTimeChange");
         OnDayTimeChange?.Invoke(); //UIUpdate //시간대 (조명, 휴대폰이나 다른 UI)
     }
 
@@ -109,6 +110,7 @@ public class GameManager : SingletonBase<GameManager>
 
     void CountReset()
     {
+        Debug.Log("countReset");
         TalkCount = 5;
         PuzzleCount = 3;
     }

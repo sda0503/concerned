@@ -76,7 +76,7 @@ public class DialogueManager : MonoBehaviour
         if (GameManager.Instance.TalkCount < 1)
         {
             //TODO : 대화할 수 없다는 팝업을 띄우는게 좋을 듯.
-            Debug.Log("대화 횟수가 없습니다.");
+            Debug.Log($"대화 횟수가 없습니다. {GameManager.Instance.TalkCount}");
             return -1;
         }
 
@@ -299,37 +299,46 @@ public class DialogueManager : MonoBehaviour
                 // {
                 //     return;
                 // }
-
-                if (data.Check_Quest[i] == "0")
+                if (data.Check_Quest == null && data.Check_Item == null)
                 {
-                    if (data.Check_Item[i] == "-1")
-                    {
-                        choice_btn[i].gameObject.SetActive(true);
-                        choice_btn[i].GetComponentInChildren<TextMeshProUGUI>().text = data.Event_Log[i];
-                    }
-                    else
-                    {
-                        if (DataManager.Instance.getItems.ContainsKey(int.Parse(data.Check_Item[i])))
-                        {
-                            choice_btn[i].gameObject.SetActive(true);
-                            choice_btn[i].GetComponentInChildren<TextMeshProUGUI>().text = data.Event_Log[i];
-                        }
-                    }
+                    choice_btn[i].gameObject.SetActive(true);
+                    choice_btn[i].GetComponentInChildren<TextMeshProUGUI>().text = data.Event_Log[i];
                 }
                 else
                 {
-                    string[] checkqeust = data.Check_Quest[i].Split(',');
-
-                    if (DataManager.Instance._questDic.DialogueQuestDic[checkqeust[0]][int.Parse(checkqeust[1]) - 1]
-                        .QuestState)
+                    if (data.Check_Quest[i] == "0")
                     {
-                        if (DataManager.Instance.getItems.ContainsKey(int.Parse(data.Check_Item[i])))
+                        if (data.Check_Item[i] == "-1")
                         {
                             choice_btn[i].gameObject.SetActive(true);
                             choice_btn[i].GetComponentInChildren<TextMeshProUGUI>().text = data.Event_Log[i];
                         }
+                        else
+                        {
+                            if (DataManager.Instance.getItems.ContainsKey(int.Parse(data.Check_Item[i])))
+                            {
+                                choice_btn[i].gameObject.SetActive(true);
+                                choice_btn[i].GetComponentInChildren<TextMeshProUGUI>().text = data.Event_Log[i];
+                            }
+                        }
+                    }
+                    else
+                    {
+                        string[] checkqeust = data.Check_Quest[i].Split(',');
+
+                        if (DataManager.Instance._questDic.DialogueQuestDic[checkqeust[0]][int.Parse(checkqeust[1]) - 1]
+                            .QuestState)
+                        {
+                            if (DataManager.Instance.getItems.ContainsKey(int.Parse(data.Check_Item[i])))
+                            {
+                                choice_btn[i].gameObject.SetActive(true);
+                                choice_btn[i].GetComponentInChildren<TextMeshProUGUI>().text = data.Event_Log[i];
+                            }
+                        }
                     }
                 }
+
+                
             }
         }
     }
