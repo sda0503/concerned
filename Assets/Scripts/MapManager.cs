@@ -31,6 +31,16 @@ public class MapManager : MonoBehaviour
          // _placeDB = JsonConvert.DeserializeObject<PlaceDB>(obj);
         
         //TODO : Value를 바꿔야될수도? _placeDB의 Name값 가져와서 세팅 
+        // _mapDate.Add((new Vector2(396, 1080 + -539), "경찰서",700));
+        // _mapDate.Add((new Vector2(1684, 1080 + -363), "인적 드문 숲",300));
+        // _mapDate.Add((new Vector2(1245, 1080 + -446), "택배회사",900));
+        // _mapDate.Add((new Vector2(594, 1080 + -756), "빗테크 오피스",200));
+        // _mapDate.Add((new Vector2(646, 1080 + -270), "빗테크 오피스텔",100));
+        // _mapDate.Add((new Vector2(692, 1080 + -885), "병원 & 장례식장",600));
+        // _mapDate.Add((new Vector2(331, 1080 + -950), "양현서의 집",100));
+        // _mapDate.Add((new Vector2(505, 1080 + -322), "변호사 사무실",500));
+        // _mapDate.Add((new Vector2(1731, 1080 + -578), "신현우의 집",800));
+        // _mapDate.Add((new Vector2(548, 1080 + -171), "탐정사무소",400));
         _mapDate.Add((new Vector2(396, 1080 + -539), "경찰서",700));
         _mapDate.Add((new Vector2(1684, 1080 + -363), "인적 드문 숲",300));
         _mapDate.Add((new Vector2(1245, 1080 + -446), "택배회사",900));
@@ -46,7 +56,8 @@ public class MapManager : MonoBehaviour
         //자기 있는 곳에 또 다시 방문할 수도 있음.
         for (int i = 0; i < _mapDate.Count; i++)
         {
-            var _newMark = Instantiate(_marker, _mapDate[i].Item1, Quaternion.identity, gameObject.transform);
+            var _newMark = Instantiate(_marker, gameObject.transform);
+            _newMark.transform.localPosition = new Vector2(_mapDate[i].Item1.x-gameObject.transform.position.x,_mapDate[i].Item1.y-gameObject.transform.position.y);
             _newMark.GetComponent<Button>().onClick.AddListener(ClickMarker);
             _newMark.transform.GetChild(0).gameObject.SetActive(false);
             _newMark.transform.GetChild(1).gameObject.SetActive(true);
