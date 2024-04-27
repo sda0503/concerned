@@ -19,20 +19,32 @@ public class MapItemSetting : MonoBehaviour
         for(int i = 0; i < buttons.Count; i++)
         {
             int n = i;
-            buttons[i].onClick.AddListener(() => SetItem(itemID[n]));
+            buttons[i].onClick.AddListener(() => SetItem(itemID[n], i));
         }
     }
 
-    private void SetItem(int id)
+    private void SetItem(int id, int item_index)
     {
-        if(id == 51)
+        if (id == 51)
         {
-            if (DataManager.Instance.getItems.ContainsKey(31)) DataManager.Instance.OnClickToFindItem(id);
+            if (DataManager.Instance.getItems.ContainsKey(31))
+            {
+                DataManager.Instance.OnClickToFindItem(id);
+                buttons[item_index].gameObject.SetActive(false);
+            }
         }
-        else if(id == 1)
+        else if (id == 1)
         {
-            if (DataManager.Instance.getItems.ContainsKey(32)) DataManager.Instance.OnClickToFindItem(id);
+            if (DataManager.Instance.getItems.ContainsKey(32))
+            {
+                DataManager.Instance.OnClickToFindItem(id);
+                buttons[item_index].gameObject.SetActive(false);
+            }
         }
-        else DataManager.Instance.OnClickToFindItem(id);
+        else
+        {
+            DataManager.Instance.OnClickToFindItem(id);
+            buttons[item_index].gameObject.SetActive(false);
+        }
     }
 }
