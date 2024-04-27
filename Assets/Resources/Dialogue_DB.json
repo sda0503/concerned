@@ -539,8 +539,8 @@
       ],
       "Event_Next_Log": [
         "50000003",
-        "50004011",
-        "50004018",
+        "50000011",
+        "50000018",
         "50000022",
         "0"
       ],
@@ -603,9 +603,11 @@
         "양현서의 사망에 대해서"
       ],
       "Event_Next_Log": [
-        "50004006"
+        "50000006"
       ],
-      "Event_Log_State": null,
+      "Event_Log_State": [
+        "False"
+      ],
       "Check_Item": null,
       "Check_Quest": null,
       "Give_Item": null
@@ -613,7 +615,7 @@
     {
       "Dialogue_idx": "50000006",
       "Name": "나",
-      "Log": "양현서씨께서 사망에 대해서 아시는 것이 있으십니까?",
+      "Log": "양현서씨의 사망에 대해서 아시는 것이 있으십니까?",
       "Log_Type": "0",
       "Next_Log": "50004007",
       "Event_Log": null,
