@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -21,9 +22,19 @@ public class CharacterData : MonoBehaviour
     //9.택배회사
     //10.강민우 장례식장
 
-    void Update()
+    private void Start()
     {
+        characterControll();
+        GameManager.Instance.OnDateChange += characterControll;
+    }
 
+    // void Update()
+    // {
+    //     characterControll();
+    // }
+
+    void characterControll()
+    {
         switch (charceterNum)
         {
             case 0:
@@ -71,6 +82,6 @@ public class CharacterData : MonoBehaviour
                 }
                 break;
         }
-                //Debug.Log(GameManager.Instance.Playerinformation.date);
+        //Debug.Log(GameManager.Instance.Playerinformation.date);
     }
 }
