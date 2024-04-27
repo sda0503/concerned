@@ -122,7 +122,7 @@ public class MapManager : MonoBehaviour
     {
         if (_obj.tag != "Popup")
         {
-            var popupUI = transform.GetChild(12).gameObject;
+            var popupUI = transform.GetChild(13).gameObject;
             popupUI.SetActive(true);
             if (!popupUI.TryGetComponent(out PopupBtn popupBtn))
             {
