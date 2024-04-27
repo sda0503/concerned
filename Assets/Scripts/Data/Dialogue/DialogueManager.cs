@@ -11,8 +11,7 @@ using System.Linq;
 public class DialogueManager : MonoBehaviour
 {
     [SerializeField] private Button[] choice_btn;
-    [SerializeField] private Button _confirmbtn;
-    [SerializeField] private Button _skipbtn;
+   
     [SerializeField] private TextMeshProUGUI _chatTxt;
     [SerializeField] private TextMeshProUGUI _nameTxt;
     [SerializeField] private GameObject _chatWindow;
@@ -282,11 +281,11 @@ public class DialogueManager : MonoBehaviour
 
     void chooseLog(Dialogue_Data data)
     {
-        _confirmbtn.enabled = false;
+        
         _choiceWindow.gameObject.SetActive(true);
         for (int i = 0; i < data.Event_Log.Length; i++)
         {
-            if (!data.Event_Log_State[i])
+             if (!data.Event_Log_State[i])
             {
                 // if (!DataManager.Instance._inventory.inventory.ContainsKey(int.Parse(data.Check_Item[i])))
                 // {
@@ -375,7 +374,7 @@ public class DialogueManager : MonoBehaviour
         }
 
         NormalLog();
-        _confirmbtn.enabled = true;
+      
         foreach (Button btns in choice_btn)
         {
             Debug.Log("btn Off");
@@ -392,8 +391,7 @@ public class DialogueManager : MonoBehaviour
     IEnumerator LogTyper()
     {
         _chatTxt.text = "";
-        _confirmbtn.gameObject.SetActive(false); // = false;
-        _skipbtn.gameObject.SetActive(true);
+        
         Dialogue_Data dialogueData = _dialogdic[contextcount];
         _nameTxt.text = dialogueData.Name;
 
@@ -405,8 +403,6 @@ public class DialogueManager : MonoBehaviour
         }
 
         FindNextLog();
-        _confirmbtn.gameObject.SetActive(true); // = false;
-        _skipbtn.gameObject.SetActive(false);
         chatwindowBtn.onClick.RemoveAllListeners();
         chatwindowBtn.onClick.AddListener(ConfirmbtnClick);
         //_confirmbtn.enabled = true;
@@ -422,11 +418,9 @@ public class DialogueManager : MonoBehaviour
     private void PloatingAllText()
     {
         StopAllCoroutines();
-        _skipbtn.gameObject.SetActive(false);
         Dialogue_Data dialogueData = _dialogdic[contextcount];
         _chatTxt.text = dialogueData.Log;
         FindNextLog();
-        _confirmbtn.gameObject.SetActive(true); // = false;
         chatwindowBtn.onClick.RemoveAllListeners();
         chatwindowBtn.onClick.AddListener(ConfirmbtnClick);
     }
