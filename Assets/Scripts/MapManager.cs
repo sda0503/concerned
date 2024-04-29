@@ -68,6 +68,7 @@ public class MapManager : MonoBehaviour
         var _pp = Instantiate(_popup,  gameObject.transform);
         _pp.transform.localPosition = Vector2.zero;
         _pp.SetActive(false);
+        transform.GetChild(7).gameObject.SetActive(false);
     }
     
     void Update()
@@ -121,7 +122,7 @@ public class MapManager : MonoBehaviour
     {
         if (_obj.tag != "Popup")
         {
-            var popupUI = transform.GetChild(12).gameObject;
+            var popupUI = transform.GetChild(13).gameObject;
             popupUI.SetActive(true);
             if (!popupUI.TryGetComponent(out PopupBtn popupBtn))
             {
@@ -133,5 +134,11 @@ public class MapManager : MonoBehaviour
             string _popupText = _obj.transform.GetChild(1).gameObject.GetComponent<TextMeshProUGUI>().text;
             popupUI.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = _popupText;
         }
+    }
+
+    public void Back() //지도 닫기
+    {
+        transform.gameObject.SetActive(false);
+        transform.parent.GetChild(1).gameObject.SetActive(true);
     }
 }
