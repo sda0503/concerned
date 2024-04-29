@@ -2151,7 +2151,7 @@
       "Dialogue_idx": "20000101",
       "Name": null,
       "Log": null,
-      "Log_Type": "2",
+      "Log_Type": "1",
       "Next_Log": "0",
       "Event_Log": [
         "양현서에 대해서",
