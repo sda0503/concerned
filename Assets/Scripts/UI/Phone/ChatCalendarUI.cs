@@ -33,8 +33,16 @@ public class ChatCalendarUI : PopupUIBase
         {
             calendarDates[i] = Instantiate(dayPrefab, dataTransform);
             calendarDates[i].GetComponentInChildren<TextMeshProUGUI>().text = i.ToString("00");
-            int n = i;
-            calendarDates[i].GetComponent<Button>().onClick.AddListener(() => MeetCharacter(n));
+            if(i < 16)
+            {
+                int n = i;
+                calendarDates[i].GetComponent<Button>().onClick.AddListener(() => MeetCharacter(n));
+            }
+            else
+            {
+                calendarDates[i].transform.GetChild(1).gameObject.SetActive(true);
+                calendarDates[i].transform.GetChild(1).GetComponent<Image>().color = Color.black;
+            }
         }
         calendarDates[0].transform.GetChild(2).gameObject.SetActive(false);
     }
