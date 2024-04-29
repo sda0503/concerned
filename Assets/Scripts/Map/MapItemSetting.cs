@@ -19,7 +19,7 @@ public class MapItemSetting : MonoBehaviour
         for(int i = 0; i < buttons.Count; i++)
         {
             int n = i;
-            buttons[i].onClick.AddListener(() => SetItem(itemID[n], i));
+            buttons[i].onClick.AddListener(() => SetItem(itemID[n], n));
         }
     }
 
