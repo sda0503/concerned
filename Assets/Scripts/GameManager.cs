@@ -52,7 +52,7 @@ public class GameManager : SingletonBase<GameManager>
     {
         Playerinformation.date++;
 
-        if (Playerinformation.date == 30)
+        if (Playerinformation.date == 15)
         {
             //TODO : 선택하는 씬(엔딩)으로 넘어가야됨
             UIManager.Instance.endingCredits.SetActive(true);
