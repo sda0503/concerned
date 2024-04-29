@@ -318,7 +318,7 @@
       "Dialogue_idx": "30000118",
       "Name": null,
       "Log": null,
-      "Log_Type": "1",
+      "Log_Type": "2",
       "Next_Log": "0",
       "Event_Log": [
         "상황 보고",
@@ -549,7 +549,7 @@
         "False",
         "False",
         "False",
-        "False"        
+        "False"
       ],
       "Check_Item": [
         "-1",
@@ -558,13 +558,7 @@
         "800",
         "-1"
       ],
-      "Check_Quest": [
-        "0",
-        "0",
-        "0",
-        "0",
-        "0"
-      ],
+      "Check_Quest": null,
       "Give_Item": null
     },
     {
@@ -600,14 +594,14 @@
       "Log_Type": "1",
       "Next_Log": "0",
       "Event_Log": [
-        "양현서의 사망에 대해서"
+        "양현서의 사망에 대해서",
+        ""
       ],
       "Event_Next_Log": [
-        "50000006"
+        "50000006",
+        ""
       ],
-      "Event_Log_State": [
-        "False"
-      ],
+      "Event_Log_State": null,
       "Check_Item": null,
       "Check_Quest": null,
       "Give_Item": null
@@ -615,7 +609,7 @@
     {
       "Dialogue_idx": "50000006",
       "Name": "나",
-      "Log": "양현서씨의 사망에 대해서 아시는 것이 있으십니까?",
+      "Log": "양현서씨께서 사망에 대해서 아시는 것이 있으십니까?",
       "Log_Type": "0",
       "Next_Log": "50004007",
       "Event_Log": null,
@@ -925,8 +919,8 @@
       ],
       "Event_Next_Log": [
         "40000002",
-        "40000015",
         "40000017",
+        "40000019",
         "0"
       ],
       "Event_Log_State": [
@@ -1060,7 +1054,7 @@
       "Name": "흥신소 탐정",
       "Log": "네. 완료해서 결과 보고를 해드렸습니다.",
       "Log_Type": "0",
-      "Next_Log": "40000011",
+      "Next_Log": "40014011",
       "Event_Log": null,
       "Event_Next_Log": null,
       "Event_Log_State": null,
@@ -1458,13 +1452,7 @@
         "False",
         "False"
       ],
-      "Check_Item": [
-        "-1",
-        "-1",
-        "-1",
-        "-1",
-        "-1"
-      ],
+      "Check_Item": null,
       "Check_Quest": [
         "0",
         "0",
@@ -1709,13 +1697,7 @@
         "False",
         "False"
       ],
-      "Check_Item": 
-      [ "-1",
-        "-1",
-        "-1",
-        "-1",
-        "-1"
-      ],
+      "Check_Item": null,
       "Check_Quest": [
         "0",
         "0",
@@ -2171,18 +2153,8 @@
         "False",
         "False"
       ],
-      "Check_Item": [
-        "-1",
-        "-1",
-        "-1",
-        "-1"
-      ],
-      "Check_Quest": [
-        "0",
-        "한미래 - 회사,1",
-        "김태현 - 회사,1",
-        "0"
-      ],
+      "Check_Item": null,
+      "Check_Quest": null,
       "Give_Item": null
     },
     {
@@ -2478,14 +2450,14 @@
       "Log_Type": "1",
       "Next_Log": "0",
       "Event_Log": [
-        "양현서에 대해서"
+        "양현서에 대해서",
+        ""
       ],
       "Event_Next_Log": [
-        "21000002"
+        "21000002",
+        ""
       ],
-      "Event_Log_State": [
-        "False"
-      ],
+      "Event_Log_State": null,
       "Check_Item": null,
       "Check_Quest": null,
       "Give_Item": null
@@ -2553,16 +2525,11 @@
         "False",
         "False"
       ],
-      "Check_Item": [
-        "-1",
-        "-1",
-        "-1",
-        "-1"
-      ],
+      "Check_Item": null,
       "Check_Quest": [
         "0",
         "0",
-        "김태현 - 회사,1",
+        "김태현,1",
         "0"
       ],
       "Give_Item": null
@@ -2750,13 +2717,7 @@
         "False",
         "False"
       ],
-      "Check_Item": [
-        "-1",
-        "-1",
-        "-1",
-        "-1",
-        "-1"
-      ],
+      "Check_Item": null,
       "Check_Quest": [
         "0",
         "0",
@@ -4432,9 +4393,13 @@
         "흥신소와 연락",
         "그만둔다"
       ],
-      "Event_Next_Log": null,
+      "Event_Next_Log": [
+        "71400070",
+        "71403073",
+        "71403087",
+        "0"
+      ],
       "Event_Log_State": [
-        "False",
         "False",
         "False",
         "False",
@@ -4449,7 +4414,6 @@
       "Check_Quest": [
         "0",
         "신현우 - 소환조사,2",
-        "0",
         "0",
         "0"
       ],
@@ -4920,15 +4884,18 @@
         "최초 발견에 대해서",
         "코인에 대해서",
         "빗테크에 대해서",
-        "편지에 대해서"
+        "편지에 대해서",
+        "그만둔다"
       ],
       "Event_Next_Log": [
         "71400103",
         "71400113",
         "71400999",
-        "71400137"
+        "71400137",
+        "0"
       ],
       "Event_Log_State": [
+        "False",
         "False",
         "False",
         "False",
@@ -4938,13 +4905,15 @@
         "-1",
         "-1",
         "403",
-        "900"
+        "900",
+        "-1"
       ],
       "Check_Quest": [
         "0",
         "택배회사 대표,1",
         "0",
-        "0"        
+        "0",
+        "0"
       ],
       "Give_Item": null
     },
@@ -5243,10 +5212,7 @@
         "-1",
         "101"
       ],
-      "Check_Quest": [
-        "0",
-        "0"
-      ],
+      "Check_Quest": null,
       "Give_Item": null
     },
     {
@@ -6334,6 +6300,19 @@
       "Dialogue_idx": "9990004",
       "Name": "흥신소 탐정",
       "Log": "네. 알겠습니다.",
+      "Log_Type": "0",
+      "Next_Log": "9990102",
+      "Event_Log": null,
+      "Event_Next_Log": null,
+      "Event_Log_State": null,
+      "Check_Item": null,
+      "Check_Quest": null,
+      "Give_Item": null
+    },
+    {
+      "Dialogue_idx": "9990102",
+      "Name": "나",
+      "Log": "만날 날짜를 정하도록 하겠습니다.",
       "Log_Type": "3",
       "Next_Log": "0",
       "Event_Log": null,
@@ -6438,6 +6417,19 @@
       "Dialogue_idx": "9990012",
       "Name": "강민우",
       "Log": "네. 알겠습니다.",
+      "Log_Type": "0",
+      "Next_Log": "9990104",
+      "Event_Log": null,
+      "Event_Next_Log": null,
+      "Event_Log_State": null,
+      "Check_Item": null,
+      "Check_Quest": null,
+      "Give_Item": null
+    },
+    {
+      "Dialogue_idx": "9990104",
+      "Name": "나",
+      "Log": "만날 날짜를 정하도록 하겠습니다.",
       "Log_Type": "3",
       "Next_Log": "0",
       "Event_Log": null,
@@ -6542,6 +6534,19 @@
       "Dialogue_idx": "9990020",
       "Name": "김태현",
       "Log": "네. 알겠습니다.",
+      "Log_Type": "0",
+      "Next_Log": "9990103",
+      "Event_Log": null,
+      "Event_Next_Log": null,
+      "Event_Log_State": null,
+      "Check_Item": null,
+      "Check_Quest": null,
+      "Give_Item": null
+    },
+    {
+      "Dialogue_idx": "9990103",
+      "Name": "나",
+      "Log": "만날 날짜를 정하도록 하겠습니다.",
       "Log_Type": "3",
       "Next_Log": "0",
       "Event_Log": null,
@@ -6594,6 +6599,19 @@
       "Dialogue_idx": "9990024",
       "Name": "신현우",
       "Log": "아.. 알겠습니다.",
+      "Log_Type": "0",
+      "Next_Log": "9990105",
+      "Event_Log": null,
+      "Event_Next_Log": null,
+      "Event_Log_State": null,
+      "Check_Item": null,
+      "Check_Quest": null,
+      "Give_Item": null
+    },
+    {
+      "Dialogue_idx": "9990105",
+      "Name": "나",
+      "Log": "만날 날짜를 정하도록 하겠습니다.",
       "Log_Type": "3",
       "Next_Log": "0",
       "Event_Log": null,
