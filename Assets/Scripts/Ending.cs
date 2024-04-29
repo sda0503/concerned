@@ -48,7 +48,7 @@ public class Ending : MonoBehaviour
                 {
                     DialogueManager.Instance.StartDialogue("TrueEnding");
                 }
-                else DialogueManager.Instance.StartDialogue("NomalEnding");
+                else DialogueManager.Instance.StartDialogue("NormalEnding");
                 break;
         }        
     }
