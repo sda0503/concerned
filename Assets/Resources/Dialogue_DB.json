@@ -318,7 +318,7 @@
       "Dialogue_idx": "30000118",
       "Name": null,
       "Log": null,
-      "Log_Type": "2",
+      "Log_Type": "1",
       "Next_Log": "0",
       "Event_Log": [
         "상황 보고",
@@ -558,7 +558,13 @@
         "800",
         "-1"
       ],
-      "Check_Quest": null,
+      "Check_Quest":[
+        "0",
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
       "Give_Item": null
     },
     {
@@ -594,14 +600,14 @@
       "Log_Type": "1",
       "Next_Log": "0",
       "Event_Log": [
-        "양현서의 사망에 대해서",
-        ""
+        "양현서의 사망에 대해서"        
       ],
       "Event_Next_Log": [
-        "50000006",
-        ""
+        "50000006"
       ],
-      "Event_Log_State": null,
+      "Event_Log_State": [
+        "False"
+      ],
       "Check_Item": null,
       "Check_Quest": null,
       "Give_Item": null
@@ -919,8 +925,8 @@
       ],
       "Event_Next_Log": [
         "40000002",
+        "40000015",
         "40000017",
-        "40000019",
         "0"
       ],
       "Event_Log_State": [
@@ -1054,7 +1060,7 @@
       "Name": "흥신소 탐정",
       "Log": "네. 완료해서 결과 보고를 해드렸습니다.",
       "Log_Type": "0",
-      "Next_Log": "40014011",
+      "Next_Log": "40000011",
       "Event_Log": null,
       "Event_Next_Log": null,
       "Event_Log_State": null,
@@ -1452,7 +1458,13 @@
         "False",
         "False"
       ],
-      "Check_Item": null,
+      "Check_Item": [
+        "-1",
+        "-1",
+        "-1",
+        "-1",
+        "-1"
+      ],
       "Check_Quest": [
         "0",
         "0",
@@ -1994,7 +2006,10 @@
         "11000025",
         "11000028"
       ],
-      "Event_Log_State": null,
+      "Event_Log_State": [
+        "False",
+        "False"
+      ],
       "Check_Item": null,
       "Check_Quest": null,
       "Give_Item": null
@@ -2450,14 +2465,14 @@
       "Log_Type": "1",
       "Next_Log": "0",
       "Event_Log": [
-        "양현서에 대해서",
-        ""
+        "양현서에 대해서"
       ],
       "Event_Next_Log": [
-        "21000002",
-        ""
+        "21000002"
       ],
-      "Event_Log_State": null,
+      "Event_Log_State": [
+        "False"
+      ],
       "Check_Item": null,
       "Check_Quest": null,
       "Give_Item": null
@@ -2717,7 +2732,13 @@
         "False",
         "False"
       ],
-      "Check_Item": null,
+      "Check_Item": [
+        "-1",
+        "-1",
+        "-1",
+        "-1",
+        "-1"
+      ],
       "Check_Quest": [
         "0",
         "0",
@@ -3477,7 +3498,12 @@
         "10",
         "-1"
       ],
-      "Check_Quest": null,
+      "Check_Quest": [
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
       "Give_Item": null
     },
     {
@@ -5212,7 +5238,10 @@
         "-1",
         "101"
       ],
-      "Check_Quest": null,
+      "Check_Quest": [
+        "0",
+        "0"
+      ],
       "Give_Item": null
     },
     {
