@@ -1,6 +1,7 @@
 using DataStorage;
 using System;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using UnityEngine;
 
 
@@ -56,6 +57,9 @@ public class GameManager : SingletonBase<GameManager>
         {
             //TODO : 선택하는 씬(엔딩)으로 넘어가야됨
             UIManager.Instance.endingCredits.SetActive(true);
+            UIManager.Instance.ObjList.SetActive(false);
+            UIManager.Instance.CanvasChange();
+            return;
         }
 
         if (check_date.Contains(Playerinformation.date + 1))

@@ -182,6 +182,7 @@ public class UIManager : MonoBehaviour
 
         foreach (var VARIABLE in DataManager.Instance.PlaceDBDatas.PlaceDB)
         {
+            if (GameManager.Instance.Playerinformation.date == 15 && !(GameManager.Instance.Playerinformation.position == 711)) GameManager.Instance.Playerinformation.position = 711;
             if (VARIABLE.Place_ID == GameManager.Instance.Playerinformation.position)
             {
                 NextPlaceData = VARIABLE; //TODO : dic으로 바꾸긴해야함.        
