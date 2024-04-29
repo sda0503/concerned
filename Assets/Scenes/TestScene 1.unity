@@ -3421,7 +3421,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5533765329438757524, guid: 7cbcab62885c88b4d8212a0fa4b69cda, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5760465950551995284, guid: 7cbcab62885c88b4d8212a0fa4b69cda, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -6058,7 +6058,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7659641194934789697, guid: 326a919efc26a574f81a722dfc22d2d9, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -12838,7 +12838,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3139874050035108678, guid: 5200a321183ca33428ca0d9adc5382fa, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3348758078080242017, guid: 5200a321183ca33428ca0d9adc5382fa, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
