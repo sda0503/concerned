@@ -283,7 +283,7 @@
       "QuestTargetName": "BadEnding",
       "QuestIdx": "1",
       "QuestStartPost": "10000002",
-      "QuestType": "0",
+      "QuestType": "4",
       "QuestState": "false",
       "NeedQuest": null,
       "NeedItem": null
@@ -292,7 +292,7 @@
       "QuestTargetName": "NormalEnding",
       "QuestIdx": "1",
       "QuestStartPost": "10000003",
-      "QuestType": "0",
+      "QuestType": "4",
       "QuestState": "false",
       "NeedQuest": null,
       "NeedItem": null
@@ -301,7 +301,7 @@
       "QuestTargetName": "TrueEnding",
       "QuestIdx": "1",
       "QuestStartPost": "10000004",
-      "QuestType": "0",
+      "QuestType": "4",
       "QuestState": "false",
       "NeedQuest": null,
       "NeedItem": null
