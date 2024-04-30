@@ -546,7 +546,7 @@ public class DataManager : SingletonBase<DataManager> //유니티 기능을 상�
         if (itemsData.ContainsKey(index) && !getItems.ContainsKey(index))
         {
             var obj = GameObjectLoad("Prefabs/Item");
-            if(index < 10)
+            if(index < 100)
             {
                 obj.transform.GetComponent<Image>().sprite = SpriteLoad("Evidence/" + index.ToString());
             }
