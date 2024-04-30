@@ -80,56 +80,56 @@
     {
       "item_id": "200",
       "item_name": "쪽지",
-      "default_description": "숫자 2가 적혀있는 쪽지. 화분에 숨겨져 있었다. *0**",
+      "default_description": "숫자 2가 적혀있는 쪽지. 화분에 숨겨져 있었다. <color=#4682B4>*0**</color>",
       "locationEvent": "0",
       "itemType": "0"
     },
     {
       "item_id": "201",
       "item_name": "쪽지",
-      "default_description": "숫자 8이 적혀있는 쪽지. 양현서 침실에 있는 스탠드 안에 숨겨져 있었다. 0***",
+      "default_description": "숫자 8이 적혀있는 쪽지. 양현서 침실에 있는 스탠드 안에 숨겨져 있었다. <color=#4682B4>0***</color>",
       "locationEvent": "0",
       "itemType": "0"
     },
     {
       "item_id": "202",
       "item_name": "쪽지",
-      "default_description": "숫자 4가 적혀있는 쪽지. 양현서 침대 위 배개 속에 숨겨져 있었다. **0*",
+      "default_description": "숫자 4가 적혀있는 쪽지. 양현서 침대 위 배개 속에 숨겨져 있었다. <color=#4682B4>**0*</color>",
       "locationEvent": "0",
       "itemType": "0"
     },
     {
       "item_id": "203",
       "item_name": "쪽지",
-      "default_description": "숫자 1이 적혀있는 쪽지. 양현서 서재에 있는 화분에 숨겨져 있었다. ***0",
+      "default_description": "숫자 1이 적혀있는 쪽지. 양현서 서재에 있는 화분에 숨겨져 있었다.<color=#4682B4>***0</color>",
       "locationEvent": "0",
       "itemType": "0"
     },
     {
       "item_id": "207",
       "item_name": "쪽지",
-      "default_description": "숫자 7이 적혀 있는 쪽지. 책들 사이에서 발견했다. 0***",
+      "default_description": "숫자 7이 적혀 있는 쪽지. 책들 사이에서 발견했다. <color=#FF0000>0***</color>",
       "locationEvent": "0",
       "itemType": "0"
     },
     {
       "item_id": "204",
       "item_name": "쪽지",
-      "default_description": "숫자 6이 적혀 있는 쪽지. 양현서 결혼 사진 뒤에 있었다. **0*",
+      "default_description": "숫자 6이 적혀 있는 쪽지. 양현서 결혼 사진 뒤에 있었다. <color=#FF0000>**0*</color>",
       "locationEvent": "0",
       "itemType": "0"
     },
     {
       "item_id": "205",
       "item_name": "쪽지",
-      "default_description": "숫자 7이 적혀 있는 쪽지. 양현서 차 안에서 발견했다. *0**",
+      "default_description": "숫자 7이 적혀 있는 쪽지. 양현서 차 안에서 발견했다. <color=#FF0000>*0**</color>",
       "locationEvent": "0",
       "itemType": "0"
     },
     {
       "item_id": "206",
       "item_name": "쪽지",
-      "default_description": "숫자 1이 적혀 있는 쪽지. 양현서 차 안에서 발견했다. ***0",
+      "default_description": "숫자 1이 적혀 있는 쪽지. 양현서 차 안에서 발견했다. <color=#FF0000>***0</color>",
       "locationEvent": "0",
       "itemType": "0"
     },
