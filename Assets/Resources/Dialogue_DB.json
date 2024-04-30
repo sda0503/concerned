@@ -570,7 +570,7 @@
     {
       "Dialogue_idx": "50000003",
       "Name": "나",
-      "Log": "양현서씨 방에서 변호사님의 명함이 나왔습니다. 혹시 양현서씨를 만난 적이 있습니까?",
+      "Log": "혹시 양현서씨를 만난 적이 있습니까?",
       "Log_Type": "0",
       "Next_Log": "50004004",
       "Event_Log": null,
@@ -1709,7 +1709,13 @@
         "False",
         "False"
       ],
-      "Check_Item": null,
+      "Check_Item": [
+        "-1",
+        "-1",
+        "-1",
+        "-1",
+        "-1"
+      ],
       "Check_Quest": [
         "0",
         "0",
@@ -2462,7 +2468,7 @@
       "Dialogue_idx": "21000101",
       "Name": null,
       "Log": null,
-      "Log_Type": "1",
+      "Log_Type": "2",
       "Next_Log": "0",
       "Event_Log": [
         "양현서에 대해서"
@@ -2494,7 +2500,7 @@
       "Dialogue_idx": "21002003",
       "Name": "한미래",
       "Log": "질문이 너무 포괄적인 것 같네요. 좀 더 구체적으로 질문해 주셨으면 합니다.",
-      "Log_Type": "4",
+      "Log_Type": "0",
       "Next_Log": "21000105",
       "Event_Log": null,
       "Event_Next_Log": null,
@@ -2532,7 +2538,7 @@
         "21000006",
         "21000009",
         "21000012",
-        "0"
+        "21002016"
       ],
       "Event_Log_State": [
         "False",
@@ -2728,7 +2734,7 @@
         "23000006",
         "23000009",
         "23000013",
-        "0"
+        "23003015"
       ],
       "Event_Log_State": [
         "False",
@@ -3503,7 +3509,12 @@
         "10",
         "-1"
       ],
-      "Check_Quest": null,
+      "Check_Quest": [
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
       "Give_Item": null
     },
     {
@@ -6354,7 +6365,7 @@
     {
       "Dialogue_idx": "9990102",
       "Name": "나",
-      "Log": "만날 날짜를 정하도록 하겠습니다.",
+      "Log": "만날 날짜를 정하고 그 날 경찰서 취조실에서 뵙겠습니다.",
       "Log_Type": "3",
       "Next_Log": "0",
       "Event_Log": null,
@@ -6471,7 +6482,7 @@
     {
       "Dialogue_idx": "9990104",
       "Name": "나",
-      "Log": "만날 날짜를 정하도록 하겠습니다.",
+      "Log": "만날 날짜를 정하고 그 날 경찰서 취조실에서 뵙겠습니다.",
       "Log_Type": "3",
       "Next_Log": "0",
       "Event_Log": null,
@@ -6588,7 +6599,7 @@
     {
       "Dialogue_idx": "9990103",
       "Name": "나",
-      "Log": "만날 날짜를 정하도록 하겠습니다.",
+      "Log": "만날 날짜를 정하고 그 날 경찰서 취조실에서 뵙겠습니다.",
       "Log_Type": "3",
       "Next_Log": "0",
       "Event_Log": null,
@@ -6653,7 +6664,7 @@
     {
       "Dialogue_idx": "9990105",
       "Name": "나",
-      "Log": "만날 날짜를 정하도록 하겠습니다.",
+      "Log": "만날 날짜를 정하고 그 날 경찰서 취조실에서 뵙겠습니다.",
       "Log_Type": "3",
       "Next_Log": "0",
       "Event_Log": null,
@@ -6662,6 +6673,58 @@
       "Check_Item": null,
       "Check_Quest": null,
       "Give_Item": null
+    },
+    {
+      "Dialogue_idx": "21002016",
+      "Name": "나",
+      "Log": "양현서씨에 관해서 더 여쭤볼 것이 있다면 연락드리겠습니다.",
+      "Log_Type": "0",
+      "Next_Log": "21002017",
+      "Event_Log": null,
+      "Event_Next_Log": null,
+      "Event_Log_State": null,
+      "Check_Item": null,
+      "Check_Quest": null,
+      "Give_Item": "10003"
+    },
+    {
+      "Dialogue_idx": "21002017",
+      "Name": "한미래",
+      "Log": "네. 여기로 연락주세요.",
+      "Log_Type": "4",
+      "Next_Log": "0",
+      "Event_Log": null,
+      "Event_Next_Log": null,
+      "Event_Log_State": null,
+      "Check_Item": null,
+      "Check_Quest": null,
+      "Give_Item": null
+    },
+    {
+      "Dialogue_idx": "23003015",
+      "Name": "나",
+      "Log": "양현서씨에 관해서 더 여쭤볼 것이 있다면 연락드리겠습니다.",
+      "Log_Type": "0",
+      "Next_Log": "23003016",
+      "Event_Log": null,
+      "Event_Next_Log": null,
+      "Event_Log_State": null,
+      "Check_Item": null,
+      "Check_Quest": null,
+      "Give_Item": null
+    },
+    {
+      "Dialogue_idx": "23003016",
+      "Name": "김태현",
+      "Log": "알겠습니다. 여기로 연락주시면 됩니다.",
+      "Log_Type": "4",
+      "Next_Log": "0",
+      "Event_Log": null,
+      "Event_Next_Log": null,
+      "Event_Log_State": null,
+      "Check_Item": null,
+      "Check_Quest": null,
+      "Give_Item": "10001"
     }
   ]
 }

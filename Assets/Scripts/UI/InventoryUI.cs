@@ -84,7 +84,7 @@ public class InventoryUI : PopupUIBase
         {
             MakeInventorySlot(3);
         }
-        if (id < 10)
+        if (id < 100)
         {
             inventorySlots[items.Count].transform.GetChild(1).GetComponent<Image>().sprite = DataManager.Instance.SpriteLoad("Guide Book/" + id.ToString());
         }
@@ -98,7 +98,7 @@ public class InventoryUI : PopupUIBase
 
     private void InventorySlotButton(int id)
     {
-        if (id < 10)
+        if (id < 100)
         {
             itemImage.sprite = DataManager.Instance.SpriteLoad("Evidence/" + id.ToString());
         }

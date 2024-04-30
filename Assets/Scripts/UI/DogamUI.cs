@@ -77,7 +77,7 @@ public class DogamUI : PopupUIBase
 
     public void DogamSlotButton(int index)
     {
-        if (index < 10)
+        if (index < 100)
         {
             itemImage.sprite = DataManager.Instance.SpriteLoad("Evidence/" + index.ToString());
         }
@@ -99,7 +99,7 @@ public class DogamUI : PopupUIBase
             {
                 if (DataManager.Instance.dogamItemData.ContainsKey(item.item_id))
                 {
-                    if (item.item_id < 10)
+                    if (item.item_id < 100)
                     {
                         itemSlots[i].transform.GetChild(1).GetComponent<Image>().sprite = DataManager.Instance.SpriteLoad("Guide Book/" + item.item_id.ToString());
                     }
