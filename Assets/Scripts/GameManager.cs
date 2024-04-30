@@ -97,12 +97,7 @@ public class GameManager : SingletonBase<GameManager>
     }
     //TODO : 이걸 맵 내부에서 이동하는거에 재사용 하려면? 1. Map 켜서 이동하는 PopupBtn에 DayTimeChange 달아주어서 분리하면 되긴 함.
     // 2. 1번이 제일 나은 듯. 굳이 이게 어디서 왔는지 따져서 갈라줄 필요는 없다고 생각함.
-
-
-    
-    
-   
-
+ 
     public void CharacterMeetDate(int date, string name)
     {
         Debug.Log("schedule");
@@ -110,6 +105,13 @@ public class GameManager : SingletonBase<GameManager>
         check_name.Add(name);
         Debug.Log(date);
         Debug.Log(name);
+    }
+
+    public void ReturnInfo(Player playerInfo)
+    {
+        playerInfo.Information.date = Playerinformation.date;
+        playerInfo.Information.daytime = Playerinformation.daytime;
+        playerInfo.Information.position = Playerinformation.position;
     }
 
 

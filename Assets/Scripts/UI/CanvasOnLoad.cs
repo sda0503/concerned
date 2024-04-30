@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,61 +10,16 @@ public class CanvasOnLoad : MonoBehaviour
     //TODO : 버튼 다 달아주기.
     //[SerializeField] private Button asdf;
     private interactableObject[] interactList;
+    [SerializeField] [CanBeNull] private GameObject itemObj;
     public List<bool> states; //TODO : 게임매니저에서 통으로 관리예정...일까 초기값이 없다.
-
-    private void Start()
-    {
-        if (states == null)
-        {
-            Debug.Log("States Set");
-            interactList = gameObject.GetComponentsInChildren<interactableObject>();
-            states = new List<bool>(interactList.Length);
-            for (int i=0;i<states.Capacity;i++)
-            {
-                states.Add(false);
-            }
-            //하위에 있는것만 찾으려면 GetComponentInChildern    
-        }
-    }
     
     public void ObjectSet(List<bool> objectsState)  
     
     {
-        for (int i = 0; i < interactList.Length; i++)
+        for (int i = 0; i < objectsState.Count; i++)
         {
-            if (!objectsState[i])
-            {
-                if (interactList[i].gameObject.TryGetComponent(out interactableObject _))//컨벤션적으로 _는 안쓰는 변수를 의미
-                // TODO : INteractableObject 말고 하위에 있는 Character나 button 등을 가져올 것.
-                {
-                    //interactList[i].GetComponent<Button>().onClick.AddListener(() => 사용할 메서드(매개변수 : out에 있는 데이터를 가지고 있는 스크립트에서 꺼내쓸 것));
-                    if (interactList[i].gameObject.TryGetComponent(out interactableNPC interactableNpc))
-                    {
-                        //interactableNpc.gameObject.GetComponent<Button>().onClick.AddListener(()=> DialogueManager.instance.StartDialogue(interactableNpc.TargetName));
-                    }
-                    else if (interactList[i].gameObject.TryGetComponent(out interactableItem interactableItem))
-                    {
-                        //아이템 넣는거 한번만 실행되려면 얘는 동적으로 해주는게 맞음.
-                        interactableItem.gameObject.GetComponent<Button>().onClick.AddListener(() => DataManager.Instance.OnClickToFindItem(interactableItem.ItemId));
-                        //일반 아이템은 회수하면 더 이상 등장하지 않음.
-                        if (interactableItem.ItemType == ItemType.Trigger) //트리거 아이템은 다시 등장함.
-                        {
-                            int a = i; //TODO : 임시 테스트용 나중에 변경할 것.
-                            interactableItem.gameObject.GetComponent<Button>().onClick.AddListener(()=> StateChange(a));
-                        }
-                    }
-                    
-                    //TODO : 대화가 필요하면 DialogueManager의 StartDialogue와 연결, Utility의 OnClickToFindItem이랑 연결, 트리거 아이템은 또 다르게 연결해야함. 분별점 찾을 것.
-                }
-                interactList[i].gameObject.SetActive(true);
-                
-            }
-            else
-            {
-                interactList[i].gameObject.SetActive(false);
-            }
+            itemObj.transform.GetChild(i).gameObject.SetActive(!objectsState[i]);
         }
-        //TODO : 리스트에 오브젝트들 추가. 
     }
 
     private void StateChange(int i)

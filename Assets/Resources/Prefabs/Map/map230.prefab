@@ -927,12 +927,12 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 6608982845401665670}
   - {fileID: 4006526471140815744}
   - {fileID: 1581845550575080677}
-  - {fileID: 6608982845401665670}
   - {fileID: 274168725280856585}
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1014,6 +1014,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a3c5df1895512241a1c593fa507df85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemObj: {fileID: 2214768369590961339}
   states: 
 --- !u!1 &3505293601530616304
 GameObject:

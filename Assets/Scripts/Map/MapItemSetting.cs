@@ -1,5 +1,3 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -25,12 +23,16 @@ public class MapItemSetting : MonoBehaviour
 
     private void SetItem(int id, int item_index)
     {
+        DataManager.Instance.player.Information.canvasObjSet[GameManager.Instance.Playerinformation.position]
+            [item_index] = true;
         if (id == 1)
         {
             if (DataManager.Instance.getItems.ContainsKey(301))
             {
                 DataManager.Instance.OnClickToFindItem(id);
-                PopupUIManager.Instance.popupUI["InventoryUI"].GetComponent<InventoryUI>().items[301].itemData.default_description += " »ç¿ëµÇ¾ú´Ù.";
+
+                PopupUIManager.Instance.popupUI["InventoryUI"].GetComponent<InventoryUI>().items[301].itemData.default_description += " Â»Ã§Â¿Ã«ÂµÃ‡Â¾ÃºÂ´Ã™.";
+
                 buttons[item_index].gameObject.SetActive(false);
             }
         }
@@ -39,7 +41,9 @@ public class MapItemSetting : MonoBehaviour
             if (DataManager.Instance.getItems.ContainsKey(302))
             {
                 DataManager.Instance.OnClickToFindItem(id);
-                PopupUIManager.Instance.popupUI["InventoryUI"].GetComponent<InventoryUI>().items[302].itemData.default_description += " »ç¿ëµÇ¾ú´Ù.";
+
+                PopupUIManager.Instance.popupUI["InventoryUI"].GetComponent<InventoryUI>().items[302].itemData.default_description += " Â»Ã§Â¿Ã«ÂµÃ‡Â¾ÃºÂ´Ã™.";
+
                 buttons[item_index].gameObject.SetActive(false);
             }
         }

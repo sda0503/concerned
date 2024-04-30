@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,6 +24,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Button btn;
     [SerializeField] private GameObject Map;
     [SerializeField] public GameObject ObjList;
+    public event Action OnSceneChange;
 
     public static Dictionary<int, GameObject>
         CanvasGroup = new Dictionary<int, GameObject>(); //TODO : 이거 기준으로 캔버스 세팅해주기? Json하나 있어야될거같음.
@@ -37,7 +39,7 @@ public class UIManager : MonoBehaviour
     private Image bgImage;
 
     [SerializeField] private TextMeshProUGUI _Datetext;
-    
+
 
     public GameObject endingCredits;
 
@@ -83,7 +85,7 @@ public class UIManager : MonoBehaviour
         //Debug.Log($"{CanvasGroup.Count}    1");
         CanvasChange();
     }
-    
+
     public void DeleteListener()
     {
         btn.onClick.RemoveAllListeners();
@@ -102,18 +104,43 @@ public class UIManager : MonoBehaviour
         foreach (var VARIABLE in map_List)
         {
             MatchCollection index = Regex.Matches(VARIABLE.name, pattern);
-            
+
             if (!CanvasGroup.ContainsKey(int.Parse(index[0].Value)))
             {
                 CanvasGroup.Add(int.Parse(index[0].Value), VARIABLE);
-                
+
                 if (DataManager.Instance.GameState == Game_State.New)
                 {
-                    DataManager.Instance.Playerinformation.canvasObjSet.Add(int.Parse(index[0].Value),VARIABLE.GetComponent<CanvasOnLoad>().states);
-                    //Debug.Log(DataManager.Instance.Playerinformation.canvasObjSet[int.Parse(index[0].Value)].Count);
+                    if (!DataManager.Instance.player.Information.canvasObjSet.ContainsKey(int.Parse(index[0].Value)))
+                    {
+                        GameObject itemObj = VARIABLE.transform.GetChild(0).gameObject;
+                        if (itemObj.name == "Item")
+                        {
+                            List<bool> ItemState = new List<bool>();
+                            for (int i = 0; i < itemObj.transform.childCount; i++)
+                            {
+                                ItemState.Add(false);
+                            }
+
+                            DataManager.Instance.player.Information.canvasObjSet.Add(int.Parse(index[0].Value),
+                                ItemState);
+                        }
+                    }
                 }
             }
             VARIABLE.SetActive(false);
+        }
+        Debug.Log($"CanvasObjSet Count : {DataManager.Instance.player.Information.canvasObjSet.Count}");
+        if (DataManager.Instance.GameState == Game_State.Load)
+        {
+            foreach (int Key in DataManager.Instance.player.Information.canvasObjSet.Keys)
+            {
+                if (CanvasGroup.ContainsKey(Key))
+                {
+                    CanvasGroup[Key].GetComponent<CanvasOnLoad>()
+                        .ObjectSet(DataManager.Instance.player.Information.canvasObjSet[Key]);
+                }
+            }
         }
     }
 
@@ -182,7 +209,9 @@ public class UIManager : MonoBehaviour
 
         foreach (var VARIABLE in DataManager.Instance.PlaceDBDatas.PlaceDB)
         {
-            if (GameManager.Instance.Playerinformation.date == 15 && !(GameManager.Instance.Playerinformation.position == 711)) GameManager.Instance.Playerinformation.position = 711;
+            if (GameManager.Instance.Playerinformation.date == 15 &&
+                !(GameManager.Instance.Playerinformation.position == 711))
+                GameManager.Instance.Playerinformation.position = 711;
             if (VARIABLE.Place_ID == GameManager.Instance.Playerinformation.position)
             {
                 NextPlaceData = VARIABLE; //TODO : dic으로 바꾸긴해야함.        
@@ -191,27 +220,6 @@ public class UIManager : MonoBehaviour
 
         DateUpdate(NextPlaceData.Place_Name);
 
-
-        //string Objpath = DataManager.Instance.PlaceDBDatas.PlaceDB[playerinformation.position].Place_OBJ_Path; //TODO : 이건 여기 필요 없음. 미리 깔아둘 때 필요한 거
-
-        // if (!CanvasGroup.ContainsKey(playerinformation.position))
-        // {
-        //     var obj = Resources.Load<GameObject>($"Prefabs/{path}");
-        //     var canvasinstance = Instantiate(obj, canvasparents.transform);
-        //     canvasinstance.SetActive(true);
-        //     if (canvasinstance.gameObject.TryGetComponent(out CanvasOnLoad canvasOnLoad))
-        //     {
-        //         CanvasGroup.Add(playerinformation.position, canvasinstance);
-        //         _canvasDic.CanvasContorllers.Add(playerinformation.position, canvasOnLoad.states);
-        //         canvasOnLoad.ObjectSet(_canvasDic.CanvasContorllers[playerinformation.position]);
-        //     }
-        // }
-        // else
-        // {
-        foreach (var VARIABLE in CanvasGroup)
-        {
-            Debug.Log($"{VARIABLE.Key} | {VARIABLE.Value}");
-        }
         CanvasGroup[GameManager.Instance.Playerinformation.position].SetActive(true);
         //TODO : Load하는 경우 그에 맞게 데이터로 세팅해주는 것도 필요함.
         //예시 : CanvasGroup의 ID에 맞는 오브젝트의 컴포넌트에 접근해서 ObjectSet이라는 메서드를 실행
@@ -270,6 +278,7 @@ public class UIManager : MonoBehaviour
             endingCredits.transform.GetChild(2).position = move;
             yield return null;
         }
+
         yield return null;
         //씬 강제 이동
         OutBtnClick();
@@ -287,6 +296,8 @@ public class UIManager : MonoBehaviour
 
     public void OutBtnClick()
     {
+        OnSceneChange?.Invoke();
+        PopupUIManager.Instance.popupUI.Clear();
         SceneManager.LoadScene("StartScene");
         GameManager.Instance.Playerinformation = new Information();
         CanvasGroup.Clear();

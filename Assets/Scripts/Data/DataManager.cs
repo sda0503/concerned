@@ -16,10 +16,10 @@ using UnityEngine.UI;
 public class DataManager : SingletonBase<DataManager> //유니티 기능을 상속 받는거 /코루틴이나 유니티 이벤트를 연동하려면 필요함.
 {
     public Game_State GameState;
-    
+
     private Player _playerToSave; //Save & Load 대기용
     public event Action LoadingChange;
-    
+
     public Player player
     {
         get
@@ -37,9 +37,8 @@ public class DataManager : SingletonBase<DataManager> //유니티 기능을 상�
 
     public Dictionary<int, string> characterIdx = new Dictionary<int, string>()
     {
-        {0, "이도준"},
-        {1, "흥신소 탐정 핸드폰"},
-
+        { 0, "이도준" },
+        { 1, "흥신소 탐정 핸드폰" },
     };
 
     public Information Playerinformation = new Information(); //TODO : 일단은 New
@@ -86,7 +85,6 @@ public class DataManager : SingletonBase<DataManager> //유니티 기능을 상�
     [SerializeField] public Transform asdf;
 
 
-
     private StringBuilder sb = new StringBuilder();
 
     public override void init()
@@ -94,6 +92,7 @@ public class DataManager : SingletonBase<DataManager> //유니티 기능을 상�
         base.init();
         path = Application.persistentDataPath;
         StartCoroutine(SetDatas());
+        GameManager.Instance.OnPositionChange += Save;
     }
 
     /// <summary>
@@ -102,17 +101,17 @@ public class DataManager : SingletonBase<DataManager> //유니티 기능을 상�
     /// <returns></returns>
     IEnumerator SetDatas() //전체 기본 데이터 세팅
     {
-        yield return StartCoroutine(dialogueDBSet()); 
+        yield return StartCoroutine(dialogueDBSet());
         //TODO : 로딩 종료될때마다 콜백줘서 진행도 표시하기
         Debug.Log("다이얼로그 세팅 완료");
-        
+
         yield return StartCoroutine(PlaceDBSet());
         Debug.Log("장소 세팅 완료");
-        
+
         yield return StartCoroutine(LoadDefaultData());
         Debug.Log("아이템 세팅 완료");
         //ItemManager.Instance.getItems.Clear();
-        
+
         yield return StartCoroutine(SetDogamData()); //TODO : 도감도 불러오기(세팅은 도감버튼 눌렀을 때 하고 데이터만 가져오기)
         Debug.Log("도감 세팅 완료");
         //SetItemData();    
@@ -127,12 +126,11 @@ public class DataManager : SingletonBase<DataManager> //유니티 기능을 상�
         Debug.Log("대화 진행 정보 세팅 완료");
         Playerinformation = new Information();
         LoadingChange?.Invoke();
-        
     }
 
     public void LoadPlayerData() //TODO : 이어하기 선택 시 불러올 데이터 내용 작성 + 버튼에 들어갈 내용
     {
-        StartCoroutine(LoadGameData()); 
+        StartCoroutine(LoadGameData());
         Debug.Log("게임 데이터 로드 완료");
     }
 
@@ -166,7 +164,7 @@ public class DataManager : SingletonBase<DataManager> //유니티 기능을 상�
             dic.DialogueDic.Add(dialogueList.Dialouge_Log_Data[i].Dialogue_idx, dialogueList.Dialouge_Log_Data[i]);
         }
 
-        
+
         //DialogueManager.Instance._dialogdic = dic.DialogueDic;
     }
 
@@ -175,9 +173,9 @@ public class DataManager : SingletonBase<DataManager> //유니티 기능을 상�
         if (File.Exists(path + "/save.json"))
         {
             var readAllTextAsync = File.ReadAllTextAsync(path + "/save.json");
-            
+
             yield return readAllTextAsync.Result;
-            
+
             // if (readAllTextAsync == null)
             // {
             //     Debug.Log("파일이 없습니다. : DataManager 151");
@@ -188,38 +186,37 @@ public class DataManager : SingletonBase<DataManager> //유니티 기능을 상�
             _questDic = JsonConvert.DeserializeObject<Dialogue_Quest_Dic>(questData);
         }
     }
-    
+
     IEnumerator New_QuestSet() //TODO : 개인 플레이 데이터 불러오는 부분이니까 분리하고 비동기로 작업하기. + 이어하기 버튼에 연결
     {
-       
-            var readQuestJson = Resources.LoadAsync<TextAsset>("Quest_DB");
-            yield return readQuestJson;
+        var readQuestJson = Resources.LoadAsync<TextAsset>("Quest_DB");
+        yield return readQuestJson;
 
-            if (readQuestJson == null)
+        if (readQuestJson == null)
+        {
+            Debug.Log("파일이 없습니다 : DataManager 166");
+            yield break;
+        }
+
+        TextAsset questData = readQuestJson.asset as TextAsset;
+        string quest = questData.text;
+        Dialogue_Quest_List questList = JsonConvert.DeserializeObject<Dialogue_Quest_List>(quest);
+
+        Dictionary<string, List<Dialogue_Quest_Data>> SettingDic = _questDic.DialogueQuestDic; //캐싱한거
+        List<Dialogue_Quest_Data> questDatas = questList.Dialogue_Quest_Data;
+        for (int i = 0; i < questDatas.Count; i++)
+        {
+            if (SettingDic.ContainsKey(questDatas[i].QuestTargetName))
             {
-                Debug.Log("파일이 없습니다 : DataManager 166");
-                yield break;
+                SettingDic[questDatas[i].QuestTargetName].Add(questDatas[i]);
             }
-            
-            TextAsset questData = readQuestJson.asset as TextAsset;
-            string quest = questData.text;
-            Dialogue_Quest_List questList = JsonConvert.DeserializeObject<Dialogue_Quest_List>(quest);
-            
-            Dictionary<string, List<Dialogue_Quest_Data>> SettingDic = _questDic.DialogueQuestDic; //캐싱한거
-            List<Dialogue_Quest_Data> questDatas = questList.Dialogue_Quest_Data;
-            for (int i = 0; i < questDatas.Count; i++)
+            else
             {
-                if (SettingDic.ContainsKey(questDatas[i].QuestTargetName))
-                {
-                    SettingDic[questDatas[i].QuestTargetName].Add(questDatas[i]);
-                }
-                else
-                {
-                    SettingDic.Add(questDatas[i].QuestTargetName, new List<Dialogue_Quest_Data>()); //새 Key추가
-                    SettingDic[questDatas[i].QuestTargetName].Add(questDatas[i]); //이후 값 추가
-                }
+                SettingDic.Add(questDatas[i].QuestTargetName, new List<Dialogue_Quest_Data>()); //새 Key추가
+                SettingDic[questDatas[i].QuestTargetName].Add(questDatas[i]); //이후 값 추가
             }
-      
+        }
+
         //DialogueManager.Instance._questdic = _questDic.DialogueQuestDic;
     }
 
@@ -231,9 +228,9 @@ public class DataManager : SingletonBase<DataManager> //유니티 기능을 상�
     {
         yield return loadingwait;
         var placeDB = Resources.LoadAsync<TextAsset>("Place_DB");
-        
+
         yield return placeDB;
-        
+
         if (placeDB == null)
         {
             Debug.Log("파일이 없습니다 : DataManager 203");
@@ -290,23 +287,23 @@ public class DataManager : SingletonBase<DataManager> //유니티 기능을 상�
         LoadSaveData("Save"); //SaveItem이라고 이름 바뀌어야 함. => Inventory랑 
         saveItemDataList = GetItemDataList();
     }
-    
+
     public void SetItemData()
     {
         for (int i = 0; i < defaultItemDataList.Data.Count; i++)
         {
             if (defaultItemDataList.Data[i].itemType == ItemType.Normal)
             {
-                if(!itemsData.ContainsKey(defaultItemDataList.Data[i].item_id))
+                if (!itemsData.ContainsKey(defaultItemDataList.Data[i].item_id))
                     itemsData.Add(defaultItemDataList.Data[i].item_id, new Item(i));
             }
             else if (defaultItemDataList.Data[i].itemType == ItemType.Trigger)
             {
-                if(!triggerItemsData.ContainsKey(defaultItemDataList.Data[i].item_id))
+                if (!triggerItemsData.ContainsKey(defaultItemDataList.Data[i].item_id))
                     triggerItemsData.Add(defaultItemDataList.Data[i].item_id, new Item(i));
             }
-            
         }
+
         Debug.Log(itemsData.Count);
     }
 
@@ -320,13 +317,14 @@ public class DataManager : SingletonBase<DataManager> //유니티 기능을 상�
         if (!File.Exists(path + "/Dogam.json"))
         {
             Debug.Log("파일이 없습니다. : DataManager 260");
-             yield break;   
+            yield break;
         }
+
         var DogamdataRead = File.ReadAllTextAsync(path + "/Dogam.json");
 
         yield return DogamdataRead.Result;
 
-        List<int> dogamList = JsonConvert.DeserializeObject<List<int>>(DogamdataRead.Result); 
+        List<int> dogamList = JsonConvert.DeserializeObject<List<int>>(DogamdataRead.Result);
 
         foreach (var VARIABLE in dogamList)
         {
@@ -334,9 +332,9 @@ public class DataManager : SingletonBase<DataManager> //유니티 기능을 상�
         }
         //이렇게 변경해서 만들어줘야될듯.
 
-        DogamItemInDic(); 
+        DogamItemInDic();
     }
-    
+
     private void DogamItemInDic()
     {
         for (int i = 0; i < dogamItemDataList.Data.Count; i++)
@@ -355,16 +353,16 @@ public class DataManager : SingletonBase<DataManager> //유니티 기능을 상�
         yield return loadingwait;
         var data = Resources.LoadAsync<TextAsset>("ItemInfo");
         yield return data;
-        
+
         if (data == null)
         {
             Debug.Log("파일이 없습니다. : DataManager 298");
             yield break;
         }
-        
+
         TextAsset loadfile = data.asset as TextAsset;
         string loaditemdata = loadfile.text;
-        
+
         defaultItemDataList = JsonConvert.DeserializeObject<ItemDataList>(loaditemdata);
 
         SetItemData();
@@ -402,23 +400,29 @@ public class DataManager : SingletonBase<DataManager> //유니티 기능을 상�
     //Save & Load 여부에 관계없이 읽어오는 파일들은 이미 구현 되어있음. TODO : 아이템 관련해서 잠깐 볼 것.
     public void Save()
     {
-        _playerToSave.Information = GameManager.Instance.Playerinformation; //TODO : 변경해야됨. Data는 DataManager에
-        //_playerToSave.Information
         ////TODO : 캔버스 오브젝트 세팅하는 부분 짜맞추기 (변경할 점 : 각 캔버스에서 오브젝트 건드렸을 때 값 변경하는것, 로딩할 데이터가 없을 시 초기 데이터 설정)
-        
 
-        _playerToSave.DialogueQuestDic = _questDic;
+        player.Information.ObjContorllers = player.Information.objSave();
+
+        GameManager.Instance.ReturnInfo(player);
+
+        if (_questDic != null)
+            player.DialogueQuestDic = _questDic;
+
+
+        player.Inventory = new List<int>();
 
         foreach (var items in getItems.Values)
         {
-            _playerToSave.Inventory.Add(items.id);
+            player.Inventory.Add(items.id);
         }
+
 
         DogamSave(); //TODO : 도감 저장용, 나중에 체크해볼것.
 
-        
-        string data = JsonConvert.SerializeObject(_playerToSave);
-        File.WriteAllText(path+"/PlayData.json", data);
+
+        string data = JsonConvert.SerializeObject(player);
+        File.WriteAllText(path + "/PlayData.json", data);
     }
 
     void DogamSave()
@@ -456,39 +460,50 @@ public class DataManager : SingletonBase<DataManager> //유니티 기능을 상�
         }
 
         //dogamItemDataList.Data = dogamItemDataList.Data.OrderBy(x => x.item_id).ToList();
-        dogamSave = dogamSave.OrderBy(x=>x).ToList();
+        dogamSave = dogamSave.OrderBy(x => x).ToList();
 
         var dogam = JsonConvert.SerializeObject(dogamSave);
-        File.WriteAllText(Application.persistentDataPath+"/Dogam.json",dogam);
+        File.WriteAllText(Application.persistentDataPath + "/Dogam.json", dogam);
     }
 
     IEnumerator LoadGameData()
     {
-        if (!File.Exists(path + "/concerned.json"))
+        if (!File.Exists(path + "/PlayData.json"))
         {
             Debug.Log("파일이 없습니다 : DataManager 406");
             yield break;
         }
-        
-        var readData = File.ReadAllTextAsync(path+"/concerned.json");
+
+        var readData = File.ReadAllTextAsync(path + "/PlayData.json");
 
         yield return readData.Result;
-        
+
         var converData = JsonConvert.DeserializeObject<Player>(readData.Result);
-        _playerToSave.DialogueQuestDic = converData.DialogueQuestDic;
-        _playerToSave.Inventory = converData.Inventory;
+        player.DialogueQuestDic = converData.DialogueQuestDic;
+        player.Inventory = converData.Inventory;
+        getItemsNumber = player.Inventory;
+        foreach (int a in getItemsNumber)
+        {
+            if (!getItems.ContainsKey(a))
+                getItems.Add(a, itemsData[a]);
+        }
+
         yield return StartCoroutine(SetInventory()); //TODO : 인벤토리 세팅해주는 과정 추가해야함.
         Debug.Log("인벤토리 세팅 완료");
-        _playerToSave.Information = converData.Information;
+        player.Information = converData.Information;
+        player.Information.canvasObjSet = converData.Information.objset();
         GameManager.Instance.Playerinformation.OnLoadSetting();
+        LoadingChange?.Invoke();
     }
 
     IEnumerator SetInventory()
     {
         yield return loadingwait;
-        foreach (var VARIABLE in _playerToSave.Inventory)
+        foreach (var VARIABLE in player.Inventory)
         {
-            getItems.Add(VARIABLE,new Item(VARIABLE));    
+            //TODO : 206, 206ID값인 아이템 
+            if (!getItems.ContainsKey(VARIABLE))
+                getItems.Add(VARIABLE, itemsData[VARIABLE]);
         }
     }
 
@@ -539,13 +554,14 @@ public class DataManager : SingletonBase<DataManager> //유니티 기능을 상�
     {
         triggerItems.Add(item_id, obj);
     }
-    
+
     public void OnClickToFindItem(int index) //여기가 아이템 클릭했을 때 실행되는 구간.
     {
         Debug.Log(itemsData.Count);
         if (itemsData.ContainsKey(index) && !getItems.ContainsKey(index))
         {
             var obj = GameObjectLoad("Prefabs/Item");
+
             if(index < 100)
             {
                 obj.transform.GetComponent<Image>().sprite = SpriteLoad("Evidence/" + index.ToString());
@@ -554,6 +570,7 @@ public class DataManager : SingletonBase<DataManager> //유니티 기능을 상�
             {
                 obj.transform.GetComponent<Image>().sprite = SpriteLoad("Evidence/" + ((index / 100) * 100).ToString());
             }
+
             obj.transform.GetComponent<interactableItem>().ItemId = index;
             Instantiate(obj, UIManager.Instance.itemCanvas);
 
@@ -561,6 +578,7 @@ public class DataManager : SingletonBase<DataManager> //유니티 기능을 상�
             return;
         }
         else if (itemsData.ContainsKey(index)) return;
+
         if (triggerItemsData.ContainsKey(index) && !triggerItems.ContainsKey(index))
         {
             var obj = GameObjectLoad("Prefabs/Item");
@@ -571,14 +589,14 @@ public class DataManager : SingletonBase<DataManager> //유니티 기능을 상�
             GetTriggerItem(index, obj);
             return;
         }
-        else if (triggerItemsData.ContainsKey(index)) 
-        { 
-            triggerItems[index].SetActive(true); 
-            return; 
+        else if (triggerItemsData.ContainsKey(index))
+        {
+            triggerItems[index].SetActive(true);
+            return;
         }
+
         Debug.Log("Item Error");
     }
 
     #endregion
-    
 }

@@ -59,7 +59,9 @@ public class GameTrigger : MonoBehaviour
         Loadingbar.count++;
         if (Loadingbar.count == 1)
         {
-            SceneManager.LoadScene("TutoScene");
+            if (DataManager.Instance.GameState == Game_State.New)
+                SceneManager.LoadScene("TutoScene");
+            else SceneManager.LoadScene("TestScene 1");
         }
         Loadingbar.UpdateUI();
         
