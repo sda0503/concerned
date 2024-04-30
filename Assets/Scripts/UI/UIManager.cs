@@ -298,6 +298,7 @@ public class UIManager : MonoBehaviour
     {
         OnSceneChange?.Invoke();
         PopupUIManager.Instance.popupUI.Clear();
+        DataManager.Instance.getItems.Clear();
         SceneManager.LoadScene("StartScene");
         GameManager.Instance.Playerinformation = new Information();
         CanvasGroup.Clear();
