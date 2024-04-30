@@ -52,6 +52,7 @@ public class ChatCalendarUI : PopupUIBase
         Debug.Log("Click");
         GameManager.Instance.CharacterMeetDate(date, charactername);
         calendarDates[date].GetComponent<Button>().enabled = false;
+        calendarDates[date].transform.GetChild(1).gameObject.SetActive(true);
         gameObject.SetActive(false);
     }
 
