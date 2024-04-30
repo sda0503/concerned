@@ -56,7 +56,7 @@ public class interactableItem : interactableObject
         switch (id)
         {
             case 1:
-                DataManager.Instance.OnClickToFindItem(24);
+                DataManager.Instance.OnClickToFindItem(204);
                 break;
         }
     }
