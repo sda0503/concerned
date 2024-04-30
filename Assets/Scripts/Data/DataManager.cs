@@ -587,6 +587,8 @@ public class DataManager : SingletonBase<DataManager> //유니티 기능을 상�
             obj.transform.GetComponent<interactableItem>().ItemId = index;
             obj = Instantiate(obj, UIManager.Instance.itemCanvas);
             GetTriggerItem(index, obj);
+            getItems.Add(index, triggerItemsData[index]);
+            getItemsNumber.Add(index);
             return;
         }
         else if (triggerItemsData.ContainsKey(index))
