@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using DataStorage;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -18,6 +19,10 @@ public class StartSceneUI : MonoBehaviour
         startButton.onClick.AddListener(OnStartGame);
         bookButton.onClick.AddListener(OnOpenBook);
         loadButton.onClick.AddListener(OnLoadGame);
+        if (File.Exists(Application.persistentDataPath + "/PlayData.json"))
+        {
+            loadButton.interactable = true;
+        }
     }
     
     //TODO : Load했을 시 데이터 매니저 or 게임매니저에서 사용할 데이터 생성을 분리.

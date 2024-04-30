@@ -6,7 +6,6 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using KoreanTyper;
-using System.Linq;
 
 public class DialogueManager : MonoBehaviour
 {

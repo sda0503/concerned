@@ -22,7 +22,7 @@ namespace DataStorage
         //public Dialogue_Dic DialogueDic; //대화 dic
         public Dialogue_Quest_Dic DialogueQuestDic; //대화 Quest dic
         public List<int> Inventory; //인벤토리
-        public Information Information; //캐릭터 진행 데이터
+        public Information Information = new Information(); //캐릭터 진행 데이터
     }
 
     #endregion
@@ -31,7 +31,7 @@ namespace DataStorage
 
     public class ObjContorllers
     {
-        public List<ObjContorller> _ObjContorllers;
+        public List<ObjContorller> _ObjContorllers = new List<ObjContorller>();
     }
 
     public class ObjContorller
@@ -68,10 +68,10 @@ namespace DataStorage
         }
 
         //position은 주소로 하고 DB 만들기
-        [SerializeField] private ObjContorllers ObjContorllers = new ObjContorllers();
+        public ObjContorllers ObjContorllers = new ObjContorllers();
         //[NonSerialized] : 직렬화 안하고 싶을 때 사용. 근데 [SerializeField]안달려있으면 자동으로 안되는 것으로
 
-        public Dictionary<int, List<bool>> canvasObjSet = new Dictionary<int, List<bool>>();
+        [NonSerialized] public Dictionary<int, List<bool>> canvasObjSet = new Dictionary<int, List<bool>>();
         //TODO : 이거의 초기값이 될만한 것을 만들어줘야됨.
 
         public Information() //첫 시작 때 사용
@@ -90,12 +90,14 @@ namespace DataStorage
             position = DataManager.Instance.player.Information.position;
         }
 
-        public void objset() //오브젝트 세팅 데이터 가공하는 부분
+        public Dictionary<int, List<bool>> objset() //오브젝트 세팅 데이터 가공하는 부분
         {
             foreach (ObjContorller objContorller in ObjContorllers._ObjContorllers)
             {
                 canvasObjSet.Add(objContorller.CanvasIdx,objContorller.objState);
             }
+
+            return canvasObjSet;
         }
 
         public ObjContorllers objSave()

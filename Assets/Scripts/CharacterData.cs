@@ -1,31 +1,37 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CharacterData : MonoBehaviour
 {
-    //Ä³¸¯ÅÍ µ¥ÀÌÅÍ ¼ÂÆÃ
+    //Ä³ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     [SerializeField]
     public int charceterNum;
     public int placeNum;
+    
 
-    //0.°­¹Î¿ì
-    //1.ÇÑ¹Ì·¡
-    //2.°æºñ¿ø
-    //3.°æÂû
-    //4.Èï½Å¼ÒÅ½Á¤
-    //5.º¯È£»ç
-    //6.ºÎ³àÈ¸Àå
-    //7.±èÅÂÇö
-    //8.½ÅÇö¿ì
-    //9.ÅÃ¹èÈ¸»ç
-    //10.°­¹Î¿ì Àå·Ê½ÄÀå
+    //0.ï¿½ï¿½ï¿½Î¿ï¿½
+    //1.ï¿½Ñ¹Ì·ï¿½
+    //2.ï¿½ï¿½ï¿½ï¿½
+    //3.ï¿½ï¿½ï¿½ï¿½
+    //4.ï¿½ï¿½Å¼ï¿½Å½ï¿½ï¿½
+    //5.ï¿½ï¿½È£ï¿½ï¿½
+    //6.ï¿½Î³ï¿½È¸ï¿½ï¿½
+    //7.ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    //8.ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    //9.ï¿½Ã¹ï¿½È¸ï¿½ï¿½
+    //10.ï¿½ï¿½ï¿½Î¿ï¿½ ï¿½ï¿½Ê½ï¿½ï¿½ï¿½
 
     private void Start()
     {
         characterControll();
         GameManager.Instance.OnDateChange += characterControll;
+        UIManager.Instance.OnSceneChange += SceneChange;
+    }
+
+    private void SceneChange()
+    {
+        GameManager.Instance.OnDateChange -= characterControll;
+        UIManager.Instance.OnSceneChange -= SceneChange;
     }
 
     // void Update()
@@ -40,7 +46,15 @@ public class CharacterData : MonoBehaviour
             case 0:
                 if (GameManager.Instance.Playerinformation.date < 3)
                 {
-                    gameObject.SetActive(false);
+                    try
+                    {
+                        gameObject.SetActive(false);
+                    }
+                    catch (Exception e)
+                    {
+                        Debug.Log(gameObject.name);
+                    }
+                    
                 }
                 else
                 {
