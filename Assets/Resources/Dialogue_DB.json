@@ -2555,7 +2555,7 @@
       "Check_Quest": [
         "0",
         "0",
-        "김태현,1",
+        "김태현 - 회사,1",
         "0"
       ],
       "Give_Item": null
@@ -6685,7 +6685,7 @@
       "Event_Log_State": null,
       "Check_Item": null,
       "Check_Quest": null,
-      "Give_Item": "10003"
+      "Give_Item": null
     },
     {
       "Dialogue_idx": "21002017",
@@ -6698,7 +6698,7 @@
       "Event_Log_State": null,
       "Check_Item": null,
       "Check_Quest": null,
-      "Give_Item": null
+      "Give_Item": "10003"
     },
     {
       "Dialogue_idx": "23003015",
