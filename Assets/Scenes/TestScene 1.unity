@@ -4830,6 +4830,10 @@ PrefabInstance:
       propertyPath: m_Delegates.Array.data[2].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1015300805}
+    - target: {fileID: 1339443650006646533, guid: 752ec2e041847ce49849f56a6f1d1e3c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1861804190283642999, guid: 752ec2e041847ce49849f56a6f1d1e3c, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -4862,6 +4866,10 @@ PrefabInstance:
       propertyPath: m_Delegates.Array.data[2].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1015300805}
+    - target: {fileID: 2700413294225695760, guid: 752ec2e041847ce49849f56a6f1d1e3c, type: 3}
+      propertyPath: m_text
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 4315921114706792487, guid: 752ec2e041847ce49849f56a6f1d1e3c, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -4874,6 +4882,10 @@ PrefabInstance:
       propertyPath: m_Delegates.Array.data[2].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1015300805}
+    - target: {fileID: 4720454443090865052, guid: 752ec2e041847ce49849f56a6f1d1e3c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5066956606940652223, guid: 752ec2e041847ce49849f56a6f1d1e3c, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -4964,7 +4976,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5836437685859688925, guid: 752ec2e041847ce49849f56a6f1d1e3c, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6434015555329218821, guid: 752ec2e041847ce49849f56a6f1d1e3c, type: 3}
       propertyPath: m_UiScaleMode
@@ -9077,7 +9089,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5438499391683270029, guid: a8e51e169c27b364b8326bb8d708df06, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7677897985912425911, guid: a8e51e169c27b364b8326bb8d708df06, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
