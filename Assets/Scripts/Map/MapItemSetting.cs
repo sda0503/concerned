@@ -30,7 +30,7 @@ public class MapItemSetting : MonoBehaviour
             if (DataManager.Instance.getItems.ContainsKey(301))
             {
                 DataManager.Instance.OnClickToFindItem(id);
-                PopupUIManager.Instance.popupUI["InventoryUI"].GetComponent<InventoryUI>().items[31].itemData.default_description += " 사용되었다.";
+                PopupUIManager.Instance.popupUI["InventoryUI"].GetComponent<InventoryUI>().items[301].itemData.default_description += " 사용되었다.";
                 buttons[item_index].gameObject.SetActive(false);
             }
         }
@@ -39,7 +39,7 @@ public class MapItemSetting : MonoBehaviour
             if (DataManager.Instance.getItems.ContainsKey(302))
             {
                 DataManager.Instance.OnClickToFindItem(id);
-                PopupUIManager.Instance.popupUI["InventoryUI"].GetComponent<InventoryUI>().items[32].itemData.default_description += " 사용되었다.";
+                PopupUIManager.Instance.popupUI["InventoryUI"].GetComponent<InventoryUI>().items[302].itemData.default_description += " 사용되었다.";
                 buttons[item_index].gameObject.SetActive(false);
             }
         }

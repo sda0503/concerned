@@ -7,6 +7,10 @@ using UnityEngine.UI;
 
 public class PhoneUI : PopupUIBase
 {
+    public GameObject exTuto;
+    public List<GameObject> imageTuto;
+    int num = 0;
+
     public Button callButton;
     public Button messageButton;
     public Button calendarButton;
@@ -19,6 +23,7 @@ public class PhoneUI : PopupUIBase
 
     private void Start()
     {
+        exTuto.GetComponent<Button>().onClick.AddListener(() => ExplainPhone());
         callButton.onClick.AddListener(OnCallNumberUI);
         messageButton.onClick.AddListener(OnMessageUI);
         calendarButton.onClick.AddListener(OnCalendarUI);
@@ -53,6 +58,16 @@ public class PhoneUI : PopupUIBase
         CalendarObject.SetActive(true);
     }
 
+    public void OffPhone()
+    {
+        gameObject.SetActive(false);
+        if (PopupUIManager.Instance.popupUI.ContainsKey("MessageBubbleUI"))
+        {
+            Destroy(PopupUIManager.Instance.popupUI["MessageBubbleUI"]);
+            PopupUIManager.Instance.popupUI.Remove("MessageBubbleUI");
+        }
+    }
+
     private string GetDayTime() //정서에 맞게 변환
     {
         switch (GameManager.Instance.Playerinformation.daytime)
@@ -66,5 +81,16 @@ public class PhoneUI : PopupUIBase
         }
 
         return "";
+    }
+
+    private void ExplainPhone()
+    {
+        if(num == imageTuto.Count) { exTuto.SetActive(false); return; }
+        if(num > 0) 
+        {
+            imageTuto[num - 1].SetActive(false);
+        }
+        imageTuto[num].SetActive(true);
+        num++;
     }
 }
